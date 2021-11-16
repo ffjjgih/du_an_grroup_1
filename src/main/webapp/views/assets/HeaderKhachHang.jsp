@@ -15,7 +15,7 @@
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Profile">Thông tin cá nhân</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Logout">Đăng xuất</a></li>
 						</ul>
 					</div>
 				</c:if>
