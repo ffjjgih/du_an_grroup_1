@@ -56,6 +56,7 @@
 	<!--slider end-->
 
 	<!--banner input-->
+	<c:if test="${sessionScope.acountKH == null}">
 	<div class="container_banner_input">
 		<div class="input-slogan">
 			<div class="slogan_title">ĐẶT LỊCH GIỮ CHỖ CHỈ 30S</div>
@@ -68,6 +69,7 @@
 			</div>
 		</div>
 	</div>
+	</c:if>
 
 </div>
 
