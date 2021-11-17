@@ -10,21 +10,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import Dao.Dao_Staff;
 import Dao.Daouser;
 import model.KhachHang;
+import model.Staff;
 
 @WebServlet("/Login")
-@MultipartConfig 
+@MultipartConfig
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Daouser daouser;
+	private Dao_Staff daoStaff;
 
 	public Login() {
+		this.daoStaff = new Dao_Staff();
 		this.daouser = new Daouser();
+
 	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.getRequestDispatcher("views/assets/DatBanKhach.jsp").forward(request, response);
 	}
 
@@ -33,15 +38,28 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		KhachHang kh = this.daouser.login(username, password);
+		Staff st = this.daoStaff.login(username, password);
 		if (kh != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("acountKH", kh);
-			response.sendRedirect(request.getContextPath()+ "/HomeKhachHangServlet");
+			session.setAttribute("acountST", st);
+			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
 		} else {
-			request.setAttribute("message", "Password or UserName is wrong");
-			doGet(request, response);
+			if (st != null) {
+				if (st.getChucVu().equals("Staff")) {
+					HttpSession session = request.getSession();
+					session.setAttribute("acountST", st);
+					response.sendRedirect(request.getContextPath() + "/Menu");
+				} else if (st.getChucVu().equals("Manager")) {
+					HttpSession session = request.getSession();
+					session.setAttribute("acountST", st);
+					response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
+				}
+			} else {
+				request.setAttribute("message", "Password or UserName is wrong");
+				doGet(request, response);
+			}
+
 		}
 
 	}
-
 }
