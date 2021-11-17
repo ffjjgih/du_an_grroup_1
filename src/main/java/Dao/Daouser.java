@@ -124,6 +124,24 @@ public class Daouser extends BaseDao<KhachHang>{
 		return khach;
 	}
 	
+	public void updatettdb(int id,String name,String sdt) {
+		this.manager=this.conn.getEntityManager();
+		this.transaction=this.manager.getTransaction();
+		try {
+			this.manager.getTransaction().begin();
+			manager.flush(); manager.clear();
+			String hql="Update KhachHang k SET ho_ten=:ten, sdt=:sodt WHERE idkh=:id";
+			Query query=this.manager.createQuery(hql);
+			query.setParameter("ten", name);
+			query.setParameter("sodt", sdt);
+			query.setParameter("id", id);
+			query.executeUpdate();
+			this.transaction.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			this.transaction.rollback();
+		}
+	}
 	
 	@Override
 	public String getdatabase() {
