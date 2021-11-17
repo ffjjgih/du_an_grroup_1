@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.checkerframework.checker.units.qual.s;
-
 import Dao.DaoTTBD;
 import Dao.Daouser;
 import model.KhachHang;

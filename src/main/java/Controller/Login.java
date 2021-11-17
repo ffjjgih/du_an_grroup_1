@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("views/assets/DatBanKhach.jsp").forward(request, response);
+		request.getRequestDispatcher("views/assets/HomeKhachHang.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
