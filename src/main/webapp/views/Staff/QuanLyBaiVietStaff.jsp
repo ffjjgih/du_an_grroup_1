@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,157 +27,39 @@
             <div class="container_right l-12">
             	<!-- header right quản lý bài viết -->
                 <jsp:include page="HeaderRightPost.jsp"></jsp:include>
-
+                <form action="/QL_Dat_Ban_NH/HomeStaffController" method="post">
                 <div class="right_body">
-                    <div class="body_item">
-                        <img src="./views/Staff/img/goidudutaiheo.jpg" style="width: 298px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">Gỏi đu đủ tai heo</p>
-                        <p>Gỏi đu đủ tai heo giòn giòn sần sật, bùi bùi vị lạc rang, thêm nước sốt chua ngọt, dùng
-                            làm
-                            bữa ăn xế chiều...</p>
+                <c:forEach var="items" items="${ listBV }">
+                       <div class="body_item">
+                        <img src="./views/Staff/img/${items.img }" style="width: 298px; height: 240px;" alt="">
+                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">${items.ten_tieu_de }</p>
+                        <p>${items.noi_dung }</p>
                         <div class="service-item">
-                            <h3><a target="_blank" href="https://www.hoclammonngon.com/2021/03/goi-u-u-tai-heo.html">
+                            <h3><a target="_blank" href="${items.link }">
                                     Xem ngay</a></h3>
                         </div>
                         <div class="item_button">
-                            <button type="button" class="btn btn-success">
+                            <button type="submit" class="btn btn-success" formaction="HomeStaffController/update?id=${ items.IDbv }">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
                                     <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
                                 </svg>
+                                
                             </button>
-                            <button type="button" class="btn btn-danger" onclick="showMess()">
+                            <button type="submit" class="btn btn-danger" onclick="showMess()" formaction="HomeStaffController/delete?id=${ items.IDbv }">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                 </svg>
                             </button>
                         </div>
                     </div>
-
-
-                    <div class="body_item">
-                        <img src="./views/Staff/img/chaoucga.jpg" style="width: 298px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">Cháo ức gà xé làm từ cơm nguội
-                        </p>
-                        <p>Cháo được nấu từ thịt ức gà và cơm nguội, cách làm nhanh hơn so với nấu từ gạo, thịt gà đậm
-                            đà, thơm...</p>
-                        <div class="service-item">
-                            <h3><a target="_blank"
-                                    href="https://www.hoclammonngon.com/2021/03/chao-uc-ga-xe-lam-tu-com-nguoi.html">
-                                    Xem ngay</a></h3>
-                        </div>
-                        <div class="item_button">
-                            <button type="button" class="btn btn-success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                </svg>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="body_item">
-                        <img src="./views/Staff/img/goidudutaiheo.jpg" style="width: 298px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">Gỏi đu đủ tai heo</p>
-                        <p>Gỏi đu đủ tai heo giòn giòn sần sật, bùi bùi vị lạc rang, thêm nước sốt chua ngọt, dùng làm
-                            bữa ăn xế chiều...</p>
-                        <div class="service-item">
-                            <h3><a target="_blank" href="https://www.hoclammonngon.com/2021/03/goi-u-u-tai-heo.html">
-                                    Xem ngay</a></h3>
-                        </div>
-                        <div class="item_button">
-                            <button type="button" class="btn btn-success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                </svg>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="body_item">
-                        <img src="./views/Staff/img/goidudutaiheo.jpg" style="width: 298px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">Gỏi đu đủ tai heo</p>
-                        <p>Gỏi đu đủ tai heo giòn giòn sần sật, bùi bùi vị lạc rang, thêm nước sốt chua ngọt, dùng làm
-                            bữa ăn xế chiều...</p>
-                        <div class="service-item">
-                            <h3><a target="_blank" href="https://www.hoclammonngon.com/2021/03/goi-u-u-tai-heo.html">
-                                    Xem ngay</a></h3>
-                        </div>
-                        <div class="item_button">
-                            <button type="button" class="btn btn-success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                </svg>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="body_item">
-                        <img src="./views/Staff/img/chaoucga.jpg" style="width: 298px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">Cháo ức gà xé làm từ cơm nguội
-                        </p>
-                        <p>Cháo được nấu từ thịt ức gà và cơm nguội, cách làm nhanh hơn so với nấu từ gạo, thịt gà đậm
-                            đà, thơm...</p>
-                        <div class="service-item">
-                            <h3><a target="_blank"
-                                    href="https://www.hoclammonngon.com/2021/03/chao-uc-ga-xe-lam-tu-com-nguoi.html">
-                                    Xem ngay</a></h3>
-                        </div>
-                        <div class="item_button">
-                            <button type="button" class="btn btn-success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                </svg>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="body_item">
-                        <img src="./views/Staff/img/goidudutaiheo.jpg" style="width: 298px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">Gỏi đu đủ tai heo</p>
-                        <p>Gỏi đu đủ tai heo giòn giòn sần sật, bùi bùi vị lạc rang, thêm nước sốt chua ngọt, dùng làm
-                            bữa ăn xế chiều...</p>
-                        <div class="service-item">
-                            <h3><a target="_blank" href="https://www.hoclammonngon.com/2021/03/goi-u-u-tai-heo.html">
-                                    Xem ngay</a></h3>
-                        </div>
-                        <div class="item_button">
-                            <button type="button" class="btn btn-success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                </svg>
-                            </button>
-                            <button type="button" class="btn btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+                </c:forEach>
                 </div>
+                   </form>
             </div>
         </div>
-
 		<!-- modal add bài viết -->
         <jsp:include page="ModalAddPost.jsp"></jsp:include>
+        
     </div>
 
     <script src="./views/Staff/js/modaladdpost.js"></script>

@@ -12,9 +12,9 @@
 		</button>
 	</div>
 	<div class="header_search">
-		<form action="" method="post">
-			<input type="search" name="" id="">
-			<button type="button" class="btn btn-dark">
+		<form action="/HomeStaffController" method="post">
+			<input type="search" name="name" id="">
+			<button type="submit" class="btn btn-dark" formaction="HomeStaffController/timkiem">
 				<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
 					width="16" height="16" fill="currentColor" class="bi bi-search"
 					viewBox="0 0 16 16">
