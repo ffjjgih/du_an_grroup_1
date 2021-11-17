@@ -61,6 +61,7 @@ public class Order extends HttpServlet {
 		this.lstmn=this.daomn.getall();
 		this.ttbd=this.daoTTBD.findbyid(index);
 		this.lstcart=this.daocart.FindCartbyIDDB(this.ttbd);
+		this.dsgiohang=(ArrayList<GioHang>) this.daocart.FindCartbyIDDB(this.ttbd);
 		request.setAttribute("listcart", this.lstcart);
 		request.setAttribute("listmenu", this.lstmn);
 		request.setAttribute("iduser", id);
@@ -76,12 +77,13 @@ public class Order extends HttpServlet {
 		int id=this.kh.getIdkh();
 		this.ttbd=this.daoTTBD.findbyid(index);
 		if(url.contains("datban")) {
+			this.daocart.deletecartbyttbd(ttbd);
 			lstcart=(List<GioHang>) session.getAttribute("gh");
 			for(GioHang x:lstcart) {
 				x.setIdgh(0);
 				this.daocart.insert(x);
 			}
-			response.sendRedirect(request.getContextPath()+"/Booking");
+			response.sendRedirect(request.getContextPath()+"/profilebooking");
 		}else if(url.contains("chonmon")) {
 			session.setAttribute("user", this.lstcart);
 			this.ttbd=this.daoTTBD.findbyid(index);

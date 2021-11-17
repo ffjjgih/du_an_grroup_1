@@ -16,8 +16,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import Dao.DaoCart;
 import Dao.DaoTTBD;
 import Dao.Daouser;
+import model.GioHang;
 import model.KhachHang;
 import model.ThongTinBanDat;
 
@@ -33,6 +35,8 @@ public class Booking extends HttpServlet {
      private Daouser user;
      private DaoTTBD daottbd;
      private List<ThongTinBanDat> lstttdb;
+     private List<GioHang> lstgh;
+     private DaoCart daocart;
      
     public Booking() {
     	this.ttbd=new ThongTinBanDat();
@@ -40,12 +44,18 @@ public class Booking extends HttpServlet {
     	this.user=new Daouser();
     	this.daottbd=new DaoTTBD();
     	this.lstttdb=new ArrayList<ThongTinBanDat>();
+    	this.lstgh=new ArrayList<GioHang>();
+    	this.daocart=new DaoCart();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
 		int index=this.kh.getIdkh();
+		this.ttbd=this.daottbd.findttbdbystatus(this.kh);
+		this.lstgh=this.daocart.FindCartbyIDDB(this.ttbd);
+		request.setAttribute("inforbooking", this.ttbd);
+		request.setAttribute("carts", this.lstgh);
 		request.setAttribute("user", this.kh);
 		request.setAttribute("iduser", index);
 		request.getRequestDispatcher("/views/assets/DatBanKhach.jsp").forward(request, response);

@@ -29,49 +29,49 @@
         <div class="container_content">
             <div class="modal_editInfo">
                 <div class="modal_editInfo_container">
-                    <form>
+                    <form action="/QL_Dat_Ban_NH/Changebooking" method="post">
                         <h3>CHỈNH SỬA THÔNG TIN ĐẶT BÀN</h3>
                         <div class="container_body">
                             <div class="row">
                                 <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Họ và tên"
-                                        value="Nguyễn Lê Hải">
+                                    <input required type="text" class="form-control" name="ten" placeholder="Họ và tên"
+                                        value="${show.khachHang.hoTen }">
                                 </div>
                                 <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Số ddienj thoại"
-                                        value="0977256375">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <input required type="number" class="form-control" placeholder="Số lượng người"
-                                        value="2">
-                                </div>
-                                <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Ngày đặt"
-                                        value="14/11/2021">
+                                    <input required type="text" class="form-control" name="sdt" placeholder="Số ddienj thoại"
+                                        value="${show.khachHang.sdt }">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Giờ đặt"
-                                        value="14:00 PM">
+                                    <input required type="number" class="form-control" name="soluong" placeholder="Số lượng người"
+                                        value="${show.so_Luong_Nguoi }">
                                 </div>
                                 <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Trạng thái"
-                                        value="Đang xác nhận">
+                                    <input required type="date" class="form-control" name="dateDatBan" placeholder="Ngày đặt"
+                                        value="${show.ngayDatBan }">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <input required type="time" class="form-control" name="timedatban" placeholder="Giờ đặt"
+                                        value="${show.gioDatBan }">
+                                </div>
+                                <div class="col">
+                                    <input required type="text" class="form-control" name="" readonly placeholder="Trạng thái"
+                                        value="${show.trang_Thai }">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <textarea class="form-control" style="resize: none;"
-                                        id="exampleFormControlTextarea1" placeholder="Ghi chú"
-                                        rows="3">Nhà có 2 trẻ con</textarea>
+                                        id="exampleFormControlTextarea1" placeholder="Ghi chú" name="note"
+                                        rows="3">${show.ghi_Chu }</textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <button type="button" style="width: 500px;" class="btn btn-success">SUBMIT</button>
+                        <button type="submit" formaction="/QL_Dat_Ban_NH/Changebooking?index=${show.idBd }" style="width: 500px;" class="btn btn-success">SUBMIT</button>
 
 
                     </form>
