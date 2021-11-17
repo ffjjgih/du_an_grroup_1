@@ -91,22 +91,24 @@ public class Daouser extends BaseDao<KhachHang>{
 	
 
 	public List<KhachHang> findEmail(String username, String gmail) {
-		List<KhachHang> list = new ArrayList<KhachHang>();
 		KhachHang kh = new KhachHang();
 		try {
-			this.manager = conn.getEntityManager();
-
+			manager = conn.getEntityManager();
 			String sql = "select u from KhachHang u where u.username=:user_name and u.gmail=:mail";
-			TypedQuery<KhachHang> query = this.manager.createQuery(sql, KhachHang.class);
+			TypedQuery<KhachHang> query = manager.createQuery(sql, KhachHang.class);
 			query.setParameter("user_name", username);
 			query.setParameter("mail", gmail);
-			list = query.getResultList();
+			lst = query.getResultList();
+			for(KhachHang list: lst) {
+				if(username.equals(list.getUsername())&& gmail.equals(list.getGmail())) {
+					return lst;
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
-		return list;
+		return null;
 	}
 
 	public KhachHang checkAcc(String username) {
