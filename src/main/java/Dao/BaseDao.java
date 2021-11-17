@@ -53,6 +53,7 @@ public T findbyid(int id) {
 	return t;
 }
 
+
 public void delete(int id) {
 	T t=findbyid(id);
 	this.manager=this.conn.getEntityManager();

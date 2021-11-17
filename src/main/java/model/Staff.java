@@ -170,4 +170,19 @@ public class Staff implements Serializable {
 		return hoaDon;
 	}
 
+	public Staff( String cccd, String chucVu, String email, String hoTen, String img, String password,
+			String sdt, String username) {
+		super();
+		this.cccd = cccd;
+		this.chucVu = chucVu;
+		this.email = email;
+		this.hoTen = hoTen;
+		this.img = img;
+		this.password = password;
+		this.sdt = sdt;
+		this.username = username;
+		this.baiViets = baiViets;
+		this.hoaDons = hoaDons;
+	}
+
 }
