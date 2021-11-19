@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("views/assets/DatBanKhach.jsp").forward(request, response);
+		request.getRequestDispatcher("views/assets/HomeKhachHang.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 		Staff st = this.daoStaff.login(username, password);
 		if (kh != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("acountST", st);
+			session.setAttribute("acountKH", kh);
 			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
 		} else {
 			if (st != null) {
@@ -55,8 +55,9 @@ public class Login extends HttpServlet {
 					response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
 				}
 			} else {
-				request.setAttribute("message", "Password or UserName is wrong");
-				doGet(request, response);
+				response.sendRedirect(request.getContextPath()+"/Login?errorAccWrong=1");
+				//request.setAttribute("errorAccWrong", "Password or UserName is wrong");
+				//doGet(request, response);
 			}
 
 		}

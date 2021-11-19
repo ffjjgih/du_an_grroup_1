@@ -102,7 +102,7 @@
                             	} %>
                             <div class="mb-3">
                                 <label for="InputOldPass1" style="float: left; width: 100px;" class="form-label">Mật khẩu cũ</label>
-                                <input type="password" class="form-control" name="oldpassword" id="InputOldPass1" aria-describedby="emailHelp">
+                                <input required type="password" class="form-control" name="oldpassword" id="InputOldPass1" aria-describedby="emailHelp">
                                 <%if("1".equals(err)){
                             		out.print("<small id='oldpasswordhl' style='color: red;' class='form-text text-muted' >Password Insuccess</small>");
                             	} %>
@@ -118,7 +118,7 @@
                                 <div id="newPass2Help" class="error"></div>
                                 <div id="newPass2HelpSuc" class="success" style="color: green; float: left;"></div>
                             </div>
-                            <button type="submit" formaction="/QL_Dat_Ban_NH/Profile/Changepass?id=${iduser }"  class="btn btn-primary">Submit</button>
+                            <button type="submit" id="button" formaction="/QL_Dat_Ban_NH/Profile/Changepass?id=${iduser}"  class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -167,8 +167,8 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                        	<th scope="col">ngay dat ban</th>
-                                        	<th scope="col">gio dat ban</th>
+                                        	<th scope="col">NGÀY ĐẶT BÀN</th>
+                                        	<th scope="col">GIỜ ĐẶT BÀN</th>
                                             <th scope="col">HỌ VÀ TÊN</th>
                                             <th scope="col">SỐ ĐIỆN THOẠI</th>
                                             <th scope="col">SỐ LƯỢNG NGƯỜI</th>
