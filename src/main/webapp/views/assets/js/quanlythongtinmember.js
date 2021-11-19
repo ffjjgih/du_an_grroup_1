@@ -49,10 +49,27 @@ var check = function(){
         document.getElementById('newPass2HelpSuc').innerHTML = "Password matching";
         document.getElementById('InputNewPass1').style.borderColor = "green";
         document.getElementById('InputNewPass2').style.borderColor = "green";
+		document.getElementById("button").disabled = false;
     } else {
         document.getElementById('newPass2HelpSuc').innerHTML = "";
         document.getElementById('newPass2Help').innerHTML = "Password not matching";
         document.getElementById('InputNewPass1').style.borderColor = "red";
         document.getElementById('InputNewPass2').style.borderColor = "red";
+		document.getElementById("button").disabled = true;
     }
 }
+
+// hiển thị thông báo
+var urlName = location.href;
+
+var errorChangePass = urlName.search("errorChangePass");
+var successChangePass = urlName.search("successChangePass");
+
+if(successChangePass > 0){
+    alert("Change Password successfully!");
+} else if(errorChangePass > 0) {
+    alert("Change Password fail, Please try again!");
+} else {
+    console.log("Nothing");
+}
+

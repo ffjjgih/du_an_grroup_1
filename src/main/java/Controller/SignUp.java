@@ -38,14 +38,14 @@ public class SignUp extends HttpServlet {
 
 		if (dao.checkAcc(username) != null) {
 			System.out.println("Username da ton tai");
-			response.sendRedirect(request.getContextPath() + "/SignUp" + "?error=1");
+			response.sendRedirect(request.getContextPath() + "/SignUp" + "?errorSignUp=1");
 			return;
 		}
 
 		KhachHang kh = new KhachHang(0, gmail, hoten, password, sdt, username);
 		dao.insert(kh);
 
-		response.sendRedirect(request.getContextPath() + "/SignUp" + "?succes=1");
+		response.sendRedirect(request.getContextPath() + "/SignUp" + "?succesSignUp=1");
 	}
 
 }

@@ -34,7 +34,7 @@ public class HomeKhachHangServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	response.sendRedirect(request.getContextPath()+"/HomeKhachHangServlet");
+		response.sendRedirect(request.getContextPath()+"/HomeKhachHangServlet");
 	}
 
 }
