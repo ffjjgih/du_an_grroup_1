@@ -69,9 +69,9 @@ public class Profile extends HttpServlet {
 			String newpass=request.getParameter("newpass");
 		if(oldpass.equals(this.user.getPassword().trim())) {
 			this.daouser.changepassworduser(index, newpass);
-			response.sendRedirect(request.getContextPath()+"/Profile?id="+index+"&&sucssec=1");
+			response.sendRedirect(request.getContextPath()+"/Profile?id="+index+"&&successChangePass=1");
 		}else {
-			response.sendRedirect(request.getContextPath()+"/Profile?id="+index+"&&error=1");
+			response.sendRedirect(request.getContextPath()+"/Profile?id="+index+"&&errorChangePass=1");
 		}
 		}else if(url.contains("Updateprofile")) {
 			try {

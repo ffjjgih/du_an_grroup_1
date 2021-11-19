@@ -37,6 +37,7 @@ public class Booking extends HttpServlet {
      private List<ThongTinBanDat> lstttdb;
      private List<GioHang> lstgh;
      private DaoCart daocart;
+     private ThongTinBanDat thongtinbandat;
      
     public Booking() {
     	this.ttbd=new ThongTinBanDat();
@@ -46,6 +47,7 @@ public class Booking extends HttpServlet {
     	this.lstttdb=new ArrayList<ThongTinBanDat>();
     	this.lstgh=new ArrayList<GioHang>();
     	this.daocart=new DaoCart();
+    	this.thongtinbandat = new ThongTinBanDat();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,17 +83,17 @@ public class Booking extends HttpServlet {
 	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
 		
 		try {
-			BeanUtils.populate(this.ttbd, request.getParameterMap());
+			BeanUtils.populate(this.thongtinbandat, request.getParameterMap());
 			String ngaydat=request.getParameter("dateDatBan");
 			String giodat=request.getParameter("timedatban")+":00";
 			Date date=Date.valueOf(ngaydat);
 			Time time=Time.valueOf(giodat);
-			this.ttbd.setNgayDatBan(date);
-			this.ttbd.setGioDatBan(time);
+			this.thongtinbandat.setNgayDatBan(date);
+			this.thongtinbandat.setGioDatBan(time);
 			this.kh=this.user.findbyid(index);
-			this.ttbd.setKhachHang(kh);
-			this.ttbd.setTrang_Thai("waitting line");
-			this.daottbd.insert(this.ttbd);
+			this.thongtinbandat.setKhachHang(kh);
+			this.thongtinbandat.setTrang_Thai("Waitting line");
+			this.daottbd.insert(this.thongtinbandat);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {

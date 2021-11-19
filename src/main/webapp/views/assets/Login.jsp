@@ -22,12 +22,12 @@ String succes = request.getParameter("succes");
 						"<small id='alert_user' style='color: red;' class='form-text text-muted' >Account already exists</small>");
 					}
 					%>
-					<input name="password" type="password" id="InputNewPass1" required placeholder="Password" style="padding: 12px 15px; margin: 4px 0;" />
-					<input name="repeatpassword" type="password" id="InputNewPass2" required placeholder="Repeat Password" style="padding: 12px 15px; margin: 4px 0;" onchange='check();' />
-						<input name="hoten" type="text" id="exampleInputFullName1" required placeholder="Full name" style="padding: 12px 15px; margin: 4px 0;" onchange="checkFormName()" /> 
-						<input name="sdt" type="text" id="exampleInputPhoneNume1" required placeholder="Phone number" style="padding: 12px 15px; margin: 4px 0;" onchange="checkFormPhone()" /> 
-						<input name="gmail" type="email" required placeholder="Email" style="padding: 12px 15px; margin: 4px 0;" />
-					<button style="border-radius: 20px;">Sign Up</button>
+					<input name = "password" type="password" required placeholder="Password" id="pass" style="padding: 12px 15px; margin: 4px 0;" />
+                    <input type="password" required placeholder="Repeat Password" id="repeatPass" onchange="checkPass();" style="padding: 12px 15px; margin: 4px 0;" />
+					<input name="hoten" type="text" id="exampleInputFullName1" required placeholder="Full name" style="padding: 12px 15px; margin: 4px 0;" onchange="checkFormName()" /> 
+					<input name="sdt" type="text" id="exampleInputPhoneNume1" required placeholder="Phone number" style="padding: 12px 15px; margin: 4px 0;" onchange="checkFormPhone()" /> 
+					<input name="gmail" type="email" required placeholder="Email" style="padding: 12px 15px; margin: 4px 0;" />
+					<button id="button" style="border-radius: 20px;">Sign Up</button>
 				</form>
 			</div>
 			
