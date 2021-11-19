@@ -31,6 +31,7 @@ import model.ThongTinBanDat;
 public class Booking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      private ThongTinBanDat ttbd;
+     private ThongTinBanDat bd;
      private KhachHang kh;
      private Daouser user;
      private DaoTTBD daottbd;
@@ -46,6 +47,7 @@ public class Booking extends HttpServlet {
     	this.lstttdb=new ArrayList<ThongTinBanDat>();
     	this.lstgh=new ArrayList<GioHang>();
     	this.daocart=new DaoCart();
+    	this.bd=new ThongTinBanDat();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,19 +81,19 @@ public class Booking extends HttpServlet {
 	}
 
 	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
-		
+		String ngaydat=request.getParameter("dateDatBan");
+		String giodat=request.getParameter("timedatban")+":00";
 		try {
-			BeanUtils.populate(this.ttbd, request.getParameterMap());
-			String ngaydat=request.getParameter("dateDatBan");
-			String giodat=request.getParameter("timedatban")+":00";
+			BeanUtils.populate(this.bd, request.getParameterMap());
+			
 			Date date=Date.valueOf(ngaydat);
 			Time time=Time.valueOf(giodat);
-			this.ttbd.setNgayDatBan(date);
-			this.ttbd.setGioDatBan(time);
+			this.bd.setNgayDatBan(date);
+			this.bd.setGioDatBan(time);
 			this.kh=this.user.findbyid(index);
-			this.ttbd.setKhachHang(kh);
-			this.ttbd.setTrang_Thai("waitting line");
-			this.daottbd.insert(this.ttbd);
+			this.bd.setKhachHang(kh);
+			this.bd.setTrang_Thai("waitting line");
+			this.daottbd.insert(this.bd);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
