@@ -50,6 +50,7 @@ public class ForgotpasswordServlet extends HttpServlet {
 				sb.append("Your password is: </br>").append(list.get(0).getPassword());
 				gmail.setContent(sb.toString());
 				EmailUtils.send(gmail);
+<<<<<<< HEAD
 				response.sendRedirect(request.getContextPath() + "/ForgotpasswordServlet" + "?success=1");
 
 			} else {
@@ -58,6 +59,16 @@ public class ForgotpasswordServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet" + "?error=1");
+=======
+				response.sendRedirect(request.getContextPath() + "/ForgotpasswordServlet?successforgotpass=1");
+
+			} else {
+				response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet?errorforgotpass=1");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet?errorforgotpass=1");
+>>>>>>> hai_thongbaoloiMember
 		}
 
 	}

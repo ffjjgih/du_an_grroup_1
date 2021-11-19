@@ -65,6 +65,7 @@
 
 	<jsp:include page="FooterKhachHang.jsp"></jsp:include>
 
+	<script src="./views/assets/js/login.js"></script>
 	<script src="./views/assets/js/register.js"></script>
 	<script>
 		var myCarousel = document.querySelector('#myCarousel')
@@ -73,7 +74,7 @@
 			wrap : false
 		})
 	</script>
-	<script src="./views/assets/js/login.js"></script>
+	<script src="./views/assets/js/checkErrorLogin.js"></script>
 	<script src="./views/assets/js/navbar.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
