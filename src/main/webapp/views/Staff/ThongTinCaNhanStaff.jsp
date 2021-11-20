@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="./views/Staff/fontawesome-free-5.15.3-web/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
+    <% 
+    String succes = request.getParameter("succes");
+    String err = request.getParameter("error");
+    %>
 </head>
 
 <body>
@@ -58,64 +63,73 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-home-tab">
-
+									
                                 <div class="changeInfo">
                                     <h3>Chỉnh sửa thông tin</h3>
-                                    <form>
+                                    <form action="/QL_Dat_Ban_NH/ProfileStaff" method="post" enctype="multipart/form-data">
+                                    	<%if("6".equals(succes)){
+                            				out.print("<h5 id='alertupdateprofile' style='color: green;' class='form-text text-muted' >Update profile success</h5>");
+                            				} %>
                                         <div class="mb-3">
-                                            <label for="exampleInputImg" class="form-label">Chọn ảnh đại diện</label>
-                                            <input required type="file" class="form-control" id="exampleInputImg"
+                                            <label for="exampleInputImg" class="form-label">Chọn ảnh đại diện</label><br>
+                                            <img alt="" src="/QL_Dat_Ban_NH/img/${ staff.img }" width="150" height="100">
+                                            <input name="image" type="file" class="form-control" value="${ staff.img }" id="exampleInputImg"
                                                 onchange="return fileValid()">
                                             <label for="" class="error"></label>
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputFullName1" class="form-label">Họ và tên</label>
-                                            <input required type="text" class="form-control" id="exampleInputFullName1"
+                                            <input value="${ staff.hoTen }" name="name" required type="text" class="form-control" id="exampleInputFullName1"
                                                 aria-describedby="emailHelp" onchange="checkFormName()">
                                             <label for="" id="nameHelp" class="error"></label>
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPhoneNume1" class="form-label">Số điện thoại</label>
-                                            <input required type="text" class="form-control" id="exampleInputPhoneNume1"
+                                            <input value="${ staff.sdt }" name="phone" required type="text" class="form-control" id="exampleInputPhoneNume1"
                                                 aria-describedby="emailHelp" onchange="checkFormPhone()">
                                             <label id="phoneHelp" for="" class="error"></label>
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputLink" class="form-label">Email</label>
-                                            <input required type="mail" class="form-control" id="exampleInputLink"
+                                            <input value="${ staff.email }" name="email" required type="mail" class="form-control" id="exampleInputLink"
                                                 aria-describedby="emailHelp">
                                             <label for="" class="error"></label>
                                         </div>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="submit" formaction="/QL_Dat_Ban_NH/ProfileStaff/Update_profile_staff" class="btn btn-success">Submit</button>
                                     </form>
                                 </div>
-
                             </div>
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                 aria-labelledby="pills-profile-tab">
-
+                                
                                 <div class="changeInfo">
                                     <h3>ĐỔI MẬT KHẨU</h3>
-                                    <form>
+                                    <form action="/QL_Dat_Ban_NH/ProfileStaff" method="post">
+                                    <%if("5".equals(succes)){
+                            			out.print("<h5 id='alertupdateprofile' style='color: green;' class='form-text text-muted' >Change Password Success</h5>");
+                            			} %>
                                         <div class="mb-3">
                                             <label for="exampleInputName" class="form-label">Mật khẩu cũ</label>
-                                            <input required type="password" class="form-control" id="exampleInputName"
+                                            <input name="pass_cu" required type="password" class="form-control" id="exampleInputName"
                                                 aria-describedby="emailHelp">
+                                               <% if ("5".equals(err)) {
+													out.print( "<small id='alert_user' style='color: red;' class='form-text text-muted' >Password Insuccess</small>");
+													} %>
                                             <label for="" class="error"></label>
                                         </div>
                                         <div class="mb-3">
                                             <label for="InputNewPass1" class="form-label">Mật khẩu mới</label>
-                                            <input required type="password" class="form-control" id="InputNewPass1"
+                                            <input name="pass_moi" required type="password" class="form-control" id="InputNewPass1"
                                                 aria-describedby="emailHelp">
                                         </div>
                                         <div class="mb-3">
                                             <label for="InputNewPass2" class="form-label">Nhập lại mật khẩu</label>
-                                            <input required type="password" class="form-control" id="InputNewPass2"
+                                            <input name="xacnhan_pass" required type="password" class="form-control" id="InputNewPass2"
                                                 aria-describedby="emailHelp" onkeyup='check();'>
                                             <label for="" id="newPass2Help" class="error" style="color: red;"></label>
                                             <label for="" id="newPass2HelpSuc" class="success" style="color: green;"></label>
                                         </div>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="submit" formaction="/QL_Dat_Ban_NH/ProfileStaff/Changepass_staff" class="btn btn-success">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -144,6 +158,7 @@
                 document.getElementById('exampleInputImg').style.borderColor = "green";
             }
         }
+        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

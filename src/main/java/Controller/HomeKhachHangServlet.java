@@ -15,7 +15,7 @@ import model.BaiViet;
 @WebServlet("/HomeKhachHangServlet")
 public class HomeKhachHangServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
     private baiVietDao dao;
     
     public HomeKhachHangServlet() {

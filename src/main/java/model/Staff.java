@@ -4,28 +4,27 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the staff database table.
  * 
  */
 @Entity
-@NamedQuery(name="Staff.findAll", query="SELECT s FROM Staff s")
+@NamedQuery(name = "Staff.findAll", query = "SELECT s FROM Staff s")
 public class Staff implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idnv;
 
 	private String cccd;
 
-	@Column(name="CHUC_VU")
+	@Column(name = "CHUC_VU")
 	private String chucVu;
 
 	private String email;
 
-	@Column(name="HO_TEN")
+	@Column(name = "HO_TEN")
 	private String hoTen;
 
 	private String img;
@@ -36,15 +35,24 @@ public class Staff implements Serializable {
 
 	private String username;
 
-	//bi-directional many-to-one association to BaiViet
-	@OneToMany(mappedBy="staff")
+	// bi-directional many-to-one association to BaiViet
+	@OneToMany(mappedBy = "staff")
 	private List<BaiViet> baiViets;
 
-	//bi-directional many-to-one association to HoaDon
-	@OneToMany(mappedBy="staff")
+	// bi-directional many-to-one association to HoaDon
+	@OneToMany(mappedBy = "staff")
 	private List<HoaDon> hoaDons;
 
 	public Staff() {
+	}
+
+	public Staff(int idnv, String img, String hoTen, String sdt, String email) {
+		super();
+		this.idnv = idnv;
+		this.email = email;
+		this.hoTen = hoTen;
+		this.img = img;
+		this.sdt = sdt;
 	}
 
 	public int getIdnv() {
