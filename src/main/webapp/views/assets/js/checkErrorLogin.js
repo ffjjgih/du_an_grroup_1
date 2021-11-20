@@ -12,6 +12,9 @@ var errorforgotpass = urlName.search("errorforgotpass");
 var errorSignUp = urlName.search("errorSignUp");
 var succesSignUp = urlName.search("succesSignUp");
 
+var errorAccNull = url.search("errorAccNull");
+
+
 if (errorGoogle > 0) {
 	alert("Chưa có tài khoản, hãy thử lại");
 } else if (successGoogle > 0) {
@@ -28,6 +31,9 @@ if (errorGoogle > 0) {
 	alert("Register account fail, because UserName already exist, please try again!");
 } else if (succesSignUp > 0) {
 	alert("Register account successfully, please Login with new account!");
-} else {
+} else if(errorAccNull > 0){
+	alert("Please Sign In or Sign Up!");
+} 
+else {
 	console.log("Nothing");
 }

@@ -26,7 +26,7 @@
             <div class="container_right l-12">
                 <div class="right_header">
                     <div class="header_search">
-                        <h4 style="color: white; margin: 10px 20px;">Chi tiết bàn: 01</h4>
+                        <h4 style="color: white; margin: 10px 20px;">Chỉnh sửa bàn: 02</h4>
                     </div>
                 </div>
 
@@ -35,33 +35,32 @@
                     <div class="body_right l-9">
                         <form action="" method="post">
                             <div class="mb-3">
-                                <label for="exampleFormControlID" class="form-label">Mã bàn</label>
-                                <input readonly type="text" class="form-control" id="exampleFormControlID" value="01">
-                            </div>
-                            <div class="mb-3">
                                 <label for="exampleFormControlIDK" class="form-label">Mã khách</label>
                                 <input readonly type="text" class="form-control" id="exampleFormControlIDK" value="KH01">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlDate" class="form-label">Thời gian đặt</label>
-                                <input required type="date" class="form-control" id="exampleFormControlDate" value="2014-02-09">
+                                <input required type="datetime" class="form-control" id="exampleFormControlDate" value="2014-02-09">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlTime" class="form-label">Giờ đặt</label>
-                                <input required type="time" class="form-control" id="exampleFormControlTime">
+                                <label for="exampleFormControlDate" class="form-label">Giờ đặt</label>
+                                <input required type="text" class="form-control" id="exampleFormControlDate" value="14:00 PM">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlQuan" class="form-label">Số lượng người</label>
-                                <input required type="number" class="form-control" onkeyup="checkpeople()" id="exampleFormControlQuan" value="10">
-                                <label for="" id="errorPeople" style="color: tomato;"></label>
+                                <label for="exampleFormControlTime" class="form-label">Giờ vào</label>
+                                <input required type="text" class="form-control" id="exampleFormControlTime" value="15:00 PM">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputQuantity" class="form-label">Số lượng người</label>
+                                <input required type="text" class="form-control" id="exampleInputQuantity" onkeyup="checkNumber()" value="10">
+                                <label for="" class="error" id="quantityHelp" style="color: tomato;"></label>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
+                                <textarea required class="form-control" id="exampleFormControlTextarea1" rows="5"
                                     style="resize: none;">Nhà có 3 trẻ em</textarea>
                             </div>
-
-                            <button type="button" class="btn btn-success btn_submit">Sửa</button>
+                            <button type="button" class="btn btn-primary" id="submit" style="width: 300px;">Submit</button>
                         </form>
                         
                     </div>
@@ -72,19 +71,7 @@
     </div>
 
     <script src="./views/Staff/js/sidebar.js"></script>
-    <script>
-        function checkpeople(){
-            var numberPeople = document.getElementById("exampleFormControlQuan").value;
-            if (numberPeople < 0) {
-                document.getElementById("exampleFormControlQuan").style.border = "red";
-                document.getElementById("errorPeople").innerHTML = "Số người không hợp lệ";
-            } else {
-                document.getElementById("exampleFormControlQuan").style.border = "";
-                document.getElementById("errorPeople").innerHTML = "";
-            }
-        }
-        
-    </script>
+    <script src="./views/Staff/js/thongtincanhanstaff.js"></script>
 </body>
 
 </html>
