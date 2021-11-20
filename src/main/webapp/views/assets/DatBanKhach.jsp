@@ -25,8 +25,10 @@
 </head>
 
 <body>
+	
     <div id="app">
         <jsp:include page="HeaderKhachHang.jsp"></jsp:include>
+        <form action="/QL_Dat_Ban_NH/Booking" method="post">
         <c:choose>
         	<c:when test="${inforbooking!=null }">
         		<div class="container_content">
@@ -34,7 +36,6 @@
                 <div class="content_left_forminput">
                     <div class="forminput_title">GIỎ HÀNG</div>
                     <div class="forminput_content">
-                        <form action="" method="post">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -55,11 +56,10 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
-                        </form>
 
                         <a type="button" href="/QL_Dat_Ban_NH/Order?index=${inforbooking.idBd}" style="width: 300px; float: left; margin-top: 20px;"
                             class="btn btn-success">THÊM MÓN ĂN</a>
-                        <button onclick = "showMessage()" type="button" style="width: 300px; float: right; margin-top: 20px;"
+                        <button onclick = "showMessage(${inforbooking.idBd})" type="button" style="width: 300px; float: right; margin-top: 20px;"
                             class="btn btn-danger">HỦY ĐẶT BÀN</button> 
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <div class="content_left_forminput">
                     <div class="forminput_title">ĐẶT BÀN</div>
                     <div class="forminput_content">
-                        <form action="/QL_Dat_Ban_NH/Booking" method="post">
+                        
 
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Số người</label>
@@ -132,7 +132,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Ngày</label>
                                 <div class="col-sm-7">
-                                    <input type="date" required class="form-group_input" name="dateDatBan" id="">
+                                    <input type="date" required class="form-group_input" name="dateDatBan" id="dateDatBan">
                                     <span class="form-group_error"></span>
                                 </div>
                             </div>
@@ -155,10 +155,10 @@
 
                             <div class="forminput_content_button">
                                 <button type="reset" class="btn btn-danger">NHẬP LẠI THÔNG TIN</button>
-                                <button type="submit" formaction="/QL_Dat_Ban_NH/Booking/Datban?id=${iduser}" class="btn btn-primary">ĐẶT BÀN NGAY</button>
-                                <button type="submit" formaction="/QL_Dat_Ban_NH/Booking/order?id=${iduser }" class="btn btn-success">CHỌN MÓN ĂN</button>
+                                <button  formaction="/QL_Dat_Ban_NH/Booking/Datban" class="btn btn-primary">ĐẶT BÀN NGAY</button>
+                                <button type="submit" formaction="/QL_Dat_Ban_NH/Booking/order" class="btn btn-success">CHỌN MÓN ĂN</button>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -185,9 +185,10 @@
             </div>
 
         </div>
+        
         	</c:otherwise>
         </c:choose>
-        
+        </form>
 
         <!--modal login, regis start-->
         <jsp:include page="Login.jsp"></jsp:include>
@@ -195,7 +196,7 @@
         <!--modal forgot pass start-->
     	<jsp:include page="ForgotPassword.jsp"></jsp:include>
     </div>
-
+	
     <jsp:include page="FooterKhachHang.jsp"></jsp:include>
 
 	<script src="./views/assets/js/register.js"></script>
@@ -209,7 +210,7 @@
         function showMessage(id){
             var option = confirm('Bạn có muốn xóa đặt bàn này không?');
             if(option){
-                window.location.href = ' '+id;
+                window.location.href = '/QL_Dat_Ban_NH/CancelBooking?id='+id;
             }
         }
     </script>

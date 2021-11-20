@@ -6,28 +6,33 @@ import java.util.List;
 
 
 /**
- * The persistent class for the khach_hang database table.
+ * The persistent class for the Khach_Hang database table.
  * 
  */
 @Entity
-@Table(name="khach_hang")
+@Table(name="Khach_Hang")
 @NamedQuery(name="KhachHang.findAll", query="SELECT k FROM KhachHang k")
 public class KhachHang implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="IDKH")
 	private int idkh;
 
+	@Column(name="Gmail")
 	private String gmail;
 
 	@Column(name="HO_TEN")
 	private String hoTen;
 
+	@Column(name="PASSWORD")
 	private String password;
 
+	@Column(name="SDT")
 	private String sdt;
 
+	@Column(name="USERNAME")
 	private String username;
 
 	//bi-directional many-to-one association to HoaDon
@@ -39,16 +44,6 @@ public class KhachHang implements Serializable {
 	private List<ThongTinBanDat> thongTinBanDats;
 
 	public KhachHang() {
-	}
-
-	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
-		super();
-		this.idkh = idkh;
-		this.gmail = gmail;
-		this.hoTen = hoTen;
-		this.password = password;
-		this.sdt = sdt;
-		this.username = username;
 	}
 
 	public int getIdkh() {
@@ -142,5 +137,16 @@ public class KhachHang implements Serializable {
 
 		return thongTinBanDat;
 	}
+
+	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
+		super();
+		this.idkh = idkh;
+		this.gmail = gmail;
+		this.hoTen = hoTen;
+		this.password = password;
+		this.sdt = sdt;
+		this.username = username;
+	}
+	
 
 }
