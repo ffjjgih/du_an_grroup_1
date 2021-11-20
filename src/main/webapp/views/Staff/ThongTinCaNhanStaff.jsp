@@ -63,6 +63,9 @@
                                     <h3>Chỉnh sửa thông tin</h3>
                                     <form>
                                         <div class="mb-3">
+                                            <input type="image" src="./views/Staff/img/goidudutaiheo.jpg" alt="fucku" style="width: 230px; height: 200px;" class="form-control" id="exampleImg">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="exampleInputImg" class="form-label">Chọn ảnh đại diện</label>
                                             <input required type="file" class="form-control" id="exampleInputImg"
                                                 onchange="return fileValid()">
@@ -144,6 +147,18 @@
                 document.getElementById('exampleInputImg').style.borderColor = "green";
             }
         }
+        
+        document.getElementById("exampleInputImg").onchange = function () {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("exampleImg").src = e.target.result;
+            };
+
+            // read the image file as a data URL.
+            reader.readAsDataURL(this.files[0]);
+        };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
