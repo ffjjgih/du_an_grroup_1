@@ -6,22 +6,27 @@ import java.util.List;
 
 
 /**
- * The persistent class for the menu database table.
+ * The persistent class for the MENU database table.
  * 
  */
 @Entity
+@Table(name="MENU")
 @NamedQuery(name="Menu.findAll", query="SELECT m FROM Menu m")
 public class Menu implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="IDMN")
 	private int idmn;
 
+	@Column(name="Gia")
 	private float gia;
 
+	@Column(name="IMG")
 	private String img;
 
+	@Column(name="Ten_Mon_An")
 	private String ten_Mon_An;
 
 	//bi-directional many-to-one association to GioHang

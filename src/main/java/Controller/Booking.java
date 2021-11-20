@@ -90,7 +90,6 @@ public class Booking extends HttpServlet {
 	}
 
 	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
-		
 		try {
 			BeanUtils.populate(this.thongtinbandat, request.getParameterMap());
 			String ngaydat=request.getParameter("dateDatBan");

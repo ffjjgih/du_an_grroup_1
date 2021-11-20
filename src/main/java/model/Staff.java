@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the staff database table.
+ * The persistent class for the Staff database table.
  * 
  */
 @Entity
@@ -16,24 +16,31 @@ public class Staff implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="IDNV")
 	private int idnv;
 
+	@Column(name="CCCD")
 	private String cccd;
 
 	@Column(name="CHUC_VU")
 	private String chucVu;
 
+	@Column(name="EMAIL")
 	private String email;
 
 	@Column(name="HO_TEN")
 	private String hoTen;
 
+	@Column(name="IMG")
 	private String img;
 
+	@Column(name="PASSWORD")
 	private String password;
 
+	@Column(name="SDT")
 	private String sdt;
 
+	@Column(name="USERNAME")
 	private String username;
 
 	//bi-directional many-to-one association to BaiViet
@@ -161,21 +168,6 @@ public class Staff implements Serializable {
 		hoaDon.setStaff(null);
 
 		return hoaDon;
-	}
-
-	public Staff( String cccd, String chucVu, String email, String hoTen, String img, String password,
-			String sdt, String username) {
-		super();
-		this.cccd = cccd;
-		this.chucVu = chucVu;
-		this.email = email;
-		this.hoTen = hoTen;
-		this.img = img;
-		this.password = password;
-		this.sdt = sdt;
-		this.username = username;
-		this.baiViets = baiViets;
-		this.hoaDons = hoaDons;
 	}
 
 }
