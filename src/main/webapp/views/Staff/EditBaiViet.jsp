@@ -37,7 +37,9 @@
                             <div class="mb-3">
                                 <label for="exampleInputImg" class="form-label">Chọn ảnh bài viết</label>
                                 
-                                <input required type="file" class="form-control" id="exampleInputImg" onchange="return fileValid()" name="img" value="${bv.img }">
+                                
+                                <input type="file" accept="image/*" class="form-control" id="exampleInputImg" onchange="return fileValid()" name="img" value="${bv.img }">
+                                <img id="output" alt="" src="./views/Staff/img/${bv.img }">
                                 <label for="" class="error"></label>
                             </div>
                             <div class="mb-3">
@@ -84,8 +86,18 @@
                 return false;
             } else {
                 document.getElementById('exampleInputImg').style.borderColor = "green";
+                loadFile();
             }
+           
         }
+        
+        function loadFile() {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+              URL.revokeObjectURL(output.src) 
+            }
+         };
     </script>
 </body>
 

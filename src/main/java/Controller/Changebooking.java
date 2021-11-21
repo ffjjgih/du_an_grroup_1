@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.checkerframework.checker.units.qual.s;
 
 import Dao.DaoTTBD;
 import Dao.Daouser;
@@ -29,7 +28,7 @@ public class Changebooking extends HttpServlet {
      private ThongTinBanDat ttbd;
      private KhachHang kh;
      private Daouser daouser;
-    public Changebooking() {
+     public Changebooking() {
         this.daottbd=new DaoTTBD();
         this.ttbd=new ThongTinBanDat();
         this.daouser=new Daouser();

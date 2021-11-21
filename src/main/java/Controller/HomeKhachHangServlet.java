@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.baiVietDao;
-import model.BaiViet;
 
 @WebServlet("/HomeKhachHangServlet")
 public class HomeKhachHangServlet extends HttpServlet {
@@ -23,12 +22,12 @@ public class HomeKhachHangServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    try {
-			List<BaiViet> list=dao.getall();
-			request.setAttribute("baiviet", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//	    try {
+//			List<BaiViet> list=dao.getall();
+//			request.setAttribute("baiviet", list);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		request.getRequestDispatcher("views/assets/HomeKhachHang.jsp").forward(request, response);
 
 	}

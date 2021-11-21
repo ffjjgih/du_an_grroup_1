@@ -82,4 +82,11 @@ public class Bdct implements Serializable {
 		return mnct;
 	}
 
+	@Override
+	public String toString() {
+		return "Bdct [idBdct=" + idBdct + ", thongTinBanDat=" + thongTinBanDat + ", ttBan=" + ttBan + ", mncts=" + mncts
+				+ "]";
+	}
+	
+
 }

@@ -44,9 +44,9 @@ public class Menu_member extends HttpServlet {
 		List<LoaiMenu> lstbuffet=new ArrayList<LoaiMenu>();
 		List<LoaiMenu> lstdoan=new ArrayList<LoaiMenu>();
 				for(LoaiMenu x: this.lstloaimn) {
-					if(x.getLoai()==3) {
+					if(x.getIdloai()==3) {
 						lstdrink.add(x);
-					}else if(x.getLoai()==1) {
+					}else if(x.getIdloai()==1) {
 						lstbuffet.add(x);
 					}else {
 						lstdoan.add(x);

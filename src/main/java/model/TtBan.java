@@ -22,9 +22,6 @@ public class TtBan implements Serializable {
 	@Column(name="loai_ban")
 	private int loaiBan;
 
-	@Column(name="so_luong")
-	private int soLuong;
-
 	//bi-directional many-to-one association to Bdct
 	@OneToMany(mappedBy="ttBan")
 	private List<Bdct> bdcts;
@@ -48,13 +45,6 @@ public class TtBan implements Serializable {
 		this.loaiBan = loaiBan;
 	}
 
-	public int getSoLuong() {
-		return this.soLuong;
-	}
-
-	public void setSoLuong(int soLuong) {
-		this.soLuong = soLuong;
-	}
 
 	public List<Bdct> getBdcts() {
 		return this.bdcts;

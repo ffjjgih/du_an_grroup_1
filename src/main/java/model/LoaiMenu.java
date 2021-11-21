@@ -21,8 +21,6 @@ public class LoaiMenu implements Serializable {
 
 	private String img;
 
-	private int loai;
-
 	@Column(name="ten_loai")
 	private String tenLoai;
 
@@ -47,14 +45,6 @@ public class LoaiMenu implements Serializable {
 
 	public void setImg(String img) {
 		this.img = img;
-	}
-
-	public int getLoai() {
-		return this.loai;
-	}
-
-	public void setLoai(int loai) {
-		this.loai = loai;
 	}
 
 	public String getTenLoai() {

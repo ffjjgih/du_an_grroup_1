@@ -123,7 +123,6 @@ public class HomeStaffController extends HttpServlet {
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
 			part.write(Paths.get(realpath.toString(), namefile).toString());
 			bv.setImg(namefile);
-			//bv.setImg("/img"+up.loadIMG("chonAnh", request, "/img", bv.getImg()));
 			String mota = request.getParameter("mota");
 			String tieude = request.getParameter("tieuDe");
 			String link = request.getParameter("link");
