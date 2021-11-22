@@ -87,7 +87,7 @@ public class ProfileStaff extends HttpServlet {
 					part.write(Paths.get(realpath.toString(), namefile).toString());
 					this.staff.setImg(namefile);
 				}
-
+				
 				this.staff.setIdnv(index);
 				this.staff.setHoTen(name);
 				this.staff.setSdt(sdt);
