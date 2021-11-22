@@ -44,10 +44,48 @@
     position: absolute;
 }
 
-.right_body--header{
-    margin-bottom: 75px;
-}
-
 .header_search{
     margin-top: -50px;
+}
+
+.right_body--header-button{
+    margin: 20px;
+}
+
+.left{
+    margin-right: 200px;
+}
+
+/*biểu đô*/
+.modal_chart{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+	z-index: 5;
+}
+
+.modal_chart.open{
+    display: flex;
+}
+
+.modal_chart--container{
+    width: 800px;
+    height: 550px;
+    background-color: white;
+    border-radius: 15px;
+    animation: showModalFadeIn ease .6s;
+	margin: 0 auto;
+	margin-top: 4%;
+    padding: 10px 10px;
+}
+
+.exit:hover{
+    cursor: pointer;
+    color: tomato;
 }
