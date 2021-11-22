@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.collections.map.HashedMap;
 
 /**
  * Servlet implementation class test
@@ -31,16 +31,8 @@ public class test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("views/Staff/QuanLyThongBao.jsp").forward(request, response);
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * 
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		Map<String, Integer> tkbd = new HashedMap();
+//		HashMap<String, Integer> tkbd = new HashMap<String, Integer>();
 //		tkbd.put("Tháng 1", 200);
 //		tkbd.put("Tháng 2", 100);
 //		tkbd.put("Tháng 3", 223);
@@ -53,8 +45,23 @@ public class test extends HttpServlet {
 //		tkbd.put("Tháng 10", 80);
 //		tkbd.put("Tháng 11", 30);
 //		tkbd.put("Tháng 12", 80);
+//		int sum = 0;
+//		for (HashMap.Entry<String, Integer> o : tkbd.entrySet()) {
+//			sum += o.getValue();
+//		}
 //		request.setAttribute("listTkbd", tkbd);
-		doGet(request, response);
+//		request.setAttribute("sum", sum);
+		
+		request.getRequestDispatcher("views/Manager/HomeManager.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.sendRedirect(request.getContextPath()+"/test");
 	}
 
 }
