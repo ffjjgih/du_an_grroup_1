@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 		Staff st = this.daoStaff.login(username, password);
 		if (kh != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("acountST", st);
+			session.setAttribute("acountKH", kh);
 			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
 		} else {
 			if (st != null) {

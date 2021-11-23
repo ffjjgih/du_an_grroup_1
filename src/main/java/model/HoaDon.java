@@ -1,34 +1,27 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Time;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * The persistent class for the Hoa_Don database table.
- * 
- */
 @Entity
-@Table(name="Hoa_Don")
+@Table(name="hoa_don")
 @NamedQuery(name="HoaDon.findAll", query="SELECT h FROM HoaDon h")
 public class HoaDon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="IDHD")
 	private int idhd;
 
-	@Column(name="Khuyen_mai")
 	private float khuyen_mai;
+	
+	@Column(name="thoi_gian_kt")
+	private Time thoiGianKT;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="Thoi_gian")
-	private Date thoi_gian;
-
-	@Column(name="Tong_Tien")
 	private float tong_Tien;
 
 	//bi-directional many-to-one association to Hdct
@@ -68,13 +61,13 @@ public class HoaDon implements Serializable {
 	public void setKhuyen_mai(float khuyen_mai) {
 		this.khuyen_mai = khuyen_mai;
 	}
-
-	public Date getThoi_gian() {
-		return this.thoi_gian;
+	
+	public Time getthoiGianKT() {
+		return this.thoiGianKT;
 	}
 
-	public void setThoi_gian(Date thoi_gian) {
-		this.thoi_gian = thoi_gian;
+	public void setthoiGianKT(Time thoiGianKT) {
+		this.thoiGianKT = thoiGianKT;
 	}
 
 	public float getTong_Tien() {

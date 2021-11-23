@@ -43,5 +43,6 @@ public class DaoHDCT extends BaseDao<Hdct>{
 		
 		return this.lsthdct;
 	}
+	
 
 }

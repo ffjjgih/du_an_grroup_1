@@ -12,17 +12,19 @@ import model.KhachHang;
 import model.ThongTinBanDat;
 import utils.Connectjpa;
 
-public class DaoHoadon extends BaseDao<HoaDon>{
+public class DaoHoadon extends BaseDao<HoaDon> {
 	private HoaDon hoadon;
 	private List<HoaDon> lsthd;
 	private Connectjpa conn;
 	private EntityManager manager;
 	private EntityTransaction transaction;
+
 	public DaoHoadon() {
-		this.hoadon=new HoaDon();
-		this.lsthd=new ArrayList<HoaDon>();
-		this.conn=new Connectjpa();
+		this.hoadon = new HoaDon();
+		this.lsthd = new ArrayList<HoaDon>();
+		this.conn = new Connectjpa();
 	}
+
 	@Override
 	public Class<HoaDon> getmodeclass() {
 		return HoaDon.class;
@@ -32,14 +34,33 @@ public class DaoHoadon extends BaseDao<HoaDon>{
 	public String getdatabase() {
 		return HoaDon.class.getSimpleName();
 	}
-	
-	public List<HoaDon> findHDbyIDkh(KhachHang kh){
-		String hql="SELECT h FROM HoaDon h Where h.khachHang=:id_kh ORDER BY h.idhd desc";
-		this.manager=this.conn.getEntityManager();
-		TypedQuery<HoaDon> query=this.manager.createQuery(hql, HoaDon.class);
-		query.setParameter("id_kh",kh);
-		this.lsthd=query.getResultList();
+
+	public List<HoaDon> findHDbyIDkh(KhachHang kh) {
+		String hql = "SELECT h FROM HoaDon h Where h.khachHang=:id_kh ORDER BY h.idhd desc";
+		this.manager = this.conn.getEntityManager();
+		TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
+		query.setParameter("id_kh", kh);
+		this.lsthd = query.getResultList();
 		return this.lsthd;
 	}
+
+	public HoaDon findbyID(int id) {
+		String hql = "SELECT h FROM HoaDon h WHERE h.idhd=:id";
+		this.manager = this.conn.getEntityManager();
+		TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
+		query.setParameter("id", id);
+		this.hoadon = query.getResultList().get(0);
+		return hoadon;
+	}
+
+	public HoaDon sortIDbyHD() {
+		String hql = "SELECT h FROM HoaDon h ORDER BY idhd DESC";
+		this.manager = this.conn.getEntityManager();
+		TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
+		this.hoadon = query.getResultList().get(0);
+		return this.hoadon;
+	}
+	
+	
 
 }
