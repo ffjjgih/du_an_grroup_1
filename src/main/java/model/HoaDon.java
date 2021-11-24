@@ -77,14 +77,6 @@ public class HoaDon implements Serializable {
 		this.thoi_gian = thoi_gian;
 	}
 
-	public float getTong_Tien() {
-		return this.tong_Tien;
-	}
-
-	public void setTong_Tien(float tong_Tien) {
-		this.tong_Tien = tong_Tien;
-	}
-
 	public List<Hdct> getHdcts() {
 		return this.hdcts;
 	}

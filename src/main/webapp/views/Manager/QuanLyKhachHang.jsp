@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,8 +35,8 @@
                 <div class="right_body l-9">
                     <div class="right_body--header">
                         <div class="header_search">
-                            <form action="" method="post">
-                                <input type="search" name="" id="" placeholder="Nhập tên khách hàng">
+                            <form action="FindAccMember" method="post">
+                                <input type="search" name="txt" id="" value="${search}" placeholder="Nhập tên khách hàng">
                                 <button type="button" class="btn btn-dark">
                                     <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -51,39 +52,22 @@
                         <table class="table" style="text-align: center;">
                             <thead>
                                 <tr>
-                                    <th scope="col">STT</th>
                                     <th scope="col">MÃ KHÁCH HÀNG</th>
                                     <th scope="col">HỌ VÀ TÊN</th>
                                     <th scope="col">SỐ ĐIỆN THOẠI</th>
-                                    <th scope="col">GIỚI TÍNH</th>
-                                    <th scope="col">ĐỊA CHỈ</th>
+                                    <th scope="col">GMAIL</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>12</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>0977256375</td>
-                                    <td>NAM</td>
-                                    <td>CẦU GIẼ, XÃ ĐẠI XUYÊN, HUYỆN PHÚ XUYÊN, HÀ NỘI</td>
+                            <c:forEach items = "${lstMem}" var = "o">
+                            	<tr>
+                                    <td scope="row">${o.idkh }</td>
+                                    <td>${o.hoTen}</td>
+                                    <td>${o.sdt}</td>
+                                    <td>${o.gmail}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>12</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>0977256375</td>
-                                    <td>NAM</td>
-                                    <td>CẦU GIẼ, XÃ ĐẠI XUYÊN, HUYỆN PHÚ XUYÊN, HÀ NỘI</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>12</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>0977256375</td>
-                                    <td>NAM</td>
-                                    <td>CẦU GIẼ, XÃ ĐẠI XUYÊN, HUYỆN PHÚ XUYÊN, HÀ NỘI</td>
-                                </tr>
+                            </c:forEach>
+                                
                             </tbody>
                         </table>
                     </div>

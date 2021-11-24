@@ -52,7 +52,7 @@ public class test extends HttpServlet {
 //		request.setAttribute("listTkbd", tkbd);
 //		request.setAttribute("sum", sum);
 		
-		request.getRequestDispatcher("views/Manager/HomeManager.jsp").forward(request, response);
+		request.getRequestDispatcher("views/Manager/QuanLyThucDon.jsp").forward(request, response);
 	}
 
 	/**

@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.KhachHang;
+import model.Staff;
 import utils.Connectjpa;
 
 public class Daouser extends BaseDao<KhachHang>{
@@ -143,6 +144,15 @@ public class Daouser extends BaseDao<KhachHang>{
 			e.printStackTrace();
 			this.transaction.rollback();
 		}
+	}
+	
+	public List<KhachHang> findMemberByAjax(String name){
+		this.manager = this.conn.getEntityManager();
+		String hql = "SELECT k FROM KhachHang k WHERE hoTen LIKE :key";
+		TypedQuery<KhachHang> query=this.manager.createQuery(hql,KhachHang.class);
+		query.setParameter("key","%" + name + "%");
+		List<KhachHang> list = query.getResultList();
+		return list;
 	}
 	
 	@Override

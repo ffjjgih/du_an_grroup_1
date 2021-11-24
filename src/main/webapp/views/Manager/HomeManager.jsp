@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,8 +34,8 @@
                 <div class="right_body l-9">
                     <div class="right_body--header">
                         <div class="header_search">
-                            <form action="" method="post">
-                                <input type="search" name="" id="" placeholder="Nhập tên nhân viên">
+                            <form action="SearchPostByAjax" method="post">
+                                <input type="search" name="txt" id="" value="${search}" placeholder="Nhập tiêu đề bài viết...">
                                 <button type="button" class="btn btn-dark">
                                     <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -50,7 +51,6 @@
                         <table class="table" style="text-align: center;">
                             <thead>
                                 <tr>
-                                    <th scope="col">STT</th>
                                     <th scope="col">MÃ BÀI VIẾT</th>
                                     <th scope="col">TÊN NHÂN VIÊN</th>
                                     <th scope="col">TIÊU ĐỀ</th>
@@ -58,48 +58,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>BV01</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>GỎI ĐU ĐỦ</td>
-                                    <td><a href="" target="_blank" rel="noopener noreferrer">Xem chi tiết</a></td>
+                            <c:forEach items="${listbv}" var="o">
+                            	<tr>
+                                    <th scope="row">${o.IDbv }</th>
+                                    <td>${o.staff.hoTen}</td>
+                                    <td>${o.ten_tieu_de}</td>
+                                    <td><a href="${o.link}" target="_blank" rel="noopener noreferrer">Xem chi tiết</a></td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>BV01</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>GỎI ĐU ĐỦ</td>
-                                    <td><a href="" target="_blank" rel="noopener noreferrer">Xem chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>BV01</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>GỎI ĐU ĐỦ</td>
-                                    <td><a href="" target="_blank" rel="noopener noreferrer">Xem chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>BV01</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>GỎI ĐU ĐỦ</td>
-                                    <td><a href="" target="_blank" rel="noopener noreferrer">Xem chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>BV01</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>GỎI ĐU ĐỦ</td>
-                                    <td><a href="" target="_blank" rel="noopener noreferrer">Xem chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>BV01</td>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>GỎI ĐU ĐỦ</td>
-                                    <td><a href="" target="_blank" rel="noopener noreferrer">Xem chi tiết</a></td>
-                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
