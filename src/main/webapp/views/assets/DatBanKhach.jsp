@@ -210,7 +210,7 @@
         function showMessage(id){
             var option = confirm('Bạn có muốn xóa đặt bàn này không?');
             if(option){
-                window.location.href = '/QL_Dat_Ban_NH/CancelBooking?id='+id;
+                window.location.href = '/QL_Dat_Ban_NH/CancelBooking/Memberdelete?id='+id;
             }
         }
     </script>

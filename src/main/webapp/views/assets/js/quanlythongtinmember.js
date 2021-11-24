@@ -38,11 +38,11 @@ function checkFormPhone() {
     if (is_phone(phone) == false) {
         document.getElementById('exampleInputPhoneNume1').style.borderColor = "red";
         document.getElementById('emailHelp').innerHTML = "Số điện thoại không đúng định dạng";
-        document.getElementById("button1").disabled = true;
+		document.getElementById("button1").disabled = true;
     } else {
         document.getElementById('exampleInputPhoneNume1').style.borderColor = "green";
         document.getElementById('emailHelp').innerHTML = "";
-        document.getElementById("button1").disabled = false;
+		document.getElementById("button1").disabled = false;
     }
 }
 

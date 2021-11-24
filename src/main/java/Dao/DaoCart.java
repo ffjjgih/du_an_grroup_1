@@ -48,6 +48,8 @@ public class DaoCart extends BaseDao<GioHang>{
 			this.transaction.rollback();
 		}
 	}
+	
+	//hiển thị giỏ hàng (các class liên quan: Confirmbooking,Order)
 	public List<GioHang> FindCartbyIDDB(ThongTinBanDat t){
 		String hql="SELECT g FROM GioHang g WHERE thongTinBanDat=:tt_bd";
 		this.manager=this.conn.getEntityManager();

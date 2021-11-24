@@ -90,6 +90,7 @@
                                 <div id="emailHelp" class="error"></div>
                             </div>
                             <button type="submit" id="button1" formaction="/QL_Dat_Ban_NH/Profile/Updateprofile?id=${iduser}" class="btn btn-primary">Submit</button>  
+
                         </form>
                     </div>
                 </div>
