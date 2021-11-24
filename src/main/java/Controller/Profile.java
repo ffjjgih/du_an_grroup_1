@@ -73,7 +73,6 @@ public class Profile extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/Profile?id=" + index + "&&errorChangePass=1");
 			}
 		} else if (url.contains("Updateprofile")) {
-
 			try {
 				System.out.println(index);
 

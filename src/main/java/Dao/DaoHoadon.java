@@ -48,16 +48,7 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 			e.printStackTrace();
 			return null;
 		}
-		
-	}
 
-	public HoaDon findbyID(int id) {
-		String hql = "SELECT h FROM HoaDon h WHERE h.idhd=:id";
-		this.manager = this.conn.getEntityManager();
-		TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
-		query.setParameter("id", id);
-		this.hoadon = query.getResultList().get(0);
-		return hoadon;
 	}
 
 	public HoaDon sortIDbyHD() {

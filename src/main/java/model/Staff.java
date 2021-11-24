@@ -169,7 +169,6 @@ public class Staff implements Serializable {
 
 		return hoaDon;
 	}
-
 	public Staff(int idnv, String cccd, String chucVu, String email, String hoTen, String img, String password,
 			String sdt, String username) {
 		super();

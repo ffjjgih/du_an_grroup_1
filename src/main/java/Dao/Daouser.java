@@ -116,7 +116,7 @@ public class Daouser extends BaseDao<KhachHang>{
 		this.manager = this.conn.getEntityManager();
 		KhachHang khach = new KhachHang();
 		try {
-			String hql = "SELECT A FROM KhachHang A WHERE username = :user_name";
+			String hql = "SELECT k FROM KhachHang k WHERE username = :user_name";
 			TypedQuery<KhachHang> query = this.manager.createQuery(hql, KhachHang.class);
 			query.setParameter("user_name", username);
 			khach = query.getSingleResult();
