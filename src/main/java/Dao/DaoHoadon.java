@@ -35,13 +35,20 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 		return HoaDon.class.getSimpleName();
 	}
 
-	public List<HoaDon> findHDbyIDkh(KhachHang kh) {
-		String hql = "SELECT h FROM HoaDon h Where h.khachHang=:id_kh ORDER BY h.idhd desc";
-		this.manager = this.conn.getEntityManager();
-		TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
-		query.setParameter("id_kh", kh);
-		this.lsthd = query.getResultList();
-		return this.lsthd;
+	
+	public List<HoaDon> findHDbyIDkh(KhachHang kh){
+		try {
+			String hql = "SELECT h FROM HoaDon h Where h.khachHang=:id_kh ORDER BY h.idhd desc";
+			this.manager = this.conn.getEntityManager();
+			TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
+			query.setParameter("id_kh", kh);
+			this.lsthd = query.getResultList();
+			return this.lsthd;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	public HoaDon findbyID(int id) {

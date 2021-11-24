@@ -16,8 +16,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import Dao.DaoCart;
 import Dao.DaoTTBD;
 import Dao.Daouser;
+import model.GioHang;
 import model.KhachHang;
 import model.ThongTinBanDat;
 
@@ -33,6 +35,9 @@ public class Booking extends HttpServlet {
      private Daouser user;
      private DaoTTBD daottbd;
      private List<ThongTinBanDat> lstttdb;
+     private List<GioHang> lstgh;
+     private DaoCart daocart;
+     private ThongTinBanDat thongtinbandat;
      
     public Booking() {
     	this.ttbd=new ThongTinBanDat();
@@ -40,48 +45,63 @@ public class Booking extends HttpServlet {
     	this.user=new Daouser();
     	this.daottbd=new DaoTTBD();
     	this.lstttdb=new ArrayList<ThongTinBanDat>();
+    	this.lstgh=new ArrayList<GioHang>();
+    	this.daocart=new DaoCart();
+    	this.thongtinbandat = new ThongTinBanDat();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
-		int index=this.kh.getIdkh();
-		request.setAttribute("user", this.kh);
-		request.setAttribute("iduser", index);
-		request.getRequestDispatcher("/views/assets/DatBanKhach.jsp").forward(request, response);
+		if(this.kh == null) {
+			response.sendRedirect(request.getContextPath()+"/Login?errorAccNull=1");
+		} else {
+			int index=this.kh.getIdkh();
+			this.ttbd=this.daottbd.findttbdbystatus(this.kh);
+			this.lstgh=this.daocart.FindCartbyIDDB(this.ttbd);
+			request.setAttribute("inforbooking", this.ttbd);
+			request.setAttribute("carts", this.lstgh);
+			request.setAttribute("user", this.kh);
+			request.setAttribute("iduser", index);
+			request.getRequestDispatcher("/views/assets/DatBanKhach.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
-		int index=this.kh.getIdkh();
-		String url=request.getRequestURL().toString();
+		if(this.kh == null) {
+			response.sendRedirect(request.getContextPath()+"/Login?errorAccNull=1");
+		} else {
+			int index=this.kh.getIdkh();
+			String url=request.getRequestURL().toString();
 		
-		if(url.contains("order")) {
-			insertbd(request, response, index);	
-			this.lstttdb=this.daottbd.findTTBDbyIDkh(kh);
-			int indexx=this.daottbd.findTTBDbyIDkh(kh).get(0).getIdBd();
-			response.sendRedirect(request.getContextPath()+"/Order?index="+indexx);
-		}else if(url.contains("Datban")) {
-			insertbd(request, response, index);	
-			response.sendRedirect(request.getContextPath()+ "/Booking");
+			if(url.contains("order")) {
+				insertbd(request, response, index);	
+				this.lstttdb=this.daottbd.findTTBDbyIDkh(kh);
+				int indexx=this.daottbd.findTTBDbyIDkh(kh).get(0).getIdBd();
+				response.sendRedirect(request.getContextPath()+"/Order?index="+indexx);
+			}else if(url.contains("Datban")) {
+				insertbd(request, response, index);	
+				response.sendRedirect(request.getContextPath()+ "/Booking");
+			}
 		}
+		
 	}
 
 	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
-		
 		try {
-			BeanUtils.populate(this.ttbd, request.getParameterMap());
+			BeanUtils.populate(this.thongtinbandat, request.getParameterMap());
 			String ngaydat=request.getParameter("dateDatBan");
 			String giodat=request.getParameter("timedatban")+":00";
 			Date date=Date.valueOf(ngaydat);
 			Time time=Time.valueOf(giodat);
-			this.ttbd.setNgayDatBan(date);
-			this.ttbd.setGioDatBan(time);
+			this.thongtinbandat.setNgayDatBan(date);
+			this.thongtinbandat.setGioDatBan(time);
 			this.kh=this.user.findbyid(index);
-			this.ttbd.setKhachHang(kh);
-			this.ttbd.setTrang_Thai("waitting line");
-			this.daottbd.insert(this.ttbd);
+			this.thongtinbandat.setKhachHang(kh);
+			this.thongtinbandat.setTrang_Thai("Waitting line");
+			this.daottbd.insert(this.thongtinbandat);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {

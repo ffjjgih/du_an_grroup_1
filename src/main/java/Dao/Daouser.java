@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.KhachHang;
+import model.Staff;
 import utils.Connectjpa;
 
 public class Daouser extends BaseDao<KhachHang>{
@@ -91,22 +92,24 @@ public class Daouser extends BaseDao<KhachHang>{
 	
 
 	public List<KhachHang> findEmail(String username, String gmail) {
-		List<KhachHang> list = new ArrayList<KhachHang>();
 		KhachHang kh = new KhachHang();
 		try {
-			this.manager = conn.getEntityManager();
-
+			manager = conn.getEntityManager();
 			String sql = "select u from KhachHang u where u.username=:user_name and u.gmail=:mail";
-			TypedQuery<KhachHang> query = this.manager.createQuery(sql, KhachHang.class);
+			TypedQuery<KhachHang> query = manager.createQuery(sql, KhachHang.class);
 			query.setParameter("user_name", username);
 			query.setParameter("mail", gmail);
-			list = query.getResultList();
+			lst = query.getResultList();
+			for(KhachHang list: lst) {
+				if(username.equals(list.getUsername())&& gmail.equals(list.getGmail())) {
+					return lst;
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		}
-		return list;
+		return null;
 	}
 
 	public KhachHang checkAcc(String username) {
@@ -124,6 +127,33 @@ public class Daouser extends BaseDao<KhachHang>{
 		return khach;
 	}
 	
+	public void updatettdb(int id,String name,String sdt) {
+		this.manager=this.conn.getEntityManager();
+		this.transaction=this.manager.getTransaction();
+		try {
+			this.manager.getTransaction().begin();
+			manager.flush(); manager.clear();
+			String hql="Update KhachHang k SET ho_ten=:ten, sdt=:sodt WHERE idkh=:id";
+			Query query=this.manager.createQuery(hql);
+			query.setParameter("ten", name);
+			query.setParameter("sodt", sdt);
+			query.setParameter("id", id);
+			query.executeUpdate();
+			this.transaction.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			this.transaction.rollback();
+		}
+	}
+	
+	public List<KhachHang> findMemberByAjax(String name){
+		this.manager = this.conn.getEntityManager();
+		String hql = "SELECT k FROM KhachHang k WHERE hoTen LIKE :key";
+		TypedQuery<KhachHang> query=this.manager.createQuery(hql,KhachHang.class);
+		query.setParameter("key","%" + name + "%");
+		List<KhachHang> list = query.getResultList();
+		return list;
+	}
 	
 	@Override
 	public String getdatabase() {

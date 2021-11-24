@@ -74,13 +74,13 @@
                                     class="form-label">Họ và tên bạn
                                 </label>
                                 <input type="text" class="form-control" id="exampleInputFullName1"
-                                    aria-describedby="emailHelp" onchange="checkFormName()" name="hoTen" value="${profile.hoTen }" required>
+                                    aria-describedby="emailHelp" onkeyup="checkFormName()" name="hoTen" value="${profile.hoTen }" required>
                                 <div id="nameHelp" class="error"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPhoneNume1" style="float: left; width: 100px;"
                                     class="form-label">Số điện thoại</label>
-                                <input type="tel" class="form-control" id="exampleInputPhoneNume1" onchange="checkFormPhone()" name="sdt" value="${profile.sdt }" required>
+                                <input type="tel" class="form-control" id="exampleInputPhoneNume1" onkeyup="checkFormPhone()" name="sdt" value="${profile.sdt }" required>
                                 <div id="emailHelp" class="error"></div>
                             </div>
                             <div class="mb-3">
@@ -89,7 +89,7 @@
                                 <input type="email" class="form-control" name="gmail" id="exampleInputEmail1" value="${profile.gmail }" required>
                                 <div id="emailHelp" class="error"></div>
                             </div>
-                            <button type="submit" formaction="/QL_Dat_Ban_NH/Profile/Updateprofile?id=${iduser}" class="btn btn-primary">Submit</button>  
+                            <button type="submit" id="button1" formaction="/QL_Dat_Ban_NH/Profile/Updateprofile?id=${iduser}" class="btn btn-primary">Submit</button>  
                         </form>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                             	} %>
                             <div class="mb-3">
                                 <label for="InputOldPass1" style="float: left; width: 100px;" class="form-label">Mật khẩu cũ</label>
-                                <input type="password" class="form-control" name="oldpassword" id="InputOldPass1" aria-describedby="emailHelp">
+                                <input required type="password" class="form-control" name="oldpassword" id="InputOldPass1" aria-describedby="emailHelp">
                                 <%if("1".equals(err)){
                             		out.print("<small id='oldpasswordhl' style='color: red;' class='form-text text-muted' >Password Insuccess</small>");
                             	} %>
@@ -118,7 +118,7 @@
                                 <div id="newPass2Help" class="error"></div>
                                 <div id="newPass2HelpSuc" class="success" style="color: green; float: left;"></div>
                             </div>
-                            <button type="submit" formaction="/QL_Dat_Ban_NH/Profile/Changepass?id=${iduser }"  class="btn btn-primary">Submit</button>
+                            <button type="submit" id="button" formaction="/QL_Dat_Ban_NH/Profile/Changepass?id=${iduser}"  class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -167,8 +167,8 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                        	<th scope="col">ngay dat ban</th>
-                                        	<th scope="col">gio dat ban</th>
+                                        	<th scope="col">NGÀY ĐẶT BÀN</th>
+                                        	<th scope="col">GIỜ ĐẶT BÀN</th>
                                             <th scope="col">HỌ VÀ TÊN</th>
                                             <th scope="col">SỐ ĐIỆN THOẠI</th>
                                             <th scope="col">SỐ LƯỢNG NGƯỜI</th>

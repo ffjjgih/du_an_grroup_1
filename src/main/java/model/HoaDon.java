@@ -70,14 +70,6 @@ public class HoaDon implements Serializable {
 		this.thoiGianKT = thoiGianKT;
 	}
 
-	public float getTong_Tien() {
-		return this.tong_Tien;
-	}
-
-	public void setTong_Tien(float tong_Tien) {
-		this.tong_Tien = tong_Tien;
-	}
-
 	public List<Hdct> getHdcts() {
 		return this.hdcts;
 	}
@@ -123,5 +115,15 @@ public class HoaDon implements Serializable {
 	public void setThongTinBanDat(ThongTinBanDat thongTinBanDat) {
 		this.thongTinBanDat = thongTinBanDat;
 	}
+
+	public float getTong_Tien() {
+		return tong_Tien;
+	}
+
+	public void setTong_Tien(float tong_Tien) {
+		this.tong_Tien = tong_Tien;
+	}
+	
+	
 
 }

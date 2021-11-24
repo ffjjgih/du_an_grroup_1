@@ -15,7 +15,7 @@
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Profile">Thông tin cá nhân</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Logout">Đăng xuất</a></li>
 						</ul>
 					</div>
 				</c:if>
@@ -32,9 +32,17 @@
 	<div id="carouselExampleFade" class="carousel slide carousel-fade"
 		data-bs-ride="carousel">
 		<div class="carousel-inner">
+		
+			<c:if test="${sessionScope.acountKH != null}">
+			<div class="carousel-item active">
+				<img src="./views/assets/imgs/banner0.jpg" class="d-block w-100" alt="...">
+			</div>
+			</c:if>
+			<c:if test="${sessionScope.acountKH == null}">
 			<div class="carousel-item active">
 				<img src="./views/assets/imgs/banner.png" class="d-block w-100" alt="...">
 			</div>
+			</c:if>
 			<div class="carousel-item">
 				<img src="./views/assets/imgs/banner1.png" class="d-block w-100" alt="...">
 			</div>

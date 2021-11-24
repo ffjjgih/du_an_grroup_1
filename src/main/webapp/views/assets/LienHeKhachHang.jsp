@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./views/assets/css/khuyenmai.css">
+    <link rel="stylesheet" href="./views/assets/css/lienhekhach.css">
     <link rel="stylesheet" href="./views/assets/css/login.css">
     <link rel="stylesheet" href="./views/assets/css/grid.css">
     <link rel="stylesheet" href="./views/assets/css/base.css">
@@ -23,58 +23,24 @@
     <div id="app">
         <jsp:include page="HeaderKhachHang.jsp"></jsp:include>
 
-        <div class="container_content col l-12 row">
-            <div class="m-12">
-                <div class="container_content col">
-                    <div class="container_content-post">
-                        <img src="./views/assets/imgs/km1.jpg" style="width: 348px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">[Hà Nội] Ưu đãi mừng bộ ba Bủng – GoGi – Yu Tang về chung một nhà</p>
-                        <p style="font-size: 16px;">28/10/2021</p>
-                        <p> Tặng tín đồ ẩm thực quà gặp mặt duy nhất tại GoGi – Kichi – Yu Tang Times City:  ĂN 1 ĐƯỢC 3, thoả thích foodtour nướng – lẩu – trà sữa! Khi dùng</p>
-                        <div class="service-item">
-                            <h3><a target="_blank" href=""> Xem ngay</a></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container_content col">
-                    <div class="container_content-post">
-                        <img src="./views/assets/imgs/km2.jpg" style="width: 348px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">[Hà Nội] Bủng Tân Sơn Nhất và ST Center Thủ Đức ưu đãi chỉ 199K</p>
-                        <p style="font-size: 16px;">29/04/2021</p>
-                        <p>Bủng Tân Sơn Nhất và ST Center Thủ Đức ưu đãi chỉ 199K/người Thưởng thức Buffet Lẩu Băng Chuyền với giá ưu đãi cả ngày chỉ 199.000đ/người</p>
-                        <div class="service-item">
-                            <h3><a target="_blank" href=""> Xem ngay</a></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container_content col">
-                    <div class="container_content-post">
-                        <img src="./views/assets/imgs/km3.jpg" style="width: 348px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">[Hà Nội] Cả Tuần ” Nhúng Lẩu Thả Ga” Chỉ 199k</p>
-                        <p style="font-size: 16px;">14/04/2021</p>
-                        <p>Cả Tuần “Nhúng Lẩu Thả Ga” Chỉ Từ 199K   Kichi-Kichi dành tặng bạn ưu đãi bùng nổ với TẤT CẢ CÁC NGÀY trong tuần ở mọi khung giờ thưởng thức buffet</p>
-                        <div class="service-item">
-                            <h3><a target="_blank" href=""> Xem ngay</a></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container_content col">
-                    <div class="container_content-post">
-                        <img src="./views/assets/imgs/km4.jpg" style="width: 348px; height: 240px;" alt="">
-                        <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">[Hà Nội] Bủng Chiêu Đãi Học Sinh, Sinh Viên Chỉ 199K/Suất Buffet</p>
-                        <p style="font-size: 16px;">05/04/2021</p>
-                        <p>Bủng Chiêu Đãi Học Sinh, Sinh Viên Chỉ 199K/Suất Buffet Bủng tặng bạn chiếc giá buffet chỉ 199K cho tất cả học sinh – sinh viên khi đến nhà hàng.</p>
-                        <div class="service-item">
-                            <h3><a target="_blank" href=""> Xem ngay</a></h3>
-                        </div>
-                    </div>
+        <div class="container_content">
+            <div class="content_map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.1573060338806!2d105.79019334629783!3d20.986330544538387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135adfe9f2f947d%3A0xdea65fe0b3a71c04!2zQuG7p25nIEJ1ZmZldA!5e0!3m2!1svi!2s!4v1636186269557!5m2!1svi!2s" 
+                width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="content_info" style="padding-bottom: 15px;">
+                <div class="form">
+                    <form action="" id="form1">
+                        <h2>Liên hệ với chúng tôi</h2>
+                        <input type="text" style="border: 1px solid black;" id="fname" name="fname" placeholder="Họ tên"><br>
+                        <input type="text" style="border: 1px solid black;" id="femail" name="femail" placeholder="Địa chỉ Email"><br>
+                        <input type="text" style="border: 1px solid black;" id="fcontent" name="fcontent" placeholder="Nội dung yêu cầu"><br>
+                        <input type="submit" value="Gửi yêu cầu">
+                    </form>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
     <!--modal login, regis start-->
@@ -83,8 +49,7 @@
     <!--modal forgot pass start-->
     <jsp:include page="ForgotPassword.jsp"></jsp:include>
 
-	<jsp:include page="FooterKhachHang.jsp"></jsp:include>
-	
+    <jsp:include page="FooterKhachHang.jsp"></jsp:include>
 	<script src="./views/assets/js/register.js"></script>
     <script src="./views/assets/js/login.js"></script>
     <script src="./views/assets/js/navbar.js"></script>
