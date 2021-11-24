@@ -12,17 +12,19 @@ import model.KhachHang;
 import model.ThongTinBanDat;
 import utils.Connectjpa;
 
-public class DaoHoadon extends BaseDao<HoaDon>{
+public class DaoHoadon extends BaseDao<HoaDon> {
 	private HoaDon hoadon;
 	private List<HoaDon> lsthd;
 	private Connectjpa conn;
 	private EntityManager manager;
 	private EntityTransaction transaction;
+
 	public DaoHoadon() {
-		this.hoadon=new HoaDon();
-		this.lsthd=new ArrayList<HoaDon>();
-		this.conn=new Connectjpa();
+		this.hoadon = new HoaDon();
+		this.lsthd = new ArrayList<HoaDon>();
+		this.conn = new Connectjpa();
 	}
+
 	@Override
 	public Class<HoaDon> getmodeclass() {
 		return HoaDon.class;
@@ -32,6 +34,7 @@ public class DaoHoadon extends BaseDao<HoaDon>{
 	public String getdatabase() {
 		return HoaDon.class.getSimpleName();
 	}
+
 	
 	public List<HoaDon> findHDbyIDkh(KhachHang kh){
 		try {
@@ -45,7 +48,17 @@ public class DaoHoadon extends BaseDao<HoaDon>{
 			e.printStackTrace();
 			return null;
 		}
-		
+
 	}
+
+	public HoaDon sortIDbyHD() {
+		String hql = "SELECT h FROM HoaDon h ORDER BY idhd DESC";
+		this.manager = this.conn.getEntityManager();
+		TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
+		this.hoadon = query.getResultList().get(0);
+		return this.hoadon;
+	}
+	
+	
 
 }

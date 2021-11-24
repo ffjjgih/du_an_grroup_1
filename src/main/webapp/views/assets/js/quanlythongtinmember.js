@@ -14,11 +14,11 @@ function checkFormName() {
     if (is_fullname(name) == false) {
         document.getElementById('exampleInputFullName1').style.borderColor = "red";
         document.getElementById('nameHelp').innerHTML = "Tên không đúng định dạng";
-		document.getElementById("button1").disabled = true;
+        document.getElementById("button1").disabled = true;
     } else {
         document.getElementById('exampleInputFullName1').style.borderColor = "green";
         document.getElementById('nameHelp').innerHTML = "";
-		document.getElementById("button1").disabled = false;
+        document.getElementById("button1").disabled = false;
     }
 }
 

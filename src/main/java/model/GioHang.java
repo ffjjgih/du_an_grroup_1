@@ -74,5 +74,4 @@ public class GioHang implements Serializable {
 		this.menu = menu;
 		this.thongTinBanDat = thongTinBanDat;
 	}
-
 }

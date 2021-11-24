@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.collections.map.HashedMap;
 
 /**
  * Servlet implementation class test
@@ -31,7 +31,7 @@ public class test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("views/Staff/QuanLyThongBao.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -40,21 +40,7 @@ public class test extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		Map<String, Integer> tkbd = new HashedMap();
-//		tkbd.put("Tháng 1", 200);
-//		tkbd.put("Tháng 2", 100);
-//		tkbd.put("Tháng 3", 223);
-//		tkbd.put("Tháng 4", 199);
-//		tkbd.put("Tháng 5", 40);
-//		tkbd.put("Tháng 6", 45);
-//		tkbd.put("Tháng 7", 55);
-//		tkbd.put("Tháng 8", 60);
-//		tkbd.put("Tháng 9", 110);
-//		tkbd.put("Tháng 10", 80);
-//		tkbd.put("Tháng 11", 30);
-//		tkbd.put("Tháng 12", 80);
-//		request.setAttribute("listTkbd", tkbd);
-		doGet(request, response);
+		response.sendRedirect(request.getContextPath()+"/test");
 	}
 
 }
