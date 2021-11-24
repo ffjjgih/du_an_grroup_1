@@ -31,13 +31,13 @@ import model.ThongTinBanDat;
 public class Booking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      private ThongTinBanDat ttbd;
-     private ThongTinBanDat bd;
      private KhachHang kh;
      private Daouser user;
      private DaoTTBD daottbd;
      private List<ThongTinBanDat> lstttdb;
      private List<GioHang> lstgh;
      private DaoCart daocart;
+     private ThongTinBanDat thongtinbandat;
      
     public Booking() {
     	this.ttbd=new ThongTinBanDat();
@@ -47,7 +47,7 @@ public class Booking extends HttpServlet {
     	this.lstttdb=new ArrayList<ThongTinBanDat>();
     	this.lstgh=new ArrayList<GioHang>();
     	this.daocart=new DaoCart();
-    	this.bd=new ThongTinBanDat();
+    	this.thongtinbandat = new ThongTinBanDat();
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,19 +81,18 @@ public class Booking extends HttpServlet {
 	}
 
 	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
-		String ngaydat=request.getParameter("dateDatBan");
-		String giodat=request.getParameter("timedatban")+":00";
 		try {
-			BeanUtils.populate(this.bd, request.getParameterMap());
-			
+			BeanUtils.populate(this.thongtinbandat, request.getParameterMap());
+			String ngaydat=request.getParameter("dateDatBan");
+			String giodat=request.getParameter("timedatban")+":00";
 			Date date=Date.valueOf(ngaydat);
 			Time time=Time.valueOf(giodat);
-			this.bd.setNgayDatBan(date);
-			this.bd.setGioDatBan(time);
+			this.thongtinbandat.setNgayDatBan(date);
+			this.thongtinbandat.setGioDatBan(time);
 			this.kh=this.user.findbyid(index);
-			this.bd.setKhachHang(kh);
-			this.bd.setTrang_Thai("waitting line");
-			this.daottbd.insert(this.bd);
+			this.thongtinbandat.setKhachHang(kh);
+			this.thongtinbandat.setTrang_Thai("Waitting line");
+			this.daottbd.insert(this.thongtinbandat);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {

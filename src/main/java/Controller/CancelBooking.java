@@ -7,27 +7,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Dao.DaoCart;
+import Dao.DaoTTBD;
+import model.ThongTinBanDat;
+
 /**
- * Servlet implementation class test
+ * Servlet implementation class CancelBooking
  */
-@WebServlet("/test")
-public class test extends HttpServlet {
+@WebServlet("/CancelBooking")
+public class CancelBooking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public test() {
-        super();
-        // TODO Auto-generated constructor stub
+    private DaoTTBD daottbd;
+    private ThongTinBanDat ttbd;
+    private DaoCart daocart;
+    public CancelBooking() {
+	      this.ttbd=new ThongTinBanDat();
+	      this.daottbd=new DaoTTBD();
+	      this.daocart=new DaoCart();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("views/assets/SauDatBan.jsp").forward(request, response);
+		int id=Integer.parseInt(request.getParameter("id"));
+		this.ttbd=this.daottbd.findbyid(id);
+		this.daocart.deletecartbyttbd(ttbd);
+		this.daottbd.delete(id);
+		response.sendRedirect(request.getContextPath()+"/Booking");
 	}
 
 	/**

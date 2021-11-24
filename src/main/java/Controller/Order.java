@@ -54,28 +54,28 @@ public class Order extends HttpServlet {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
 		int id=this.kh.getIdkh();
-		int index=Integer.parseInt(request.getParameter("index"));
 		this.lstmn=this.daomn.getall();
-		this.ttbd=this.daoTTBD.findbyid(index);
+		this.ttbd=this.daoTTBD.findttbdbystatus(kh);
 		this.lstcart=this.daocart.FindCartbyIDDB(this.ttbd);
 		this.dsgiohang=(ArrayList<GioHang>) this.daocart.FindCartbyIDDB(this.ttbd);
+		String url=request.getRequestURL().toString();
 		request.setAttribute("listcart", this.lstcart);
 		request.setAttribute("listmenu", this.lstmn);
 		request.setAttribute("iduser", id);
-		request.setAttribute("idbandat", index);
 		request.getRequestDispatcher("/views/assets/OrderMenuKhachHang.jsp").forward(request, response);
+		
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url=request.getRequestURL().toString();
-		int index=Integer.parseInt(request.getParameter("index"));
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
 		int id=this.kh.getIdkh();
-		this.ttbd=this.daoTTBD.findbyid(index);
+		this.ttbd=this.daoTTBD.findttbdbystatus(kh);
 		if(url.contains("datban")) {
 			this.daocart.deletecartbyttbd(ttbd);
 			lstcart=(List<GioHang>) session.getAttribute("gh");
@@ -83,10 +83,10 @@ public class Order extends HttpServlet {
 				x.setIdgh(0);
 				this.daocart.insert(x);
 			}
-			response.sendRedirect(request.getContextPath()+"/profilebooking");
+			response.sendRedirect(request.getContextPath()+"/Booking");
 		}else if(url.contains("chonmon")) {
 			session.setAttribute("user", this.lstcart);
-			this.ttbd=this.daoTTBD.findbyid(index);
+			this.ttbd=this.daoTTBD.findttbdbystatus(kh);
 			int idmenu=Integer.parseInt(request.getParameter("idmn"));
 			this.menu=this.daomn.findbyid(idmenu);
 			Object object=session.getAttribute("gh");
@@ -99,16 +99,16 @@ public class Order extends HttpServlet {
 				this.dsgiohang.add(new GioHang(dsgiohang.size(), Integer.parseInt(request.getParameter("soluong")), this.menu, this.ttbd));
 				session.setAttribute("gh", dsgiohang);
 			}
-			response.sendRedirect(request.getContextPath()+"/Order?id="+id+"&&index="+index);
+			response.sendRedirect(request.getContextPath()+"/Order");
 		}else if(url.contains("delete")) {
-			int idcart=Integer.parseInt(request.getParameter("idcart"));
+			int idcart=Integer.parseInt(request.getParameter("id"));
 			dsgiohang= (ArrayList<GioHang>) session.getAttribute("gh");
 				for(int i=0;i<dsgiohang.size();i++)
 				if(dsgiohang.get(i).getIdgh()==idcart) {
 					dsgiohang.remove(dsgiohang.get(i));
 				}
 				session.setAttribute("gd", dsgiohang);
-				response.sendRedirect(request.getContextPath()+"/Order?id="+id+"&&index="+index);
+				response.sendRedirect(request.getContextPath()+"/Order");
 			}
 			
 		}

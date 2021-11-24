@@ -56,8 +56,9 @@ public class Login extends HttpServlet {
 					response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
 				}
 			} else {
-				request.setAttribute("message", "Password or UserName is wrong");
-				doGet(request, response);
+				response.sendRedirect(request.getContextPath()+"/Login?errorAccWrong=1");
+				//request.setAttribute("errorAccWrong", "Password or UserName is wrong");
+				//doGet(request, response);
 			}
 
 		}

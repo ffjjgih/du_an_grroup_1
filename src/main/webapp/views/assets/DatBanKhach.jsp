@@ -59,7 +59,7 @@
 
                         <a type="button" href="/QL_Dat_Ban_NH/Order?index=${inforbooking.idBd}" style="width: 300px; float: left; margin-top: 20px;"
                             class="btn btn-success">THÊM MÓN ĂN</a>
-                        <button type="button" style="width: 300px; float: right; margin-top: 20px;"
+                        <button onclick = "showMessage(${inforbooking.idBd})" type="button" style="width: 300px; float: right; margin-top: 20px;"
                             class="btn btn-danger">HỦY ĐẶT BÀN</button> 
                     </div>
                 </div>
@@ -206,6 +206,13 @@
             interval: 1000,
             wrap: false
         })
+        
+        function showMessage(id){
+            var option = confirm('Bạn có muốn xóa đặt bàn này không?');
+            if(option){
+                window.location.href = '/QL_Dat_Ban_NH/CancelBooking?id='+id;
+            }
+        }
     </script>
     <script src="./views/assets/js/login.js"></script>
     <script src="./views/assets/js/navbar.js"></script>
