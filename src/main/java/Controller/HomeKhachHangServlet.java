@@ -25,6 +25,7 @@ public class HomeKhachHangServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    try {
 			List<BaiViet> list=dao.getall();
+			System.out.println(list);
 			request.setAttribute("baiviet", list);
 		} catch (Exception e) {
 			e.printStackTrace();

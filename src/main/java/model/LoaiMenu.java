@@ -23,6 +23,9 @@ public class LoaiMenu implements Serializable {
 
 	@Column(name="ten_loai")
 	private String tenLoai;
+    
+	private int loai;
+	
 
 	//bi-directional many-to-one association to Menu
 	@OneToMany(mappedBy="loaiMenu")
@@ -46,6 +49,14 @@ public class LoaiMenu implements Serializable {
 	public void setImg(String img) {
 		this.img = img;
 	}
+
+	public String getTenLoai() {
+		return this.tenLoai;
+	}
+
+	public void setTenLoai(String tenLoai) {
+		this.tenLoai = tenLoai;
+	}
 	
 	public int getLoai() {
 		return this.idloai;
@@ -55,13 +66,6 @@ public class LoaiMenu implements Serializable {
 		this.idloai = loai;
 	}
 
-	public String getTenLoai() {
-		return this.tenLoai;
-	}
-
-	public void setTenLoai(String tenLoai) {
-		this.tenLoai = tenLoai;
-	}
 
 	public List<Menu> getMenus() {
 		return this.menus;
