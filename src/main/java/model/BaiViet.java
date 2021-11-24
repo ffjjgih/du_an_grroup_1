@@ -5,11 +5,11 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the Bai_Viet database table.
+ * The persistent class for the bai_viet database table.
  * 
  */
 @Entity
-@Table(name="Bai_Viet")
+@Table(name="bai_viet")
 @NamedQuery(name="BaiViet.findAll", query="SELECT b FROM BaiViet b")
 public class BaiViet implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,10 +22,8 @@ public class BaiViet implements Serializable {
 
 	private String link;
 
-	@Column(name="Noi_dung")
 	private String noi_dung;
 
-	@Column(name="Ten_tieu_de")
 	private String ten_tieu_de;
 
 	//bi-directional many-to-one association to Staff

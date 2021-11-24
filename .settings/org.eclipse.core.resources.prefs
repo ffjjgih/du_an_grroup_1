@@ -1,7 +1,15 @@
 eclipse.preferences.version=1
+encoding//src/main/java/Controller/AddMenuCTController.java=UTF-8
 encoding//src/main/java/Controller/HomeStaffController.java=UTF-8
 encoding//src/main/java/Controller/LoginGoogleController.java=UTF-8
+encoding//src/main/java/Controller/QuanLiMenuController.java=UTF-8
 encoding//src/main/java/Controller/UpdateBaiVietController.java=UTF-8
+encoding//src/main/java/Controller/menuCTController.java=UTF-8
+encoding//src/main/java/Dao/DaoBanDatCT.java=UTF-8
+encoding//src/main/java/Dao/DaoHDCT.java=UTF-8
+encoding//src/main/java/Dao/DaoMenu.java=UTF-8
+encoding//src/main/java/Dao/DaoMenuCT.java=UTF-8
+encoding//src/main/java/Dao/Daouser.java=UTF-8
 encoding//src/main/java/accessfacebook/common/Constans.java=UTF-8
 encoding//src/main/webapp/views/Staff/DetailConfirmBan.jsp=UTF-8
 encoding//src/main/webapp/views/Staff/EditBanDaConfirm.jsp=UTF-8

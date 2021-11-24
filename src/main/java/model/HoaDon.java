@@ -7,29 +7,23 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Hoa_Don database table.
+ * The persistent class for the hoa_don database table.
  * 
  */
 @Entity
-@Table(name="Hoa_Don")
+@Table(name="hoa_don")
 @NamedQuery(name="HoaDon.findAll", query="SELECT h FROM HoaDon h")
 public class HoaDon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="IDHD")
 	private int idhd;
 
-	@Column(name="Khuyen_mai")
 	private float khuyen_mai;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="Thoi_gian")
 	private Date thoi_gian;
-
-	@Column(name="Tong_Tien")
-	private float tong_Tien;
 
 	//bi-directional many-to-one association to Hdct
 	@OneToMany(mappedBy="hoaDon")
@@ -75,14 +69,6 @@ public class HoaDon implements Serializable {
 
 	public void setThoi_gian(Date thoi_gian) {
 		this.thoi_gian = thoi_gian;
-	}
-
-	public float getTong_Tien() {
-		return this.tong_Tien;
-	}
-
-	public void setTong_Tien(float tong_Tien) {
-		this.tong_Tien = tong_Tien;
 	}
 
 	public List<Hdct> getHdcts() {

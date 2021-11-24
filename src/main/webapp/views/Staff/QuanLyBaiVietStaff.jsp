@@ -64,6 +64,7 @@
 
     <script src="./views/Staff/js/modaladdpost.js"></script>
     <script src="./views/Staff/js/sidebar.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function showMess(){
             var option = confirm("Bạn có chắc muốn xóa bài viết này không?");
@@ -87,6 +88,23 @@
             } else {
                 document.getElementById('exampleInputImg').style.borderColor = "green";
             }
+        }
+        function searchByName(param){
+            var txtSearch = param.value;
+            $.ajax({
+                url: "QL_Dat_Ban_NH/seachercontroller",
+                type: "get", 
+                data: {
+                    name: txtSearch
+                },
+                success: function (data) {
+                    var row = document.getElementById("content");
+                    row.innerHTML = data;
+                },
+                error: function (xhr) {
+                   
+                }
+            });
         }
     </script>
 </body>

@@ -6,11 +6,11 @@ import java.util.List;
 
 
 /**
- * The persistent class for the TT_Ban database table.
+ * The persistent class for the tt_ban database table.
  * 
  */
 @Entity
-@Table(name="TT_Ban")
+@Table(name="tt_ban")
 @NamedQuery(name="TtBan.findAll", query="SELECT t FROM TtBan t")
 public class TtBan implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,9 +21,6 @@ public class TtBan implements Serializable {
 
 	@Column(name="loai_ban")
 	private int loaiBan;
-
-	@Column(name="so_luong")
-	private int soLuong;
 
 	//bi-directional many-to-one association to Bdct
 	@OneToMany(mappedBy="ttBan")
@@ -46,14 +43,6 @@ public class TtBan implements Serializable {
 
 	public void setLoaiBan(int loaiBan) {
 		this.loaiBan = loaiBan;
-	}
-
-	public int getSoLuong() {
-		return this.soLuong;
-	}
-
-	public void setSoLuong(int soLuong) {
-		this.soLuong = soLuong;
 	}
 
 	public List<Bdct> getBdcts() {

@@ -49,11 +49,11 @@ public class Login extends HttpServlet {
 				if (st.getChucVu().equals("Staff")) {
 					HttpSession session = request.getSession();
 					session.setAttribute("acountST", st);
-					response.sendRedirect(request.getContextPath() + "/Menu");
+					response.sendRedirect(request.getContextPath() + "/HomeStaffController");
 				} else if (st.getChucVu().equals("Manager")) {
 					HttpSession session = request.getSession();
 					session.setAttribute("acountST", st);
-					response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
+					response.sendRedirect(request.getContextPath() + "/HomeStaffController");
 				}
 			} else {
 				response.sendRedirect(request.getContextPath()+"/Login?errorAccWrong=1");
