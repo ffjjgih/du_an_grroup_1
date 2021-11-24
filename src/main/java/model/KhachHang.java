@@ -41,16 +41,6 @@ public class KhachHang implements Serializable {
 	public KhachHang() {
 	}
 
-	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
-		super();
-		this.idkh = idkh;
-		this.gmail = gmail;
-		this.hoTen = hoTen;
-		this.password = password;
-		this.sdt = sdt;
-		this.username = username;
-	}
-
 	public int getIdkh() {
 		return this.idkh;
 	}
@@ -142,5 +132,16 @@ public class KhachHang implements Serializable {
 
 		return thongTinBanDat;
 	}
+
+	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
+		super();
+		this.idkh = idkh;
+		this.gmail = gmail;
+		this.hoTen = hoTen;
+		this.password = password;
+		this.sdt = sdt;
+		this.username = username;
+	}
+	
 
 }

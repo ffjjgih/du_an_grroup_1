@@ -25,8 +25,6 @@ public class HoaDon implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date thoi_gian;
 
-	private float tong_Tien;
-
 	//bi-directional many-to-one association to Hdct
 	@OneToMany(mappedBy="hoaDon")
 	private List<Hdct> hdcts;
@@ -71,14 +69,6 @@ public class HoaDon implements Serializable {
 
 	public void setThoi_gian(Date thoi_gian) {
 		this.thoi_gian = thoi_gian;
-	}
-
-	public float getTong_Tien() {
-		return this.tong_Tien;
-	}
-
-	public void setTong_Tien(float tong_Tien) {
-		this.tong_Tien = tong_Tien;
 	}
 
 	public List<Hdct> getHdcts() {
