@@ -147,6 +147,5 @@ public class KhachHang implements Serializable {
 		this.sdt = sdt;
 		this.username = username;
 	}
-	
 
 }
