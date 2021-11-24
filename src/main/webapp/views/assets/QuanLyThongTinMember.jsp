@@ -74,13 +74,13 @@
                                     class="form-label">Họ và tên bạn
                                 </label>
                                 <input type="text" class="form-control" id="exampleInputFullName1"
-                                    aria-describedby="emailHelp" onchange="checkFormName()" name="hoTen" value="${profile.hoTen }" required>
+                                    aria-describedby="emailHelp" onkeyup="checkFormName()" name="hoTen" value="${profile.hoTen }" required>
                                 <div id="nameHelp" class="error"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPhoneNume1" style="float: left; width: 100px;"
                                     class="form-label">Số điện thoại</label>
-                                <input type="tel" class="form-control" id="exampleInputPhoneNume1" onchange="checkFormPhone()" name="sdt" value="${profile.sdt }" required>
+                                <input type="tel" class="form-control" id="exampleInputPhoneNume1" onkeyup="checkFormPhone()" name="sdt" value="${profile.sdt }" required>
                                 <div id="emailHelp" class="error"></div>
                             </div>
                             <div class="mb-3">
@@ -89,7 +89,8 @@
                                 <input type="email" class="form-control" name="gmail" id="exampleInputEmail1" value="${profile.gmail }" required>
                                 <div id="emailHelp" class="error"></div>
                             </div>
-                            <button type="submit" formaction="/QL_Dat_Ban_NH/Profile/Updateprofile?id=${iduser}" class="btn btn-primary">Submit</button>  
+                            <button type="submit" id="button1" formaction="/QL_Dat_Ban_NH/Profile/Updateprofile?id=${iduser}" class="btn btn-primary">Submit</button>  
+
                         </form>
                     </div>
                 </div>

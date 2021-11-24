@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.KhachHang;
+import model.Staff;
 import utils.Connectjpa;
 
 public class Daouser extends BaseDao<KhachHang>{
@@ -115,7 +116,7 @@ public class Daouser extends BaseDao<KhachHang>{
 		this.manager = this.conn.getEntityManager();
 		KhachHang khach = new KhachHang();
 		try {
-			String hql = "SELECT A FROM KhachHang A WHERE username = :user_name";
+			String hql = "SELECT k FROM KhachHang k WHERE username = :user_name";
 			TypedQuery<KhachHang> query = this.manager.createQuery(hql, KhachHang.class);
 			query.setParameter("user_name", username);
 			khach = query.getSingleResult();
@@ -143,6 +144,30 @@ public class Daouser extends BaseDao<KhachHang>{
 			e.printStackTrace();
 			this.transaction.rollback();
 		}
+	}
+	
+	// kiểm tra số tài khoản đã tồn tại không (class liên quan:Notification)
+	public KhachHang showuserbyphone(String phone) {
+		this.manager = this.conn.getEntityManager();
+		KhachHang khach = new KhachHang();
+		try {
+			String hql = "SELECT A FROM KhachHang A WHERE sdt = :phone_number";
+			TypedQuery<KhachHang> query = this.manager.createQuery(hql, KhachHang.class);
+			query.setParameter("phone_number", phone);
+			khach = query.getSingleResult();
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return khach;
+	}
+	public List<KhachHang> findMemberByAjax(String name){
+		this.manager = this.conn.getEntityManager();
+		String hql = "SELECT k FROM KhachHang k WHERE hoTen LIKE :key";
+		TypedQuery<KhachHang> query=this.manager.createQuery(hql,KhachHang.class);
+		query.setParameter("key","%" + name + "%");
+		List<KhachHang> list = query.getResultList();
+		return list;
 	}
 	
 	@Override
