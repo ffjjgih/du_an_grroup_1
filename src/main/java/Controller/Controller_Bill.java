@@ -77,6 +77,8 @@ public class Controller_Bill extends HttpServlet {
 		String url = request.getRequestURL().toString();
 		if (url.contains("inHD")) {
 			this.writeExcel.exportExcel(response);
+			doGet(request, response);
+			//response.sendRedirect(request.getContextPath() + "/Controller_Bill");
 		} else if (url.contains("Back")) {
 			response.sendRedirect(request.getContextPath() + "/Lienhe");
 		} else if (url.contains("pay")) {

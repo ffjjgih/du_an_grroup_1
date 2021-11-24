@@ -1,5 +1,7 @@
 package Services;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,10 +41,11 @@ public class WriteExcel {
 
 	public void exportExcel(HttpServletResponse response) {
 		try {
+
 			String fileName = "InHoaDon.xlsx";
 			response.setContentType("application/octet-stream");
 			response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
-			ServletOutputStream pos = response.getOutputStream();
+			// ServletOutputStream pos = response.getOutputStream();
 			XSSFWorkbook workBook = new XSSFWorkbook();
 			XSSFSheet sheet = workBook.createSheet("Information");
 			XSSFFont font = workBook.createFont();
@@ -151,7 +154,7 @@ public class WriteExcel {
 			int id_HD = 2;
 			this.hd = this.dao_HD.findbyid(id_HD);
 			this.listHDCT = this.dao_HDCT.findhdctbyidhd(this.hd);
-			int i =1;
+			int i = 1;
 			for (Hdct hdct : this.listHDCT) {
 				Row row = sheet.createRow(numberRow++);
 				Cell c1 = row.createCell(1);
@@ -187,7 +190,7 @@ public class WriteExcel {
 			for (colum = 1; colum < 8; colum++) {
 				sheet.autoSizeColumn(colum);
 			}
-
+			OutputStream pos = new FileOutputStream("InHoaDon.xlsx");
 			workBook.write(pos);
 			workBook.close();
 			pos.close();
