@@ -53,31 +53,40 @@ public class Booking extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
-		int index=this.kh.getIdkh();
-		this.ttbd=this.daottbd.findttbdbystatus(this.kh);
-		this.lstgh=this.daocart.FindCartbyIDDB(this.ttbd);
-		request.setAttribute("inforbooking", this.ttbd);
-		request.setAttribute("carts", this.lstgh);
-		request.setAttribute("user", this.kh);
-		request.setAttribute("iduser", index);
-		request.getRequestDispatcher("/views/assets/DatBanKhach.jsp").forward(request, response);
+		if(this.kh == null) {
+			response.sendRedirect(request.getContextPath()+"/Login?errorAccNull=1");
+		} else {
+			int index=this.kh.getIdkh();
+			this.ttbd=this.daottbd.findttbdbystatus(this.kh);
+			this.lstgh=this.daocart.FindCartbyIDDB(this.ttbd);
+			request.setAttribute("inforbooking", this.ttbd);
+			request.setAttribute("carts", this.lstgh);
+			request.setAttribute("user", this.kh);
+			request.setAttribute("iduser", index);
+			request.getRequestDispatcher("/views/assets/DatBanKhach.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
-		int index=this.kh.getIdkh();
-		String url=request.getRequestURL().toString();
+		if(this.kh == null) {
+			response.sendRedirect(request.getContextPath()+"/Login?errorAccNull=1");
+		} else {
+			int index=this.kh.getIdkh();
+			String url=request.getRequestURL().toString();
 		
-		if(url.contains("order")) {
-			insertbd(request, response, index);	
-			this.lstttdb=this.daottbd.findTTBDbyIDkh(kh);
-			int indexx=this.daottbd.findTTBDbyIDkh(kh).get(0).getIdBd();
-			response.sendRedirect(request.getContextPath()+"/Order?index="+indexx);
-		}else if(url.contains("Datban")) {
-			insertbd(request, response, index);	
-			response.sendRedirect(request.getContextPath()+ "/Booking");
+			if(url.contains("order")) {
+				insertbd(request, response, index);	
+				this.lstttdb=this.daottbd.findTTBDbyIDkh(kh);
+				int indexx=this.daottbd.findTTBDbyIDkh(kh).get(0).getIdBd();
+				response.sendRedirect(request.getContextPath()+"/Order?index="+indexx);
+			}else if(url.contains("Datban")) {
+				insertbd(request, response, index);	
+				response.sendRedirect(request.getContextPath()+ "/Booking");
+			}
 		}
+		
 	}
 
 	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {

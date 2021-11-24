@@ -32,9 +32,17 @@
 	<div id="carouselExampleFade" class="carousel slide carousel-fade"
 		data-bs-ride="carousel">
 		<div class="carousel-inner">
+		
+			<c:if test="${sessionScope.acountKH != null}">
+			<div class="carousel-item active">
+				<img src="./views/assets/imgs/banner0.jpg" class="d-block w-100" alt="...">
+			</div>
+			</c:if>
+			<c:if test="${sessionScope.acountKH == null}">
 			<div class="carousel-item active">
 				<img src="./views/assets/imgs/banner.png" class="d-block w-100" alt="...">
 			</div>
+			</c:if>
 			<div class="carousel-item">
 				<img src="./views/assets/imgs/banner1.png" class="d-block w-100" alt="...">
 			</div>

@@ -22,14 +22,12 @@ import Dao.NhanVienDao;
 import Dao.baiVietDao;
 import model.BaiViet;
 import model.Staff;
-import utils.UploadImg;
 
 @MultipartConfig
 @WebServlet({ "/HomeStaffController", "/HomeStaffController/create", "/HomeStaffController/update/*",
 		"/HomeStaffController/delete" })
 public class HomeStaffController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UploadImg up;
 	private baiVietDao dao;
 	private BaiViet bv;
 	private NhanVienDao daonv;

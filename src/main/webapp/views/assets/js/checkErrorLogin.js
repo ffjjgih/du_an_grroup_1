@@ -28,6 +28,5 @@ if (errorGoogle > 0) {
 	alert("Register account fail, because UserName already exist, please try again!");
 } else if (succesSignUp > 0) {
 	alert("Register account successfully, please Login with new account!");
-} else {
 	console.log("Nothing");
 }

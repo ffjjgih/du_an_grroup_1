@@ -60,3 +60,13 @@
 .buttonTable{
     width: 300px;
 }
+
+.body_right--info{
+    width: 100%;
+    height: 100px;
+}
+
+.info--confirm{
+    float: left;
+    margin-right: 25px;
+}
