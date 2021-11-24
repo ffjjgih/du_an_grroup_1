@@ -6,10 +6,11 @@ import java.util.List;
 
 
 /**
- * The persistent class for the bdct database table.
+ * The persistent class for the BDCT database table.
  * 
  */
 @Entity
+@Table(name="BDCT")
 @NamedQuery(name="Bdct.findAll", query="SELECT b FROM Bdct b")
 public class Bdct implements Serializable {
 	private static final long serialVersionUID = 1L;

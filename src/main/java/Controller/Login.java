@@ -44,6 +44,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("acountKH", kh);
 			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet");
 		} else {
+			
 			if (st != null) {
 				if (st.getChucVu().equals("Staff")) {
 					HttpSession session = request.getSession();

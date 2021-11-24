@@ -5,19 +5,21 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the gio_hang database table.
+ * The persistent class for the Gio_Hang database table.
  * 
  */
 @Entity
-@Table(name="gio_hang")
+@Table(name="Gio_Hang")
 @NamedQuery(name="GioHang.findAll", query="SELECT g FROM GioHang g")
 public class GioHang implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="IDGH")
 	private int idgh;
 
+	@Column(name="So_luong")
 	private int so_luong;
 
 	//bi-directional many-to-one association to Menu

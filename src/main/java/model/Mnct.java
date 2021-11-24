@@ -6,10 +6,11 @@ import java.util.List;
 
 
 /**
- * The persistent class for the mnct database table.
+ * The persistent class for the MNCT database table.
  * 
  */
 @Entity
+@Table(name="MNCT")
 @NamedQuery(name="Mnct.findAll", query="SELECT m FROM Mnct m")
 public class Mnct implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +20,7 @@ public class Mnct implements Serializable {
 	@Column(name="ID_MNCT")
 	private int idMnct;
 
+	@Column(name="So_luong")
 	private int so_luong;
 
 	//bi-directional many-to-one association to Hdct

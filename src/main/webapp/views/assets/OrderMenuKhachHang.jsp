@@ -60,7 +60,7 @@
                             	<div class="item_order">
                                 	  <%-- <a type="button" href="/QL_Dat_Ban_NH/Order/chonmon?id=${iduser }&&index=${idbandat}&&idmn=${menu.idmn}" class="btn btn-success">CHỌN MÓN</a>
                                 	 --%>
-                            		 <button type="submit" formaction="/QL_Dat_Ban_NH/Order/chonmon?id=${iduser }&&index=${idbandat}&&idmn=${menu.idmn}" class="btn btn-success">CHỌN MÓN</button>
+                            		 <button type="submit" formaction="/QL_Dat_Ban_NH/Order/chonmon?idmn=${menu.idmn}" class="btn btn-success">CHỌN MÓN</button>
  	                           		
  	                           	</div>
                         	</div>
@@ -95,7 +95,7 @@
                                 <td>${giohang.menu.gia*giohang.so_luong}</td>
                                 <td>
                                 
-                                <button formaction="/QL_Dat_Ban_NH/Order/delete?id=${iduser }&&idcart=${giohang.idgh}&&index=${idbandat}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
+                                <button formaction="/QL_Dat_Ban_NH/Order/delete?id=${giohang.idgh}" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
                             </tr>
                             </c:forEach>
                             
@@ -106,7 +106,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><button formaction="/QL_Dat_Ban_NH/Order/datban?index=${idbandat}" style="float: right;" class="btn btn-success btn-block">GỌI MÓN <i class="fa fa-angle-right"></i></button></td>
+                                <td><button formaction="/QL_Dat_Ban_NH/Order/datban" style="float: right;" class="btn btn-success btn-block">GỌI MÓN <i class="fa fa-angle-right"></i></button></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -144,6 +144,14 @@
             })
         })
 
+    </script>
+    <script>
+    function showMessage(id){
+        var option = confirm('Bạn có muốn xóa món ăn đã chọn hay không?');
+        if(option){
+            window.location.href = '/QL_Dat_Ban_NH/Deletefood?id='+id;
+        }
+    }
     </script>
     <script src="./views/assets/js/login.js"></script>
     <script src="./views/assets/js/navbar.js"></script>
