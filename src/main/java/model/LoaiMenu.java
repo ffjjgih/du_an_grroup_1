@@ -6,11 +6,11 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Loai_menu database table.
+ * The persistent class for the loai_menu database table.
  * 
  */
 @Entity
-@Table(name="Loai_menu")
+@Table(name="loai_menu")
 @NamedQuery(name="LoaiMenu.findAll", query="SELECT l FROM LoaiMenu l")
 public class LoaiMenu implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,11 +21,10 @@ public class LoaiMenu implements Serializable {
 
 	private String img;
 
+	private int loai;
+
 	@Column(name="ten_loai")
 	private String tenLoai;
-    
-	private int loai;
-	
 
 	//bi-directional many-to-one association to Menu
 	@OneToMany(mappedBy="loaiMenu")
@@ -50,6 +49,14 @@ public class LoaiMenu implements Serializable {
 		this.img = img;
 	}
 
+	public int getLoai() {
+		return this.loai;
+	}
+
+	public void setLoai(int loai) {
+		this.loai = loai;
+	}
+
 	public String getTenLoai() {
 		return this.tenLoai;
 	}
@@ -57,15 +64,6 @@ public class LoaiMenu implements Serializable {
 	public void setTenLoai(String tenLoai) {
 		this.tenLoai = tenLoai;
 	}
-	
-	public int getLoai() {
-		return this.idloai;
-	}
-
-	public void setLoai(int loai) {
-		this.idloai = loai;
-	}
-
 
 	public List<Menu> getMenus() {
 		return this.menus;

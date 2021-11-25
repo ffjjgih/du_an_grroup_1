@@ -3,6 +3,7 @@ package Controller;
 import java.io.IOException;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -52,7 +53,7 @@ public class Controller_Bill extends HttpServlet {
 		int idHD = this.hd.getIdhd() + 1;
 		request.setAttribute("idHD", idHD);
 
-		Time timeKT = hd.getthoiGianKT();
+		Date timeKT = hd.getThoi_gian();
 		request.setAttribute("timeKT", timeKT);
 
 		Float sum = hd.getTong_Tien();

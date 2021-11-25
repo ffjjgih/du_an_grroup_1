@@ -82,7 +82,7 @@ public class HomeStaffController extends HttpServlet {
 	private void findID(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		Staff staff = (Staff) session.getAttribute("acountST");
-		//f = daonv.findbyid(1);
+		f = daonv.findbyid(1);
 		lst = dao.findIDNV(staff);
 		request.setAttribute("listBV", lst);
 	}
@@ -102,7 +102,7 @@ public class HomeStaffController extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			Staff staff = (Staff) session.getAttribute("acountST");
-//			f = daonv.findbyid(1);
+			f = daonv.findbyid(1);
 
 			String realpath = request.getServletContext().getRealPath("/img");
 			Path path = Paths.get(realpath);
@@ -125,7 +125,7 @@ public class HomeStaffController extends HttpServlet {
 
 			dao.insert(bv);
 
-			response.sendRedirect(request.getContextPath() + "/HomeStaffController");
+			response.sendRedirect(request.getContextPath() + "/HomeStaffController" + "?success=1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

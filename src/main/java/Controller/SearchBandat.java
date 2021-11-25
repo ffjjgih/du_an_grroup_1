@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Dao.DaottBan;
+import Dao.Daottban;
 import Dao.NhanVienDao;
 import Dao.baiVietDao;
 import model.BaiViet;
@@ -24,7 +24,7 @@ import model.TtBan;
 public class SearchBandat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private DaottBan dao;
+	private Daottban dao;
 	private TtBan tt;
 	private NhanVienDao daonv;
 
@@ -32,7 +32,7 @@ public class SearchBandat extends HttpServlet {
 	private Staff f;
 
 	public SearchBandat() {
-		this.dao = new DaottBan();
+		this.dao = new Daottban();
 		this.daonv = new NhanVienDao();
 		this.tt = new TtBan();
 		this.lst = new ArrayList<TtBan>();
@@ -44,7 +44,7 @@ public class SearchBandat extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		int txtSearch = Integer.parseInt(request.getParameter("txt"));
-		lst = dao.findName(txtSearch);
+	
 		request.setAttribute("ListBDCT", lst);
 		System.out.println(lst);
 		request.setAttribute("txtS", txtSearch);

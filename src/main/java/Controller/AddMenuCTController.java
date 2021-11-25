@@ -75,8 +75,6 @@ public class AddMenuCTController extends HttpServlet {
 		List<LoaiMenu> lstLoai= this.daoloai.getall();
 		request.setAttribute("listLoai", lstLoai);
 		
-		
-		
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 
@@ -95,7 +93,7 @@ public class AddMenuCTController extends HttpServlet {
 		this.menu= daomenu.findbyid(idmenu);
 		int id = Integer.parseInt(request.getParameter("id"));
 		this.bdct = this.daobdct.findbyid(id);
-		int sl= Integer.parseInt(request.getParameter("sl"));
+		int sl= Integer.parseInt(request.getParameter("s_l"));
 
 		//insert menuct
 		mnct.setBdct(bdct);
@@ -114,6 +112,7 @@ public class AddMenuCTController extends HttpServlet {
 		long millis=System.currentTimeMillis();   
 		java.sql.Date date=new java.sql.Date(millis);
 		this.hd.setThoi_gian(date);
+		this.hd.setTong_Tien(0);
 		this.daohd.insert(hd);
 		
 		//insert hdct
@@ -125,7 +124,7 @@ public class AddMenuCTController extends HttpServlet {
 		this.hdtc.setHoaDon(h);
 		this.daohdct.insert(hdtc);
 		
-		response.sendRedirect(request.getContextPath()+"/AddMenuCTController?idmn="+idmenu+"&&id="+id + "&& success=1 ");
+		response.sendRedirect(request.getContextPath()+"/AddMenuCTController?idmn="+idmenu+"&&id="+id + "&&success=1 ");
 		
 	}
 

@@ -70,10 +70,12 @@
 							out.print("<h5 style=\"color: red;\">username or email success </h5>");
 						}
 						%>
-						
+
 
 						<form action="/QL_Dat_Ban_NH/AddMenuCTController" method="post">
+
 							<div class="tab-content" id="pills-tabContent">
+
 								<div class="tab-pane fade show active" id="pills-home"
 									role="tabpanel" aria-labelledby="pills-home-tab">
 
@@ -86,9 +88,9 @@
 												<div class="item_title">
 													<p>${items.ten_Mon_An }</p>
 												</div>
-												<div class="item_quantity">
-													<input type="number" name="sl" id="">
-												</div>
+
+												<input type="number" name="s_l" id="s_l">
+
 												<div class="item_booking">
 													<button type="submit" class="btn btn-primary"
 														formaction="/QL_Dat_Ban_NH/AddMenuCTController/create?idmn=${items.idmn }&&id=${idbdct}">Thêm
@@ -97,10 +99,11 @@
 											</div>
 										</c:forEach>
 									</div>
-									<div class="tab-pane fade" id="pills-profile" role="tabpanel"
-										aria-labelledby="pills-profile-tab"></div>
+
 								</div>
+
 							</div>
+
 						</form>
 					</div>
 				</div>

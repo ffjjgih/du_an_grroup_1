@@ -1,12 +1,15 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Time;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * The persistent class for the hoa_don database table.
+ * 
+ */
 @Entity
 @Table(name="hoa_don")
 @NamedQuery(name="HoaDon.findAll", query="SELECT h FROM HoaDon h")
@@ -21,9 +24,8 @@ public class HoaDon implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date thoi_gian;
-	
-	@Column(name="thoi_gian_kt")
-	private Time thoiGianKT;
+
+	private float tong_Tien;
 
 	//bi-directional many-to-one association to Hdct
 	@OneToMany(mappedBy="hoaDon")
@@ -62,13 +64,21 @@ public class HoaDon implements Serializable {
 	public void setKhuyen_mai(float khuyen_mai) {
 		this.khuyen_mai = khuyen_mai;
 	}
-	
-	public Time getthoiGianKT() {
-		return this.thoiGianKT;
+
+	public Date getThoi_gian() {
+		return this.thoi_gian;
 	}
 
 	public void setThoi_gian(Date thoi_gian) {
 		this.thoi_gian = thoi_gian;
+	}
+
+	public float getTong_Tien() {
+		return this.tong_Tien;
+	}
+
+	public void setTong_Tien(float tong_Tien) {
+		this.tong_Tien = tong_Tien;
 	}
 
 	public List<Hdct> getHdcts() {
@@ -116,15 +126,5 @@ public class HoaDon implements Serializable {
 	public void setThongTinBanDat(ThongTinBanDat thongTinBanDat) {
 		this.thongTinBanDat = thongTinBanDat;
 	}
-
-	public float getTong_Tien() {
-		return tong_Tien;
-	}
-
-	public void setTong_Tien(float tong_Tien) {
-		this.tong_Tien = tong_Tien;
-	}
-	
-	
 
 }

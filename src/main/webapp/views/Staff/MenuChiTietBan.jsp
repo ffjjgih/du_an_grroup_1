@@ -38,7 +38,7 @@
 				<div class="right_header">
 					<div class="header_search">
 						<h3 style="color: white;">Thông tin menu chi tiết bàn
-							${items.IDBan }</h3>
+							${bd.ttBan.IDBan}</h3>
 					</div>
 				</div>
 
@@ -72,7 +72,7 @@
 															<td>${ hd.getMnct().getMenu().getTen_Mon_An()}</td>
 															<td>${ hd.getMnct().getSo_luong()}</td>
 															<td>${ hd.getMnct().getMenu().getGia()}</td>
-															<td>${ hd.getSo_luong() }</td>
+															<td>${ hd.getSo_luong()}</td>
 															<td>
 																<button type="submit" class="btn btn-danger">
 																	<svg xmlns="http://www.w3.org/2000/svg" width="16"

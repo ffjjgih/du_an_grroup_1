@@ -37,10 +37,9 @@ public class QuanLiMenuController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
 		int idbd = Integer.parseInt(request.getParameter("idbdct"));
-		this.bdct = this.daobdct.findbyid(id);
-		response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + id);
+		this.bdct = this.daobdct.findbyid(idbd);
+		response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbd);
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,112 +58,39 @@
                             </form>
                         </div>
                     </div>
+                    <form action="/QL_Dat_Ban_NH/ThemMenuManager" method="post">
                     <div class="right_body--content">
-                        <div class="content_item">
+                    <c:forEach var="items" items="${listmenu }">
+                       <div class="content_item">
                             <div class="item--img">
-                                <img src="./views/Manager/imgs/cahoinauyfillet.png"style="width: 298px; height: 240px;" alt="">
+                                <img src="/QL_Dat_Ban_NH/img/${items.img }"style="width: 298px; height: 240px;" alt="">
                             </div>
                             <div class="item--title">
-                                <h5>--Cá hồi Nauy Fillet--</h5>
+                                <h5>--${items.ten_Mon_An }--</h5>
                             </div>
                             <div class="item--priceIn">
                                 <h6><span>Giá nhập: </span> 90.000 VNĐ</h6>
                             </div>
                             <div class="item--priceOut">
-                                <h6 style="color: tomato;"><span>Giá bán: </span> 100.000 VNĐ</h6>
+                                <h6 style="color: tomato;"><span>Giá bán: </span> ${items.gia } VNĐ</h6>
                             </div>
                             <div class="item_button">
-                                <button type="button" class="btn btn-success">
+                                <button  type="button" class="btn btn-success">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
                                         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
                                     </svg>
                                 </button>
-                                <button type="button" class="btn btn-danger">
+                                <button onclick="confirmdelete(${items.idmn})" type="button" class="btn btn-danger">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                     </svg>
                                 </button>
                             </div>
                         </div>
-                        <div class="content_item">
-                            <div class="item--img">
-                                <img src="./views/Manager/imgs/cahoinauyfillet.png"style="width: 298px; height: 240px;" alt="">
-                            </div>
-                            <div class="item--title">
-                                <h5>--Cá hồi Nauy Fillet--</h5>
-                            </div>
-                            <div class="item--priceIn">
-                                <h6><span>Giá nhập: </span> 90.000 VNĐ</h6>
-                            </div>
-                            <div class="item--priceOut">
-                                <h6 style="color: tomato;"><span>Giá bán: </span> 100.000 VNĐ</h6>
-                            </div>
-                            <div class="item_button">
-                                <button type="button" class="btn btn-success">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn btn-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="content_item">
-                            <div class="item--img">
-                                <img src="./views/Manager/imgs/cahoinauyfillet.png"style="width: 298px; height: 240px;" alt="">
-                            </div>
-                            <div class="item--title">
-                                <h5>--Cá hồi Nauy Fillet--</h5>
-                            </div>
-                            <div class="item--priceIn">
-                                <h6><span>Giá nhập: </span> 90.000 VNĐ</h6>
-                            </div>
-                            <div class="item--priceOut">
-                                <h6 style="color: tomato;"><span>Giá bán: </span> 100.000 VNĐ</h6>
-                            </div>
-                            <div class="item_button">
-                                <button type="button" class="btn btn-success">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn btn-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="content_item">
-                            <div class="item--img">
-                                <img src="./views/Manager/imgs/cahoinauyfillet.png"style="width: 298px; height: 240px;" alt="">
-                            </div>
-                            <div class="item--title">
-                                <h5>--Cá hồi Nauy Fillet--</h5>
-                            </div>
-                            <div class="item--priceIn">
-                                <h6><span>Giá nhập: </span> 90.000 VNĐ</h6>
-                            </div>
-                            <div class="item--priceOut">
-                                <h6 style="color: tomato;"><span>Giá bán: </span> 100.000 VNĐ</h6>
-                            </div>
-                            <div class="item_button">
-                                <button type="button" class="btn btn-success">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn btn-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                    </c:forEach>
+                     
                     </div>
+                    </form>
                 </div>
             </div>
             
@@ -171,29 +99,28 @@
         <div class="modal_add js_modal_add">
             <div class="modal_add_container js_modal_add_container">
                 <h3>THÊM MÓN ĂN MỚI</h3>
-                <form>
+                <form action="/QL_Dat_Ban_NH/ThemMenuManager" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="exampleInputImg" class="form-label">Chọn ảnh món ăn</label>
-                        <input required type="file" class="form-control" onchange="return fileValid()" id="exampleInputImg">
+                        <input required type="file" name="chonAnh" class="form-control" onchange="return fileValid()" id="exampleInputImg">
                         <label for="" class="error"></label>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputTitle" class="form-label">Tên món ăn</label>
-                        <input required type="text" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp">
+                        <input required type="text" name="tenMon" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp">
                         <label for="" class="error"></label>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputTitle" class="form-label">Giá</label>
-                        <input required type="number" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp">
+                        <input required type="number" name="gia" class="form-control" id="exampleInputPrice" aria-describedby="emailHelp">
                         <label for="" class="error"></label>
                     </div>
-                    <select class="form-select" style="margin-bottom: 30px;" aria-label="Default select example">
-                        <option selected>Chọn loại thực đơn</option>
-                        <option value="meat">Thịt</option>
-                        <option value="fish">Cá</option>
-                        <option value="vegetable">Rau</option>
+                    <select class="form-select" name="chonLoai" values style="margin-bottom: 30px;" aria-label="Default select example">
+                         <c:forEach var="o" items="${listCC }">
+                          <option value="${o.idloai }">${o.tenLoai }</option>
+                         </c:forEach>
                     </select>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" formaction="/QL_Dat_Ban_NH/ThemMenuManager/create">Submit</button>
                     <button type="button" class="btn btn-danger js_btn-close">Exit</button>
                 </form>
             </div>
@@ -206,7 +133,7 @@
     </div>
     <script src="./views/Manager/js/modaladdnhanvien.js"></script>
     <script src="./views/Manager/js/sidebar.js"></script>
-    <script>
+    <script type="text/javascript">
         function showMess(){
             var option = confirm("Bạn có chắc muốn xóa bài viết này không?");
             if(option === true){
@@ -230,6 +157,13 @@
                 document.getElementById('exampleInputImg').style.borderColor = "green";
             }
         }
+        function confirmdelete(id) {
+			var ques=confirm('do want to delete???');
+			if(ques){
+				alert('delete succsessfull');
+				window.location.href='/QL_Dat_Ban_NH/ThemMenuManager/delete?id='+id;
+			}
+		}
     </script>
 </body>
 
