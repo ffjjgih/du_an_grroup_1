@@ -121,21 +121,24 @@ public class HomeStaffController extends HttpServlet {
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
 			part.write(Paths.get(realpath.toString(), namefile).toString());
 			bv.setImg(namefile);
-			//bv.setImg("/img"+up.loadIMG("chonAnh", request, "/img", bv.getImg()));
+			// bv.setImg("/img"+up.loadIMG("chonAnh", request, "/img", bv.getImg()));
 			String mota = request.getParameter("mota");
 			String tieude = request.getParameter("tieuDe");
 			String link = request.getParameter("link");
-			bv.setTen_tieu_de(tieude);
-			bv.setLink(link);
-			bv.setNoi_dung(mota);
-			bv.setStaff(f);
-			dao.insert(bv);
-
-			response.sendRedirect(request.getContextPath() + "/HomeStaffController");
+//			bv.setTen_tieu_de(tieude);
+//			bv.setLink(link);
+//			bv.setNoi_dung(mota);
+//			bv.setStaff(f);
+			this.bv = new BaiViet(namefile, link, mota, tieude, f);
+			if (bv != null) {
+				dao.insert(bv);
+				response.sendRedirect(request.getContextPath() + "/HomeStaffController?addMenuSuc=1");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/HomeStaffController?addMenuErr=1");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 
 }

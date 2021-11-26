@@ -19,16 +19,12 @@
 <body>
     <div id="app">
         <div class="container-fluid">
-            
+
             <!-- side bar -->
 			<jsp:include page="Sidebar.jsp"></jsp:include>
 
             <div class="container_right l-12">
                 <div class="right_header">
-                	<div class="container_right_footer">
-                        <button type="button" class="btn btn-success">Xác nhận khách đến</button>
-                        <button type="button" class="btn btn-warning">Thanh toán</button>
-                    </div>
                     <div class="header_search">
                         <form action="" method="post">
                             <input type="search" name="" id="" placeholder="Nhập mã bàn...">
@@ -47,80 +43,96 @@
                 <div class="container_right_body l-12">
                     <div class="body_left l-3"></div>
                     <div class="body_right l-9">
-                        <h3>Số lượng bàn đang sử dụng: 8 bàn</h3>
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
 
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
 
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
 
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
 
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
 
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
 
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
 
                         <div class="content_button l-5">
                             <a href="">
-                                <button type="button" class="btn btn-primary buttonTable">
-                                    Bàn 01 <br>
-                                    Số người: 02
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
                                 </button>
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 

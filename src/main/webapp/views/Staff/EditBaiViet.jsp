@@ -26,8 +26,10 @@
 			<jsp:include page="Sidebar.jsp"></jsp:include>
 
             <div class="container_right l-12">
-                <!-- header right quản lý bài viết -->
-                <jsp:include page="HeaderRightPost.jsp"></jsp:include>
+                <div class="right_header">
+                    <div class="header_search">
+                    </div>
+                </div>
 
                 <div class="right_body">
                     <div class="body_container">

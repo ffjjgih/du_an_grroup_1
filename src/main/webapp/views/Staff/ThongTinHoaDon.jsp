@@ -158,10 +158,8 @@
 							</div>
 							<div class="body_right_footer">
 								<button type="submit" class="btn btn-success"
-									formaction="/QL_Dat_Ban_NH/Controller_Bill/inHD">In
-									hóa đơn</button>
-								<button type="submit" class="btn btn-warning" formaction="/QL_Dat_Ban_NH/Controller_Bill/pay" >Thanh
-									toán</button>
+									formaction="/QL_Dat_Ban_NH/Controller_Bill/inHD">In hóa đơn file Excel</button>
+								<button type="submit" class="btn btn-warning" formaction="/QL_Dat_Ban_NH/Controller_Bill/pay" >Thanh toán</button>
 								<button type="submit" class="btn btn-light" formaction="/QL_Dat_Ban_NH/Controller_Bill/Back">Quay Lại</button>
 							</div>
 						</div>

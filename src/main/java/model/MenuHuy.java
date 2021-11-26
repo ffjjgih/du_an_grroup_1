@@ -5,11 +5,11 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the MENU_HUY database table.
+ * The persistent class for the menu_huy database table.
  * 
  */
 @Entity
-@Table(name="MENU_HUY")
+@Table(name="menu_huy")
 @NamedQuery(name="MenuHuy.findAll", query="SELECT m FROM MenuHuy m")
 public class MenuHuy implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,10 +19,8 @@ public class MenuHuy implements Serializable {
 	@Column(name="ID_MNH")
 	private int idMnh;
 
-	@Column(name="Ghi_Chu")
 	private String ghi_Chu;
 
-	@Column(name="So_Luong")
 	private int so_Luong;
 
 	//bi-directional many-to-one association to Mnct
