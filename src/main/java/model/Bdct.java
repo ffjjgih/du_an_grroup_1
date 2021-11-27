@@ -19,15 +19,15 @@ public class Bdct implements Serializable {
 	@Column(name="ID_BDCT")
 	private int idBdct;
 
-	//bi-directional many-to-one association to TtBan
-	@ManyToOne
-	@JoinColumn(name="IDBan")
-	private TtBan ttBan;
-
 	//bi-directional many-to-one association to ThongTinBanDat
 	@ManyToOne
 	@JoinColumn(name="ID_BD")
 	private ThongTinBanDat thongTinBanDat;
+
+	//bi-directional many-to-one association to TtBan
+	@ManyToOne
+	@JoinColumn(name="IDBan")
+	private TtBan ttBan;
 
 	//bi-directional many-to-one association to Mnct
 	@OneToMany(mappedBy="bdct")
@@ -44,20 +44,20 @@ public class Bdct implements Serializable {
 		this.idBdct = idBdct;
 	}
 
-	public TtBan getTtBan() {
-		return this.ttBan;
-	}
-
-	public void setTtBan(TtBan ttBan) {
-		this.ttBan = ttBan;
-	}
-
 	public ThongTinBanDat getThongTinBanDat() {
 		return this.thongTinBanDat;
 	}
 
 	public void setThongTinBanDat(ThongTinBanDat thongTinBanDat) {
 		this.thongTinBanDat = thongTinBanDat;
+	}
+
+	public TtBan getTtBan() {
+		return this.ttBan;
+	}
+
+	public void setTtBan(TtBan ttBan) {
+		this.ttBan = ttBan;
 	}
 
 	public List<Mnct> getMncts() {

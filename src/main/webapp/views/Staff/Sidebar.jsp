@@ -4,9 +4,11 @@
 
 <div class="container_left l-3">
 	<ul class="nav flex-column">
+	<c:if test="${sessionScope.acountST != null}">
 		<li class="nav_logo">
-			<h3>NGUYỄN LÊ HẢI</h3>
+			<h3>${sessionScope.acountST.hoTen }</h3>
 		</li>
+	</c:if>	
 		<li class="nav-item">
 			<a class="nav-link active" aria-current="page" href="/QL_Dat_Ban_NH/HomeStaffController"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
@@ -61,6 +63,7 @@
                 TÌNH TRẠNG BÀN
 			</a>
 		</li>
+		<c:if test="${sessionScope.acountST == null}">
 		<li class="nav-item">
 			<a class="nav-link" href="#"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -70,6 +73,7 @@
                 TÀI KHOẢN CỦA TÔI
 			</a>
 		</li>
+		</c:if>
 		<li class="nav-item">
 			<a class="nav-link" href="#"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
@@ -79,6 +83,7 @@
                 ĐĂNG XUẤT
 			</a>
 		</li>
+		
 	</ul>
 	<div class="left_footer">
 		<a href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="55"

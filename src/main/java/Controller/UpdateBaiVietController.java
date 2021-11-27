@@ -49,10 +49,6 @@ public class UpdateBaiVietController extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			bv = this.dao.findbyid(id);
 			request.setAttribute("bv", bv);
-			Part imagePath = request.getPart("img");
-//			String imageFile = Path.of(imagePath.getSubmittedFileName()).getFileName().toString();
-//			request.setAttribute(imageFile, imageFile);
-			//bv.setImg(imageFile);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,37 +57,40 @@ public class UpdateBaiVietController extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		try {
-			response.setContentType("text/html;charset=UTF-8");
-			request.setCharacterEncoding("utf-8");
+			
 			HttpSession session = request.getSession();
-			Staff staff = (Staff) session.getAttribute("acountKH");
-			f = daonv.findbyid(1);
+			Staff staff = (Staff) session.getAttribute("acountST");
+			
 			String realpath = request.getServletContext().getRealPath("/img");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
 				Files.createDirectory(path);
 			}
 			Part part = request.getPart("img");
-			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
-			part.write(Paths.get(realpath.toString(), namefile).toString());
+			String filenameUpload = part.getSubmittedFileName();
+			if(!"".equals(filenameUpload)) {
+				String namefile = Path.of(filenameUpload).getFileName().toString();
+				part.write(Paths.get(realpath.toString(), namefile).toString());
+				bv.setImg(namefile);
+			}
+					
+			
 			String mota = request.getParameter("noidung");
 			String tieude = request.getParameter("tieude");
 			String link = request.getParameter("link");
 			bv.setTen_tieu_de(tieude);
 			bv.setLink(link);
 			bv.setNoi_dung(mota);
-			bv.setStaff(f);
+			bv.setStaff(staff);
+			
 			dao.update(bv);
-			response.sendRedirect(request.getContextPath() + "/HomeStaffController");
+			
+			response.sendRedirect(request.getContextPath() + "/HomeStaffController"+"?success=1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

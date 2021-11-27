@@ -1,5 +1,12 @@
+<%@page import="model.Mnct"%>
+<%@page import="model.Menu"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="model.Hdct"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +37,8 @@
 			<div class="container_right l-12">
 				<div class="right_header">
 					<div class="header_search">
-						<h3 style="color: white;">Thông tin menu chi tiết bàn 01</h3>
+						<h3 style="color: white;">Thông tin menu chi tiết bàn
+							${items.IDBan }</h3>
 					</div>
 				</div>
 
@@ -150,6 +158,7 @@
             }
         }
     </script>
+
 	<script src="./views/Staff/js/sidebar.js"></script>
 </body>
 

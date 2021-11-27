@@ -15,34 +15,39 @@ import Dao.baiVietDao;
 import model.BaiViet;
 import model.Staff;
 
-/**
- * Servlet implementation class SearchBaiVietController
- */
-@WebServlet("/SearchBaiVietController")
+
+@WebServlet(urlPatterns = { "/seachercontroller" })
 public class SearchBaiVietController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
 	private baiVietDao dao;
 	private BaiViet bv;
 	private NhanVienDao daonv;
-
 	private List<BaiViet> lst;
 	private Staff f;
+	
     public SearchBaiVietController() {
     	this.dao = new baiVietDao();
 		this.daonv = new NhanVienDao();
 		this.bv = new BaiViet();
-		this.lst = new ArrayList<BaiViet>();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name=request.getParameter("name");
-		lst=dao.findName(name);
+		
+		 response.setContentType("text/html;charset=UTF-8");
+	     request.setCharacterEncoding("UTF-8");
+		
+		String txtSearch=request.getParameter("txt");
+		lst=dao.findName(txtSearch);
+		System.out.println(lst);
 		request.setAttribute("listBV", lst);
+		request.setAttribute("txtS", txtSearch);
 		request.getRequestDispatcher("views/Staff/QuanLyBaiVietStaff.jsp").forward(request, response);
+		
+		
 	}
 
 	/**
