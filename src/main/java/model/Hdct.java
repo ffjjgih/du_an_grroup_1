@@ -4,10 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
-/**
- * The persistent class for the hdct database table.
- * 
- */
 @Entity
 @NamedQuery(name="Hdct.findAll", query="SELECT h FROM Hdct h")
 public class Hdct implements Serializable {
@@ -75,19 +71,12 @@ public class Hdct implements Serializable {
 		this.mnct = mnct;
 	}
 	
-
 	public Hdct( int so_luong, double thanh_Tien, HoaDon hoaDon, Mnct mnct) {
 		super();
 		this.so_luong = so_luong;
 		this.thanh_Tien = thanh_Tien;
 		this.hoaDon = hoaDon;
 		this.mnct = mnct;
-	}
-
-	@Override
-	public String toString() {
-		return "Hdct [idHdct=" + idHdct + ", so_luong=" + so_luong + ", thanh_Tien=" + thanh_Tien + ", hoaDon=" + hoaDon
-				+ ", mnct=" + mnct + "]";
 	}
 
 }

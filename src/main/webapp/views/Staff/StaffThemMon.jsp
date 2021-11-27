@@ -55,7 +55,7 @@
 							</div>
 							</form>
 							<div class="body_right-header-info">
-								<h4>Bàn ${ bdct.idBdct}</h4>
+								<h4>Bàn ${ bdct.IDBan}</h4>
 							</div>
 						</div>
 
@@ -65,7 +65,6 @@
 								role="tabpanel" aria-labelledby="pills-home-tab">
 								<c:forEach items="${monan }" var="items">
 									<div class="body_items">
-
 										<div class="body_right-content--item l-3">
 											<div class="item_img">
 												<img src="/QL_Dat_Ban_NH/img/${items.img}" alt="" name="img"

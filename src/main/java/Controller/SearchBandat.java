@@ -26,6 +26,9 @@ import model.TtBan;
  * Servlet implementation class SearchBaiVietController
  */
 @WebServlet({"/BanDat","/BanDat/xacnhan"})
+import model.Staff;
+import model.TtBan;
+
 public class SearchBandat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,31 +42,34 @@ public class SearchBandat extends HttpServlet {
     private DaoHoadon daohd;
 	private List<TtBan> lst;
 	private HoaDon hd;
+	private DaoBanDatCT dao_BanDatCT;
+	private List<Bdct> list_Bdct ;
 
-	
 
 	public SearchBandat() {
 		this.dao = new Daottban();
 		this.daonv = new NhanVienDao();
 		this.tt = new TtBan();
 		this.lst = new ArrayList<TtBan>();
-		this.bdct= new Bdct();
-        this.daobdct= new DaoBanDatCT();
-        this.daohd= new DaoHoadon();
-        this.hd= new HoaDon();
+		this.bdct = new Bdct();
+		this.dao_BanDatCT = new DaoBanDatCT();
+		this.list_Bdct = new ArrayList<Bdct>();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-
+			throws ServletException, IOException {	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		
+			throws ServletException, IOException {	
+		int idSearch = Integer.parseInt(request.getParameter("txt"));
+		this.tt = this.dao.findbyid(idSearch);
+		this.bdct = this.dao_BanDatCT.findBdct(tt);
+		if(this.bdct == null) {
+			response.sendRedirect(request.getContextPath() + "/QuanLiMenuController?error=1" );
+		}else {	
+			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" +this.bdct.getIdBdct());
+		}
 	}
 
 }

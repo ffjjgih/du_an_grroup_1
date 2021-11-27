@@ -64,6 +64,14 @@ public class LoaiMenu implements Serializable {
 	public void setTenLoai(String tenLoai) {
 		this.tenLoai = tenLoai;
 	}
+	
+	public int getLoai() {
+		return this.loai;
+	}
+
+	public void setLoai(int loai) {
+		this.loai = loai;
+	}
 
 	public List<Menu> getMenus() {
 		return this.menus;

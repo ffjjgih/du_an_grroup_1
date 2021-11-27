@@ -91,7 +91,6 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 
 	}
 
-	
 	// hiển thị thông tin bàn đặt với trạng thái là waitting line (class liên quan:Notification)
 	public List<ThongTinBanDat> showttbdbywl(){
 		try {

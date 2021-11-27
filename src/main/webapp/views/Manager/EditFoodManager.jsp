@@ -58,8 +58,9 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputTitle" class="form-label" >Trạng thái</label>
-                                <select class="form-select" aria-label="Default select example" name="trangthai">
+                                <label for="exampleInputTitle" class="form-label">Trạng thái</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Mời chọn trạng thái</option>
                                     <option value="1">Còn hàng</option>
                                     <option value="2">Hết hàng</option>
                                     <option value="3">Tạm ngừng hoạt động</option>
