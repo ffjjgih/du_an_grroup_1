@@ -55,7 +55,7 @@
 								</div>
 							</form>
 							<div class="body_right-header-info">
-								<h4>Bàn ${ bdct.idBdct}</h4>
+								<h4>Bàn ${ bdct.IDBan}</h4>
 							</div>
 						</div>
 						<%
@@ -81,13 +81,13 @@
 										<c:forEach items="${monan }" var="items">
 											<div class="body_right-content--item l-3">
 												<div class="item_img">
-													<img src="./views/Staff/img/${items.img}" alt="" name="img">
+													<img src="/QL_Dat_Ban_NH/img/${items.img}" alt="" name="img">
 												</div>
 												<div class="item_title">
 													<p>${items.ten_Mon_An }</p>
 												</div>
 												<div class="item_quantity">
-													<input type="number" name="sl" id="">
+													<input type="number" name="sl" id="" >
 												</div>
 												<div class="item_booking">
 													<button type="submit" class="btn btn-primary"

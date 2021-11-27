@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.Bdct;
@@ -33,7 +34,7 @@ public class DaoMenuCT extends BaseDao<Mnct>{
 		return Mnct.class.getSimpleName();
 	}
    
-	//tìm bàn đặt chi tiết qua menu chi tiết trong servlet AddmenuCTController
+	//tÃ¬m bÃ n Ä‘áº·t chi tiáº¿t qua menu chi tiáº¿t trong servlet AddmenuCTController
 	public List<Mnct> findTTban(Bdct bdct){
 		try {
 				this.manager=this.conn.getEntityManager();
@@ -49,7 +50,7 @@ public class DaoMenuCT extends BaseDao<Mnct>{
 		return lstmnct;
 	}
 	
-	//tìm mnct tạo gần nhất của bàn đặt chi tiết
+	//tÃ¬m mnct táº¡o gáº§n nháº¥t cá»§a bÃ n Ä‘áº·t chi tiáº¿t
 	public Mnct findmnctbybdct(Bdct b) {
 		try {
 			this.manager=this.conn.getEntityManager();
@@ -61,6 +62,25 @@ public class DaoMenuCT extends BaseDao<Mnct>{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+		
+	}
+	
+	//update số lượng món ăn trong menct;
+	public void updatemnct(int idmnct,int sl) {
+		this.manager=this.conn.getEntityManager();
+		try {
+			this.manager.getTransaction().begin();
+			manager.flush(); manager.clear();
+			String hql="UPDATE Mnct SET so_luong=:sl WHERE idMnct=:id";
+			Query query=this.manager.createQuery(hql);
+			query.setParameter("sl", sl);
+			query.setParameter("id", idmnct);
+			query.executeUpdate();
+			this.manager.getTransaction().commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}
 		
 	}

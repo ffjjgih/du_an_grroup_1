@@ -24,8 +24,6 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 		this.lsthd=new ArrayList<HoaDon>();
 		this.conn=new Connectjpa();
 		this.hd=new HoaDon();
-
-	public DaoHoadon() {
 		this.hoadon = new HoaDon();
 		this.lsthd = new ArrayList<HoaDon>();
 		this.conn = new Connectjpa();

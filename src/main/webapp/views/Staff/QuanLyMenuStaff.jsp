@@ -28,53 +28,49 @@
 			<!-- side bar -->
 			<jsp:include page="Sidebar.jsp"></jsp:include>
 
-            <div class="container_right l-12">
-                <div class="right_header">
-                	<div class="container_right_footer">
-                        <button type="button" class="btn btn-success">Xác nhận khách đến</button>
-                        <button type="button" class="btn btn-warning">Thanh toán</button>
-                    </div>
-                    <div class="header_search">
-                        <form action="" method="post">
-                            <input type="search" name="" id="" placeholder="Nhập mã bàn...">
-                            <button type="button" class="btn btn-dark">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
-                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">Box="0 0 16 16">
+			<div class="container_right l-12">
+				<form action="/QL_Dat_Ban_NH/BanDat" method="post">
+					<div class="right_header">
+						<div class="header_search">
+							<input type="text" name="txt" id="" placeholder="Nhập mã bàn..."
+								value="${search }">
+							<button type="submit" class="btn btn-dark">
+								<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
+									width="16" height="16" fill="currentColor" class="bi bi-search"
+									viewBox="0 0 16 16">
                                     <path
 										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
 								TÌM KIẾM
 							</button>
+						</div>
 					</div>
-					</div>
-					</form>
-				</div>
-				<form action="/QuanLiMenuController" method="post">
-					<div class="container_right_body l-12">
-						<div class="body_left l-3"></div>
-						<div class="body_right l-9">
-							<h3>Số lượng bàn đang sử dụng: ${bv } bàn</h3>
+				</form>
+			</div>
+			<form action="/QuanLiMenuController" method="post">
+				<div class="container_right_body l-12">
+					<div class="body_left l-3"></div>
+					<div class="body_right l-9">
+						<h3>Số lượng bàn đang sử dụng: ${bv } bàn</h3>							
 							<c:forEach var="items" items="${ListBDCT }">
 								<div class="content_button l-5">
 									<a href="">
 										<button type="submit" class="btn btn-primary buttonTable"
-											formaction="QuanLiMenuController/bdct?id=${items.ttBan.IDBan }&&idbdct=${items.idBdct} ">
+											formaction="QuanLiMenuController/bdct?idbdct=${items.idBdct} ">
 											Bàn ${items.ttBan.IDBan} <br> Số người:
 											${items.thongTinBanDat.so_Luong_Nguoi}
 										</button>
 									</a>
 								</div>
-							</c:forEach>
-
-						</div>
+							</c:forEach>				
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
+	</div>
 
 
 	<script src="./views/Staff/js/sidebar.js"></script>
-
 </body>
 
 </html>

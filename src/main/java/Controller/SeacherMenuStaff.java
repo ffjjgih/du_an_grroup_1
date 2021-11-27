@@ -33,18 +33,13 @@ public class SeacherMenuStaff extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String txtSearch = request.getParameter("txt");
-		lst = daomenu.findName(txtSearch);
+		this.lst = daomenu.findName(txtSearch);
 		System.out.println(lst);
 		request.setAttribute("monan", lst);
 		request.setAttribute("txtS", txtSearch);
 
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

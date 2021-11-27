@@ -60,14 +60,15 @@
 
 /*modal thanh toán*/
 .spinner{
-    width: 50px;
+    width: 20px;
     text-align: center;
     border: none;
 }
 
 .btnPM{
-    width: 30px;
+    width: 10px;
     border: none;
     outline: none;
     background-color: azure;
 }
+
