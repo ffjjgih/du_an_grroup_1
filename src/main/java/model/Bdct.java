@@ -86,4 +86,13 @@ public class Bdct implements Serializable {
 		return mnct;
 	}
 
+	public Bdct(int idBdct, TtBan ttBan, ThongTinBanDat thongTinBanDat) {
+		super();
+		this.idBdct = idBdct;
+		this.ttBan = ttBan;
+		this.thongTinBanDat = thongTinBanDat;
+	}
+	
+	
+
 }

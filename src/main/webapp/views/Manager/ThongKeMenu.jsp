@@ -27,23 +27,7 @@
                     <h4 style=" margin-top: 10px;">THỐNG KÊ MENU</h4>
                 </div>
                 <div class="right_body--header">
-                    <div class="header_search left">
-                        <select class="form-select" style="float: left;" aria-label="Default select example">
-                            <option selected>Chọn tháng</option>
-                            <option value="1">Tháng 1</option>
-                            <option value="2">Tháng 2</option>
-                            <option value="3">Tháng 3</option>
-                            <option value="4">Tháng 4</option>
-                            <option value="5">Tháng 5</option>
-                            <option value="6">Tháng 6</option>
-                            <option value="7">Tháng 7</option>
-                            <option value="8">Tháng 8</option>
-                            <option value="9">Tháng 9</option>
-                            <option value="10">Tháng 10</option>
-                            <option value="11">Tháng 11</option>
-                            <option value="12">Tháng 12</option>
-                        </select>
-                    </div>
+                    
                     <div class="header_search">
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Chọn năm</option>
@@ -59,9 +43,8 @@
                 <div class="body_left l-3"></div>
                 <div class="right_body l-9">
                     <div class="right_body--header-button">
-                        <button type="button" style="float: left;" class="btn btn-warning js-modal-btn">Xem biểu
-                            đồ</button>
-                        <h5 style="margin-left: 20%;">Thống kê menu tháng 1 - 2021</h5>
+                        <button type="button" style="float: left; margin-right: 50px;" class="btn btn-warning js-modal-btn">Xem biểu đồ</button>
+                        <button type="button" class="btn btn-success">Xem thống kê</button>
                     </div>
                     <div class="right_body--content">
                         <table id="t1" class="table" style="text-align: center;">

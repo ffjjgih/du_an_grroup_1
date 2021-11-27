@@ -28,6 +28,9 @@ public class test extends HttpServlet {
 	
 	public test() {
 		super();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("./views/Staff/MenuChiTietBan.jsp").forward(request, response);
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

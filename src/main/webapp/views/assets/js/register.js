@@ -13,9 +13,13 @@ function checkFormName() {
     var name = document.getElementById('exampleInputFullName1').value;
     if (is_fullname(name) == false) {
         document.getElementById('exampleInputFullName1').style.borderColor = "red";
-        alert("Tên không đúng định dạng, hãy thử lại!")
+        alert("Tên không đúng định dạng, hãy thử lại!");
+        document.getElementById("button").disabled = true;
+        document.getElementById("button1").disabled = true;
     } else {
         document.getElementById('exampleInputFullName1').style.borderColor = "green";
+        document.getElementById("button").disabled = false;
+        document.getElementById("button1").disabled = false;
     }
 }
 
@@ -35,8 +39,10 @@ function checkFormPhone() {
     if (is_phone(phone) == false) {
         document.getElementById('exampleInputPhoneNume1').style.borderColor = "red";
         alert("Số điện thoại không đúng định dạng, hãy thử lại!");
+        document.getElementById("button").disabled = true;
     } else {
         document.getElementById('exampleInputPhoneNume1').style.borderColor = "green";
+        document.getElementById("button").disabled = false;
     }
 }
 
@@ -46,9 +52,24 @@ var check = function(){
     document.getElementById('InputNewPass2').value){
         document.getElementById('InputNewPass1').style.borderColor = "green";
         document.getElementById('InputNewPass2').style.borderColor = "green";
+        document.getElementById("button").disabled = false;
     } else {
         alert("Password not matching");
         document.getElementById('InputNewPass1').style.borderColor = "red";
         document.getElementById('InputNewPass2').style.borderColor = "red";
+        document.getElementById("button").disabled = true;
+    }
+}
+
+function checkNumber(){
+    var sl = document.getElementById('exampleFormControlQuan').value;
+    if(sl < 0){
+        document.getElementById('QuanHelp').innerHTML="Số lượng không hợp lệ";
+        document.getElementById('exampleFormControlQuan').style.borderColor ="red";
+        document.getElementById('button1').disabled = true;
+    } else {
+        document.getElementById('QuanHelp').innerHTML="";
+        document.getElementById('exampleFormControlQuan').style.borderColor ="green";
+        document.getElementById('button1').disabled = false;
     }
 }

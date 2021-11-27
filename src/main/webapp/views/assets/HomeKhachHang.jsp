@@ -58,11 +58,12 @@
 
 		<!--modal login, regis start-->
 		<jsp:include page="Login.jsp"></jsp:include>
-		
-	</div>
-	
-	<jsp:include page="ForgotPassword.jsp"></jsp:include>
 
+		<jsp:include page="ForgotPassword.jsp"></jsp:include>
+
+		<!--modal guest start-->
+		<jsp:include page="BookingGuest.jsp"></jsp:include>
+	</div>
 	<jsp:include page="FooterKhachHang.jsp"></jsp:include>
 	<script src="./views/assets/js/checkErrorLogin.js"></script>
 	<script src="./views/assets/js/login.js"></script>
@@ -74,13 +75,13 @@
 			wrap : false
 		})
 	</script>
-	
+
 	<script src="./views/assets/js/navbar.js"></script>
+	<script src="./views/assets/js/onclickLogin.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-	<script src="./views/assets/js/onclickLogin.js"></script>
 </body>
 
 </html>

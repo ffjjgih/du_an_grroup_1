@@ -102,8 +102,6 @@ public class HomeStaffController extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			Staff staff = (Staff) session.getAttribute("acountST");
-//			f = daonv.findbyid(1);
-
 			String realpath = request.getServletContext().getRealPath("/img");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
@@ -113,7 +111,6 @@ public class HomeStaffController extends HttpServlet {
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
 			part.write(Paths.get(realpath.toString(), namefile).toString());
 			bv.setImg(namefile);
-
 			String mota = request.getParameter("mota");
 			String tieude = request.getParameter("tieuDe");
 			String link = request.getParameter("link");

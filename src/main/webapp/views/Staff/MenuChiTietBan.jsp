@@ -44,7 +44,6 @@
 
 				<div class="container_right_body l-12">
 					<div class="body_left l-3"></div>
-
 					<div class="body_right l-9">
 						<form action="/QL_Dat_Ban_NH/menuCTController" method="post">
 							<div class="body_right_content">
@@ -138,8 +137,8 @@
 									thêm món</button>
 							</div>
 						</form>
-					</div>
 
+					</div>
 				</div>
 			</div>
 		</div>
@@ -233,6 +232,7 @@
 			}
 		}
 	</script>
+
 	<script src="./views/Staff/js/sidebar.js"></script>
 </body>
 
