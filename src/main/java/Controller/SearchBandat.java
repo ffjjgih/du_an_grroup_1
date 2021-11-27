@@ -10,52 +10,58 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Dao.DaottBan;
+import Dao.DaoBanDatCT;
+import Dao.Daottban;
 import Dao.NhanVienDao;
 import Dao.baiVietDao;
 import model.BaiViet;
+import model.Bdct;
 import model.Staff;
 import model.TtBan;
 
-/**
- * Servlet implementation class SearchBaiVietController
- */
 @WebServlet("/BanDat")
 public class SearchBandat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private DaottBan dao;
+	private Daottban dao;
 	private TtBan tt;
 	private NhanVienDao daonv;
 
 	private List<TtBan> lst;
 	private Staff f;
+	private Bdct bdct ;
+	private DaoBanDatCT dao_BanDatCT;
+	private List<Bdct> list_Bdct ;
+
 
 	public SearchBandat() {
-		this.dao = new DaottBan();
+		this.dao = new Daottban();
 		this.daonv = new NhanVienDao();
 		this.tt = new TtBan();
 		this.lst = new ArrayList<TtBan>();
+		this.bdct = new Bdct();
+		this.dao_BanDatCT = new DaoBanDatCT();
+		this.list_Bdct = new ArrayList<Bdct>();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-
-		int txtSearch = Integer.parseInt(request.getParameter("txt"));
-		lst = dao.findName(txtSearch);
-		request.setAttribute("ListBDCT", lst);
-		System.out.println(lst);
-		request.setAttribute("txtS", txtSearch);
-
-		request.getRequestDispatcher("/views/Staff/QuanLyMenuStaff.jsp").forward(request, response);
-
+			throws ServletException, IOException {	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+			throws ServletException, IOException {	
+		int idSearch = Integer.parseInt(request.getParameter("txt"));
+		this.tt = this.dao.findbyid(idSearch);
+		this.bdct = this.dao_BanDatCT.findBdct(tt);
+		if(this.bdct == null) {
+			response.sendRedirect(request.getContextPath() + "/QuanLiMenuController?error=1" );
+		}else {	
+			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" +this.bdct.getIdBdct());
+		}
+        	
+		
+//		request.setAttribute("search", idSearch);
+		//response.sendRedirect(request.getContextPath() + "/QuanLiMenuController?idSearch="+idSearch );
 	}
 
 }

@@ -4,43 +4,46 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
-/**
- * The persistent class for the Khach_Hang database table.
- * 
- */
 @Entity
-@Table(name="Khach_Hang")
-@NamedQuery(name="KhachHang.findAll", query="SELECT k FROM KhachHang k")
+@Table(name = "khach_hang")
+@NamedQuery(name = "KhachHang.findAll", query = "SELECT k FROM KhachHang k")
 public class KhachHang implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username
+			) {
+		super();
+		this.idkh = idkh;
+		this.gmail = gmail;
+		this.hoTen = hoTen;
+		this.password = password;
+		this.sdt = sdt;
+		this.username = username;
+		this.hoaDons = hoaDons;
+		this.thongTinBanDats = thongTinBanDats;
+	}
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="IDKH")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idkh;
 
-	@Column(name="Gmail")
 	private String gmail;
 
-	@Column(name="HO_TEN")
+	@Column(name = "HO_TEN")
 	private String hoTen;
 
-	@Column(name="PASSWORD")
 	private String password;
 
-	@Column(name="SDT")
 	private String sdt;
 
-	@Column(name="USERNAME")
 	private String username;
 
-	//bi-directional many-to-one association to HoaDon
-	@OneToMany(mappedBy="khachHang")
+	// bi-directional many-to-one association to HoaDon
+	@OneToMany(mappedBy = "khachHang")
 	private List<HoaDon> hoaDons;
 
-	//bi-directional many-to-one association to ThongTinBanDat
-	@OneToMany(mappedBy="khachHang")
+	// bi-directional many-to-one association to ThongTinBanDat
+	@OneToMany(mappedBy = "khachHang")
 	private List<ThongTinBanDat> thongTinBanDats;
 
 	public KhachHang() {
@@ -136,16 +139,6 @@ public class KhachHang implements Serializable {
 		thongTinBanDat.setKhachHang(null);
 
 		return thongTinBanDat;
-	}
-
-	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
-		super();
-		this.idkh = idkh;
-		this.gmail = gmail;
-		this.hoTen = hoTen;
-		this.password = password;
-		this.sdt = sdt;
-		this.username = username;
 	}
 
 }

@@ -13,16 +13,13 @@ import Dao.DaoBanDatCT;
 import Dao.DaoHDCT;
 import Dao.DaoMenuCT;
 import Dao.DaoTTBD;
-import Dao.DaottBan;
+import Dao.Daottban;
 import model.Bdct;
 import model.Hdct;
 import model.Mnct;
 import model.ThongTinBanDat;
 import model.TtBan;
 
-/**
- * Servlet implementation class menuCTController
- */
 @WebServlet({ "/menuCTController", "/menuCTController/create" })
 public class menuCTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,56 +31,47 @@ public class menuCTController extends HttpServlet {
 	private Bdct bdct;
 	private ThongTinBanDat ttbd;
 	private TtBan ttban;
-	private DaottBan daottb;
+	private Daottban daottb;
 	private Mnct menuct;
 	private List<Mnct> lstmenuct;
 	private DaoMenuCT daomenuct;
 	private DaoHDCT daohdct;
 	private List<Hdct> lstHDCT;
-	
 
 	public menuCTController() {
 		this.ttban = new TtBan();
-		this.daottb = new DaottBan();
+		this.daottb = new Daottban();
 		this.daobdct = new DaoBanDatCT();
 		this.daomenuct = new DaoMenuCT();
 		this.daohdct = new DaoHDCT();
-		this.menuct= new Mnct();
+		this.menuct = new Mnct();
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
-		ttban = this.daottb.findbyid(id);
-		request.setAttribute("items", ttban);
+        int idbdct = Integer.parseInt(request.getParameter("id"));
+		this.bdct = this.daobdct.findbyid(idbdct);
+		this.lstmenuct = daomenuct.findTTban(this.bdct);
+		request.setAttribute("listMNCT", this.lstmenuct);
+		// System.out.print("abcd:"+lstmenuct.get(0).getIdMnct());
 
-		int idbdct = Integer.parseInt(request.getParameter("id"));
-		bdct=this.daobdct.findbyid(idbdct);
-		lstmenuct = daomenuct.findTTban(bdct);
-		request.setAttribute("listMNCT", lstmenuct);
-		System.out.print("abcd:"+lstmenuct.get(0).getIdMnct());
-		
-		menuct= daomenuct.findbyid(idbdct);
-		lstHDCT= daohdct.getall();
-		System.out.print("abc:"+lstHDCT.get(0).getMnct().getIdMnct());
-		request.setAttribute("listHDCT", lstHDCT);		
-		
-		request.setAttribute("bd", bdct);
-
+		// this.menuct= this.daomenuct.findbyid(idbdct);
+		this.lstHDCT = this.daohdct.getall();
+//		System.out.print("abc:"+lstHDCT.get(0).getMnct().getIdMnct());
+		request.setAttribute("listHDCT", this.lstHDCT);
+		request.setAttribute("bd", this.bdct);
 		request.getRequestDispatcher("/views/Staff/MenuChiTietBan.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = request.getRequestURL().toString();
-		
+
 		if (url.contains("create")) {
 			int index = Integer.parseInt(request.getParameter("id"));
 			response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + index);
-			
-		}
+		} 
 	}
 
 }

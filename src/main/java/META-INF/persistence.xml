@@ -5,6 +5,7 @@
 		<class>model.Bdct</class>
 		<class>model.GioHang</class>
 		<class>model.Hdct</class>
+		<class>model.HoaDon</class>
 		<class>model.KhachHang</class>
 		<class>model.LoaiMenu</class>
 		<class>model.Menu</class>
@@ -13,7 +14,6 @@
 		<class>model.Staff</class>
 		<class>model.ThongTinBanDat</class>
 		<class>model.TtBan</class>
-		<class>model.HoaDon</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/duan_1"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
