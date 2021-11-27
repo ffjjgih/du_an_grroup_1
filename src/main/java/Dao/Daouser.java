@@ -170,6 +170,20 @@ public class Daouser extends BaseDao<KhachHang>{
 		return list;
 	}
 	
+	//kiểm tra trong db có khách hàng nào có sdt như input ko
+	public KhachHang finduserbyphone(String phone) {
+		try {
+			this.manager=this.conn.getEntityManager();
+			String hql="SELECT k FROM KhachHang k WHERE sdt=:phone_number";
+			TypedQuery<KhachHang> query=this.manager.createQuery(hql,KhachHang.class);
+			query.setParameter("phone_number", phone);
+			return this.user=query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	@Override
 	public String getdatabase() {
 		return KhachHang.class.getSimpleName();

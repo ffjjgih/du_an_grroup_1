@@ -72,7 +72,7 @@
 		</div>
 		<div class="input-form flex">
 			<div class="form_input">
-				<input type="text" placeholder="Nhập số điện thoại để đặt lịch">
+				<input type="text" name="phone_number" placeholder="Nhập số điện thoại để đặt lịch">
 				<button type="button" class="btn btn-secondary">Đặt lịch</button>
 			</div>
 		</div>
