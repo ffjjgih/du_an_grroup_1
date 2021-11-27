@@ -82,4 +82,14 @@ public class BaiViet implements Serializable {
 		this.staff = staff;
 	}
 
+	public BaiViet(String img, String link, String noi_dung, String ten_tieu_de, Staff staff) {
+		super();
+		this.img = img;
+		this.link = link;
+		this.noi_dung = noi_dung;
+		this.ten_tieu_de = ten_tieu_de;
+		this.staff = staff;
+	}
+	
+
 }

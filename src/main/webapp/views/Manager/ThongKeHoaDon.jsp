@@ -42,7 +42,8 @@
                 <div class="body_left l-3"></div>
                 <div class="right_body l-9">
                     <div class="right_body--header-button">
-                        <button type="button" class="btn btn-warning js-modal-btn">Xem biểu đồ</button>
+                        <button type="button" style="float: left; margin-right: 50px;" class="btn btn-warning js-modal-btn">Xem biểu đồ</button>
+                        <button type="button" class="btn btn-success">Xem thống kê</button>
                     </div>
                     <div class="right_body--content">
                         <table id="t1" class="table" style="text-align: center;">

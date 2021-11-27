@@ -59,3 +59,15 @@
 }
 
 /*modal thanh toán*/
+.spinner{
+    width: 50px;
+    text-align: center;
+    border: none;
+}
+
+.btnPM{
+    width: 30px;
+    border: none;
+    outline: none;
+    background-color: azure;
+}

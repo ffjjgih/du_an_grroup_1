@@ -33,7 +33,7 @@ public class test extends HttpServlet {
 		super();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		request.getRequestDispatcher("./views/Staff/MenuChiTietBan.jsp").forward(request, response);
 	}
 
 	/**

@@ -44,71 +44,120 @@
 
 				<div class="container_right_body l-12">
 					<div class="body_left l-3"></div>
-
 					<div class="body_right l-9">
-						<form action="/QL_Dat_Ban_NH/menuCTController" method="post">
-							<div class="body_right_content">
-								<table class="table" style="text-align: center;">
-									<thead>
-										<tr>
-											<th scope="col">STT</th>
-											<th scope="col">MÃ MÓN</th>
-											<th scope="col">TÊN MÓN</th>
-											<th scope="col">SỐ LƯỢNG</th>
-											<th scope="col">ĐƠN GIÁ</th>
-											<th scope="col">SỐ LƯỢNG ĐÃ LÊN</th>
-											<th scope="col">HỦY MÓN</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${listMNCT }" var="mn">
-											<c:forEach items="${listHDCT }" var="hd">
-
-												 
-												<c:if test="${mn.getIdMnct()==hd.getMnct().getIdMnct() }">
-														<tr>
-															<th scope="row">1</th>
-															<td>${ hd.getMnct().getMenu().getIdmn() }</td>
-															<td>${ hd.getMnct().getMenu().getTen_Mon_An()}</td>
-															<td>${ hd.getMnct().getSo_luong()}</td>
-															<td>${ hd.getMnct().getMenu().getGia()}</td>
-															<td>${ hd.getSo_luong() }</td>
-															<td>
-																<button type="submit" class="btn btn-danger">
-																	<svg xmlns="http://www.w3.org/2000/svg" width="16"
-																		height="16" fill="currentColor"
-																		class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                    <path
-																			d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+						<div class="body_right_content">
+							<table class="table" style="text-align: center;">
+								<thead>
+									<tr>
+                                        <th scope="col">MÃ MÓN</th>
+                                        <th scope="col">TÊN MÓN</th>
+                                        <th scope="col">SỐ LƯỢNG</th>
+                                        <th scope="col">ĐƠN GIÁ</th>
+                                        <th scope="col">SỐ LƯỢNG ĐÃ LÊN</th>
+                                        <th scope="col">THAO TÁC</th>
+                                    </tr>
+								</thead>
+								<tbody>
+									<tr>
+                                        <td>1</td>
+                                        <td>Lẩu thái</td>
+                                        <td>
+                                            <button class="btnPM" id="btnMinus1" onclick="onclickMinus1()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
                                                 </svg>
-																</button>
-															</td>
-														</tr>
-												</c:if>
-											</c:forEach>
-										</c:forEach>
-
-									</tbody>
-								</table>
-							</div>
-
-
-
-							<div class="body_right_footer">
-								<button type="submit" class="btn btn-success"
-									formaction="/QL_Dat_Ban_NH/menuCTController/create?id=${bd.idBdct}">Chọn
-									thêm món</button>
-								<button type="submit" class="btn btn-warning">Thanh
-									toán</button>
-							</div>
-						</form>
+                                            </button>
+                                            <input type="text" name="spinner" min="1" id="spinner1" class="spinner">
+                                            <button class="btnPM" id="btnPlus1" onclick="onclickPlus1()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                        <td>300.000</td>
+                                        <td>
+                                            <button class="btnPM" id="btnMinus2" onclick="onclickMinus2()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                                                </svg>
+                                            </button>
+                                            <input type="text" name="spinner" min="1" id="spinner2" onkeyup="checkSo(3)" class="spinner">
+                                            <button class="btnPM" id="btnPlus2" onclick="onclickPlus2()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" id="btnS" class="btn btn-primary">Xác nhận</button>
+                                        </td>
+                                    </tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="body_right_footer">
+							<button type="button" class="btn btn-success">Chọn thêm
+								món</button>
+						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
 
 	</div>
+
+	<script>
+        function onclickMinus1(num){ 
+            var sl = document.getElementById('spinner1'+num).value;
+            sl--;
+            document.getElementById('spinner1'+num).value = sl;
+            if(sl < 1){
+                document.getElementById('btnMinus1'+num).disabled = true;
+            } else {
+                document.getElementById('btnMinus1'+num).disabled = false;
+            }
+        }
+
+        function onclickPlus1(num){
+            var sl = document.getElementById('spinner1'+num).value;
+            sl++;
+            document.getElementById('spinner1'+num).value = sl;
+            if(sl > 0){
+                document.getElementById('btnMinus1'+num).disabled = false;
+            }
+        }
+
+        function onclickMinus2(num){
+            var sl = document.getElementById('spinner2'+num).value;
+            sl--;
+            document.getElementById('spinner2'+num).value = sl;
+            if(sl < 1){
+                document.getElementById('btnMinus2'+num).disabled = true;
+            } else {
+                document.getElementById('btnMinus2'+num).disabled = false;
+            }
+        }
+
+        function onclickPlus2(num){
+            var sl = document.getElementById('spinner2'+num).value;
+            sl++;
+            document.getElementById('spinner2'+num).value = sl;
+            if(sl > 0){
+                document.getElementById('btnMinus2'+num).disabled = false;
+            }
+        }
+
+        function checkSo(num){
+            var cot1 = document.getElementById('spinner1'+num).value;
+            var cot2 = document.getElementById('spinner2'+num).value;
+            if(cot2 > cot1){
+                alert("Số lượng đã lên vượt quá Số lượng đồ ăn đang có");
+                document.getElementById('btnS'+num).disabled = true;
+            } else {
+                document.getElementById('btnS'+num).disabled = false;
+            }
+        }
+    </script>
 
 	<script src="./views/Staff/js/sidebar.js"></script>
 </body>

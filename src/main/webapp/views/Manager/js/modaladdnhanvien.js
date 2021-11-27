@@ -66,3 +66,17 @@ function checkFormPhone() {
 	}
 }
 
+//check number
+function checkNumber(){
+    var number = document.getElementById('exampleInputQuantity').value;
+    if(number < 0){
+        document.getElementById('exampleInputQuantity').style.borderColor = "red";
+        document.getElementById('quantityHelp').innerHTML = "Số lượng không hợp lệ";
+        document.getElementById('submit').disabled = true;
+    } else {
+        document.getElementById('exampleInputQuantity').style.borderColor = "green";
+        document.getElementById('quantityHelp').innerHTML = "";
+        document.getElementById('submit').disabled = false;
+    }
+}
+
