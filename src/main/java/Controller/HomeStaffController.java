@@ -24,8 +24,7 @@ import model.BaiViet;
 import model.Staff;
 
 @MultipartConfig
-@WebServlet({ "/HomeStaffController", "/HomeStaffController/create", "/HomeStaffController/update/*",
-		"/HomeStaffController/delete"})
+@WebServlet({ "/HomeStaffController", "/HomeStaffController/create", "/HomeStaffController/update/*"})
 public class HomeStaffController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private baiVietDao dao;
@@ -46,11 +45,7 @@ public class HomeStaffController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = request.getRequestURL().toString();
-		if (url.contains("delete")) {
-			delete(request, response);
-			System.out.println("dele");
-		}
+
 		findID(request, response);
 		request.getRequestDispatcher("views/Staff/QuanLyBaiVietStaff.jsp").forward(request, response);
 
@@ -68,11 +63,7 @@ public class HomeStaffController extends HttpServlet {
 			insert(request, response);
 			System.out.println("insert");
 
-		} else if (url.contains("delete")) {
-			delete(request, response);
-			System.out.println("dele");
-
-		} else if (url.contains("update")) {
+		}  else if (url.contains("update")) {
 			int index = Integer.parseInt(request.getParameter("id"));
 			response.sendRedirect(request.getContextPath() + "/UpdateBaiVietController?id=" + index);
 		}
@@ -80,30 +71,19 @@ public class HomeStaffController extends HttpServlet {
 	}
 
 	private void findID(HttpServletRequest request, HttpServletResponse response) {
+		
 		HttpSession session = request.getSession();
 		Staff staff = (Staff) session.getAttribute("acountST");
-		f = daonv.findbyid(1);
+
 		lst = dao.findIDNV(staff);
 		request.setAttribute("listBV", lst);
 	}
 
-	private void delete(HttpServletRequest request, HttpServletResponse response) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		try {
-			this.dao.delete(id);
-			response.sendRedirect(request.getContextPath() + "/HomeStaffController");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	private void insert(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			HttpSession session = request.getSession();
 			Staff staff = (Staff) session.getAttribute("acountST");
-			f = daonv.findbyid(1);
-
 			String realpath = request.getServletContext().getRealPath("/img");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {

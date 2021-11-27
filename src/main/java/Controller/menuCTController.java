@@ -56,30 +56,33 @@ public class menuCTController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		int idbdct = Integer.parseInt(request.getParameter("id"));
+		int hd=Integer.parseInt(request.getParameter("idhd"));
 		
 		bdct=this.daobdct.findbyid(idbdct);
 		lstmenuct = daomenuct.findTTban(bdct);
 		request.setAttribute("listMNCT", lstmenuct);
-		System.out.print("abcd:"+lstmenuct.get(0).getIdMnct());
+		System.out.print("abcd:"+bdct.getIdBdct());
+		request.setAttribute("idhd", hd);
 		
 		menuct= daomenuct.findbyid(idbdct);
 		lstHDCT= daohdct.getall();
-//		System.out.print("abc:"+lstHDCT.get(0).getMnct().getIdMnct());
 		request.setAttribute("listHDCT", lstHDCT);		
 		
 		request.setAttribute("bd", bdct);
 		
-
 		request.getRequestDispatcher("/views/Staff/MenuChiTietBan.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String url = request.getRequestURL().toString();
 		
 		if (url.contains("create")) {
+			
 			int index = Integer.parseInt(request.getParameter("id"));
-			response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + index);
+			int idhd=	Integer.parseInt(request.getParameter("idhd"));
+			response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + index+"&&idhd="+idhd);
 			
 		}
 	}

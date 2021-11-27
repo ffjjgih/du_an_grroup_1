@@ -168,4 +168,21 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 				return null;
 			}
 		}
+		//tim theo ngay  <class: SearchngayQLTTinStaff>
+		public List<ThongTinBanDat> finDate( Date date) {
+			try {
+				String hql= "Select t from ThongTinBanDat t where t.ngayDatBan =:ngay";
+				this.manager=this.conn.getEntityManager();
+				TypedQuery<ThongTinBanDat> query=this.manager.createQuery(hql, ThongTinBanDat.class);
+				query.setParameter("ngay", date);
+				this.lstttbd=query.getResultList();
+				return this.lstttbd;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+			
+			
+		}
 }

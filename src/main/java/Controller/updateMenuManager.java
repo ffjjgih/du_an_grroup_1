@@ -49,8 +49,15 @@ public class updateMenuManager extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try {
+
+			int id = Integer.parseInt(request.getParameter("id"));
+			menu = this.daomenu.findbyid(id);
+			request.setAttribute("menu", menu);
+            request.getRequestDispatcher("/views/Manager/EditFoodManager.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

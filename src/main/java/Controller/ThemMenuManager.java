@@ -27,7 +27,7 @@ import model.Staff;
  * Servlet implementation class ThemMenuManager
  */
 @MultipartConfig
-@WebServlet({"/ThemMenuManager","/ThemMenuManager/delete","/ThemMenuManager/create"})
+@WebServlet({"/ThemMenuManager","/ThemMenuManager/create","/ThemMenuManager/edit"})
 public class ThemMenuManager extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -56,7 +56,7 @@ public class ThemMenuManager extends HttpServlet {
 		
 		String url=request.getRequestURL().toString();
 		if(url.contains("delete")) {
-			delete(request,response);
+
 		}
 		
 		List<LoaiMenu> lstLoai= daoloai.getall();
@@ -71,11 +71,6 @@ public class ThemMenuManager extends HttpServlet {
 	}
 
 
-	private void delete(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=UTF-8");
@@ -83,7 +78,12 @@ public class ThemMenuManager extends HttpServlet {
 		String url=request.getRequestURL().toString();
 		if(url.contains("create")) {
 			insert(request,response);
+			
+		}else if(url.contains("edit")) {
+			int index = Integer.parseInt(request.getParameter("id"));
+			response.sendRedirect(request.getContextPath() + "/updateMenuManager?id=" + index);
 		}
+		
 		
 	}
 
@@ -91,6 +91,7 @@ public class ThemMenuManager extends HttpServlet {
 		try {
 			response.setContentType("text/html;charset=UTF-8");
 			request.setCharacterEncoding("utf-8");
+			
 			String realpath = request.getServletContext().getRealPath("/img");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
@@ -99,16 +100,19 @@ public class ThemMenuManager extends HttpServlet {
 			Part part = request.getPart("chonAnh");
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
 			part.write(Paths.get(realpath.toString(), namefile).toString());
-			menu.setImg(namefile);
+
 
 			String tenmon = request.getParameter("tenMon");
 			float gia =Float.parseFloat(request.getParameter("gia")) ;
 			int loai =Integer.parseInt( request.getParameter("chonLoai"));
+			int trangthai =Integer.parseInt( request.getParameter("trangthai"));
 			loaimenu=daoloai.findbyid(loai);
 
 			menu.setTen_Mon_An(tenmon);
 			menu.setGia(gia);
+			menu.setImg(namefile);
 			menu.setLoaiMenu(loaimenu);
+			menu.setTrangthai(trangthai);
 
 			daomenu.insert(menu);
 

@@ -37,74 +37,60 @@
 					<div class="body_left l-3"></div>
 					<div class="body_right l-9">
 						<div class="body_right-header">
-							<form action="/QL_Dat_Ban_NH/SeacherMenuStaff" method="post">
-								<div class="body_right-header-search">
-									<input oninput="searchByName(this)" type="search" name="txt"
-										id="" value="${txtS }"
-										placeholder="Nhập món ăn muốn tìm kiếm...">
-									<button type="submit" class="btn btn-dark">
-										<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
-											width="16" height="16" fill="currentColor"
-											class="bi bi-search" viewBox="0 0 16 16">
+						<form action="/QL_Dat_Ban_NH/SeacherMenuStaff" method="post">
+							<div class="body_right-header-search">
+								<input oninput="searchByName(this)" type="search" name="txt"
+									id="" value="${txtS }"
+									placeholder="Nhập món ăn muốn tìm kiếm...">
+								<button type="submit" class="btn btn-dark" >
+									<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
+										width="16" height="16" fill="currentColor"
+										class="bi bi-search" viewBox="0 0 16 16">
                                             <path
-												d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+											d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                         </svg>
-										TÌM KIẾM
-									</button>
+									TÌM KIẾM
+								</button>
 
-								</div>
+							</div>
 							</form>
 							<div class="body_right-header-info">
 								<h4>Bàn ${ bdct.idBdct}</h4>
 							</div>
 						</div>
-						<%
-						String err = request.getParameter("error");
-						if ("1".equals(err)) {
-							out.print("<h5 style=\"color: red;\">username or email error </h5>");
-						}
-						%>
-						<%
-						String success = request.getParameter("success");
-						if ("1".equals(success)) {
-							out.print("<h5 style=\"color: red;\">username or email success </h5>");
-						}
-						%>
 
+						<div class="tab-content" id="pills-tabContent">
 
-						<form action="/QL_Dat_Ban_NH/AddMenuCTController" method="post">
-
-							<div class="tab-content" id="pills-tabContent">
-
-								<div class="tab-pane fade show active" id="pills-home"
-									role="tabpanel" aria-labelledby="pills-home-tab">
-
+							<div class="tab-pane fade show active" id="pills-home"
+								role="tabpanel" aria-labelledby="pills-home-tab">
+								<c:forEach items="${monan }" var="items">
 									<div class="body_items">
-										<c:forEach items="${monan }" var="items">
-											<div class="body_right-content--item l-3">
-												<div class="item_img">
-													<img src="./views/Staff/img/${items.img}" alt="" name="img">
-												</div>
-												<div class="item_title">
-													<p>${items.ten_Mon_An }</p>
-												</div>
 
-												<input type="number" name="s_l" id="s_l">
-
-												<div class="item_booking">
-													<button type="submit" class="btn btn-primary"
-														formaction="/QL_Dat_Ban_NH/AddMenuCTController/create?idmn=${items.idmn }&&id=${idbdct}">Thêm
-														món</button>
-												</div>
+										<div class="body_right-content--item l-3">
+											<div class="item_img">
+												<img src="/QL_Dat_Ban_NH/img/${items.img}" alt="" name="img"
+													width="250" height="250">
 											</div>
-										</c:forEach>
+											<div class="item_title">
+												<p>${items.ten_Mon_An }</p>
+											</div>
+											<div>
+												<input type="number" name="s_l" id="so_luong${items.idmn }">
+											</div>
+											<div class="item_booking">
+												<button type="submit" class="btn btn-primary"
+													onclick="insertmnct(${items.idmn},${idbdct},${idhd})">
+													Thêm món</button>
+											</div>
+										</div>
+
 									</div>
-
-								</div>
-
+								</c:forEach>
 							</div>
 
-						</form>
+						</div>
+
+
 					</div>
 				</div>
 
@@ -136,6 +122,15 @@
 					//Do Something to handle error
 				}
 			});
+		}
+		
+		function  insertmnct(idmn,idbdct,idhd) {
+			var so_luong=document.getElementById('so_luong'+idmn).value;
+			if (so_luong<=0||so_luong==null||so_luong>100) {
+				alert("Số lượng phải lớn hơn 0, khác null và không được quá 100");
+				return;
+			}
+			window.location.href='/QL_Dat_Ban_NH/AddMenuCT?idmn='+idmn+"&&id="+idbdct+"&&idhd="+idhd+"&&so_luong="+so_luong;
 		}
 	</script>
 </body>

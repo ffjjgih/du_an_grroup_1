@@ -26,7 +26,7 @@ import model.Mnct;
 import model.Staff;
 
 
-@WebServlet({"/AddMenuCTController","/AddMenuCTController/create"})
+@WebServlet({"/AddMenuCTController","/AddMenuCTController/createe"})
 public class AddMenuCTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -64,10 +64,12 @@ public class AddMenuCTController extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		this.bdct = this.daobdct.findbyid(id);
+		int idhd= Integer.parseInt(request.getParameter("idhd"));
 		
 		request.setAttribute("bdct", this.bdct);
 		request.setAttribute("idbdct", id);
 		request.setAttribute("idmn", menu);
+		request.setAttribute("idhd", idhd);
 		
 		List<Menu> lstmenu= daomenu.getall();
 		request.setAttribute("monan", lstmenu);
@@ -78,55 +80,7 @@ public class AddMenuCTController extends HttpServlet {
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url= request.getRequestURL().toString();
-		if(url.contains("create")) {
-			insert(request, response);
-		}
-		
 		
 	}
 
-	private void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int idmenu= Integer.parseInt(request.getParameter("idmn"));
-		this.menu= daomenu.findbyid(idmenu);
-		int id = Integer.parseInt(request.getParameter("id"));
-		this.bdct = this.daobdct.findbyid(id);
-		int sl= Integer.parseInt(request.getParameter("s_l"));
-
-		//insert menuct
-		mnct.setBdct(bdct);
-		mnct.setMenu(menu);
-		mnct.setSo_luong(sl);
-		daomnct.insert(mnct);
-
-		//insert hodon
-		this.hd.setKhachHang(bdct.getThongTinBanDat().getKhachHang());
-		this.hd.setKhuyen_mai(0);	
-		HttpSession session = request.getSession();
-		Staff staff = (Staff) session.getAttribute("acountST");
-//		Staff s=this.daostaff.findbyid(1);
-		this.hd.setStaff(staff);
-		this.hd.setThongTinBanDat(bdct.getThongTinBanDat());
-		long millis=System.currentTimeMillis();   
-		java.sql.Date date=new java.sql.Date(millis);
-		this.hd.setThoi_gian(date);
-		this.hd.setTong_Tien(0);
-		this.daohd.insert(hd);
-		
-		//insert hdct
-		Mnct m=this.daomnct.findmnctbybdct(bdct);
-		HoaDon h=this.daohd.findHDbyIDkh(bdct.getThongTinBanDat());
-		this.hdtc.setMnct(m);
-		this.hdtc.setSo_luong(0);
-		this.hdtc.setThanh_Tien(0);
-		this.hdtc.setHoaDon(h);
-		this.daohdct.insert(hdtc);
-		
-		response.sendRedirect(request.getContextPath()+"/AddMenuCTController?idmn="+idmenu+"&&id="+id + "&&success=1 ");
-		
-	}
-
-}
 

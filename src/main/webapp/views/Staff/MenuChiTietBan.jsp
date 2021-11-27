@@ -96,7 +96,7 @@
 
 							<div class="body_right_footer">
 								<button type="submit" class="btn btn-success"
-									formaction="/QL_Dat_Ban_NH/menuCTController/create?id=${bd.idBdct}">Chọn
+									formaction="/QL_Dat_Ban_NH/menuCTController/create?id=${bd.idBdct}&&idhd=${idhd}">Chọn
 									thêm món</button>
 								<button type="submit" class="btn btn-warning">Thanh
 									toán</button>
