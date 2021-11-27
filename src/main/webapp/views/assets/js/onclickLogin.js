@@ -38,3 +38,24 @@ btnOffFG.addEventListener('click', hideModalFG);
 modalContainerFG.addEventListener('click', function (event) {
     event.stopPropagation();
 })
+
+// guest
+const btnOnGuest = document.querySelector('.js_btnOpen_guest');
+const btnOffGuest = document.querySelector('.exitGuest');
+const modalGuest= document.querySelector('.js_modal_guest');
+const modalContainerGuest = document.querySelector('.js_modal_guest_container');
+
+function showModalGuest() {
+    modalGuest.classList.add('open');
+}
+
+function hideModalGuest() {
+    modalGuest.classList.remove('open');
+}
+
+btnOnGuest.addEventListener('click', showModalGuest);
+btnOffGuest.addEventListener('click', hideModalGuest);
+modalContainerGuest.addEventListener('click', function (event) {
+    event.stopPropagation();
+})
+

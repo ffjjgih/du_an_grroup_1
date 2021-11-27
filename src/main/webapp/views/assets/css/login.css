@@ -31,6 +31,56 @@
     margin-left: 350px;
 }
 
+/*modal guest*/
+.modal_guest{
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+	z-index: 5;
+}
+
+.modal_guest.open{
+	display: flex;
+}
+
+.modal_guest_container{
+	width: 550px;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    animation: showModalFadeIn ease .6s;
+	margin: 0 auto;
+	margin-top: 5%;
+	padding: 10px;
+}
+
+.modal_guest_container--header{
+	float: left;
+	width: 100%;
+	height: auto;
+}
+
+.exitGuest{
+	float: right;
+	margin: 10px;
+}
+
+.exitGuest:hover{
+	cursor: pointer;
+	color: #FF416C;
+}
+
+.error{
+	color: tomato;
+}
+
+
 /*modal start*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 

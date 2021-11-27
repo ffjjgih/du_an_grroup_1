@@ -1,20 +1,18 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Time;
-
 import javax.persistence.*;
-
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
 
 /**
- * The persistent class for the Thong_Tin_Ban_Dat database table.
+ * The persistent class for the thong_tin_ban_dat database table.
  * 
  */
 @Entity
-@Table(name="Thong_Tin_Ban_Dat")
+@Table(name="thong_tin_ban_dat")
 @NamedQuery(name="ThongTinBanDat.findAll", query="SELECT t FROM ThongTinBanDat t")
 public class ThongTinBanDat implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +22,6 @@ public class ThongTinBanDat implements Serializable {
 	@Column(name="ID_BD")
 	private int idBd;
 
-	@Column(name="Ghi_Chu")
 	private String ghi_Chu;
 
 	@Column(name="gio_dat_ban")
@@ -34,10 +31,8 @@ public class ThongTinBanDat implements Serializable {
 	@Column(name="ngay_dat_ban")
 	private Date ngayDatBan;
 
-	@Column(name="So_Luong_Nguoi")
 	private int so_Luong_Nguoi;
 
-	@Column(name="Trang_Thai")
 	private String trang_Thai;
 
 	//bi-directional many-to-one association to Bdct
@@ -180,6 +175,13 @@ public class ThongTinBanDat implements Serializable {
 
 	public void setKhachHang(KhachHang khachHang) {
 		this.khachHang = khachHang;
+	}
+
+	@Override
+	public String toString() {
+		return "ThongTinBanDat [idBd=" + idBd + ", ghi_Chu=" + ghi_Chu + ", gioDatBan=" + gioDatBan + ", ngayDatBan="
+				+ ngayDatBan + ", so_Luong_Nguoi=" + so_Luong_Nguoi + ", trang_Thai=" + trang_Thai + ", bdcts=" + bdcts
+				+ ", gioHangs=" + gioHangs + ", hoaDons=" + hoaDons + ", khachHang=" + khachHang + "]";
 	}
 
 }

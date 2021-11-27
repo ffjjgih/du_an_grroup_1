@@ -45,7 +45,7 @@
                                 </svg>
                                 
                             </button>
-                            <button type="submit" class="btn btn-danger" onclick="showMess()" formaction="HomeStaffController/delete?id=${ items.IDbv }">
+                            <button type="button" class="btn btn-danger" onclick="showMess(${ items.IDbv})" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                 </svg>
@@ -64,14 +64,14 @@
 
     <script src="./views/Staff/js/modaladdpost.js"></script>
     <script src="./views/Staff/js/sidebar.js"></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        function showMess(){
-            var option = confirm("Bạn có chắc muốn xóa bài viết này không?");
-            if(option === true){
-                alert("Đã xóa");
-            } else{
-                alert("Không xóa");
-            }
+        function showMess(id){
+            var ques=confirm('do want to delete???');
+			if(ques){
+				alert('delete succsessfull');
+				window.location.href='/QL_Dat_Ban_NH/DeleteBaiViet?id='+id;
+			}
         }
 
         function fileValid(){
@@ -88,6 +88,24 @@
                 document.getElementById('exampleInputImg').style.borderColor = "green";
             }
         }
+		function searchByName(param) {
+			var txtSearch = param.value;
+			$.ajax({
+				url : "QL_Dat_Ban_NH/SeacherMenuStaff",
+				type : "get", //send it through get method
+				data : {
+					name : txtSearch
+				},
+				success : function(data) {
+					var row = document.getElementById("content");
+					row.innerHTML = data;
+				},
+				error : function(xhr) {
+					//Do Something to handle error
+				}
+			});
+		}
+
     </script>
 </body>
 

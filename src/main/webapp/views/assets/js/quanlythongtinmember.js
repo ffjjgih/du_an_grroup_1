@@ -63,6 +63,7 @@ var check = function(){
     }
 }
 
+
 // hiển thị thông báo
 var urlName = location.href;
 

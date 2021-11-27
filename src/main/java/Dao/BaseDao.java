@@ -23,6 +23,7 @@ public T insert(T t) {
 	try {
 		manager=this.conn.getEntityManager();
 		transaction=manager.getTransaction();
+		System.out.println("abcxyzedc");
 		transaction.begin();
 		manager.persist(t);
 		transaction.commit();

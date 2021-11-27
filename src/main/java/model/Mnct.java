@@ -6,11 +6,10 @@ import java.util.List;
 
 
 /**
- * The persistent class for the MNCT database table.
+ * The persistent class for the mnct database table.
  * 
  */
 @Entity
-@Table(name="MNCT")
 @NamedQuery(name="Mnct.findAll", query="SELECT m FROM Mnct m")
 public class Mnct implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,7 +19,6 @@ public class Mnct implements Serializable {
 	@Column(name="ID_MNCT")
 	private int idMnct;
 
-	@Column(name="So_luong")
 	private int so_luong;
 
 	//bi-directional many-to-one association to Hdct
@@ -31,15 +29,15 @@ public class Mnct implements Serializable {
 	@OneToMany(mappedBy="mnct")
 	private List<MenuHuy> menuHuys;
 
-	//bi-directional many-to-one association to Menu
-	@ManyToOne
-	@JoinColumn(name="ID_MN")
-	private Menu menu;
-
 	//bi-directional many-to-one association to Bdct
 	@ManyToOne
 	@JoinColumn(name="ID_BDCT")
 	private Bdct bdct;
+
+	//bi-directional many-to-one association to Menu
+	@ManyToOne
+	@JoinColumn(name="ID_MN")
+	private Menu menu;
 
 	public Mnct() {
 	}
@@ -104,6 +102,14 @@ public class Mnct implements Serializable {
 		return menuHuy;
 	}
 
+	public Bdct getBdct() {
+		return this.bdct;
+	}
+
+	public void setBdct(Bdct bdct) {
+		this.bdct = bdct;
+	}
+
 	public Menu getMenu() {
 		return this.menu;
 	}
@@ -112,12 +118,14 @@ public class Mnct implements Serializable {
 		this.menu = menu;
 	}
 
-	public Bdct getBdct() {
-		return this.bdct;
 	}
 
-	public void setBdct(Bdct bdct) {
-		this.bdct = bdct;
+	public Menu getMenu() {
+		return this.menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
 
 }

@@ -18,11 +18,13 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 	private Connectjpa conn;
 	private EntityManager manager;
 	private EntityTransaction transaction;
-
-	public DaoHoadon() {
-		this.hoadon = new HoaDon();
-		this.lsthd = new ArrayList<HoaDon>();
-		this.conn = new Connectjpa();
+	private HoaDon hd;
+	
+	public DaoHoadon(){
+		this.hoadon=new HoaDon();
+		this.lsthd=new ArrayList<HoaDon>();
+		this.conn=new Connectjpa();
+		this.hd=new HoaDon();
 	}
 
 	@Override
@@ -51,6 +53,20 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 
 	}
 
+	public HoaDon findHDbyIDkh(ThongTinBanDat t){
+		try {
+			String hql = "SELECT h FROM HoaDon h Where h.thongTinBanDat=:id_bd ORDER BY h.idhd desc";
+			this.manager = this.conn.getEntityManager();
+			TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
+			query.setParameter("id_bd", t);
+			this.hd = query.getResultList().get(0);
+			return this.hd;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	public HoaDon sortIDbyHD() {
 		String hql = "SELECT h FROM HoaDon h ORDER BY idhd DESC";
 		this.manager = this.conn.getEntityManager();
@@ -58,7 +74,4 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 		this.hoadon = query.getResultList().get(0);
 		return this.hoadon;
 	}
-	
-	
-
 }

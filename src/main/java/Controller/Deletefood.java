@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import model.GioHang;
 
-/**
- * Servlet implementation class Deletefood
- */
 @WebServlet("/Deletefood")
 public class Deletefood extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,9 +20,6 @@ public class Deletefood extends HttpServlet {
         this.dsgiohang=new ArrayList();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idcart=Integer.parseInt(request.getParameter("id"));
 		HttpSession session=request.getSession();

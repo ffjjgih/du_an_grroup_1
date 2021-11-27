@@ -90,7 +90,7 @@ public class Daouser extends BaseDao<KhachHang>{
 		return user;
 	}
 	
-
+//quên mật khẩu
 	public List<KhachHang> findEmail(String username, String gmail) {
 		KhachHang kh = new KhachHang();
 		try {
