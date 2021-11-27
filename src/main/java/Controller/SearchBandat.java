@@ -9,27 +9,39 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.DaoBanDatCT;
+import Dao.DaoHoadon;
 import Dao.Daottban;
 import Dao.NhanVienDao;
 import Dao.baiVietDao;
 import model.BaiViet;
 import model.Bdct;
+import model.HoaDon;
 import model.Staff;
 import model.TtBan;
 
-@WebServlet("/BanDat")
+/**
+ * Servlet implementation class SearchBaiVietController
+ */
+@WebServlet({"/BanDat","/BanDat/xacnhan"})
+import model.Staff;
+import model.TtBan;
+
 public class SearchBandat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Daottban dao;
 	private TtBan tt;
 	private NhanVienDao daonv;
-
-	private List<TtBan> lst;
+	private Bdct bdct;
 	private Staff f;
-	private Bdct bdct ;
+	private List<Bdct> lstbdct;
+	private DaoBanDatCT daobdct;
+    private DaoHoadon daohd;
+	private List<TtBan> lst;
+	private HoaDon hd;
 	private DaoBanDatCT dao_BanDatCT;
 	private List<Bdct> list_Bdct ;
 
@@ -58,10 +70,6 @@ public class SearchBandat extends HttpServlet {
 		}else {	
 			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" +this.bdct.getIdBdct());
 		}
-        	
-		
-//		request.setAttribute("search", idSearch);
-		//response.sendRedirect(request.getContextPath() + "/QuanLiMenuController?idSearch="+idSearch );
 	}
 
 }

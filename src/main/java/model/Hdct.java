@@ -70,5 +70,13 @@ public class Hdct implements Serializable {
 	public void setMnct(Mnct mnct) {
 		this.mnct = mnct;
 	}
+	
+	public Hdct( int so_luong, double thanh_Tien, HoaDon hoaDon, Mnct mnct) {
+		super();
+		this.so_luong = so_luong;
+		this.thanh_Tien = thanh_Tien;
+		this.hoaDon = hoaDon;
+		this.mnct = mnct;
+	}
 
 }

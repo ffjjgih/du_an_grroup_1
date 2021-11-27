@@ -114,7 +114,7 @@ public class WriteExcel {
 			// Giá»� ra
 			Row row5 = sheet.createRow(10);
 			Cell ce5 = row5.createCell(1);
-			ce5.setCellValue("Giá»� Ra");
+			ce5.setCellValue("Giá Ra");
 			ce5.setCellStyle(style1);
 			Cell ce55 = row5.createCell(5);
 			ce55.setCellValue(this.hd.getThoi_gian().toString());

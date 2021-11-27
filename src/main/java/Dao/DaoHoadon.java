@@ -19,14 +19,12 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 	private EntityManager manager;
 	private EntityTransaction transaction;
 	private HoaDon hd;
-	public DaoHoadon() {
+	
+	public DaoHoadon(){
 		this.hoadon=new HoaDon();
 		this.lsthd=new ArrayList<HoaDon>();
 		this.conn=new Connectjpa();
 		this.hd=new HoaDon();
-		this.hoadon = new HoaDon();
-		this.lsthd = new ArrayList<HoaDon>();
-		this.conn = new Connectjpa();
 	}
 
 	@Override

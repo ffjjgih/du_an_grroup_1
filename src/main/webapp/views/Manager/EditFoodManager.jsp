@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,32 +30,31 @@
                 <div class="right_body">
                     <div class="body_container">
                         <h3>Chỉnh sửa thông tin món</h3>
-                        <form>
+                        <form action="" method="post">
                             <div class="mb-3">
                                 <input type="image" src="" style="width: 230px; height: 200px;" class="form-control" id="exampleImg">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputImg" class="form-label">Chọn ảnh</label>
-                                <input required type="file" class="form-control" id="exampleInputImg" onchange="return fileValid()" accept="image/png, image/gif, image/jpeg"/>
+                                <input required type="file" value="${menu.img }" name="img" class="form-control" id="exampleInputImg" onchange="return fileValid()" accept="image/png, image/gif, image/jpeg"/>
                                 <label for="" class="error"></label>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputTitle" class="form-label">Tên món ăn</label>
-                                <input required type="text" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp">
+                                <input required type="text" value="${menu.ten_Mon_An }" name="ten" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp">
                                 <label for="" class="error" style="color: red;"></label>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputTitle" class="form-label">Giá món</label>
-                                <input required type="text" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp">
+                                <input required type="text" name="gia" value="${menu.gia }" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp">
                                 <label for="" class="error" style="color: red;"></label>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputTitle" class="form-label">Loại đồ</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Mời chọn loại đồ</option>
-                                    <option value="1">Thịt</option>
-                                    <option value="2">Cá</option>
-                                    <option value="3">Tôm</option>
+                                <select class="form-select" aria-label="Default select example" name="chonLoai">
+                                      <c:forEach var="o" items="${listCC }">
+                                      <option value="${o.idloai }">${o.tenLoai }</option>
+                                      </c:forEach>
                                 </select>
                             </div>
                             <div class="mb-3">

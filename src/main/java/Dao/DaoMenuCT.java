@@ -34,7 +34,8 @@ public class DaoMenuCT extends BaseDao<Mnct>{
 		return Mnct.class.getSimpleName();
 	}
    
-	//tÃ¬m bÃ n Ä‘áº·t chi tiáº¿t qua menu chi tiáº¿t trong servlet AddmenuCTController
+	//tim bdct thong qua menuct <class : menuCTController>
+
 	public List<Mnct> findTTban(Bdct bdct){
 		try {
 				this.manager=this.conn.getEntityManager();
@@ -50,7 +51,7 @@ public class DaoMenuCT extends BaseDao<Mnct>{
 		return lstmnct;
 	}
 	
-	//tÃ¬m mnct táº¡o gáº§n nháº¥t cá»§a bÃ n Ä‘áº·t chi tiáº¿t
+	//tim bdct gan nhat cua menuct< class: AddMenuCT>
 	public Mnct findmnctbybdct(Bdct b) {
 		try {
 			this.manager=this.conn.getEntityManager();

@@ -29,11 +29,21 @@
 			<jsp:include page="Sidebar.jsp"></jsp:include>
 
 			<div class="container_right l-12">
+
 				<form action="/QL_Dat_Ban_NH/BanDat" method="post">
 					<div class="right_header">
+						<div class="container_right_footer">
+						<c:if test="${hd==null }">
+							<button type="submit" class="btn btn-success" formaction="/QL_Dat_Ban_NH/QuanLiMenuController/Confirm?id=${ttbd.idBd }">Xác nhận khách đến</button>
+						</c:if>
+						<c:if test="${hd!=null }">	
+							<button type="button" class="btn btn-warning">Thanh toán</button>
+						</c:if>
+						</div>
 						<div class="header_search">
-							<input type="text" name="txt" id="" placeholder="Nhập mã bàn..."
-								value="${search }">
+							<input oninput="searchByName(this)" type="search" name="txt"
+								id="" value="${txtS }"
+								placeholder="Nhập mã bàn muốn tìm kiếm...">
 							<button type="submit" class="btn btn-dark">
 								<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
 									width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -51,18 +61,33 @@
 				<div class="container_right_body l-12">
 					<div class="body_left l-3"></div>
 					<div class="body_right l-9">
-						<h3>Số lượng bàn đang sử dụng: ${bv } bàn</h3>							
-							<c:forEach var="items" items="${ListBDCT }">
+						<h3>Số lượng bàn đang sử dụng: ${bv } bàn</h3>
+						<c:forEach var="items" items="${ListBDCT }">
+							<c:if test="${hd==null }">
 								<div class="content_button l-5">
-									<a href="">
-										<button type="submit" class="btn btn-primary buttonTable"
-											formaction="QuanLiMenuController/bdct?idbdct=${items.idBdct} ">
-											Bàn ${items.ttBan.IDBan} <br> Số người:
-											${items.thongTinBanDat.so_Luong_Nguoi}
-										</button>
-									</a>
-								</div>
-							</c:forEach>				
+								<a href="">
+									<button type="submit" class="btn btn-primary buttonTable"
+										formaction="QuanLiMenuController/bdct?idbdct=${items.idBdct} " disabled>
+										Bàn ${items.ttBan.IDBan} <br> Số người:
+										${items.thongTinBanDat.so_Luong_Nguoi}
+									</button>
+								</a>
+							</div>
+							</c:if>
+							<c:if test="${hd!=null }">
+								<div class="content_button l-5">
+								<a href="">
+									<button type="submit" class="btn btn-primary buttonTable"
+										formaction="QuanLiMenuController/bdct?idbdct=${items.idBdct}&&idhd=${hd.idhd } ">
+										Bàn ${items.ttBan.IDBan} <br> Số người:
+										${items.thongTinBanDat.so_Luong_Nguoi}
+									</button>
+								</a>
+							</div>
+							</c:if>
+							
+						</c:forEach>
+
 					</div>
 				</div>
 			</form>

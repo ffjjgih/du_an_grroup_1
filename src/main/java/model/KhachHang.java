@@ -140,7 +140,6 @@ public class KhachHang implements Serializable {
 
 		return thongTinBanDat;
 	}
-
 	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
 		super();
 		this.idkh = idkh;

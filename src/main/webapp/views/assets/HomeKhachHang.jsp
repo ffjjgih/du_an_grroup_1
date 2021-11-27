@@ -37,7 +37,7 @@
 				<c:forEach var="items" items="${baiviet }">
 					<div class="container_content col">
 						<div class="container_content-post">
-							<img src="./views/assets/imgs/${ items.img }"
+							<img src="/QL_Dat_Ban_NH/img/${ items.img }"
 								style="width: 298px; height: 240px;" alt="">
 							<p style="margin-top: 10px; font-size: 20px; font-weight: 500;">${items.ten_tieu_de }</p>
 							<p>${items.noi_dung }</p>

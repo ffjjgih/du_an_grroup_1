@@ -42,10 +42,8 @@ public class UpdateBaiVietController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
-		try {
 
+		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			bv = this.dao.findbyid(id);
 			request.setAttribute("bv", bv);
@@ -53,6 +51,7 @@ public class UpdateBaiVietController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		request.getRequestDispatcher("views/Staff/EditBaiViet.jsp").forward(request, response);
 
 	}

@@ -65,5 +65,18 @@ public class DaoMenu extends BaseDao<Menu>{
 		return this.lstmenu;
 	}
 	
+	//xóa menu
+	 public void deleteMenu(Menu t){
+		 this.manager=this.conn.getEntityManager();
+			this.transaction=this.manager.getTransaction();
+		try {
+			transaction.begin();
+			manager.remove(t);
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+	}
 
 }

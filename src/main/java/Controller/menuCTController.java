@@ -20,6 +20,9 @@ import model.Mnct;
 import model.ThongTinBanDat;
 import model.TtBan;
 
+/**
+ * Servlet implementation class menuCTController
+ */
 @WebServlet({ "/menuCTController", "/menuCTController/create" })
 public class menuCTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +40,7 @@ public class menuCTController extends HttpServlet {
 	private DaoMenuCT daomenuct;
 	private DaoHDCT daohdct;
 	private List<Hdct> lstHDCT;
+	
 
 	public menuCTController() {
 		this.ttban = new TtBan();
@@ -44,34 +48,43 @@ public class menuCTController extends HttpServlet {
 		this.daobdct = new DaoBanDatCT();
 		this.daomenuct = new DaoMenuCT();
 		this.daohdct = new DaoHDCT();
-		this.menuct = new Mnct();
+		this.menuct= new Mnct();
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        int idbdct = Integer.parseInt(request.getParameter("id"));
-		this.bdct = this.daobdct.findbyid(idbdct);
-		this.lstmenuct = daomenuct.findTTban(this.bdct);
-		request.setAttribute("listMNCT", this.lstmenuct);
-		// System.out.print("abcd:"+lstmenuct.get(0).getIdMnct());
-
-		// this.menuct= this.daomenuct.findbyid(idbdct);
-		this.lstHDCT = this.daohdct.getall();
-//		System.out.print("abc:"+lstHDCT.get(0).getMnct().getIdMnct());
-		request.setAttribute("listHDCT", this.lstHDCT);
-		request.setAttribute("bd", this.bdct);
+		
+		int idbdct = Integer.parseInt(request.getParameter("id"));
+		int hd=Integer.parseInt(request.getParameter("idhd"));
+		
+		bdct=this.daobdct.findbyid(idbdct);
+		lstmenuct = daomenuct.findTTban(bdct);
+		request.setAttribute("listMNCT", lstmenuct);
+		System.out.print("abcd:"+bdct.getIdBdct());
+		request.setAttribute("idhd", hd);
+		
+		menuct= daomenuct.findbyid(idbdct);
+		lstHDCT= daohdct.getall();
+		request.setAttribute("listHDCT", lstHDCT);		
+		
+		request.setAttribute("bd", bdct);
+		
 		request.getRequestDispatcher("/views/Staff/MenuChiTietBan.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String url = request.getRequestURL().toString();
-
+		
 		if (url.contains("create")) {
+			
 			int index = Integer.parseInt(request.getParameter("id"));
-			response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + index);
-		} 
+			int idhd=	Integer.parseInt(request.getParameter("idhd"));
+			response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + index+"&&idhd="+idhd);
+			
+		}
 	}
 
 }
