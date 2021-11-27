@@ -41,103 +41,49 @@
 							<table class="table" style="text-align: center;">
 								<thead>
 									<tr>
-										<th scope="col">STT</th>
-										<th scope="col">MÃ MÓN</th>
-										<th scope="col">TÊN MÓN</th>
-										<th scope="col">SỐ LƯỢNG</th>
-										<th scope="col">ĐƠN GIÁ</th>
-										<th scope="col">SỐ LƯỢNG ĐÃ LÊN</th>
-										<th scope="col">HỦY MÓN</th>
-									</tr>
+                                        <th scope="col">MÃ MÓN</th>
+                                        <th scope="col">TÊN MÓN</th>
+                                        <th scope="col">SỐ LƯỢNG</th>
+                                        <th scope="col">ĐƠN GIÁ</th>
+                                        <th scope="col">SỐ LƯỢNG ĐÃ LÊN</th>
+                                        <th scope="col">THAO TÁC</th>
+                                    </tr>
 								</thead>
 								<tbody>
 									<tr>
-										<th scope="row">1</th>
-										<td>1</td>
-										<td>Lẩu thái</td>
-										<td>2</td>
-										<td>300.000</td>
-										<td>1</td>
-										<td>
-											<button type="button" class="btn btn-warning"
-												onclick="alertThemMon()">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													style="color: white;" width="16" height="16"
-													fill="currentColor" class="bi bi-pencil-fill"
-													viewBox="0 0 16 16">
-                                                    <path
-														d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
-                                                  </svg>
-											</button>
-											<button type="button" class="btn btn-danger"
-												onclick="alertXoaMon()">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16"
-													height="16" fill="currentColor" class="bi bi-trash-fill"
-													viewBox="0 0 16 16">
-                                                    <path
-														d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                        <td>1</td>
+                                        <td>Lẩu thái</td>
+                                        <td>
+                                            <button class="btnPM" id="btnMinus1" onclick="onclickMinus1()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
                                                 </svg>
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>1</td>
-										<td>Lẩu thái</td>
-										<td>2</td>
-										<td>300.000</td>
-										<td>1</td>
-										<td>
-											<button type="button" class="btn btn-warning"
-												onclick="alertThemMon()">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													style="color: white;" width="16" height="16"
-													fill="currentColor" class="bi bi-pencil-fill"
-													viewBox="0 0 16 16">
-                                                    <path
-														d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
-                                                  </svg>
-											</button>
-											<button type="button" class="btn btn-danger"
-												onclick="alertXoaMon()">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16"
-													height="16" fill="currentColor" class="bi bi-trash-fill"
-													viewBox="0 0 16 16">
-                                                    <path
-														d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                            </button>
+                                            <input type="text" name="spinner" min="1" id="spinner1" class="spinner">
+                                            <button class="btnPM" id="btnPlus1" onclick="onclickPlus1()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                                                 </svg>
-											</button>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>1</td>
-										<td>Lẩu thái</td>
-										<td>2</td>
-										<td>300.000</td>
-										<td>1</td>
-										<td>
-											<button type="button" class="btn btn-warning"
-												onclick="alertThemMon()">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													style="color: white;" width="16" height="16"
-													fill="currentColor" class="bi bi-pencil-fill"
-													viewBox="0 0 16 16">
-                                                    <path
-														d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
-                                                  </svg>
-											</button>
-											<button type="button" class="btn btn-danger"
-												onclick="alertXoaMon()">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16"
-													height="16" fill="currentColor" class="bi bi-trash-fill"
-													viewBox="0 0 16 16">
-                                                    <path
-														d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                            </button>
+                                        </td>
+                                        <td>300.000</td>
+                                        <td>
+                                            <button class="btnPM" id="btnMinus2" onclick="onclickMinus2()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
                                                 </svg>
-											</button>
-										</td>
-									</tr>
+                                            </button>
+                                            <input type="text" name="spinner" min="1" id="spinner2" onkeyup="checkSo(3)" class="spinner">
+                                            <button class="btnPM" id="btnPlus2" onclick="onclickPlus2()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" id="btnS" class="btn btn-primary">Xác nhận</button>
+                                        </td>
+                                    </tr>
 								</tbody>
 							</table>
 						</div>
@@ -153,34 +99,57 @@
 	</div>
 
 	<script>
-		function alertThemMon() {
-			let sl = prompt("Nhập số lượng món muốn thêm:", "1");
+        function onclickMinus1(num){ 
+            var sl = document.getElementById('spinner1'+num).value;
+            sl--;
+            document.getElementById('spinner1'+num).value = sl;
+            if(sl < 1){
+                document.getElementById('btnMinus1'+num).disabled = true;
+            } else {
+                document.getElementById('btnMinus1'+num).disabled = false;
+            }
+        }
 
-			if (sl == null || sl == "") {
-				console.log("Nothing");
-			} else if (sl < 0) {
-				alert("Số lượng không được để âm");
-			} else if (isNaN(sl)) {
-				alert("Không đúng định dạng");
-			} else {
-				alert("Bạn nhập số " + sl);
-			}
-		}
+        function onclickPlus1(num){
+            var sl = document.getElementById('spinner1'+num).value;
+            sl++;
+            document.getElementById('spinner1'+num).value = sl;
+            if(sl > 0){
+                document.getElementById('btnMinus1'+num).disabled = false;
+            }
+        }
 
-		function alertXoaMon() {
-			let sl = prompt("Nhập số lượng món muốn xóa:", "1");
+        function onclickMinus2(num){
+            var sl = document.getElementById('spinner2'+num).value;
+            sl--;
+            document.getElementById('spinner2'+num).value = sl;
+            if(sl < 1){
+                document.getElementById('btnMinus2'+num).disabled = true;
+            } else {
+                document.getElementById('btnMinus2'+num).disabled = false;
+            }
+        }
 
-			if (sl == null || sl == "") {
-				console.log("Nothing");
-			} else if (sl < 0) {
-				alert("Số lượng không được để âm");
-			} else if (isNaN(sl)) {
-				alert("Không đúng định dạng");
-			} else {
-				alert("Bạn nhập số " + sl);
-			}
-		}
-	</script>
+        function onclickPlus2(num){
+            var sl = document.getElementById('spinner2'+num).value;
+            sl++;
+            document.getElementById('spinner2'+num).value = sl;
+            if(sl > 0){
+                document.getElementById('btnMinus2'+num).disabled = false;
+            }
+        }
+
+        function checkSo(num){
+            var cot1 = document.getElementById('spinner1'+num).value;
+            var cot2 = document.getElementById('spinner2'+num).value;
+            if(cot2 > cot1){
+                alert("Số lượng đã lên vượt quá Số lượng đồ ăn đang có");
+                document.getElementById('btnS'+num).disabled = true;
+            } else {
+                document.getElementById('btnS'+num).disabled = false;
+            }
+        }
+    </script>
 	<script src="./views/Staff/js/sidebar.js"></script>
 </body>
 
