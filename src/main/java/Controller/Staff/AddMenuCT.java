@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ import model.Menu;
 import model.Mnct;
 
 /**
- * thêm thông báo thành công
+ * thï¿½m thï¿½ng bï¿½o thï¿½nh cï¿½ng
  */
 @WebServlet("/AddMenuCT")
 public class AddMenuCT extends HttpServlet {

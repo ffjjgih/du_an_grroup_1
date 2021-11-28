@@ -37,7 +37,7 @@
 							<button type="submit" class="btn btn-success" formaction="/QL_Dat_Ban_NH/QuanLiMenuController/Confirm?id=${ttbd.idBd }">Xác nhận khách đến</button>
 						</c:if>
 						<c:if test="${hd!=null }">	
-							<button type="button" class="btn btn-warning">Thanh toán</button>
+							<a type="button" href="/QL_Dat_Ban_NH/Controller_Bill?idhd=${hd.idhd}" class="btn btn-warning">Thanh toán</a>
 						</c:if>
 						</div>
 						<div class="header_search">

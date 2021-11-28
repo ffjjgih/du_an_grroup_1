@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.apache.commons.beanutils.BeanUtils;
+
+import com.mysql.cj.Session;
 
 import Dao.Dao_Staff;
 import model.KhachHang;
@@ -42,8 +44,8 @@ public class ProfileStaff extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		this.staff = this.dao.findbyid(2);
+		HttpSession session = request.getSession();
+		this.staff = (Staff) session.getAttribute("acountST");
 		request.setAttribute("staff", this.staff);
 
 		request.getRequestDispatcher("/views/Staff/ThongTinCaNhanStaff.jsp").forward(request, response);
@@ -53,24 +55,21 @@ public class ProfileStaff extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-
+		
 		String name = request.getParameter("name");
 		String sdt = request.getParameter("phone");
 		String email = request.getParameter("email");
 		String mkcu = request.getParameter("pass_cu");
 		String mkmoi = request.getParameter("pass_moi");
 		String xacnhan = request.getParameter("xacnhan_pass");
-		this.staff = this.dao.findbyid(2);
-		int index = this.staff.getIdnv();
-
+		int index = Integer.parseInt(request.getParameter("idnv"));
+		this.staff=this.dao.findbyid(index);
 		String url = request.getRequestURL().toString();
 		if (url.contains("Changepass_staff")) {
 			if (mkcu.equals(this.staff.getPassword())) {
 				this.dao.changepassstaff(index, mkmoi);
-				System.out.println("TC");
 				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "succes=5");
 			} else {
-				System.out.println("TB");
 				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "error=5");
 			}
 		} else if (url.contains("Update_profile_staff")) {
@@ -93,7 +92,6 @@ public class ProfileStaff extends HttpServlet {
 				this.staff.setSdt(sdt);
 				this.staff.setEmail(email);
 				this.dao.updateprofilestaff(staff);
-				System.out.println("TC");
 				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "succes=6");
 			} catch (Exception e) {
 				e.printStackTrace();

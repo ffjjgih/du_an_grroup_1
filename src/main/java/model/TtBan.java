@@ -4,8 +4,13 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+
+/**
+ * The persistent class for the TT_Ban database table.
+ * 
+ */
 @Entity
-@Table(name="tt_ban")
+@Table(name="TT_Ban")
 @NamedQuery(name="TtBan.findAll", query="SELECT t FROM TtBan t")
 public class TtBan implements Serializable {
 	private static final long serialVersionUID = 1L;

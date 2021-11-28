@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -36,6 +36,7 @@ public class Update_MenuCT extends HttpServlet {
 		int idbdct = Integer.parseInt(request.getParameter("idbcct"));
 		int idmenuCT = Integer.parseInt(request.getParameter("idmenuCT"));
 		int idhdCT = Integer.parseInt(request.getParameter("idHDCT"));
+		int idhd=Integer.parseInt(request.getParameter("idhd"));
 		int sl = Integer.parseInt(request.getParameter("spinner"));
 		int slUP = Integer.parseInt(request.getParameter("spinnerr"));
 		this.mnct = this.daomnct.findbyid(idmenuCT);
@@ -44,7 +45,7 @@ public class Update_MenuCT extends HttpServlet {
 		this.hdct = this.dao_hdct.findbyid(idhdCT);
 		this.hdct.setSo_luong(slUP);
 		this.dao_hdct.update(this.hdct);
-		response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct);
+		response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct+"&&idhd="+idhd);
 
 	}
 

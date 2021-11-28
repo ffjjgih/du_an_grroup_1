@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,9 +25,7 @@ import model.TtBan;
 /**
  * Servlet implementation class SearchBaiVietController
  */
-@WebServlet({"/BanDat","/BanDat/xacnhan"})
-import model.Staff;
-import model.TtBan;
+@WebServlet("/SearchBandat")
 
 public class SearchBandat extends HttpServlet {
 	private static final long serialVersionUID = 1L;

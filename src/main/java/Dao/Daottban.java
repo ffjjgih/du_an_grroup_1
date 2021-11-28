@@ -39,7 +39,7 @@ public class Daottban extends BaseDao<TtBan> {
 					+ "(SELECT d.idBd FROM ThongTinBanDat d WHERE d.trang_Thai=:status or d.trang_Thai=:tt))";
 			TypedQuery<TtBan> query = this.manager.createQuery(hql, TtBan.class);
 			query.setParameter("status", "Confirmed");
-			query.setParameter("tt", "Is active");
+			query.setParameter("tt", "active");
 			this.lstttb = query.getResultList();
 			return this.lstttb;
 		} catch (Exception e) {
@@ -49,5 +49,50 @@ public class Daottban extends BaseDao<TtBan> {
 
 	}
 
-
+	//hiển thị bàn đã xác nhận
+	public List<TtBan> showtableconfirm() {
+		try {
+			this.manager = this.conn.getEntityManager();
+			String hql = "SELECT t FROM TtBan t WHERE t.IDBan IN "
+					+ "(SELECT b.ttBan FROM Bdct b where thongTinBanDat IN"
+					+ "(SELECT d.idBd FROM ThongTinBanDat d WHERE d.trang_Thai=:status))";
+			TypedQuery<TtBan> query = this.manager.createQuery(hql, TtBan.class);
+			query.setParameter("status", "Confirmed");
+			return this.lstttb = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+		// hiển thị bàn trạng thái đang hoạt động
+		public List<TtBan> showtableactive() {
+			try {
+				this.manager = this.conn.getEntityManager();
+				String hql = "SELECT t FROM TtBan t WHERE t.IDBan IN "
+						+ "(SELECT b.ttBan FROM Bdct b where thongTinBanDat IN"
+						+ "(SELECT d.idBd FROM ThongTinBanDat d WHERE d.trang_Thai=:tt))";
+				TypedQuery<TtBan> query = this.manager.createQuery(hql, TtBan.class);
+				query.setParameter("tt", "Active");
+				this.lstttb = query.getResultList();
+				return this.lstttb;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
+		
+		public List<TtBan> findName(int name){
+			try {
+				this.manager=this.conn.getEntityManager();
+				String hql="SELECT h FROM TtBan h WHERE h.IDBan = :id";
+				TypedQuery<TtBan> query=manager.createQuery(hql,TtBan.class);
+				query.setParameter("id", name );
+				this.lstttb=query.getResultList();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+			return lstttb;
+			
+		}
 }

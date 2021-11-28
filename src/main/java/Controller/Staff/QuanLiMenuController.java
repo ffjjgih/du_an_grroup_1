@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.IOException;
 import java.util.List;
@@ -68,14 +68,14 @@ public class QuanLiMenuController extends HttpServlet {
 			
 			int idttbd=Integer.parseInt(request.getParameter("id"));
 			this.ttbd=this.daottbd.findbyid(idttbd);
-			System.out.println(ttbd.getIdBd()+"asn");
+			this.ttbd.setTrang_Thai("Active");
+			this.daottbd.update(ttbd);
 			HoaDon hd1= new HoaDon();
 			
 		    hd1.setKhachHang(this.ttbd.getKhachHang());
 			hd1.setKhuyen_mai(0);	
 			HttpSession session = request.getSession();
 			Staff staff = (Staff) session.getAttribute("acountST");
-			System.out.println(staff.getHoTen()+"abc");
 			hd1.setStaff(staff);
 			hd1.setThongTinBanDat(this.ttbd);
 			long millis=System.currentTimeMillis();   

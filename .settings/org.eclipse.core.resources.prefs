@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
-encoding//src/main/java/Controller/HomeStaffController.java=UTF-8
 encoding//src/main/java/Controller/LoginGoogleController.java=UTF-8
-encoding//src/main/java/Controller/UpdateBaiVietController.java=UTF-8
+encoding//src/main/java/Controller/Staff/HomeStaffController.java=UTF-8
+encoding//src/main/java/Controller/Staff/UpdateBaiVietController.java=UTF-8
 encoding//src/main/java/Dao/DaoMenuCT.java=UTF-8
 encoding//src/main/java/Services/WriteExcel.java=UTF-8
 encoding//src/main/java/accessfacebook/common/Constans.java=UTF-8

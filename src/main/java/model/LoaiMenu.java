@@ -6,11 +6,11 @@ import java.util.List;
 
 
 /**
- * The persistent class for the loai_menu database table.
+ * The persistent class for the Loai_menu database table.
  * 
  */
 @Entity
-@Table(name="loai_menu")
+@Table(name="Loai_menu")
 @NamedQuery(name="LoaiMenu.findAll", query="SELECT l FROM LoaiMenu l")
 public class LoaiMenu implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -63,14 +63,6 @@ public class LoaiMenu implements Serializable {
 
 	public void setTenLoai(String tenLoai) {
 		this.tenLoai = tenLoai;
-	}
-	
-	public int getLoai() {
-		return this.loai;
-	}
-
-	public void setLoai(int loai) {
-		this.loai = loai;
 	}
 
 	public List<Menu> getMenus() {

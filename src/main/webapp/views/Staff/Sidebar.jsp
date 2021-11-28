@@ -19,7 +19,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link active" aria-current="page" href="/QL_Dat_Ban_NH/Notifucation"> 
+			<a class="nav-link active" aria-current="page" href="/QL_Dat_Ban_NH/Notification"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
                 	<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
                 </svg> 
@@ -56,16 +56,15 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#"> 
+			<a class="nav-link" href="/QL_Dat_Ban_NH/Table_Status"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
                 	<path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
                 </svg> 
                 TÌNH TRẠNG BÀN
 			</a>
 		</li>
-		<c:if test="${sessionScope.acountST == null}">
 		<li class="nav-item">
-			<a class="nav-link" href="#"> 
+			<a class="nav-link" href="/QL_Dat_Ban_NH/ProfileStaff"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                 	<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
@@ -73,7 +72,6 @@
                 TÀI KHOẢN CỦA TÔI
 			</a>
 		</li>
-		</c:if>
 		<li class="nav-item">
 			<a class="nav-link" href="#"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">

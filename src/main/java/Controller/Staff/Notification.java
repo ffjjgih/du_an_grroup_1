@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -114,6 +114,6 @@ public class Notification extends HttpServlet {
 			ttbd.setNgayDatBan(date);
 			this.daottbd.insert(ttbd);
 			ThongTinBanDat t=this.daottbd.findttbdbyuserdesc(khachhang);
-			response.sendRedirect(request.getContextPath()+"/Confirmbooking?index="+t.getIdBd());
+			response.sendRedirect(request.getContextPath()+"/Confirmbooking?index="+t.getIdBd()+"&&status=1");
 		}
 }

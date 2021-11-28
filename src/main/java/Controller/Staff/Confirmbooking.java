@@ -1,6 +1,8 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,8 @@ import net.bytebuddy.asm.Advice.This;
 
 @WebServlet({
 	"/Confirmbooking",
-	"/Confirmbooking/Create"
+	"/Confirmbooking/Create",
+	"/Confirmbooking/Update"
 })
 public class Confirmbooking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -48,7 +51,14 @@ public class Confirmbooking extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index=Integer.parseInt(request.getParameter("index"));
+		int status=Integer.parseInt(request.getParameter("status"));
 		this.ttbd=this.daottbd.findbyid(index);
+		if(status==2) {
+			List<Bdct> lst=this.daobdct.findbdctbyttbd(this.ttbd);
+			request.setAttribute("Confirmed", lst);
+		}
+		request.setAttribute("status", status);
+		
 		showemptytable(request, response);
 		showcardbyidkh(request, response, this.ttbd);
 		request.setAttribute("infor", this.ttbd);
@@ -60,6 +70,11 @@ public class Confirmbooking extends HttpServlet {
 		int index=Integer.parseInt(request.getParameter("index"));
 		this.ttbd=this.daottbd.findbyid(index);
 		if(url.contains("Create")) {
+			updatettbd(request, response, this.ttbd);
+			confirm_booking(request, response, this.ttbd);
+		}else if(url.contains("Update")) {
+			updatettbd(request, response, this.ttbd);
+			updatettbdbyconfirmed(request, response, this.ttbd);
 			confirm_booking(request, response, this.ttbd);
 		}
 	}
@@ -76,13 +91,9 @@ public class Confirmbooking extends HttpServlet {
 		request.setAttribute("dsgiohang", this.lstgh);
 	}
 	
-	//xác nhận bàn đặt cho khách
+	//tạo bàn đặt chi tiết
 	private void confirm_booking(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) throws IOException {
 		String[] lstb =request.getParameterValues("checkboxbandat");
-		//thay đổi trạng thái của thông tin bàn đặt;
-		t.setTrang_Thai("Confirmed");
-		this.daottbd.update(t);
-		//tạo bàn đặt chi tiết
 		for(String x:lstb) {
 			this.bdct.setThongTinBanDat(t);
 			this.ttban=this.daottban.findbyid(Integer.parseInt(x));
@@ -91,5 +102,29 @@ public class Confirmbooking extends HttpServlet {
 		}
 		this.daobdct.insertbdct(this.lstbdct);
 		response.sendRedirect(request.getContextPath()+ "/Notification");
+	}
+	
+	//thay đổi trạng thái của thông tin bàn đặt;
+	private void updatettbd(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) {
+		t.setTrang_Thai("Confirmed");
+		String ngaydat=request.getParameter("dateDatBan");
+		String giodat=request.getParameter("timedatban");
+		int soluong=Integer.parseInt(request.getParameter("so_luong"));
+		Date date=Date.valueOf(ngaydat);
+		Time time=Time.valueOf(giodat);
+		String note=request.getParameter("Note");
+		t.setNgayDatBan(date);
+		t.setGioDatBan(time);
+		t.setGhi_Chu(note);
+		t.setSo_Luong_Nguoi(soluong);
+		this.daottbd.update(t);
+	}
+	
+	//sửa bàn đặt khi xác nhận
+	private void updatettbdbyconfirmed(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) {
+		List<Bdct> lstbd=this.daobdct.findbdctbyttbd(t);
+		for(Bdct x:lstbd) {
+			this.daobdct.delete(x.getIdBdct());
+		}
 	}
 }

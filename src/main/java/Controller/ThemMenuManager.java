@@ -112,7 +112,7 @@ public class ThemMenuManager extends HttpServlet {
 			menu.setGia(gia);
 			menu.setImg(namefile);
 			menu.setLoaiMenu(loaimenu);
-			menu.setTrangthai(trangthai);
+			menu.setTrang_Thai(trangthai);
 
 			daomenu.insert(menu);
 

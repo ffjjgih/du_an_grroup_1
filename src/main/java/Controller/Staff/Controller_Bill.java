@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Staff;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -11,13 +11,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.DaoHDCT;
 import Dao.DaoHoadon;
+import Dao.DaoTTBD;
 import Services.WriteExcel;
 import model.Hdct;
 import model.HoaDon;
 import model.KhachHang;
+import model.Staff;
 import model.ThongTinBanDat;
 
 @WebServlet({ "/Controller_Bill", "/Controller_Bill/inHD", "/Controller_Bill/Back", "/Controller_Bill/pay" })
@@ -29,6 +32,8 @@ public class Controller_Bill extends HttpServlet {
 	private List<Hdct> listHDCT;
 	private DaoHDCT dao_HDCT;
 	private WriteExcel writeExcel;
+	private ThongTinBanDat ttbd;
+	private DaoTTBD daottbd;
 
 	public Controller_Bill() {
 		super();
@@ -38,11 +43,16 @@ public class Controller_Bill extends HttpServlet {
 		this.listHDCT = new ArrayList<Hdct>();
 		this.dao_HDCT = new DaoHDCT();
 		this.writeExcel = new WriteExcel();
+		this.ttbd=new ThongTinBanDat();
+		this.daottbd=new DaoTTBD();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.hd = this.dao_HD.sortIDbyHD();
+		//this.hd = this.dao_HD.sortIDbyHD();
+		int idhd=Integer.parseInt(request.getParameter("idhd"));
+		this.hd=this.dao_HD.findbyid(idhd);
+		request.setAttribute("hoa_don", this.hd);
 		ThongTinBanDat ttbd = this.hd.getThongTinBanDat();
 		int idBD = ttbd.getIdBd();
 		request.setAttribute("idBD", idBD);
@@ -76,15 +86,38 @@ public class Controller_Bill extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = request.getRequestURL().toString();
+		int idhd=Integer.parseInt(request.getParameter("idhd"));
+		this.hd=this.dao_HD.findbyid(idhd);
 		if (url.contains("inHD")) {
-			this.writeExcel.exportExcel(response);
+			this.writeExcel.exportExcel(response);	
 			doGet(request, response);
-			// response.sendRedirect(request.getContextPath() + "/Controller_Bill");
+			// response.sendRedirect(request.getContextPath() + "/Controller_Bill");	
 		} else if (url.contains("Back")) {
 			response.sendRedirect(request.getContextPath() + "/Lienhe");
 		} else if (url.contains("pay")) {
-			response.sendRedirect(request.getContextPath() + "/Menu");
+			updatehd(request, response, this.hd);
 		}
 	}
 
+	private void updatehd(HttpServletRequest request, HttpServletResponse response,HoaDon h) throws IOException {
+		this.ttbd=this.daottbd.findbyid(h.getThongTinBanDat().getIdBd());
+		this.ttbd.setTrang_Thai("Paid");
+		this.daottbd.update(ttbd);
+		float km=Float.parseFloat(request.getParameter("khuyen_mai"));
+		HttpSession session = request.getSession();
+		Staff staff = (Staff) session.getAttribute("acountST");
+		long millis=System.currentTimeMillis();   
+		java.sql.Date date=new java.sql.Date(millis);
+		h.setThoi_gian(date);
+		h.setStaff(staff);
+		h.setKhuyen_mai(km);
+		this.listHDCT=this.dao_HDCT.findhdctbyidhd(h);
+		float tongtien=0;
+		for(Hdct x:listHDCT) {
+			tongtien+=x.getThanh_Tien();
+		}
+		h.setTong_Tien(tongtien*km/100);
+		this.dao_HD.update(h);
+		response.sendRedirect(request.getContextPath()+"/HomeStaffController?Succses=5");
+	}
 }

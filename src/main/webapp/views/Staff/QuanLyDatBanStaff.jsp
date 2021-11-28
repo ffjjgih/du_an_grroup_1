@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +57,7 @@
 							</div>
 							<div class="info--confirm">
 								<label for="exampleColorInput" class="form-label">Bàn
-									chưa xác nhận</label> <input disabled type="color"
+									Trống</label> <input disabled type="color"
 									class="form-control form-control-color" id="exampleColorInput"
 									value="#ffc107" title="Choose your color">
 							</div>
@@ -66,284 +67,46 @@
 									class="form-control form-control-color" id="exampleColorInput"
 									value="#adb5bd" title="Choose your color">
 							</div>
-							<div class="info--confirm">
-								<label for="exampleColorInput" class="form-label">Bàn
-									trống</label> <input disabled type="color"
-									class="form-control form-control-color" id="exampleColorInput"
-									value="#dc3545" title="Choose your color">
-							</div>
 						</div>
-						<!--bàn đã xác nhận start-->
+						
+						<!--bàn đang có khách start-->
 						<div class="body_right--table">
-							<div class="content_button l-5">
-								<a href="">
+							<c:forEach items="${lstactive }" var="tableactive">
+								<div class="content_button l-5">
+										<button type="button" class="btn btn-secondary buttonTable">
+											Bàn ${tableactive.IDBan} <br> Số người: ${tableactive.loaiBan}
+										</button>
+								</div>
+							</c:forEach>
+						</div>
+						<!--bàn đang có khác end-->
+						
+						<!--bàn đã xác nhận start-->
+						
+						<div class="body_right--table">
+							<c:forEach items="${lstcf }" var="tablecf">
+								<div class="content_button l-5">
 									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
+										Bàn ${tablecf.IDBan} <br> Số người: ${tablecf.loaiBan}
 									</button>
-								</a>
 							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-primary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
+							</c:forEach>
 						</div>
 						<!--bàn đã xác nhận end-->
 
 						<!--bàn đã chưa xác nhận start-->
 						<div class="body_right--table">
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-warning buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
+							<c:forEach items="${lstempty }" var="tableempty">
+								<div class="content_button l-5">
+										<button type="button" class="btn btn-warning buttonTable">
+											Bàn ${tableempty.IDBan} <br> Số người: ${tableempty.loaiBan}
+										</button>
+								</div>
+							</c:forEach>
 						</div>
 						<!--bàn chưa xác nhận end-->
 
-						<!--bàn đang có khách start-->
-						<div class="body_right--table">
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-secondary buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-						</div>
-						<!--bàn đang có khác end-->
-
-						<!--bàn trống start-->
-						<div class="body_right--table">
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-
-							<div class="content_button l-5">
-								<a href="">
-									<button type="button" class="btn btn-danger buttonTable">
-										Bàn 01 <br> Số người: 02
-									</button>
-								</a>
-							</div>
-						</div>
-						<!--bàn trống end-->
+						
 					</div>
 				</div>
 			</div>

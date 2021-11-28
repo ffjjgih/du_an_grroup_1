@@ -55,7 +55,7 @@
 							</div>
 							</form>
 							<div class="body_right-header-info">
-								<h4>Bàn ${ bdct.IDBan}</h4>
+								<h4>Bàn ${ bdct.idBdct}</h4>
 							</div>
 						</div>
 

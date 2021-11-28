@@ -1,12 +1,15 @@
 package Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import model.Bdct;
+import model.ThongTinBanDat;
 import utils.Connectjpa;
 
 public class Daobdct extends BaseDao<Bdct>{
@@ -14,9 +17,10 @@ public class Daobdct extends BaseDao<Bdct>{
 	private EntityManager manager;
 	private EntityTransaction transaction;
 	private Connectjpa conn;
-	
+	private List<Bdct> lstbdct;
 	public Daobdct() {
 		this.conn=new Connectjpa();
+		this.lstbdct=new ArrayList<Bdct>();
 	}
 	
 	@Override
@@ -46,4 +50,16 @@ public class Daobdct extends BaseDao<Bdct>{
 		}
 	}
 	
+	public List<Bdct> findbdctbyttbd(ThongTinBanDat t){
+		try {
+			String hql="SELECT b FROM Bdct b WHERE thongTinBanDat=:ttbd";
+			this.manager=this.conn.getEntityManager();
+			TypedQuery<Bdct> query=this.manager.createQuery(hql,Bdct.class);
+			query.setParameter("ttbd", t);
+			return this.lstbdct=query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
