@@ -39,14 +39,15 @@ public class test extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Menu menu = new Menu();
+		DaoMenu dao = new DaoMenu();
 
+		 List<Menu> lst = dao.trangthai(1,2);
+        System.out.println(lst);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		
 		response.sendRedirect(request.getContextPath() + "/test");
 	}
 

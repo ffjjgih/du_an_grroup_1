@@ -62,4 +62,9 @@ public class TtBan implements Serializable {
 		return bdct;
 	}
 
+	public TtBan(int loaiBan) {
+		super();
+		this.loaiBan = loaiBan;
+	}
+
 }

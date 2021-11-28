@@ -83,7 +83,6 @@ public class BaiViet implements Serializable {
 	}
 
 	public BaiViet(String img, String link, String noi_dung, String ten_tieu_de, Staff staff) {
-		super();
 		this.img = img;
 		this.link = link;
 		this.noi_dung = noi_dung;

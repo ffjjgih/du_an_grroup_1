@@ -25,25 +25,25 @@ public class SeacherMenuStaff extends HttpServlet {
     daomenu= new DaoMenu();
  
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-
-		String txtSearch = request.getParameter("txt");
-		this.lst = daomenu.findName(txtSearch);
-		System.out.println(lst);
+		int idbdct= Integer.parseInt(request.getParameter("id"));
+		int idhd= Integer.parseInt(request.getParameter("idhd"));
+		request.setAttribute("idbdct", idbdct);
+		request.setAttribute("idhd", idhd);
+		String txtSearch = request.getParameter("search");
+		lst = daomenu.findName(txtSearch);
 		request.setAttribute("monan", lst);
 		request.setAttribute("txtS", txtSearch);
-
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+	
+
 	}
 
 }
