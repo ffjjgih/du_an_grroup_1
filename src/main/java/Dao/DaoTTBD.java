@@ -52,9 +52,9 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 			this.manager = this.conn.getEntityManager();
 			TypedQuery<ThongTinBanDat> query = this.manager.createQuery(hql, ThongTinBanDat.class);
 			query.setParameter("id_kh", kh);
-			query.setParameter("status", "waitting line");
-			query.setParameter("tt", "comfirmed");
-			this.ttbd = query.getSingleResult();
+			query.setParameter("status", "Waitting line");
+			query.setParameter("tt", "Confirmed");
+			this.ttbd=query.getSingleResult();
 			return this.ttbd;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,4 +95,100 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 		return this.lstttbd = query.getResultList();
 	}
 
+
+	}
+
+	// hiển thị thông tin bàn đặt với trạng thái là waitting line (class liên quan:Notification)
+	public List<ThongTinBanDat> showttbdbywl(){
+		try {
+			String hql="Select t From ThongTinBanDat t Where t.trang_Thai=:status";
+			this.manager=this.conn.getEntityManager();
+			TypedQuery<ThongTinBanDat> query=this.manager.createQuery(hql, ThongTinBanDat.class);
+			query.setParameter("status", "waitting line");
+			this.lstttbd=query.getResultList();
+			return this.lstttbd;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	// hiển thị thông tin bàn đặt với trạng thái là Confirmed (class liên quan:Notification)
+		public List<ThongTinBanDat> showttbdbycf(){
+			try {
+				String hql="Select t From ThongTinBanDat t Where t.trang_Thai=:status";
+				this.manager=this.conn.getEntityManager();
+				TypedQuery<ThongTinBanDat> query=this.manager.createQuery(hql, ThongTinBanDat.class);
+				query.setParameter("status", "Confirmed");
+				this.lstttbd=query.getResultList();
+				return this.lstttbd;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		// hiển thị thông tin bàn đặt với trạng thái là Cancelled (class liên quan:Notification)
+		public List<ThongTinBanDat> showttbdbycancel(){
+			try {
+				String hql="Select t From ThongTinBanDat t Where t.trang_Thai=:status";
+				this.manager=this.conn.getEntityManager();
+				TypedQuery<ThongTinBanDat> query=this.manager.createQuery(hql, ThongTinBanDat.class);
+				query.setParameter("status", "Cancelled");
+				this.lstttbd=query.getResultList();
+				return this.lstttbd;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		public void deletebd(int id) {
+			this.manager=this.conn.getEntityManager();
+			this.transaction=this.manager.getTransaction();
+			try {
+				this.manager.getTransaction().begin();
+				manager.flush(); manager.clear();
+				String hql="Update ThongTinBanDat t WHERE idBd=:id";
+				Query query=this.manager.createQuery(hql);
+				query.setParameter("id", id);
+				query.executeUpdate();
+				this.transaction.commit();
+			}catch (Exception e) {
+				e.printStackTrace();
+				this.transaction.rollback();
+			}
+		}
+		
+		//tìm kiếm bản ghi mới nhất theo khách hàng(class liên quan: Notification)
+		public ThongTinBanDat findttbdbyuserdesc(KhachHang k) {
+			try {
+				String hql="Select t From ThongTinBanDat t WHERE t.khachHang=:khach_hang ORDER BY idBd DESC";
+				this.manager=this.conn.getEntityManager();
+				TypedQuery<ThongTinBanDat> query=this.manager.createQuery(hql, ThongTinBanDat.class);
+				query.setParameter("khach_hang", k);
+				this.ttbd=query.getResultList().get(0);
+				return this.ttbd;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		//tim theo ngay  <class: SearchngayQLTTinStaff>
+		public List<ThongTinBanDat> finDate( Date date) {
+			try {
+				String hql= "Select t from ThongTinBanDat t where t.ngayDatBan =:ngay";
+				this.manager=this.conn.getEntityManager();
+				TypedQuery<ThongTinBanDat> query=this.manager.createQuery(hql, ThongTinBanDat.class);
+				query.setParameter("ngay", date);
+				this.lstttbd=query.getResultList();
+				return this.lstttbd;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+			
+			
+		}
 }

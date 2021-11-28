@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
+import model.Bdct;
+import model.LoaiMenu;
 import model.Menu;
+import model.ThongTinBanDat;
 import utils.Connectjpa;
 
 public class DaoMenu extends BaseDao<Menu>{
+	
+	private LoaiMenu loaimenu;
 	private Connectjpa conn;
 	private EntityManager manager;
-	private List<Menu> lstMenu;
-	
+	private EntityTransaction transaction;
+	private List<Menu> lstmenu;
 	public DaoMenu() {
-		this.conn = new Connectjpa();
-		this.lstMenu = new ArrayList<Menu>();
-	}
-	
-	public List<Menu> tkMaMon(){
-		this.manager = this.conn.getEntityManager();
-		String hql = "SELECT m FROM Menu m";
-		Query query = this.manager.createQuery(hql);
-		return this.lstMenu = query.getResultList();
+		loaimenu=new LoaiMenu();
+		conn= new Connectjpa();
 	}
 	
 	@Override
@@ -34,6 +34,50 @@ public class DaoMenu extends BaseDao<Menu>{
 	@Override
 	public String getdatabase() {
 		return Menu.class.getSimpleName();
+	}
+	
+	//tÃ¬m kiáº¿m tÃªn mÃ³n 
+	public List<Menu> findName(String name){
+		try {
+			this.manager=this.conn.getEntityManager();
+			String hql="SELECT h FROM Menu h WHERE h.ten_Mon_An like :ten";
+			TypedQuery<Menu> query=manager.createQuery(hql,Menu.class);
+			query.setParameter("ten", "%" + name + "%");
+			this.lstmenu=query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		return lstmenu;
+		
+	}
+	public List<Menu> findTTBD(LoaiMenu loai){
+		try {
+			this.manager=this.conn.getEntityManager();
+			String hql="SELECT h FROM Menu h WHERE loaiMenu =:id";
+			TypedQuery<Menu> query=manager.createQuery(hql,Menu.class);
+			query.setParameter("id", loai);
+			this.lstmenu=query.getResultList();
+					
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return this.lstmenu;
+	}
+	
+	//xóa menu
+	 public void deleteMenu(Menu t){
+		 this.manager=this.conn.getEntityManager();
+			this.transaction=this.manager.getTransaction();
+		try {
+			transaction.begin();
+			manager.remove(t);
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
 	}
 
 }

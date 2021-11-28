@@ -37,7 +37,7 @@
 				<c:forEach var="items" items="${baiviet }">
 					<div class="container_content col">
 						<div class="container_content-post">
-							<img src="./views/assets/imgs/${ items.img }"
+							<img src="/QL_Dat_Ban_NH/img/${ items.img }"
 								style="width: 298px; height: 240px;" alt="">
 							<p style="margin-top: 10px; font-size: 20px; font-weight: 500;">${items.ten_tieu_de }</p>
 							<p>${items.noi_dung }</p>
@@ -58,13 +58,14 @@
 
 		<!--modal login, regis start-->
 		<jsp:include page="Login.jsp"></jsp:include>
-		
+
+		<jsp:include page="ForgotPassword.jsp"></jsp:include>
+
+		<!--modal guest start-->
+		<jsp:include page="BookingGuest.jsp"></jsp:include>
 	</div>
-
-	<jsp:include page="ForgotPassword.jsp"></jsp:include>
-
 	<jsp:include page="FooterKhachHang.jsp"></jsp:include>
-
+	<script src="./views/assets/js/checkErrorLogin.js"></script>
 	<script src="./views/assets/js/login.js"></script>
 	<script src="./views/assets/js/register.js"></script>
 	<script>
@@ -74,13 +75,13 @@
 			wrap : false
 		})
 	</script>
-	<script src="./views/assets/js/checkErrorLogin.js"></script>
+
 	<script src="./views/assets/js/navbar.js"></script>
+	<script src="./views/assets/js/onclickLogin.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-	<script src="./views/assets/js/onclickLogin.js"></script>
 </body>
 
 </html>

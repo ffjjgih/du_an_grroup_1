@@ -70,6 +70,8 @@ public class Booking extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		this.kh=(KhachHang) session.getAttribute("acountKH");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		if(this.kh == null) {
 			response.sendRedirect(request.getContextPath()+"/Login?errorAccNull=1");
 		} else {
@@ -79,8 +81,7 @@ public class Booking extends HttpServlet {
 			if(url.contains("order")) {
 				insertbd(request, response, index);	
 				this.lstttdb=this.daottbd.findTTBDbyIDkh(kh);
-				int indexx=this.daottbd.findTTBDbyIDkh(kh).get(0).getIdBd();
-				response.sendRedirect(request.getContextPath()+"/Order?index="+indexx);
+				response.sendRedirect(request.getContextPath()+"/Order");
 			}else if(url.contains("Datban")) {
 				insertbd(request, response, index);	
 				response.sendRedirect(request.getContextPath()+ "/Booking");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,18 +35,18 @@
                 <div class="right_body l-9">
                     <div class="right_body--header">
                         <div class="header_button">
-                            <button type="button" class="btn btn-success js-modal-btn">
+                            <a href="addStaff" type="button" class="btn btn-success">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                     class="bi bi-plus-lg" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                                 </svg>
                                 THÊM MỚI
-                            </button>
+                            </a>
                         </div>
                         <div class="header_search">
-                            <form action="/QL_Dat_Ban_NH/EmployeeManager" method="post">
-                                <input type="search" name="" id="" placeholder="Nhập tên nhân viên">
+                            <form action="SearchAccByAjax" method="post">
+                                <input type="search" name="txt" id="" value="${search}" placeholder="Nhập tên nhân viên">
                                 <button type="button" class="btn btn-dark">
                                     <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -64,48 +65,25 @@
                                     <th scope="col">MÃ NHÂN VIÊN</th>
                                     <th scope="col">HỌ VÀ TÊN</th>
                                     <th scope="col">SỐ ĐIỆN THOẠI</th>
-                                    <th scope="col">GIỚI TÍNH</th>
-                                    <th scope="col">ĐỊA CHỈ</th>
+                                    <th scope="col">CĂN CƯỚC CÔNG DÂN</th>
+                                    <th scope="col">CHỨC VỤ</th>
                                     <th scope="col">THAO TÁC</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>0977256375</td>
-                                    <td>NAM</td>
-                                    <td>CẦU GIẼ, XÃ ĐẠI XUYÊN, HUYỆN PHÚ XUYÊN, HÀ NỘI</td>
+                            <c:forEach items = "${lstStaff}" var = "o">
+                            	<tr>
+                                    <th scope="row">${o.idnv}</th>
+                                    <td>${o.hoTen}</td>
+                                    <td>${o.sdt}</td>
+                                    <td>${o.cccd}</td>
+                                    <td>${o.chucVu}</td>
                                     <td>
-                                        <button type="button" class="btn btn-info"
-                                            style="margin-bottom: 10px;">SỬA</button>
-                                        <button type="button" class="btn btn-danger" style="margin-bottom: 10px;">XÓA</button>
+                                        <a href="LoadToUpdate?idacc=${o.idnv}" type="button" class="btn btn-info" style="margin-bottom: 10px;">SỬA</a>
+                                        <button onclick="showMess(${o.idnv})" type="button" class="btn btn-danger" style="margin-bottom: 10px;">XÓA</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>0977256375</td>
-                                    <td>NAM</td>
-                                    <td>CẦU GIẼ, XÃ ĐẠI XUYÊN, HUYỆN PHÚ XUYÊN, HÀ NỘI</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info"
-                                            style="margin-bottom: 10px;">SỬA</button>
-                                        <button type="button" class="btn btn-danger" style="margin-bottom: 10px;">XÓA</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>NGUYỄN LÊ HẢI</td>
-                                    <td>0977256375</td>
-                                    <td>NAM</td>
-                                    <td>CẦU GIẼ, XÃ ĐẠI XUYÊN, HUYỆN PHÚ XUYÊN, HÀ NỘI</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info"
-                                            style="margin-bottom: 10px;">SỬA</button>
-                                        <button type="button" class="btn btn-danger" style="margin-bottom: 10px;">XÓA</button>
-                                    </td>
-                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -113,7 +91,6 @@
             </div>
 
         </div>
-
         <div class="modal_add js_modal_add">
             <div class="modal_add_container js_modal_add_container">
                 <h3>THÊM NHÂN VIÊN MỚI</h3>
@@ -155,7 +132,19 @@
         <hr>
         <p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
     </div>
+    
+    <script type="text/javascript">
+    	function showMess(id) {
+    		var option = confirm("Bạn có chắc muốn xóa bài viết này không?");
+    		if (option === true) {
+    			window.location.href = "DeleteAccManager?idnv=" + id;
+    		} else {
+    			console.log("Không xóa");
+    		}
+    	}
+    </script>
     <script src="./views/Manager/js/modaladdnhanvien.js"></script>
+    <script src="./views/Manager/js/throwError.js"></script>
     <script src="./views/Manager/js/sidebar.js"></script>
 </body>
 

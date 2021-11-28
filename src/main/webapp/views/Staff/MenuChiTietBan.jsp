@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./views/Staff/css/base.css">
-    <link rel="stylesheet" href="./views/Staff/css/menuchitietban.css">
+    <link rel="stylesheet" href="./views/Staff/css/quanlymenustaff.css">
     <link rel="stylesheet" href="./views/Staff/css/grid.css">
     <link rel="stylesheet" href="./views/Staff/fontawesome-free-5.15.3-web/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -26,87 +26,113 @@
             <div class="container_right l-12">
                 <div class="right_header">
                     <div class="header_search">
-                        <h3 style=" color: white;">Thông tin menu chi tiết bàn 01</h3>
+                        <form action="" method="post">
+                            <input type="search" name="" id="" placeholder="Nhập mã bàn...">
+                            <button type="button" class="btn btn-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
+                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg>
+                                TÌM KIẾM
+                            </button>
+                        </form>
                     </div>
                 </div>
 
                 <div class="container_right_body l-12">
                     <div class="body_left l-3"></div>
                     <div class="body_right l-9">
-                        <div class="body_right_content">
-                            <table class="table" style="text-align: center;">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">MÃ MÓN</th>
-                                        <th scope="col">TÊN MÓN</th>
-                                        <th scope="col">SỐ LƯỢNG</th>
-                                        <th scope="col">ĐƠN GIÁ</th>
-                                        <th scope="col">SỐ LƯỢNG ĐÃ LÊN</th>
-                                        <th scope="col">HỦY MÓN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>1</td>
-                                        <td>Lẩu thái</td>
-                                        <td>2</td>
-                                        <td>300.000</td>
-                                        <td>1</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                                </svg>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>1</td>
-                                        <td>Lẩu thái</td>
-                                        <td>2</td>
-                                        <td>300.000</td>
-                                        <td>1</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                                </svg>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>1</td>
-                                        <td>Lẩu thái</td>
-                                        <td>2</td>
-                                        <td>300.000</td>
-                                        <td>1</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                                </svg>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
                         </div>
-                        <div class="body_right_footer">
-                            <button type="button" class="btn btn-success">Chọn thêm món</button>
-                            <button type="button" class="btn btn-warning">Thanh toán</button>
+
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="content_button l-5">
+                            <a href="">
+                                <button type="button" class="btn btn-primary buttonTable1">
+                                    Ngày: 24/11/2021 <br>
+                                    Giờ: 14:00 PM <br>
+                                    Số lượng người: 3 <br>
+                                    Ghi chú: Nhà có 4 trẻ em
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 

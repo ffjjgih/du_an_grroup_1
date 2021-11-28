@@ -118,4 +118,14 @@ public class Mnct implements Serializable {
 		this.menu = menu;
 	}
 
+	}
+
+	public Menu getMenu() {
+		return this.menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
 }

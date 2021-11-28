@@ -1,5 +1,7 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,7 +68,7 @@
                                 </button>
                             </li>
                         </ul>
-
+						<form action="/QL_Dat_Ban_NH/Notification" method="post">
                         <div class="tab-content" id="pills-tabContent">
                             <!--confirm bàn start-->
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -78,7 +80,7 @@
                                     <table class="table" style="text-align: center;">
                                         <thead>
                                             <tr>
-                                                <th scope="col">MÃ KHÁCH HÀNG</th>
+                                                <th scope="col">Mã Bàn Đặt</th>
                                                 <th scope="col">NGÀY ĐẶT</th>
                                                 <th scope="col">GIỜ ĐẶT</th>
                                                 <th scope="col">XEM CHI TIẾT</th>
@@ -86,56 +88,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${danh_sach_doi }" var="waitting">
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td><a href="">chi tiết</a></td>
+                                                <th scope="row">${waitting.idBd}</th>
+                                                <td>${waitting.ngayDatBan }</td>
+                                                <td>${waitting.gioDatBan }</td>
+                                                <td><a href="/QL_Dat_Ban_NH/Confirmbooking?index=${waitting.idBd }">chi tiết</a></td>
                                                 <td>
                                                     <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
+                                                    <button type="button" onclick="showMessage(${waitting.idBd})" class="btn btn-danger">Xóa</button>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td><a href="">chi tiết</a></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td><a href="">chi tiết</a></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td><a href="">chi tiết</a></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td><a href="">chi tiết</a></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -149,7 +113,7 @@
                                     <table class="table" style="text-align: center;">
                                         <thead>
                                             <tr>
-                                                <th scope="col">MÃ KHÁCH HÀNG</th>
+                                                <th scope="col">MÃ Bàn Đặt</th>
                                                 <th scope="col">NGÀY ĐẶT</th>
                                                 <th scope="col">GIỜ ĐẶT</th>
                                                 <th scope="col">MÃ BÀN</th>
@@ -157,60 +121,29 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${da_xac_nhan }" var="cf">
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
+                                                <th scope="row">${cf.idBd }</th>
+                                                <td>${cf.ngayDatBan }</td>
+                                                <td>${cf.gioDatBan }</td>
+                                                <td>
+                                                	<c:forEach items="${ban_dat_chi_tiet}" var="bdct">
+                                                		<c:if test="${bdct.thongTinBanDat.idBd == cf.idBd }">
+                                                			<div>${bdct.ttBan.IDBan }</div>
+                                                		</c:if>
+                                                	</c:forEach>
+                                                </td>
                                                 <td>
                                                     <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
+                                                    <button type="button" onclick="showMessagecancel(${cf.idBd})" class="btn btn-danger">Xóa</button>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info">Sửa</button>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                </td>
-                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+                            
                             <!--bàn đã confirm end-->
 
                             <!--bàn hủy start-->
@@ -228,53 +161,38 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${da_huy}" var="canncel">
+                                        
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>ĐÃ HỦY</td>
+                                                <td>${canncel.ngayDatBan }</td>
+                                                <td>${canncel.gioDatBan }</td>
+                                                
+                                                <td>
+                                                	<c:forEach items="${ban_dat_chi_tiet}" var="bdct">
+                                                		<c:if test="${bdct.thongTinBanDat.idBd == canncel.idBd }">
+                                                			<div>${bdct.ttBan.IDBan }</div> 
+                                                		</c:if>
+                                                	</c:forEach>	
+                                                </td>
+                                                
+                                                <td>${canncel.trang_Thai }</td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>ĐÃ HỦY</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>ĐÃ HỦY</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>ĐÃ HỦY</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>20/11/2021</td>
-                                                <td>14:00 PM</td>
-                                                <td>BD01</td>
-                                                <td>ĐÃ HỦY</td>
-                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                             <!--bàn hủy end-->
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
         <!--THÊM BÀN MODAL-->
+        <form action="/QL_Ban_Dat_NH/Notification" method="post">
         <div class="modal_add js_modal_add">
             <div class="modal_add_container js_modal_add_container">
                 <h3>THÊM BÀN MỚI</h3>
@@ -282,37 +200,38 @@
                     <div class="mb-3">
                         <label for="exampleInputFullName1" class="form-label">TÊN KHÁCH HÀNG</label>
                         <input required type="text" class="form-control" onchange=""
-                            id="exampleInputFullName1" onkeyup="checkFormName()">
+                            id="exampleInputFullName1" name="ten_kh" onkeyup="checkFormName()">
                         <label for="" class="error" id="nameHelp"></label>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPhoneNume1" class="form-label">SỐ ĐIỆN THOẠI</label>
                         <input required type="text" class="form-control" id="exampleInputPhoneNume1"
-                            aria-describedby="emailHelp" onkeyup="checkFormPhone()">
+                            aria-describedby="emailHelp" name="sdt" onkeyup="checkFormPhone()">
                         <label for="" class="error" id="phoneHelp"></label>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputQuantity" class="form-label">SỐ LƯỢNG NGƯỜI</label>
                         <input required type="number" class="form-control" id="exampleInputQuantity"
-                            aria-describedby="emailHelp" onkeyup="checkNumber()">
+                            aria-describedby="emailHelp" name="so_luong" onkeyup="checkNumber()">
                         <label for="" class="error" id="quantityHelp"></label>
                     </div>
                     <div class="mb-3">
                         <div class="form-floating">
                             <textarea class="form-control" maxlength="100"
-                                placeholder="Tối đa nhập 100 ký tự..." id="floatingTextarea2"
+                                placeholder="Tối đa nhập 100 ký tự..." name="note" id="floatingTextarea2"
                                 style="height: 100px; resize: none;"></textarea>
                             <label for="floatingTextarea2">CHI TIẾT</label>
                         </div>
                         <label for="" class="error txtAreaHelp"></label>
                     </div>
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" formaction="/QL_Dat_Ban_NH/Notification/Create" id="submit" class="btn btn-primary">Submit</button>
                     <button type="button" class="btn btn-danger js_btn-close">Exit</button>
                 </form>
             </div>
         </div>
+        </form>
     </div>
-
+	
 
     <script src="./views/Staff/js/sidebar.js"></script>
     <script src="./views/Staff/js/thongtincanhanstaff.js"></script>
@@ -320,6 +239,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+        <script>
+			function showMessage(id){
+            	var option = confirm('Bạn có muốn xóa đặt bàn này không?');
+            	if(option){
+                	window.location.href = '/QL_Dat_Ban_NH/CancelBooking/Staffdelete?id='+id;
+            	}
+        	}
+        	function showMessagecancel(id){
+            	var option = confirm('Bạn có muốn xóa đặt bàn này không?');
+            	if(option){
+                	window.location.href = '/QL_Dat_Ban_NH/CancelBooking/Staffcancel?id='+id;
+            	}
+        	}
+	</script>
 </body>
 
 </html>

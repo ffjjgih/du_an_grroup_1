@@ -177,4 +177,11 @@ public class ThongTinBanDat implements Serializable {
 		this.khachHang = khachHang;
 	}
 
+	@Override
+	public String toString() {
+		return "ThongTinBanDat [idBd=" + idBd + ", ghi_Chu=" + ghi_Chu + ", gioDatBan=" + gioDatBan + ", ngayDatBan="
+				+ ngayDatBan + ", so_Luong_Nguoi=" + so_Luong_Nguoi + ", trang_Thai=" + trang_Thai + ", bdcts=" + bdcts
+				+ ", gioHangs=" + gioHangs + ", hoaDons=" + hoaDons + ", khachHang=" + khachHang + "]";
+	}
+
 }

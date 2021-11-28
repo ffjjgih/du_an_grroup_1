@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,17 +28,43 @@
                     </li>
                     <li class="nav-item">
                         <input type="text" readonly class="form-control" id="exampleFormControlInput1"
-                            value="Nguyễn Văn A">
+                            value="${infor.khachHang.hoTen }">
                     </li>
                     <li class="nav-item">
                         <input type="text" readonly class="form-control" id="exampleFormControlInput1"
-                            value="hainlph17388@fpt.edu.vn">
+                            value="${infor.khachHang.gmail }">
                     </li>
                     <li class="nav-item">
                         <input type="text" readonly class="form-control" id="exampleFormControlInput1"
-                            value="0977256375">
+                            value="${infor.khachHang.sdt }">
                     </li>
-
+					<li class="nav-item1">
+                        <h6>Số lượng người</h6>
+                    </li>
+                    <li class="nav-item1">
+                        <input type="number"  class="form-control" id="exampleFormControlInput1"
+                            value="3">
+                    </li>
+                    <li class="nav-item1">
+                        <h6>Ngày đặt</h6>
+                    </li>
+                    <li class="nav-item1">
+                        <input type="date"  class="form-control" id="exampleFormControlInput1"
+                            value="">
+                    </li>
+                    <li class="nav-item1">
+                        <h6>Giờ đặt</h6>
+                    </li>
+                    <li class="nav-item1">
+                        <input type="time"  class="form-control" id="exampleFormControlInput1"
+                            value="3">
+                    </li>
+                    <li class="nav-item1">
+                        <h6>Ghi chú</h6>
+                    </li>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px; resize: none;"></textarea>
+                    </div>
                 </ul>
                 <div class="left_footer">
                     <a href="#">
@@ -52,7 +79,12 @@
 
             <div class="container_right l-12">
                 <div class="right_header">
-                    <div class="header_search">
+                    <div class="header_search" style="float: left;">
+                        <button type="button" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
 
@@ -75,138 +107,34 @@
                                 </button>
                             </li>
                         </ul>
-
+						
                         <div class="tab-content" id="pills-tabContent">
                             <!--CHỌN BÀN start-->
+                           
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-home-tab">
+                                 <form action="/QL_Dat_Ban_NH/Confirmbooking" method="post">
                                 <div class="content_submit">
-                                    <button type="button" class="btn btn-info" style="width: 200px;">Đặt bàn</button>
+                                    <button type="submit" formaction="/QL_Dat_Ban_NH/Confirmbooking/Create?index=${infor.idBd }" class="btn btn-info" style="width: 200px;">Đặt bàn</button>
                                 </div>
-                                <form action="" method="post">
+                                
+                                <c:forEach items="${ban_trong }" var="ban">
                                     <div class="content_button l-5">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
+                                            <input class="form-check-input" type="checkbox" value=${ban.IDBan } name="checkboxbandat"
                                                 id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <a href="">
                                                     <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
+                                                        Bàn ${ban.IDBan } <br>
+                                                        loại bàn: ${ban.loaiBan } người
                                                     </button>
                                                 </a>
                                             </label>
                                         </div>
                                     </div>
-
-                                    <div class="content_button l-5">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <a href="">
-                                                    <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
-                                                    </button>
-                                                </a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="content_button l-5">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <a href="">
-                                                    <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
-                                                    </button>
-                                                </a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="content_button l-5">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <a href="">
-                                                    <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
-                                                    </button>
-                                                </a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="content_button l-5">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <a href="">
-                                                    <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
-                                                    </button>
-                                                </a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="content_button l-5">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <a href="">
-                                                    <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
-                                                    </button>
-                                                </a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="content_button l-5">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <a href="">
-                                                    <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
-                                                    </button>
-                                                </a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="content_button l-5">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ban01"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <a href="">
-                                                    <button type="button" class="btn btn-warning buttonTable">
-                                                        Bàn 01 <br>
-                                                        Số người: 02
-                                                    </button>
-                                                </a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-
-                                </form>
-
+								</c:forEach>
+								</form>
                             </div>
                             <!--CHỌN BÀN end-->
 
@@ -223,29 +151,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach items="${dsgiohang }" var="food">
                                         <tr>
-                                            <th scope="row">MON01</th>
-                                            <td>GÀ XÀO XẢ ỚT</td>
-                                            <td>ẢNH NÈ</td>
-                                            <td>2</td>
+                                            <th scope="row">${food.menu.idmn }</th>
+                                            <td>${food.menu.ten_Mon_An }</td>
+                                            <td>${food.menu.img }</td>
+                                            <td>${food.so_luong }</td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">MON01</th>
-                                            <td>GÀ XÀO XẢ ỚT</td>
-                                            <td>ẢNH NÈ</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">MON01</th>
-                                            <td>GÀ XÀO XẢ ỚT</td>
-                                            <td>ẢNH NÈ</td>
-                                            <td>2</td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
+                            
                             <!--GIỎ HÀNG end-->
                         </div>
+                        
                     </div>
                 </div>
             </div>

@@ -7,8 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import model.Bdct;
 import model.Hdct;
 import model.HoaDon;
+import model.Mnct;
 import utils.Connectjpa;
 
 public class DaoHDCT extends BaseDao<Hdct>{
@@ -29,7 +31,7 @@ public class DaoHDCT extends BaseDao<Hdct>{
 	public String getdatabase() {
 		return Hdct.class.getSimpleName();
 	}
-	
+	//tìm hóa đơn qua hdct trong servlet AddMenuController
 	public List<Hdct> findhdctbyidhd(HoaDon h){
 		this.manager=this.conn.getEntityManager();
 		String hql="SELECT h FROM Hdct h WHERE hoaDon=:hoa_don";
@@ -43,5 +45,20 @@ public class DaoHDCT extends BaseDao<Hdct>{
 		}
 		return this.lsthdct;
 	}
-	
+  
+//tìm menuct qua hdct trong servlet menuctController
+	public List<Hdct> findMenuct(Mnct mn){
+		try {
+				this.manager=this.conn.getEntityManager();
+					String hql="SELECT h FROM Hdct h WHERE mnct =:id";
+					TypedQuery<Hdct> query=manager.createQuery(hql,Hdct.class);
+					query.setParameter("id", mn);
+					this.lsthdct=query.getResultList();
+					
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return lsthdct;
+	}
 }
