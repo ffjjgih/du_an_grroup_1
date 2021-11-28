@@ -42,6 +42,14 @@ public class GioHang implements Serializable {
 
 	public GioHang() {
 	}
+	
+	public GioHang(int idgh, int so_luong, Menu menu, ThongTinBanDat thongTinBanDat) {
+		super();
+		this.idgh = idgh;
+		this.so_luong = so_luong;
+		this.menu = menu;
+		this.thongTinBanDat = thongTinBanDat;
+	}
 
 	public int getIdgh() {
 		return this.idgh;

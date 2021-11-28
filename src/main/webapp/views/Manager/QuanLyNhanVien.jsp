@@ -28,7 +28,7 @@
                 <div class="right_header" style="color: white; font-size: 18px;">
                     <h4 style=" margin-top: 10px;">QUẢN LÝ NHÂN VIÊN</h4>
                 </div>
-
+                
             </div>
             <div class="container_right_body">
                 <div class="body_left l-3"></div>
@@ -91,7 +91,41 @@
             </div>
 
         </div>
-
+        <div class="modal_add js_modal_add">
+            <div class="modal_add_container js_modal_add_container">
+                <h3>THÊM NHÂN VIÊN MỚI</h3>
+                <form action="/QL_Dat_Ban_NH/EmployeeManager" method="post">
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">HỌ VÀ TÊN</label>
+                        <input name="name" onkeyup="checkFormName()" required type="text" class="form-control" id="exampleInputName">
+                        <label for="" id="nameHelp" class="error"></label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPhone" class="form-label">SỐ ĐIỆN THOẠI</label>
+                        <input name="phone" onkeyup="checkFormPhone()" required type="text" class="form-control" id="exampleInputPhone">
+                        <label for="" id="emailHelp" class="error"></label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPhone" class="form-label">GIỚI TÍNH</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">NAM</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">NỮ</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputAddress" class="form-label">ĐỊA CHỈ</label>
+                        <input required name="address" type="text" class="form-control" id="exampleInputAddress">
+                    </div>
+                    <button type="reset" class="btn btn-secondary" style="margin: 10px;">RESET</button>
+                    <button type="submit" formaction="/QL_Dat_Ban_NH/EmployeeManager/Save" class="btn btn-primary"  id="btn_save" style="margin: 10px;">SAVE</button>
+                    <button type="button" class="btn btn-danger js_btn-close" style="margin: 10px;">Exit</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <div class="container_footer" style="text-align: center;">

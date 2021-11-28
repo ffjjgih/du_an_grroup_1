@@ -5,7 +5,6 @@ import javax.persistence.*;
 import java.util.List;
 
 
-
 @Entity
 @NamedQuery(name="Bdct.findAll", query="SELECT b FROM Bdct b")
 public class Bdct implements Serializable {

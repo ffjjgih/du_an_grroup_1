@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.Bdct;
@@ -42,9 +43,9 @@ public class DaoHDCT extends BaseDao<Hdct>{
 			e.printStackTrace();
 			return null;
 		}
-		
 		return this.lsthdct;
 	}
+  
 //tìm menuct qua hdct trong servlet menuctController
 	public List<Hdct> findMenuct(Mnct mn){
 		try {

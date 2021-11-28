@@ -1,5 +1,13 @@
+
+<%@page import="model.Bdct"%>
+<%@page import="Dao.DaoBDCT"%>
+<%@page import="model.ThongTinBanDat"%>
+<%@page import="java.util.List"%>
+<%@page import="Dao.DaoTTBD"%>
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,14 +35,16 @@
                     <h4 style=" margin-top: 10px;">THỐNG KÊ BÀN ĐẶT</h4>
                 </div>
                 <div class="right_body--header">
+                <form action="/QL_Dat_Ban_NH/ThongKeBanDat" method="post">
                     <div class="header_search">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Thống kê theo năm</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                        </select>
+                    		<select name="yeartk" class="form-select" aria-label="Default select example">
+                            	<option selected value="2021">2021</option>
+                            	<option value="2020">2020</option>
+                            	<option value="2019">2019</option>
+                        	</select>
+                        	<button type="submit" class="btn btn-success">Xem thống kê</button>
                     </div>
+                   </form>
                 </div>
             </div>
 
@@ -43,7 +53,6 @@
                 <div class="right_body l-9">
                     <div class="right_body--header-button">
                         <button type="button" style="float: left; margin-right: 50px;" class="btn btn-warning js-modal-btn">Xem biểu đồ</button>
-                        <button type="button" class="btn btn-success">Xem thống kê</button>
                     </div>
                     <div class="right_body--content">
                         <table id="t1" class="table" style="text-align: center;">
@@ -55,30 +64,178 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">Tháng 1</th>
-                                    <td>200</td>
-                                    <td>200</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tháng 2</th>
-                                    <td>100</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tháng 3</th>
-                                    <td>222</td>
-                                    <td>222</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tháng 4</th>
-                                    <td>199</td>
-                                    <td>199</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">Tổng</th>
-                                    <th style="color: tomato; font-size: 20px;" id="sum"></th>
-                                </tr>
+                            <%
+                            	int nam = Integer.parseInt(request.getParameter("nam"));
+                            	int bd1=0,bd2=0,bd3=0,bd4=0,bd5=0,bd6=0,bd7=0,bd8=0,bd9=0,bd10=0,bd11=0,bd12=0;
+                            	int ttban1=0,ttban2=0,ttban3=0,ttban4=0,ttban5=0,ttban6=0,ttban7=0,ttban8=0,ttban9=0,ttban10=0,ttban11=0,ttban12=0;
+                            	DaoTTBD daottbd=new DaoTTBD();
+                            	DaoBDCT daobdct = new DaoBDCT();
+                            	List<ThongTinBanDat> lsttbd=daottbd.thongKe(nam);
+                            	List<Bdct> lstbdct = daobdct.getall();
+                            	Calendar c;
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan()); 
+                            		if(c.getTime().getMonth()+1==1){
+                            			bd1+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban1+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 1</th>  <td>"+bd1+"</td>  <td>"+ttban1+"</td> <tr>");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==2){
+                            			bd2+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban2+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 2</th> <td>"+bd2+"</td> <td>"+ttban2+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==3){
+                            			bd3+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban3+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 3</th> <td>"+bd3+"</td> <td>"+ttban3+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==4){
+                            			bd4+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban4+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 4</th> <td>"+bd4+"</td> <td>"+ttban4+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==5){
+                            			bd5+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban5+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 5</th> <td>"+bd5+"</td> <td>"+ttban5+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==6){
+                            			bd6+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban6+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 6</th> <td>"+bd6+"</td> <td>"+ttban6+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==7){
+                            			bd7+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban7+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 7</th> <td>"+bd7+"</td> <td>"+ttban7+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==8){
+                            			bd8+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban8+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 8</th> <td>"+bd8+"</td> <td>"+ttban8+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==9){
+                            			bd9+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban9+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 9</th> <td>"+bd9+"</td> <td>"+ttban9+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==10){
+                            			bd10+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban10+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 10</th> <td>"+bd10+"</td> <td>"+ttban10+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==11){
+                            			bd11+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban11+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 11</th> <td>"+bd11+"</td> <td>"+ttban11+"</td> <tr> ");
+                            	for(int i =0; i < lsttbd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsttbd.get(i).getNgayDatBan());
+                            		if(c.getTime().getMonth()+1==12){
+                            			bd12+=1;
+                            			for(int j = 0; j < lstbdct.size(); j++){
+                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 		ttban12+=1;
+                            			 	}
+                            			}
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 12</th> <td>"+bd12+"</td> <td>"+ttban12+"</td> <tr> ");
+                            	int sumban = ttban1+ttban2+ttban3+ttban4+ttban5+ttban6+ttban7+ttban8+ttban9+ttban10+ttban11+ttban12;
+                            	out.print("<tr>");
+                            	out.print("<th colspan='2'>Tổng</th>");
+                            	out.print("<th style='color: tomato; font-size: 20px;' id='sum'>"+sumban+"</th>");
+                            	out.print("<tr>");
+                            %>
+                            
                             </tbody>
                         </table>
                     </div>

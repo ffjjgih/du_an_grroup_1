@@ -16,8 +16,10 @@ import model.KhachHang;
 @WebServlet("/SignUp")
 public class SignUp extends HttpServlet {
 	private Daouser dao;
+	private KhachHang kh;
+
 	public SignUp() {
-		this.dao=new Daouser();
+		this.dao = new Daouser();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,16 +38,22 @@ public class SignUp extends HttpServlet {
 		String sdt = request.getParameter("sdt");
 		String gmail = request.getParameter("gmail");
 
-		if (dao.checkAcc(username) != null) {
-			System.out.println("Username da ton tai");
+		if (this.dao.checkAcc(username) != null && this.dao.checkSdt(sdt) == null) {
 			response.sendRedirect(request.getContextPath() + "/SignUp" + "?errorSignUp=1");
 			return;
+		} else if (this.dao.checkAcc(username) != null && this.dao.checkSdt(sdt) != null) {
+			response.sendRedirect(request.getContextPath() + "/SignUp" + "?errorSignUp=2");
+			return;
+		} else if (this.dao.checkSdt(sdt) != null && this.dao.checkAcc(username) == null) {
+			 KhachHang kh1 = new KhachHang(0, gmail, hoten, password, sdt, username);
+			 this.dao.updateKH(kh1);
+			 response.sendRedirect(request.getContextPath() + "/SignUp" + "?succesSignUp=2");
+		}else if (this.dao.checkAcc(username) == null && this.dao.checkSdt(sdt) == null) {
+			KhachHang kh = new KhachHang(0, gmail, hoten, password, sdt, username);
+			dao.insert(kh);
+			response.sendRedirect(request.getContextPath() + "/SignUp" + "?succesSignUp=1");
 		}
-
-		KhachHang kh = new KhachHang(0, gmail, hoten, password, sdt, username);
-		dao.insert(kh);
-
-		response.sendRedirect(request.getContextPath() + "/SignUp" + "?succesSignUp=1");
+		
 	}
 
 }

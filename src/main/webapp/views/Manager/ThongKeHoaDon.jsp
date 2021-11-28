@@ -1,3 +1,9 @@
+<%@page import="model.Hdct"%>
+<%@page import="Dao.DaoHDCT"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="model.HoaDon"%>
+<%@page import="java.util.List"%>
+<%@page import="Dao.DaoHoadon"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,14 +33,16 @@
                     <h4 style=" margin-top: 10px;">THỐNG KÊ HÓA ĐƠN</h4>
                 </div>
                 <div class="right_body--header">
+                <form action="/QL_Dat_Ban_NH/ThongKeHoaDon" method="post">
                     <div class="header_search">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Thống kê theo năm</option>
-                            <option value="2021">2021</option>
+                        <select name="yeartk" class="form-select" aria-label="Default select example">
+                            <option selected value="2021">2021</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
                         </select>
+                        <button type="submit" class="btn btn-success">Xem thống kê</button>
                     </div>
+                    </form>
                 </div>
             </div>
 
@@ -55,30 +63,129 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">Tháng 1</th>
-                                    <td>900</td>
-                                    <td>90000000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tháng 2</th>
-                                    <td>900</td>
-                                    <td>90000000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tháng 3</th>
-                                    <td>900</td>
-                                    <td>90000000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tháng 4</th>
-                                    <td>900</td>
-                                    <td>90000000</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">Tổng</th>
-                                    <th style="color: tomato; font-size: 20px;" id="sum"></th>
-                                </tr>
+                            <%
+                            	int nam = Integer.parseInt(request.getParameter("nam"));
+                            	int shd1=0,shd2=0,shd3=0,shd4=0,shd5=0,shd6=0,shd7=0,shd8=0,shd9=0,shd10=0,shd11=0,shd12=0;
+                            	double tt1=0,tt2=0,tt3=0,tt4=0,tt5=0,tt6=0,tt7=0,tt8=0,tt9=0,tt10=0,tt11=0,tt12=0;
+                            	DaoHoadon daohd = new DaoHoadon();
+                            	List<HoaDon> lsthd = daohd.thongKe(nam);
+                            	DaoHDCT daohdct = new DaoHDCT();
+                            	List<Hdct> lsthdct = daohdct.getall();
+                            	Calendar c;
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 1){
+                            			shd1+=1;
+										tt1 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 1</th> <td>"+shd1+"</td> <td>"+tt1+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 2){
+                            			shd2+=1;
+										tt2 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 2</th> <td>"+shd2+"</td> <td>"+tt2+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 3){
+                            			shd3+=1;
+										tt3 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 3</th> <td>"+shd3+"</td> <td>"+tt3+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 4){
+                            			shd4+=1;
+										tt4 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 4</th> <td>"+shd4+"</td> <td>"+tt4+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 5){
+                            			shd5+=1;
+										tt5 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 5</th> <td>"+shd5+"</td> <td>"+tt5+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 6){
+                            			shd6+=1;
+										tt6 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 6</th> <td>"+shd6+"</td> <td>"+tt6+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 7){
+                            			shd7+=1;
+										tt7 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 7</th> <td>"+shd7+"</td> <td>"+tt7+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 8){
+                            			shd8+=1;
+										tt8 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 8</th> <td>"+shd8+"</td> <td>"+tt8+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 9){
+                            			shd9+=1;
+										tt9 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 9</th> <td>"+shd9+"</td> <td>"+tt9+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 10){
+                            			shd10+=1;
+										tt10 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 10</th> <td>"+shd10+"</td> <td>"+tt10+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 11){
+                            			shd11+=1;
+										tt11 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 11</th> <td>"+shd11+"</td> <td>"+tt11+"</td> <tr>");
+                            	for(int i = 0; i < lsthd.size(); i++){
+                            		c = Calendar.getInstance();
+                            		c.setTime(lsthd.get(i).getThoi_gian());
+                            		if(c.getTime().getMonth()+1 == 12){
+                            			shd12+=1;
+										tt12 = lsthdct.get(i).getSo_luong()* lsthdct.get(i).getThanh_Tien();
+                            		}
+                            	}
+                            	out.print("<tr> <th scope='row'>Tháng 12</th> <td>"+shd12+"</td> <td>"+tt12+"</td> <tr>");
+                            	double sum = tt1 + tt2 + tt3 + tt4 + tt5 + tt6 + tt7 + tt8 + tt9 + tt10 + tt11 + tt12;
+                            	out.print("<tr>");
+                            	out.print("<th colspan='2'>Tổng</th>");
+                            	out.print("<th style='color: tomato; font-size: 20px;' id='sum'>"+sum+"</th>");
+                            	out.print("</tr>");
+                            %>
                             </tbody>
                         </table>
                     </div>

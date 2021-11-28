@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
 @Table(name = "khach_hang")
 @NamedQuery(name = "KhachHang.findAll", query = "SELECT k FROM KhachHang k")
@@ -47,6 +48,16 @@ public class KhachHang implements Serializable {
 	private List<ThongTinBanDat> thongTinBanDats;
 
 	public KhachHang() {
+	}
+	
+	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
+		super();
+		this.idkh = idkh;
+		this.gmail = gmail;
+		this.hoTen = hoTen;
+		this.password = password;
+		this.sdt = sdt;
+		this.username = username;
 	}
 
 	public int getIdkh() {
