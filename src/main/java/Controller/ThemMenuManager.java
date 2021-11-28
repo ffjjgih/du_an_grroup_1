@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -54,16 +55,11 @@ public class ThemMenuManager extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		
-		String url=request.getRequestURL().toString();
-		if(url.contains("delete")) {
 
-		}
+		List<Menu> lst1 = daomenu.trangthai(1,2);
+		request.setAttribute("listmenu", lst1);
 		
 		List<LoaiMenu> lstLoai= daoloai.getall();
-		
-		List<Menu> lstmenu= daomenu.getall();
-		request.setAttribute("listmenu", lstmenu);
-		
 		request.setAttribute("listCC", lstLoai);
 		
 		

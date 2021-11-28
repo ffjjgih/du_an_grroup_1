@@ -3,7 +3,6 @@ package accessfacebook.common;
 import java.io.IOException;
 import org.apache.http.client.ClientProtocolException;
 import accessfacebook.common.*;
-import model.FaceBookPojo;
 
 import org.apache.http.client.fluent.Request;
 
@@ -13,6 +12,8 @@ import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Version;
 import com.restfb.types.User;
+
+import Dao.FaceBookPojo;
 
 public class RestFB {
 	public static String getToken(final String code) throws ClientProtocolException, IOException {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.Daouser;
-import model.Email;
+import Dao.Email;
 import model.KhachHang;
 import utils.EmailUtils;
 

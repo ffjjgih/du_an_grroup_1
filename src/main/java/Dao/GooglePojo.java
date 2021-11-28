@@ -1,4 +1,4 @@
-package model;
+package Dao;
 
 public class GooglePojo {
 	private String id;

@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.Daouser;
+import Dao.GooglePojo;
 import accessfacebook.common.GoogleUtils;
-import model.GooglePojo;
 import model.KhachHang;
 
 @WebServlet("/login-google")

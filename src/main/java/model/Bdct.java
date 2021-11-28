@@ -89,7 +89,6 @@ public class Bdct implements Serializable {
 		this.ttBan = ttBan;
 		this.thongTinBanDat = thongTinBanDat;
 	}
-	
-	
 
+	
 }

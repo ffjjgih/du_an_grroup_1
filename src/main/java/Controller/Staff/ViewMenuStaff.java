@@ -53,7 +53,7 @@ public class ViewMenuStaff extends HttpServlet {
 		List<LoaiMenu> lstbuffet = new ArrayList<LoaiMenu>();
 		List<LoaiMenu> lsthaisan = new ArrayList<LoaiMenu>();
 		for (LoaiMenu x : this.lstloaimn) {
-			if (x.getIdloai() == 1) {
+			if (x.getLoai() == 1) {
 				lstbuffet.add(x);
 			} else if (x.getLoai() == 2) {
 				lsthaisan.add(x);

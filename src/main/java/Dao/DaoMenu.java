@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
@@ -35,7 +36,7 @@ public class DaoMenu extends BaseDao<Menu>{
 		return Menu.class.getSimpleName();
 	}
 	
-	//tìm kiếm tên món 
+	//tÃ¬m kiáº¿m tÃªn mÃ³n 
 	public List<Menu> findName(String name){
 		try {
 			this.manager=this.conn.getEntityManager();
@@ -64,8 +65,36 @@ public class DaoMenu extends BaseDao<Menu>{
 		}
 		return this.lstmenu;
 	}
+	public List<Menu> trangthai(int trangthai1 ,int trangthai2){
+		try {
+			this.manager=this.conn.getEntityManager();
+			String hql="SELECT h FROM Menu h WHERE h.trang_thai =:trangthai or h.trang_thai =:tt2";
+			TypedQuery<Menu> query=manager.createQuery(hql,Menu.class);
+			query.setParameter("trangthai", trangthai1);
+			query.setParameter("tt2", trangthai2);
+			this.lstmenu=query.getResultList();
+			return this.lstmenu;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	
-	//x�a menu
+	}
+	public List<Menu> trangthaistaff(int trangthai1){
+		try {
+			this.manager=this.conn.getEntityManager();
+			String hql="SELECT h FROM Menu h WHERE h.trang_thai =:trangthai ";
+			TypedQuery<Menu> query=manager.createQuery(hql,Menu.class);
+			query.setParameter("trangthai", trangthai1);
+			this.lstmenu=query.getResultList();
+			return this.lstmenu;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	
+	}
+	//x�a menu
 	 public void deleteMenu(Menu t){
 		 this.manager=this.conn.getEntityManager();
 			this.transaction=this.manager.getTransaction();

@@ -1,4 +1,4 @@
-package model;
+package Dao;
 
 public class Email {
 	private String from,to,content,subject,frompassword;

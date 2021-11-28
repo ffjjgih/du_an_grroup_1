@@ -37,12 +37,12 @@
 					<div class="body_left l-3"></div>
 					<div class="body_right l-9">
 						<div class="body_right-header">
-						<form action="/QL_Dat_Ban_NH/SeacherMenuStaff" method="post">
+						<!-- <form action="/QL_Dat_Ban_NH/SeacherMenuStaff" method="post"> -->
 							<div class="body_right-header-search">
-								<input oninput="searchByName(this)" type="search" name="txt"
-									id="" value="${txtS }"
+								<input  type="search" name="txt" 
+									id="search_menu" value="${txtS }"
 									placeholder="Nhập món ăn muốn tìm kiếm...">
-								<button type="submit" class="btn btn-dark" >
+								<a type="button" onclick="searchmenu(${idbdct},${idhd })"  class="btn btn-dark">
 									<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
 										width="16" height="16" fill="currentColor"
 										class="bi bi-search" viewBox="0 0 16 16">
@@ -50,21 +50,17 @@
 											d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                         </svg>
 									TÌM KIẾM
-								</button>
+								</a>
 
 							</div>
-							</form>
+							<!-- </form> -->
 							<div class="body_right-header-info">
 								<h4>Bàn ${ bdct.idBdct}</h4>
 							</div>
 						</div>
-
-						<div class="tab-content" id="pills-tabContent">
-
-							<div class="tab-pane fade show active" id="pills-home"
-								role="tabpanel" aria-labelledby="pills-home-tab">
-								<c:forEach items="${monan }" var="items">
-									<div class="body_items">
+						<c:forEach items="${monan }" var="items">
+						<form action="/QL_Dat_Ban_NH/AddMenuCTController" method="post">
+								
 										<div class="body_right-content--item l-3">
 											<div class="item_img">
 												<img src="/QL_Dat_Ban_NH/img/${items.img}" alt="" name="img"
@@ -73,22 +69,15 @@
 											<div class="item_title">
 												<p>${items.ten_Mon_An }</p>
 											</div>
-											<div>
-												<input type="number" name="s_l" id="so_luong${items.idmn }">
-											</div>
-											<div class="item_booking">
+												<input type="number" name="s_l" id="s_l">
 												<button type="submit" class="btn btn-primary"
-													onclick="insertmnct(${items.idmn},${idbdct},${idhd})">
-													Thêm món</button>
-											</div>
+													formaction="/QL_Dat_Ban_NH/AddMenuCTController?idmn=${items.idmn }&&idhd=${idhd}&&id=${idbdct}">
+													Thêm món</button> 
+													
 										</div>
-
-									</div>
+						
+								</form>
 								</c:forEach>
-							</div>
-
-						</div>
-
 
 					</div>
 				</div>
@@ -102,35 +91,15 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<script>
-		function searchByName(param) {
-			var txtSearch = param.value;
-			$.ajax({
-				url : "QL_Dat_Ban_NH/SeacherMenuStaff",
-				type : "get", //send it through get method
-				data : {
-					name : txtSearch
-				},
-				success : function(data) {
-					var row = document.getElementById("content");
-					row.innerHTML = data;
-				},
-				error : function(xhr) {
-					//Do Something to handle error
-				}
-			});
+
+		function searchmenu(idbdct,idhd) {
+			var tim= document.getElementById('search_menu').value; 
+			window.location.href='/QL_Dat_Ban_NH/SeacherMenuStaff?id='+idbdct+"&&idhd="+idhd+"&&search="+tim;
+			 
 		}
-		
-		function  insertmnct(idmn,idbdct,idhd) {
-			var so_luong=document.getElementById('so_luong'+idmn).value;
-			if (so_luong<=0||so_luong==null||so_luong>100) {
-				alert("Số lượng phải lớn hơn 0, khác null và không được quá 100");
-				return;
-			}
-			window.location.href='/QL_Dat_Ban_NH/AddMenuCT?idmn='+idmn+"&&id="+idbdct+"&&idhd="+idhd+"&&so_luong="+so_luong;
-		}
+			
 	</script>
 </body>
 

@@ -1,4 +1,4 @@
-package model;
+package Dao;
 
 public class FaceBookPojo {
 	private String name;
