@@ -1,5 +1,15 @@
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Menu"%>
+<%@page import="Dao.DaoMenu"%>
+<%@page import="model.Hdct"%>
+<%@page import="Dao.DaoHDCT"%>
+<%@page import="model.HoaDon"%>
+<%@page import="java.util.List"%>
+<%@page import="Dao.DaoHoadon"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,34 +37,21 @@
                     <h4 style=" margin-top: 10px;">THỐNG KÊ MENU</h4>
                 </div>
                 <div class="right_body--header">
+                <form action="/QL_Dat_Ban_NH//ThongKeMenu" method="post">
                     <div class="header_search left">
-                        <select class="form-select" style="float: left;" aria-label="Default select example">
-                            <option selected>Chọn tháng</option>
-                            <option value="1">Tháng 1</option>
-                            <option value="2">Tháng 2</option>
-                            <option value="3">Tháng 3</option>
-                            <option value="4">Tháng 4</option>
-                            <option value="5">Tháng 5</option>
-                            <option value="6">Tháng 6</option>
-                            <option value="7">Tháng 7</option>
-                            <option value="8">Tháng 8</option>
-                            <option value="9">Tháng 9</option>
-                            <option value="10">Tháng 10</option>
-                            <option value="11">Tháng 11</option>
-                            <option value="12">Tháng 12</option>
-                        </select>
-                    </div>
-                    <div class="header_search">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Chọn năm</option>
-                            <option value="2021">2021</option>
+                 			<select name="yeartk" class="form-select" aria-label="Default select example">
+                            <option selected value="2021">2021</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
                         </select>
                     </div>
+                    <div class="header_search">
+                        <button type="submit" class="btn btn-success">Xem thống kê</button>
+                    </div>
+                    </form>
                 </div>
             </div>
-
+		
             <div class="container_right_body">
                 <div class="body_left l-3"></div>
                 <div class="right_body l-9">
@@ -73,30 +70,48 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>MON01</td>
-                                    <td>100</td>
-                                    <td>10000</td>
-                                </tr>
-                                <tr>
-                                    <td>MON01</td>
-                                    <td>100</td>
-                                    <td>10000</td>
-                                </tr>
-                                <tr>
-                                    <td>MON01</td>
-                                    <td>100</td>
-                                    <td>10000</td>
-                                </tr>
-                                <tr>
-                                    <td>MON01</td>
-                                    <td>100</td>
-                                    <td>10000</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">Tổng</th>
-                                    <th style="color: tomato; font-size: 20px;" id="sum"></th>
-                                </tr>
+                            <% 
+                            	int nam = Integer.parseInt(request.getParameter("nam"));         		
+                            	int sl = 0;
+                            	double gia = 0;
+                            	DaoHoadon daohd = new DaoHoadon();
+                            	List<HoaDon> lstHD = daohd.thongKe(nam);
+                            	DaoHDCT daohdct = new DaoHDCT();
+                            	List<Hdct> lstHdct = new ArrayList();
+                            	List<Hdct> lstHdct1 = new ArrayList();
+                            	for(int i = 0; i < lstHD.size(); i++) {
+                        			lstHdct.addAll(daohdct.findhdctbyidhd(lstHD.get(i)));
+                        		}
+                            	DaoMenu daomn = new DaoMenu();
+                            	List<Menu> lstmenu = daomn.getall();
+                            	for(Menu m: lstmenu){
+                            	for(Hdct h: lstHdct){
+
+                            			if(h.getMnct().getMenu().getIdmn() == m.getIdmn()){
+                            				sl+=h.getSo_luong();
+                            				gia+= h.getThanh_Tien();
+                            			}
+                            		}
+                            		lstHdct1.add(new Hdct(m.getIdmn(),sl,gia));
+                            		sl=0;
+                            		gia=0;
+                            	}
+                            	for(Hdct hdct1: lstHdct1){
+                            		if(hdct1.getSo_luong() != 0 ){
+                            		gia+=hdct1.getThanh_Tien();
+                            		out.print("<tr>");
+                            		out.print("<td>"+hdct1.getIdHdct()+"</td>");
+                            		out.print("<td>"+hdct1.getSo_luong()+"</td>");
+                            		out.print("<td>"+hdct1.getThanh_Tien()+"</td>");
+                            		out.print("</tr>");
+                            		}
+                            	}
+                            	out.print("<tr>");
+                            	out.print(" <th colspan='2'>Tổng</th>");
+                            	out.print("<th style='color: tomato; font-size: 20px;' id='sum'>"+gia+"</th>");
+                            	out.print("</tr>");
+
+                            %>
                             </tbody>
                         </table>
                     </div>
@@ -162,6 +177,10 @@
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
             chart.draw(data, options);
+        }
+        
+        function thongKeTheoNam(index){
+        	window.location.href='/QL_Dat_Ban_NH/ThongKeMenu?nam='+index;
         }
     </script>
     <script src="./views/Manager/js/modalChart.js"></script>

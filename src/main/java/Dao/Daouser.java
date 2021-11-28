@@ -126,6 +126,21 @@ public class Daouser extends BaseDao<KhachHang>{
 		return khach;
 	}
 	
+	public KhachHang checkSdt(String sdt) {
+		this.manager = this.conn.getEntityManager();
+		KhachHang khach = new KhachHang();
+		try {
+			String hql = "SELECT A FROM KhachHang A WHERE sdt = :sdt";
+			TypedQuery<KhachHang> query = this.manager.createQuery(hql, KhachHang.class);
+			query.setParameter("sdt", sdt);
+			khach = query.getSingleResult();
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return khach;
+	}
+	
 	public void updatettdb(int id,String name,String sdt) {
 		this.manager=this.conn.getEntityManager();
 		this.transaction=this.manager.getTransaction();
@@ -143,6 +158,26 @@ public class Daouser extends BaseDao<KhachHang>{
 			e.printStackTrace();
 			this.transaction.rollback();
 		}
+	}
+	
+	public KhachHang updateKH(KhachHang kh) {
+		this.manager=this.conn.getEntityManager();
+		this.transaction=this.manager.getTransaction();
+		try {
+			this.transaction.begin();
+			String hql="Update KhachHang k SET username=:username, password=:password, gmail=:gmail WHERE sdt=:sdt";
+			Query query=this.manager.createQuery(hql);
+			query.setParameter("username", kh.getUsername());
+			query.setParameter("password", kh.getPassword());
+			query.setParameter("gmail", kh.getGmail());
+			query.setParameter("sdt", kh.getSdt());
+			query.executeUpdate();
+			this.transaction.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			this.transaction.rollback();
+		}
+		return kh;
 	}
 	
 	@Override

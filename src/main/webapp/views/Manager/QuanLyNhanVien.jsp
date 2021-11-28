@@ -27,7 +27,7 @@
                 <div class="right_header" style="color: white; font-size: 18px;">
                     <h4 style=" margin-top: 10px;">QUẢN LÝ NHÂN VIÊN</h4>
                 </div>
-
+                
             </div>
             <div class="container_right_body">
                 <div class="body_left l-3"></div>
@@ -44,7 +44,7 @@
                             </button>
                         </div>
                         <div class="header_search">
-                            <form action="" method="post">
+                            <form action="/QL_Dat_Ban_NH/EmployeeManager" method="post">
                                 <input type="search" name="" id="" placeholder="Nhập tên nhân viên">
                                 <button type="button" class="btn btn-dark">
                                     <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
@@ -117,15 +117,15 @@
         <div class="modal_add js_modal_add">
             <div class="modal_add_container js_modal_add_container">
                 <h3>THÊM NHÂN VIÊN MỚI</h3>
-                <form>
+                <form action="/QL_Dat_Ban_NH/EmployeeManager" method="post">
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">HỌ VÀ TÊN</label>
-                        <input onkeyup="checkFormName()" required type="text" class="form-control" id="exampleInputName">
+                        <input name="name" onkeyup="checkFormName()" required type="text" class="form-control" id="exampleInputName">
                         <label for="" id="nameHelp" class="error"></label>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPhone" class="form-label">SỐ ĐIỆN THOẠI</label>
-                        <input onkeyup="checkFormPhone()" required type="text" class="form-control" id="exampleInputPhone">
+                        <input name="phone" onkeyup="checkFormPhone()" required type="text" class="form-control" id="exampleInputPhone">
                         <label for="" id="emailHelp" class="error"></label>
                     </div>
                     <div class="mb-3">
@@ -141,10 +141,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputAddress" class="form-label">ĐỊA CHỈ</label>
-                        <input required type="text" class="form-control" id="exampleInputAddress">
+                        <input required name="address" type="text" class="form-control" id="exampleInputAddress">
                     </div>
                     <button type="reset" class="btn btn-secondary" style="margin: 10px;">RESET</button>
-                    <button type="submit" class="btn btn-primary"  id="btn_save" style="margin: 10px;">SAVE</button>
+                    <button type="submit" formaction="/QL_Dat_Ban_NH/EmployeeManager/Save" class="btn btn-primary"  id="btn_save" style="margin: 10px;">SAVE</button>
                     <button type="button" class="btn btn-danger js_btn-close" style="margin: 10px;">Exit</button>
                 </form>
             </div>

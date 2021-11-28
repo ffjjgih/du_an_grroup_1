@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.HoaDon;
@@ -48,4 +49,12 @@ public class DaoHoadon extends BaseDao<HoaDon>{
 		
 	}
 
+	public List<HoaDon> thongKe(int nam){
+		this.manager = this.conn.getEntityManager();
+		String hql = "SELECT h FROM HoaDon h WHERE YEAR(h.thoi_gian) =:nam ";
+		Query query = this.manager.createQuery(hql);
+		query.setParameter("nam", nam);
+		return this.lsthd = query.getResultList();
+	}
+	
 }
