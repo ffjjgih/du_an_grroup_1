@@ -118,10 +118,5 @@ public class Mnct implements Serializable {
 		this.menu = menu;
 	}
 
-	@Override
-	public String toString() {
-		return "Mnct [idMnct=" + idMnct + ", so_luong=" + so_luong + ", hdcts=" + hdcts + ", menuHuys=" + menuHuys
-				+ ", bdct=" + bdct + ", menu=" + menu + "]";
-	}
 
 }

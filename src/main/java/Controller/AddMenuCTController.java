@@ -71,7 +71,7 @@ public class AddMenuCTController extends HttpServlet {
 		request.setAttribute("idmn", menu);
 		request.setAttribute("idhd", idhd);
 		
-		List<Menu> lstmenu= daomenu.getall();
+		List<Menu> lstmenu= daomenu.trangthaistaff(1);
 		request.setAttribute("monan", lstmenu);
 		
 		List<LoaiMenu> lstLoai= this.daoloai.getall();
@@ -80,6 +80,35 @@ public class AddMenuCTController extends HttpServlet {
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int idmenu= Integer.parseInt(request.getParameter("idmn"));
+		this.menu= daomenu.findbyid(idmenu);
+		int id = Integer.parseInt(request.getParameter("id").trim());
+		this.bdct = this.daobdct.findbyid(id);
+		int sl= Integer.parseInt(request.getParameter("s_l"));
+		int idhd= Integer.parseInt(request.getParameter("idhd"));
+		this.hd= this.daohd.findbyid(idhd);
+		
+		//insert menuct
+		mnct.setBdct(bdct);
+		mnct.setMenu(menu);
+		mnct.setSo_luong(sl);
+		daomnct.insert(mnct);
+
+		//insert hdct
+		Mnct m = this.daomnct.findmnctbybdct(bdct);
+		this.hdtc.setMnct(m);
+		this.hdtc.setSo_luong(0);
+		this.hdtc.setThanh_Tien(0);
+		this.hdtc.setHoaDon(hd);
+		
+		this.daohdct.insert(this.hdtc);
+		
+		response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + id+"&&idhd="+idhd+"&&success=1 ");
+	
+
+	}
 		
 	}
 

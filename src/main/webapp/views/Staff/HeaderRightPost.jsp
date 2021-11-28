@@ -12,8 +12,8 @@
 		</button>
 	</div>
 	<div class="header_search">
-		<form action="seachercontroller" method="post">
-			<input oninput="searchByName(this)" type="text" value="${txtS}" name="txt" id="">
+		<form action="/QL_Dat_Ban_NH/seachercontroller" method="post">
+			<input  type="text" value="${txtS}" name="txt" id="">
 			<button type="submit" class="btn btn-dark" >
 				<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
 					width="16" height="16" fill="currentColor" class="bi bi-search"

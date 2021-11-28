@@ -3,6 +3,7 @@ package Dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import model.TtBan;
@@ -14,8 +15,10 @@ public class Daottban extends BaseDao<TtBan>{
 	private TtBan ttban;
 	private List<TtBan> lstttb;
 	private EntityManager manager;
+	private EntityTransaction transaction;
 	public Daottban() {
 		this.conn=new Connectjpa();
+		
 	}
 	@Override
 	public Class<TtBan> getmodeclass() {
@@ -43,6 +46,21 @@ public class Daottban extends BaseDao<TtBan>{
 			e.printStackTrace();
 			return null;
 		}
+		
+	}
+	public List<TtBan> findloai( int ban){
+		try {
+			this.manager= this.conn.getEntityManager();
+			String hql= "Select b from TtBan b where b.loaiBan= :loai";
+			TypedQuery<TtBan> query = this.manager.createQuery(hql, TtBan.class);
+			query.setParameter("loai", ban);
+			this.lstttb= query.getResultList();
+			return this.lstttb;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 		
 	}
 

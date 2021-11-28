@@ -84,10 +84,4 @@ public class Hdct implements Serializable {
 		this.mnct = mnct;
 	}
 
-	@Override
-	public String toString() {
-		return "Hdct [idHdct=" + idHdct + ", so_luong=" + so_luong + ", thanh_Tien=" + thanh_Tien + ", hoaDon=" + hoaDon
-				+ ", mnct=" + mnct + "]";
-	}
-
 }

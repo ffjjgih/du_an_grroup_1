@@ -63,13 +63,13 @@
 									<button class="nav-link" id="pills-profile-tab"
 										data-bs-toggle="pill" data-bs-target="#pills-profile"
 										type="button" role="tab" aria-controls="pills-profile"
-										aria-selected="false">Đồ uống</button>
+										aria-selected="false">Hải sản</button>
 								</li>
 								<li class="nav-item1" role="presentation">
 									<button class="nav-link" id="pills-contact-tab"
 										data-bs-toggle="pill" data-bs-target="#pills-contact"
 										type="button" role="tab" aria-controls="pills-contact"
-										aria-selected="false">Hải sản</button>
+										aria-selected="false">Đồ uống</button>
 								</li>
 								<li class="nav-item1" role="presentation">
 									<button class="nav-link" id="pills-contact-tab"

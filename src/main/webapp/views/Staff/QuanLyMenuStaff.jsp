@@ -69,7 +69,7 @@
 									<button type="submit" class="btn btn-primary buttonTable"
 										formaction="QuanLiMenuController/bdct?idbdct=${items.idBdct} " disabled>
 										Bàn ${items.ttBan.IDBan} <br> Số người:
-										${items.thongTinBanDat.so_Luong_Nguoi}
+										${items.ttBan.loaiBan}
 									</button>
 								</a>
 							</div>
@@ -80,7 +80,7 @@
 									<button type="submit" class="btn btn-primary buttonTable"
 										formaction="QuanLiMenuController/bdct?idbdct=${items.idBdct}&&idhd=${hd.idhd } ">
 										Bàn ${items.ttBan.IDBan} <br> Số người:
-										${items.thongTinBanDat.so_Luong_Nguoi}
+										${items.ttBan.loaiBan}
 									</button>
 								</a>
 							</div>

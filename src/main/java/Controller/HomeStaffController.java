@@ -92,17 +92,13 @@ public class HomeStaffController extends HttpServlet {
 			Part part = request.getPart("chonAnh");
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
 			part.write(Paths.get(realpath.toString(), namefile).toString());
-			bv.setImg(namefile);
 
 			String mota = request.getParameter("mota");
 			String tieude = request.getParameter("tieuDe");
 			String link = request.getParameter("link");
-
-			bv.setTen_tieu_de(tieude);
-			bv.setLink(link);
-			bv.setNoi_dung(mota);
-			bv.setStaff(staff);
-
+			
+		    BaiViet	bv= new BaiViet( namefile, link, mota, tieude, staff);
+			
 			dao.insert(bv);
 
 			response.sendRedirect(request.getContextPath() + "/HomeStaffController" + "?success=1");
