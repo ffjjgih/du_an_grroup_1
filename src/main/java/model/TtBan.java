@@ -4,11 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
-/**
- * The persistent class for the tt_ban database table.
- * 
- */
 @Entity
 @Table(name="tt_ban")
 @NamedQuery(name="TtBan.findAll", query="SELECT t FROM TtBan t")

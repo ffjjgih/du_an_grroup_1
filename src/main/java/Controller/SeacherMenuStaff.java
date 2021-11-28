@@ -33,21 +33,12 @@ public class SeacherMenuStaff extends HttpServlet {
 		int idhd= Integer.parseInt(request.getParameter("idhd"));
 		request.setAttribute("idbdct", idbdct);
 		request.setAttribute("idhd", idhd);
-		
 		String txtSearch = request.getParameter("search");
 		lst = daomenu.findName(txtSearch);
-		
-		System.out.println(lst.size()+"as");
 		request.setAttribute("monan", lst);
 		request.setAttribute("txtS", txtSearch);
-
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

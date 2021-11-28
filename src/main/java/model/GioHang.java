@@ -13,6 +13,16 @@ import javax.persistence.*;
 @NamedQuery(name="GioHang.findAll", query="SELECT g FROM GioHang g")
 public class GioHang implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	
+
+	public GioHang(int idgh, int so_luong, Menu menu, ThongTinBanDat thongTinBanDat) {
+		super();
+		this.idgh = idgh;
+		this.so_luong = so_luong;
+		this.menu = menu;
+		this.thongTinBanDat = thongTinBanDat;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -31,6 +41,14 @@ public class GioHang implements Serializable {
 	private ThongTinBanDat thongTinBanDat;
 
 	public GioHang() {
+	}
+	
+	public GioHang(int idgh, int so_luong, Menu menu, ThongTinBanDat thongTinBanDat) {
+		super();
+		this.idgh = idgh;
+		this.so_luong = so_luong;
+		this.menu = menu;
+		this.thongTinBanDat = thongTinBanDat;
 	}
 
 	public int getIdgh() {

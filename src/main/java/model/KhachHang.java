@@ -5,23 +5,32 @@ import javax.persistence.*;
 import java.util.List;
 
 
-/**
- * The persistent class for the khach_hang database table.
- * 
- */
 @Entity
-@Table(name="khach_hang")
-@NamedQuery(name="KhachHang.findAll", query="SELECT k FROM KhachHang k")
+@Table(name = "khach_hang")
+@NamedQuery(name = "KhachHang.findAll", query = "SELECT k FROM KhachHang k")
 public class KhachHang implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username
+			) {
+		super();
+		this.idkh = idkh;
+		this.gmail = gmail;
+		this.hoTen = hoTen;
+		this.password = password;
+		this.sdt = sdt;
+		this.username = username;
+		this.hoaDons = hoaDons;
+		this.thongTinBanDats = thongTinBanDats;
+	}
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idkh;
 
 	private String gmail;
 
-	@Column(name="HO_TEN")
+	@Column(name = "HO_TEN")
 	private String hoTen;
 
 	private String password;
@@ -30,15 +39,25 @@ public class KhachHang implements Serializable {
 
 	private String username;
 
-	//bi-directional many-to-one association to HoaDon
-	@OneToMany(mappedBy="khachHang")
+	// bi-directional many-to-one association to HoaDon
+	@OneToMany(mappedBy = "khachHang")
 	private List<HoaDon> hoaDons;
 
-	//bi-directional many-to-one association to ThongTinBanDat
-	@OneToMany(mappedBy="khachHang")
+	// bi-directional many-to-one association to ThongTinBanDat
+	@OneToMany(mappedBy = "khachHang")
 	private List<ThongTinBanDat> thongTinBanDats;
 
 	public KhachHang() {
+	}
+	
+	public KhachHang(int idkh, String gmail, String hoTen, String password, String sdt, String username) {
+		super();
+		this.idkh = idkh;
+		this.gmail = gmail;
+		this.hoTen = hoTen;
+		this.password = password;
+		this.sdt = sdt;
+		this.username = username;
 	}
 
 	public int getIdkh() {
@@ -141,5 +160,5 @@ public class KhachHang implements Serializable {
 		this.sdt = sdt;
 		this.username = username;
 	}
-
+	
 }

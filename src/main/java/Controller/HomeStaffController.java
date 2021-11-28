@@ -92,7 +92,6 @@ public class HomeStaffController extends HttpServlet {
 			Part part = request.getPart("chonAnh");
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
 			part.write(Paths.get(realpath.toString(), namefile).toString());
-
 			String mota = request.getParameter("mota");
 			String tieude = request.getParameter("tieuDe");
 			String link = request.getParameter("link");

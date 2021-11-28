@@ -85,7 +85,6 @@
 									<c:if test="${menu.getTrangthai()==2 }">
 										<option value="1">Còn hàng</option>
 										<option selected="selected" value="2">Hết hàng</option>
-
 										<option value="3">Tạm ngừng hoạt động</option>
 									</c:if>
 									<c:if test="${menu.getTrangthai()==3 }">

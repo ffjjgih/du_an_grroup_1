@@ -52,9 +52,6 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 			this.manager = this.conn.getEntityManager();
 			TypedQuery<ThongTinBanDat> query = this.manager.createQuery(hql, ThongTinBanDat.class);
 			query.setParameter("id_kh", kh);
-			query.setParameter("status", "waitting line");
-			query.setParameter("tt", "comfirmed");
-			this.ttbd = query.getSingleResult();
 			query.setParameter("status", "Waitting line");
 			query.setParameter("tt", "Confirmed");
 			this.ttbd=query.getSingleResult();
@@ -88,10 +85,19 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 			e.printStackTrace();
 			this.transaction.rollback();
 		}
+	}
+	
+	public List<ThongTinBanDat> thongKe(int nam){
+		this.manager = this.conn.getEntityManager();
+		String hql = "SELECT t FROM ThongTinBanDat t WHERE YEAR(t.ngayDatBan) =:nam";
+		Query query = this.manager.createQuery(hql);
+		query.setParameter("nam", nam);
+		return this.lstttbd = query.getResultList();
+	}
+
 
 	}
 
-	
 	// hiển thị thông tin bàn đặt với trạng thái là waitting line (class liên quan:Notification)
 	public List<ThongTinBanDat> showttbdbywl(){
 		try {

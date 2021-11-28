@@ -51,3 +51,13 @@
 .buttonTable{
     width: 200px;
 }
+
+.buttonTable1{
+    width: 300px;
+    padding: 10px;
+}
+
+.container_right_footer{
+    float: left;
+    margin-top: 10px;
+}

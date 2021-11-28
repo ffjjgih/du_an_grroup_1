@@ -67,10 +67,8 @@ public class ProfileStaff extends HttpServlet {
 		if (url.contains("Changepass_staff")) {
 			if (mkcu.equals(this.staff.getPassword())) {
 				this.dao.changepassstaff(index, mkmoi);
-				System.out.println("TC");
 				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "succes=5");
 			} else {
-				System.out.println("TB");
 				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "error=5");
 			}
 		} else if (url.contains("Update_profile_staff")) {
@@ -93,7 +91,6 @@ public class ProfileStaff extends HttpServlet {
 				this.staff.setSdt(sdt);
 				this.staff.setEmail(email);
 				this.dao.updateprofilestaff(staff);
-				System.out.println("TC");
 				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "succes=6");
 			} catch (Exception e) {
 				e.printStackTrace();

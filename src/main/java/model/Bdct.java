@@ -5,10 +5,6 @@ import javax.persistence.*;
 import java.util.List;
 
 
-/**
- * The persistent class for the bdct database table.
- * 
- */
 @Entity
 @NamedQuery(name="Bdct.findAll", query="SELECT b FROM Bdct b")
 public class Bdct implements Serializable {
@@ -34,6 +30,13 @@ public class Bdct implements Serializable {
 	private List<Mnct> mncts;
 
 	public Bdct() {
+	}
+	
+	public Bdct(int idBdct, TtBan ttBan,ThongTinBanDat thongTinBanDat) {
+		super();
+		this.idBdct = idBdct;
+		this.ttBan = ttBan;
+		this.thongTinBanDat = thongTinBanDat;
 	}
 
 	public int getIdBdct() {
@@ -88,5 +91,7 @@ public class Bdct implements Serializable {
 		this.ttBan = ttBan;
 		this.thongTinBanDat = thongTinBanDat;
 	}
+	
+	
 
 }

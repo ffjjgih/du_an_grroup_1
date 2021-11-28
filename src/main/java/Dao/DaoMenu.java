@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
@@ -35,7 +36,7 @@ public class DaoMenu extends BaseDao<Menu>{
 		return Menu.class.getSimpleName();
 	}
 	
-	//tìm kiếm tên món 
+	//tÃ¬m kiáº¿m tÃªn mÃ³n 
 	public List<Menu> findName(String name){
 		try {
 			this.manager=this.conn.getEntityManager();
@@ -93,7 +94,7 @@ public class DaoMenu extends BaseDao<Menu>{
 		}
 	
 	}
-	//x�a menu
+	//x�a menu
 	 public void deleteMenu(Menu t){
 		 this.manager=this.conn.getEntityManager();
 			this.transaction=this.manager.getTransaction();
