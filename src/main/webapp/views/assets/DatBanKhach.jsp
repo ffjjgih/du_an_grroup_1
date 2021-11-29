@@ -124,7 +124,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Số người</label>
                                 <div class="col-sm-7">
-                                    <input type="number" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người">
+                                    <input type="number" style="margin-left: -15px;" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người">
                                     <span class="form-group_error"></span>
                                 </div>
                             </div>
@@ -132,16 +132,24 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Ngày</label>
                                 <div class="col-sm-7">
-                                    <input type="date" required class="form-group_input" name="dateDatBan" id="dateDatBan">
-                                    <span class="form-group_error"></span>
+                                    <select name="" id="" class="form-select" style="width: 500px; margin-bottom: 15px; height: 50px;">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>  
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Giờ</label>
                                 <div class="col-sm-7">
-                                    <input type="time" required class="form-group_input" name="timedatban" id="gioDatBan">
-                                    <span class="form-group_error"></span>
+                                    <select name="" id="" class="form-select" style="width: 500px; margin-bottom: 15px; height: 50px;">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>  
+                                    </select>
                                 </div>
                             </div>
 

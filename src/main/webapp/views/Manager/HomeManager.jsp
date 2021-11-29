@@ -36,7 +36,7 @@
                         <div class="header_search">
                             <form action="SearchPostByAjax" method="post">
                                 <input type="search" name="txt" id="" value="${search}" placeholder="Nhập tiêu đề bài viết...">
-                                <button type="button" class="btn btn-dark">
+                                <button type="submit" class="btn btn-dark">
                                     <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                         <path

@@ -47,7 +47,7 @@
                         <div class="header_search">
                             <form action="SearchAccByAjax" method="post">
                                 <input type="search" name="txt" id="" value="${search}" placeholder="Nhập tên nhân viên">
-                                <button type="button" class="btn btn-dark">
+                                <button type="submit" class="btn btn-dark">
                                     <svg xmlns="http://www.w3.org/2000/svg" style="color: white;" width="16" height="16"
                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                         <path
@@ -67,7 +67,6 @@
                                     <th scope="col">SỐ ĐIỆN THOẠI</th>
                                     <th scope="col">CĂN CƯỚC CÔNG DÂN</th>
                                     <th scope="col">CHỨC VỤ</th>
-                                    <th scope="col">THAO TÁC</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,10 +77,6 @@
                                     <td>${o.sdt}</td>
                                     <td>${o.cccd}</td>
                                     <td>${o.chucVu}</td>
-                                    <td>
-                                        <a href="LoadToUpdate?idacc=${o.idnv}" type="button" class="btn btn-info" style="margin-bottom: 10px;">SỬA</a>
-                                        <button onclick="showMess(${o.idnv})" type="button" class="btn btn-danger" style="margin-bottom: 10px;">XÓA</button>
-                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

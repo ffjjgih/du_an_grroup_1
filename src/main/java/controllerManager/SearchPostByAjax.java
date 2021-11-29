@@ -47,7 +47,7 @@ public class SearchPostByAjax extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("txt");
 		List<BaiViet> list = new ArrayList<BaiViet>();
 		list = this.dao.findName(name);

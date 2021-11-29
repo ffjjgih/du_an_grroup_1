@@ -27,15 +27,16 @@
                     <h4 style=" margin-top: 10px;">THỐNG KÊ MENU</h4>
                 </div>
                 <div class="right_body--header">
-                    
-                    <div class="header_search">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Chọn năm</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                        </select>
-                    </div>
+                	<form action="">
+                		<div class="header_search" style="width: auto;">
+                        	<select style="width: 200px; float: left; margin-right: 10px;" class="form-select" aria-label="Default select example">
+                            	<option value="2021">2021</option>
+                            	<option value="2020">2020</option>
+                            	<option value="2019">2019</option>
+                        	</select>
+                    		<button type="button" class="btn btn-success">Thống kê</button>
+                    	</div>
+                	</form>
                 </div>
             </div>
 
@@ -44,7 +45,6 @@
                 <div class="right_body l-9">
                     <div class="right_body--header-button">
                         <button type="button" style="float: left; margin-right: 50px;" class="btn btn-warning js-modal-btn">Xem biểu đồ</button>
-                        <button type="button" class="btn btn-success">Xem thống kê</button>
                     </div>
                     <div class="right_body--content">
                         <table id="t1" class="table" style="text-align: center;">

@@ -52,9 +52,10 @@ public class ForgotpasswordServlet extends HttpServlet {
 				EmailUtils.send(gmail);
 				response.sendRedirect(request.getContextPath() + "/ForgotpasswordServlet?successforgotpass=1");
 
-			} else {
-				response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet?errorforgotpass=1");
-			}
+			} 
+//				else {
+//				response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet?errorforgotpass=1");
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet?errorforgotpass=1");

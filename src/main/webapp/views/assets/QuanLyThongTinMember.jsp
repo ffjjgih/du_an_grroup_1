@@ -105,7 +105,7 @@
                                 <label for="InputOldPass1" style="float: left; width: 100px;" class="form-label">Mật khẩu cũ</label>
                                 <input required type="password" class="form-control" name="oldpassword" id="InputOldPass1" aria-describedby="emailHelp">
                                 <%if("1".equals(err)){
-                            		out.print("<small id='oldpasswordhl' style='color: red;' class='form-text text-muted' >Password Insuccess</small>");
+                            		out.print("<small id='oldpasswordhl' style='color: tomato;' class='form-text text-muted' >Password Insuccess</small>");
                             	} %>
                             </div>
                             <div class="mb-3">
@@ -217,6 +217,7 @@
                 tabTrigger.show()
             })
         })
+        
     </script>
     <script src="./views/assets/js/login.js"></script>
     <script src="./views/assets/js/navbar.js"></script>
