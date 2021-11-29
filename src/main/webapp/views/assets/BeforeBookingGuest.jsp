@@ -23,7 +23,7 @@
     <div id="app">
 
         <header>
-            <h1>Confirm info booking Guest</h1>
+            <h1>Info booking Guest</h1>
         </header>
 
         <div id="form">
@@ -34,32 +34,26 @@
             <form id="waterform" method="post">
 
                 <div class="formgroup" id="name-form">
-                    <label for="name">Số điện thoại</label>
-                    <input disabled type="text" id="name" name="phone" value="0977256375"/>
-                </div>
-
-                <div class="formgroup" id="name-form">
                     <label for="name">Họ và tên</label>
-                    <input disabled type="text" id="name" name="name" value="Nguyễn Lê Hải"/>
+                    <input required type="text" id="name" name="name" value="Nguyễn Lê Hải"/>
                 </div>
 
                 <div class="formgroup" id="email-form">
                     <label for="email">Ngày đặt</label>
-                    <input disabled type="text" id="email" name="date" value="30/01/2021"/>
+                    <input required type="text" id="email" name="date" value="30/01/2021"/>
                 </div>
 
                 <div class="formgroup" id="name-form">
                     <label for="name">Giờ đặt</label>
-                    <input disabled type="text" id="name" name="time" value="14:00 PM"/>
+                    <input required type="text" id="name" name="time" value="14:00 PM"/>
                 </div>
 
                 <div class="formgroup" id="message-form">
                     <label for="message">Ghi chú</label>
-                    <textarea  disabled style="resize: none;" id="message" name="message"></textarea>
+                    <textarea  required style="resize: none;" id="message" name="message"></textarea>
                 </div>
 
-                <input type="submit" class="exit" style="float: left;" value="Exit"/>
-                <input type="submit" class="cancel" value="Hủy"/>
+                <input type="submit" class="cancel" style="width: 500px !important;" value="ĐĂT BÀN NGAY"/>
             </form>
         </div>
 

@@ -21,7 +21,7 @@
 }
 
 .content_body{
-    width: 1300px;
+    width: 1752px;
     height: auto;
     background-color: wheat;
     border-radius: 10px;
@@ -32,10 +32,11 @@
 .body_item{
     padding: 10px;
     border-radius: 10px;
-    background-color: white;
+    background-color: red;
     float: left;
     margin:10px 25px;
     height: auto;
+    width: auto;
 }
 
 .item_img img{

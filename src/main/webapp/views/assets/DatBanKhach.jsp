@@ -132,12 +132,11 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Ngày</label>
                                 <div class="col-sm-7">
-                                    <select name="" id="" class="form-select" style="width: 500px; margin-bottom: 15px; height: 50px;">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>  
-                                    </select>
+                                    <div class="controlBTN" style="width: 480px; margin-bottom: 70px;">
+                                        <button type="button" style="width: 150px; float: left; margin: 5px; border-radius: 50px;" class="btn btn-danger">29-11-2021</button>
+                                        <button type="button" style="width: 150px; float: left; margin: 5px; border-radius: 50px;" class="btn btn-info">30-11-2021</button>
+                                        <button type="button" style="width: 150px; float: left; margin: 5px; border-radius: 50px;" class="btn btn-info">1-12-2021</button>
+                                    </div>
                                 </div>
                             </div>
 
