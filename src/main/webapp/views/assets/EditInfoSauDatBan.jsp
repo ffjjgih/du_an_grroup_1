@@ -34,39 +34,46 @@
                         <div class="container_body">
                             <div class="row">
                                 <div class="col">
-                                    <input required type="text" class="form-control" name="ten" placeholder="Họ và tên"
-                                        value="${show.khachHang.hoTen }">
+                                    <div class="controlBTN" style="width: 480px; margin-bottom: 50px; margin-left: -10px;">
+                                        <button type="button" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">29-11-2021</button>
+                                        <button type="button" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">30-11-2021</button>
+                                        <button type="button" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">1-12-2021</button>
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <input required type="text" class="form-control" name="sdt" placeholder="Số ddienj thoại"
-                                        value="${show.khachHang.sdt }">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <input required type="number" class="form-control" name="soluong" placeholder="Số lượng người"
-                                        value="${show.so_Luong_Nguoi }">
-                                </div>
-                                <div class="col">
-                                    <input required type="date" class="form-control" name="dateDatBan" placeholder="Ngày đặt"
-                                        value="${show.ngayDatBan }">
+                                    <select name="" id="" class="form-select form-control" style="width: 240px; margin-bottom: 15px; height: 38px; float: left;">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>  
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <input required type="time" class="form-control" name="timedatban" placeholder="Giờ đặt"
-                                        value="${show.gioDatBan }">
+                                    <input required type="text" class="form-control" placeholder="Họ và tên"
+                                        value="Nguyễn Lê Hải">
                                 </div>
                                 <div class="col">
-                                    <input required type="text" class="form-control" name="" readonly placeholder="Trạng thái"
-                                        value="${show.trang_Thai }">
+                                    <input required type="text" class="form-control" placeholder="Số điện thoại"
+                                        value="0977256375">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <input required type="text" class="form-control" placeholder="Trạng thái"
+                                        value="Đang xác nhận">
+                                </div>
+                                <div class="col">
+                                    <input required type="number" class="form-control" placeholder="Số lượng người"
+                                        value="2">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <textarea class="form-control" style="resize: none;"
-                                        id="exampleFormControlTextarea1" placeholder="Ghi chú" name="note"
-                                        rows="3">${show.ghi_Chu }</textarea>
+                                        id="exampleFormControlTextarea1" placeholder="Ghi chú"
+                                        rows="3">Nhà có 2 trẻ con</textarea>
                                 </div>
                             </div>
                         </div>
