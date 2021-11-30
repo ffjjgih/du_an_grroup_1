@@ -119,16 +119,6 @@
                 <div class="content_left_forminput">
                     <div class="forminput_title">ĐẶT BÀN</div>
                     <div class="forminput_content">
-                        
-
-                            <div class="form-group row">
-                                <label for="" class="col-sm-5 col-form-label">Số người</label>
-                                <div class="col-sm-7">
-                                    <input type="number" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người">
-                                    <span class="form-group_error"></span>
-                                </div>
-                            </div>
-
                             <!-- <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Ngày</label>
                                 <div class="col-sm-7">
@@ -178,6 +168,16 @@
                                     </select>
                                 </div>
                             </div>
+                            
+                            
+                            <div class="form-group row">
+                                <label for="" class="col-sm-5 col-form-label">Số người</label>
+                                <div class="col-sm-7">
+                                    <input type="number" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người">
+                                    <span class="form-group_error"></span>
+                                </div>
+                            </div>
+                            
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Ghi chú</label>
                                 <div class="col-sm-7">
