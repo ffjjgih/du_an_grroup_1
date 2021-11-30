@@ -40,9 +40,9 @@ public class WriteExcel {
 		this.dao_HDCT = new DaoHDCT();
 	}
 
-	public void exportExcel(HttpServletResponse response) {
+	public void exportExcel(HttpServletResponse response, int id_HD) {
 		try {
-			//response.setContentType("text/html;charset=UTF-8");
+			// response.setContentType("text/html;charset=UTF-8");
 			String fileName = "InHoaDon.xlsx";
 			response.setContentType("application/octet-stream");
 			response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
@@ -69,7 +69,7 @@ public class WriteExcel {
 			style1.setFont(font1);
 
 //			DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-M-yyyy hh:mm:ss");
-			
+
 //			style2.setDataFormat(workBook.createDataFormat().getFormat("dd-M-yyyy hh:mm:ss"));
 			CreationHelper creationHelper = workBook.getCreationHelper();
 			XSSFCellStyle style2 = workBook.createCellStyle();
@@ -87,7 +87,7 @@ public class WriteExcel {
 			ce11.setCellValue("Bàn " + ttdb.getIdBd());
 			ce11.setCellStyle(style1);
 
-			// Sá»� HÃ“A Ä�Æ N
+			// Sá»� HÃ“A Ä�Æ N
 			Row row2 = sheet.createRow(4);
 			Cell ce2 = row2.createCell(1);
 			ce2.setCellValue("Số Hóa Đơn");
@@ -106,7 +106,7 @@ public class WriteExcel {
 			ce33.setCellValue(this.hd.getKhachHang().getHoTen());
 			ce33.setCellStyle(style1);
 
-			// Giá»� VÃ o
+			// Giá»� VÃ o
 			Row row4 = sheet.createRow(8);
 			Cell ce4 = row4.createCell(1);
 			ce4.setCellValue("Giờ Vào");
@@ -155,7 +155,6 @@ public class WriteExcel {
 			style3.setBorderTop(BorderStyle.MEDIUM);
 			style3.setBorderBottom(BorderStyle.MEDIUM);
 
-			int id_HD = 2;
 			this.hd = this.dao_HD.findbyid(id_HD);
 			this.listHDCT = this.dao_HDCT.findhdctbyidhd(this.hd);
 			int i = 1;
@@ -188,13 +187,17 @@ public class WriteExcel {
 			ce15.setCellValue("Tổng Tiền");
 			ce15.setCellStyle(style1);
 			Cell ce16 = row15.createCell(5);
-			ce16.setCellValue(this.hd.getTong_Tien());
+			float tongtien = 0;
+			for (Hdct x : this.listHDCT) {
+				tongtien += x.getThanh_Tien();
+			}
+			ce16.setCellValue(tongtien);
 			ce16.setCellStyle(style1);
 
-//			for (colum = 1; colum < 8; colum++) {
-//				sheet.autoSizeColumn(colum);
-//			}
-			//OutputStream pos = new FileOutputStream("InHoaDon.xlsx");
+			for (colum = 1; colum < 8; colum++) {
+				sheet.autoSizeColumn(colum);
+			}
+			// OutputStream pos = new FileOutputStream("InHoaDon.xlsx");
 			workBook.write(pos);
 			workBook.close();
 			pos.close();
