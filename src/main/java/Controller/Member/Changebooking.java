@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 import Dao.DaoTTBD;
 import Dao.Daouser;
+import Services.UtilsDate;
 import model.KhachHang;
 import model.ThongTinBanDat;
 
@@ -27,10 +31,13 @@ public class Changebooking extends HttpServlet {
      private ThongTinBanDat ttbd;
      private KhachHang kh;
      private Daouser daouser;
+     private UtilsDate utilsDate;
+     private String date;
     public Changebooking() {
         this.daottbd=new DaoTTBD();
         this.ttbd=new ThongTinBanDat();
         this.daouser=new Daouser();
+        this.utilsDate=new UtilsDate();
     }
 
 	/**
@@ -39,7 +46,11 @@ public class Changebooking extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index=Integer.parseInt(request.getParameter("index"));
 		request.setAttribute("idttdb", index);
+		date=request.getParameter("date");
+		request.setAttribute("ngay", date);
 		this.ttbd=this.daottbd.findbyid(index);
+		utilsDate.ngaydat(request);
+		utilsDate.giodat(request,date);
 		request.setAttribute("show", this.ttbd);
 		request.getRequestDispatcher("/views/assets/EditInfoSauDatBan.jsp").forward(request, response);	
 	}
@@ -49,33 +60,62 @@ public class Changebooking extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index=Integer.parseInt(request.getParameter("index"));
+		this.ttbd=this.daottbd.findbyid(index);
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		String sdt=request.getParameter("sdt");
 		HttpSession session=request.getSession();
 		String ngay=(String) session.getAttribute("date_book");
 		this.kh=(KhachHang) session.getAttribute("acountKH");
-		this.updatemember(request, response, this.kh.getIdkh());
-		this.updatettdb(request, response, index);
-		response.sendRedirect(request.getContextPath()+"/Booking?date="+ngay);
+		if(checkinput(kh, sdt)==true) {
+			this.updatemember(request, response, this.kh,index,ngay,sdt);
+			this.updatettdb(request, response, index);
+			response.sendRedirect(request.getContextPath()+"/Booking?date="+ngay);
+		}else {
+			response.sendRedirect(request.getContextPath()+"/Changebooking?date="+this.ttbd.getNgayDatBan()+"&&index="+index+"&&error=3");
+		}
+		
 	}
 
 	private void updatettdb(HttpServletRequest request, HttpServletResponse response,int index) throws UnsupportedEncodingException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		String ngaydat=request.getParameter("dateDatBan");
+		String ngaydat=request.getParameter("date");
 		String giodat=request.getParameter("timedatban");
-		Date date=Date.valueOf(ngaydat);
-		Time time=Time.valueOf(giodat);
-		int soluong = Integer.parseInt(request.getParameter("soluong"));
-		String note=request.getParameter("note");
-		this.daottbd.Updatelichdat(date, time, note, soluong, index);
+		SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
+		java.util.Date ngay;
+		try {
+			ngay = fommat.parse(ngaydat);
+			Date date=new Date(ngay.getTime());
+			Time time=Time.valueOf(giodat);
+			int soluong = Integer.parseInt(request.getParameter("soluong"));
+			String note=request.getParameter("note");
+			this.daottbd.Updatelichdat(date, time, note, soluong, index);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
-	private void updatemember(HttpServletRequest request, HttpServletResponse response,int id) throws UnsupportedEncodingException {
+	private void updatemember(HttpServletRequest request, HttpServletResponse response,KhachHang k,int index,String ngay,String sdt) throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		String hoten=request.getParameter("ten");
-		String sdt=request.getParameter("sdt");
-		this.daouser.updatettdb(id, hoten, sdt);
+			this.daouser.updatettdb(k.getIdkh(), hoten, sdt);
 	}
+	
+	private boolean checkinput(KhachHang k,String sdt) {
+		List<KhachHang> lst=this.daouser.finduserbysdt(k, sdt);
+		
+		if(lst.size()==0) {
+			System.out.println(lst.size());
+			return true;
+		}else {
+			System.out.println(lst.size());
+			return false;
+		}
+		
+	}
+	
 }
