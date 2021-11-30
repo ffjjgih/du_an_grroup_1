@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,51 +35,67 @@
                         <div class="container_body">
                             <div class="row">
                                 <div class="col">
-                                    <div class="controlBTN" style="width: 480px; margin-bottom: 50px; margin-left: -10px;">
-                                        <button type="button" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">29-11-2021</button>
-                                        <button type="button" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">30-11-2021</button>
-                                        <button type="button" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">1-12-2021</button>
+                                        <div class="controlBTN" style="width: 480px; margin-bottom: 70px;">
+                                    <c:if test="${count==1 }">
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay1 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay2 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay3 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay3 }</a>
+                                    </c:if>
+                                    <c:if test="${count==2 }">
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay1 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay2 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay3 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay3 }</a>
+                                    </c:if>
+                                    <c:if test="${count==3 }">
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay1 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay2 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Changebooking?date=${ngay3 }&&index=${show.idBd}" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay3 }</a>
+                                    </c:if>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <select name="" id="" class="form-select form-control" style="width: 240px; margin-bottom: 15px; height: 38px; float: left;">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>  
+                                    <select name="timedatban" id="" class="form-select form-control" style="width: 240px; margin-bottom: 15px; height: 38px; float: left;">
+                                        <c:forEach items="${giodat }" var="hour">
+                                        <c:if test="${hour.equals(show.gioDatBan) }">
+                                        	<option selected value="${hour }">${hour }</option>
+                                        </c:if>
+                                        <c:if test="${!hour.equals(show.gioDatBan) }">
+                                        <option value="${hour }">${hour }</option>
+                                        </c:if>
+                                        </c:forEach> 
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Họ và tên"
-                                        value="Nguyễn Lê Hải">
+                                    <input required type="text" name="ten" class="form-control" placeholder="Họ và tên"
+                                        value="${show.khachHang.hoTen }">
                                 </div>
                                 <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Số điện thoại"
-                                        value="0977256375">
+                                    <input required type="text" name="sdt" class="form-control" placeholder="Số điện thoại"
+                                        value="${show.khachHang.sdt }">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <input required type="text" class="form-control" placeholder="Trạng thái"
-                                        value="Đang xác nhận">
+                                    <input required disabled type="text" class="form-control" placeholder="Trạng thái"
+                                        value="${show.trang_Thai }">
                                 </div>
                                 <div class="col">
-                                    <input required type="number" class="form-control" placeholder="Số lượng người"
-                                        value="2">
+                                    <input required type="number" name="soluong" class="form-control" placeholder="Số lượng người"
+                                        value="${show.so_Luong_Nguoi }">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <textarea class="form-control" style="resize: none;"
-                                        id="exampleFormControlTextarea1" placeholder="Ghi chú"
-                                        rows="3">Nhà có 2 trẻ con</textarea>
+                                        id="exampleFormControlTextarea1" name="note" placeholder="Ghi chú"
+                                        rows="3">${show.ghi_Chu }</textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <button type="submit" formaction="/QL_Dat_Ban_NH/Changebooking?index=${show.idBd }" style="width: 500px;" class="btn btn-success">SUBMIT</button>
+                        <button type="submit" formaction="/QL_Dat_Ban_NH/Changebooking?index=${show.idBd }&&date=${ngay}" style="width: 500px;" class="btn btn-success">SUBMIT</button>
 
 
                     </form>

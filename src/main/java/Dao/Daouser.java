@@ -219,6 +219,21 @@ public class Daouser extends BaseDao<KhachHang>{
 		}
 		
 	}
+	
+	//kiểm tra ngoài tài khoản nhập vào còn có tài khoản nào khác đang sử dụng sdt đấy ko.
+	public List<KhachHang> finduserbysdt(KhachHang k,String phone){
+		try {
+			this.manager=this.conn.getEntityManager();
+			String hql="SELECT k FROM KhachHang k WHERE k.sdt=:number_phone and k.idkh !=:user";
+			TypedQuery<KhachHang> query=this.manager.createQuery(hql,KhachHang.class);
+			query.setParameter("number_phone", phone);
+			query.setParameter("user", k.getIdkh());
+			return this.lst=query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	@Override
 	public String getdatabase() {
 		return KhachHang.class.getSimpleName();

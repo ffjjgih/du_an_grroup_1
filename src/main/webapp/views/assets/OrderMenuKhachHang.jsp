@@ -29,7 +29,7 @@
         <jsp:include page="HeaderKhachHang.jsp"></jsp:include>
 
         <div class="container_content col row l-12">
-        <form action="/QL_Dat_Ban_NH/Order" method="post">
+        
             <div class="content_header">
                 <div class="header_tabs">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -53,83 +53,24 @@
                     <div class="">
                     	
                     	<div class="form_content">
+                    	<c:forEach items="${listmenu }" var="menu">
                             <div class="body_item l-4">
-                                <form action="" method="post">
+                            
+                                <form action="/QL_Dat_Ban_NH/Order" method="post">
                                     <div class="item_img">
-                                        <img src="./imgs/menuorder1.jpg" style="width: 300px; height: 250px;" alt="">
+                                        <img src="./views/assets/imgs/${menu.img }" style="width: 300px; height: 250px;" alt="">
                                     </div>
-                                    <div class="item_name">LẨU THÁI</div>
-                                    <div class="item_price" style="font-weight: 500; color: tomato;">100.000 VND</div>
+                                    <div class="item_name">${menu.ten_Mon_An }</div>
+                                    <div class="item_price" style="font-weight: 500; color: tomato;">${menu.gia } VND</div>
+                                    <div class="item_quantity"><input style="width: 80px; margin: 5px 0;" type="number" name="soluong" id="" value="1"></div>
                                     <div class="item_order">
-                                        <button type="button" class="btn btn-success">CHỌN MÓN</button>
+                                        <button type="submit" formaction="/QL_Dat_Ban_NH/Order/chonmon?idmn=${menu.idmn}" class="btn btn-success">CHỌN MÓN</button>
                                     </div>
                                 </form>
+                                
                             </div>
-
-                            <div class="body_item l-4">
-                                <form action="" method="post">
-                                    <div class="item_img">
-                                        <img src="./imgs/menuorder1.jpg" style="width: 300px; height: 250px;" alt="">
-                                    </div>
-                                    <div class="item_name">LẨU THÁI</div>
-                                    <div class="item_price" style="font-weight: 500; color: tomato;">100.000 VND</div>
-                                    <div class="item_order">
-                                        <button type="button" class="btn btn-success">CHỌN MÓN</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="body_item l-4">
-                                <form action="" method="post">
-                                    <div class="item_img">
-                                        <img src="./imgs/menuorder1.jpg" style="width: 300px; height: 250px;" alt="">
-                                    </div>
-                                    <div class="item_name">LẨU THÁI</div>
-                                    <div class="item_price" style="font-weight: 500; color: tomato;">100.000 VND</div>
-                                    <div class="item_order">
-                                        <button type="button" class="btn btn-success">CHỌN MÓN</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="body_item l-4">
-                                <form action="" method="post">
-                                    <div class="item_img">
-                                        <img src="./imgs/menuorder1.jpg" style="width: 300px; height: 250px;" alt="">
-                                    </div>
-                                    <div class="item_name">LẨU THÁI</div>
-                                    <div class="item_price" style="font-weight: 500; color: tomato;">100.000 VND</div>
-                                    <div class="item_order">
-                                        <button type="button" class="btn btn-success">CHỌN MÓN</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="body_item l-4">
-                                <form action="" method="post">
-                                    <div class="item_img">
-                                        <img src="./imgs/menuorder1.jpg" style="width: 300px; height: 250px;" alt="">
-                                    </div>
-                                    <div class="item_name">LẨU THÁI</div>
-                                    <div class="item_price" style="font-weight: 500; color: tomato;">100.000 VND</div>
-                                    <div class="item_order">
-                                        <button type="button" class="btn btn-success">CHỌN MÓN</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="body_item l-4">
-                                <form action="" method="post">
-                                    <div class="item_img">
-                                        <img src="./imgs/menuorder1.jpg" style="width: 300px; height: 250px;" alt="">
-                                    </div>
-                                    <div class="item_name">LẨU THÁI</div>
-                                    <div class="item_price" style="font-weight: 500; color: tomato;">100.000 VND</div>
-                                    <div class="item_order">
-                                        <button type="button" class="btn btn-success">CHỌN MÓN</button>
-                                    </div>
-                                </form>
-                            </div>
+						</c:forEach>
+                            
                         </div>
 						
                     </div>
@@ -138,6 +79,7 @@
 				
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <!-- <form action="/QL_Dat_Ban_NH/Order" method="post"> -->
+                <form action="/QL_Dat_Ban_NH/Order" method="post">
                     <table class="table">
                         <thead>
                             <tr>
@@ -176,11 +118,12 @@
                             </tr>
                         </tfoot>
                     </table>
+                    </form>
                     <!-- </form> -->
                 </div>
 			
             </div>
-            </form>
+            
         </div>
 
         <!--modal login, regis start-->
