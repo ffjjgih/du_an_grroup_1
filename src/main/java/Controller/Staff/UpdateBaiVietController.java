@@ -89,7 +89,7 @@ public class UpdateBaiVietController extends HttpServlet {
 			
 			dao.update(bv);
 			
-			response.sendRedirect(request.getContextPath() + "/HomeStaffController"+"?success=1");
+			response.sendRedirect(request.getContextPath() + "/HomeStaffController"+"?successUpdateBaiViet=1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -29,13 +29,13 @@
                     </li>
                     <form action="" method="post" style="width: 100%;">
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="Nguyễn Văn A">
+                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="Nguyễn Văn A">
                         </li>
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="hainlph17388@fpt.edu.vn">
+                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="hainlph17388@fpt.edu.vn">
                         </li>
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="0977256375">
+                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="0977256375">
                         </li>
                         <li class="nav-item1">
                             <h6>Ngày đặt</h6>
@@ -65,14 +65,14 @@
                             <h6>Số lượng người</h6>
                         </li>
                         <li class="nav-item1">
-                            <input type="number" class="form-control" id="exampleFormControlInput1" value="3">
+                            <input type="number" style="width: 450px;" required class="form-control" id="exampleFormControlInput1" value="3">
                         </li>
                         <li class="nav-item1">
                             <h6>Ghi chú</h6>
                         </li>
                         <div class="form-floating">
                             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                                style="height: 100px; resize: none;"></textarea>
+                                style="height: 100px; resize: none; width: 450px;"></textarea>
                         </div>
                     </form>
                     

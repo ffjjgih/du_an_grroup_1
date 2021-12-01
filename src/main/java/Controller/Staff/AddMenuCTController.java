@@ -79,7 +79,6 @@ public class AddMenuCTController extends HttpServlet {
 		int idhd= Integer.parseInt(request.getParameter("idhd"));
 		this.hd= this.daohd.findbyid(idhd);
 		
-		
 		Mnct mnct1 = new Mnct(sl,bdct,menu);
 		daomnct.insert(mnct1);
 
@@ -90,7 +89,7 @@ public class AddMenuCTController extends HttpServlet {
 
 		this.daohdct.insert(hdtc1);
 		
-		response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + id+"&&idhd="+idhd+"&&success=1 ");
+		response.sendRedirect(request.getContextPath() + "/AddMenuCTController?id=" + id+"&&idhd="+idhd+"&&successInsertHDCT=1 ");
 	
 
 	}
