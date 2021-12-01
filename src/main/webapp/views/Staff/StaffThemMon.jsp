@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<!--kiểm tra số lượng của thêm món  -->
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +69,7 @@
 											<div class="item_title">
 												<p>${items.ten_Mon_An }</p>
 											</div>
-												<input type="number" name="s_l" id="s_l">
+												<input type="number" name="s_l" id="s_l" >
 												<button type="submit" class="btn btn-primary"
 													formaction="/QL_Dat_Ban_NH/AddMenuCTController?idmn=${items.idmn }&&idhd=${idhd}&&id=${idbdct}">
 													Thêm món</button> 

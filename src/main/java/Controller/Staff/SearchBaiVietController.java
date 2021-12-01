@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.NhanVienDao;
 import Dao.baiVietDao;
@@ -39,13 +40,17 @@ public class SearchBaiVietController extends HttpServlet {
 		
 		 response.setContentType("text/html;charset=UTF-8");
 	     request.setCharacterEncoding("UTF-8");
-	     int id= Integer.parseInt(request.getParameter("id"));
 		
+	    HttpSession session = request.getSession();
+		Staff staff = (Staff) session.getAttribute("acountST");
+		lst = dao.findIDNV(staff);
+	     
 		String txtSearch=request.getParameter("txt");
-		lst=dao.findName(txtSearch);
-		System.out.println(lst);
+		lst=dao.findNameNV(txtSearch,staff);
+
 		request.setAttribute("listBV", lst);
 		request.setAttribute("txtS", txtSearch);
+		
 		request.getRequestDispatcher("views/Staff/QuanLyBaiVietStaff.jsp").forward(request, response);
 		
 		

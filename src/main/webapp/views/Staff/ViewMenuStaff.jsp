@@ -37,18 +37,6 @@
 						<div class="body_right--header">
 							<h3>Menu</h3>
 							<div class="header_search">
-								<form action="" method="post">
-									<input type="search" name="" id="" placeholder="Nhập mã bàn...">
-									<button type="button" class="btn btn-dark">
-										<svg xmlns="http://www.w3.org/2000/svg" style="color: white;"
-											width="16" height="16" fill="currentColor"
-											class="bi bi-search" viewBox="0 0 16 16">
-                                            <path
-												d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                        </svg>
-										TÌM KIẾM
-									</button>
-								</form>
 							</div>
 						</div>
 						<div class="body_right--content">
@@ -132,11 +120,6 @@
 										</div>
 									</div>
 								</c:forEach>
-
-								<div class="tab-pane fade" id="pills-bonus" role="tabpanel"
-									aria-labelledby="pills-contact-tab">
-									<!--trang tìm kiếm-->
-								</div>
 							</div>
 						</div>
 					</div>
