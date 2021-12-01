@@ -67,8 +67,7 @@
 									đồ</label> <select class="form-select"
 									aria-label="Default select example" name="chonLoai" id="chonLoai">
 									<c:forEach var="o" items="${listCC }">
-										<option value="${o.idloai }"
-											<c:if test="${o.tenLoai == menu.loaiMenu.tenLoai}">selected="selected"</c:if>>
+										<option value="${o.idloai }"<c:if test="${o.tenLoai == menu.loaiMenu.tenLoai}">selected="selected"</c:if>>
 											${o.tenLoai }</option>
 									</c:forEach>
 								</select>

@@ -51,6 +51,7 @@ public class DaoMenu extends BaseDao<Menu>{
 		return lstmenu;
 		
 	}
+
 	public List<Menu> findTTBD(LoaiMenu loai){
 		try {
 			this.manager=this.conn.getEntityManager();
@@ -80,6 +81,7 @@ public class DaoMenu extends BaseDao<Menu>{
 		}
 	
 	}
+	//<hien thi menu theo trang thai class: Addmenucontroller>
 	public List<Menu> trangthaistaff(int trangthai1){
 		try {
 			this.manager=this.conn.getEntityManager();
