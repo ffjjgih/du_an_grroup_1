@@ -15,16 +15,16 @@ String succes = request.getParameter("succes");
 				<form action="/QL_Dat_Ban_NH/SignUp" method="post">
 					<i class="fas fa-times btn-close"></i>
 					<h1>Create Account</h1>
-					<input name="user" type="text" required placeholder="User name" style="padding: 12px 15px; margin: 4px 0;" />
+					<input name="user" type="text" minlength="5" maxlength="15" required placeholder="User name" style="padding: 12px 15px; margin: 4px 0;" />
 					<%
 					if ("1".equals(err)) {
 						out.print(
 						"<small id='alert_user' style='color: red;' class='form-text text-muted' >Account already exists</small>");
 					}
 					%>
-					<input name = "password" type="password" required placeholder="Password" id="pass" style="padding: 12px 15px; margin: 4px 0;" />
-                    <input type="password" required placeholder="Repeat Password" id="repeatPass" onchange="checkPass();" style="padding: 12px 15px; margin: 4px 0;" />
-					<input name="hoten" type="text" id="exampleInputFullName1" required placeholder="Full name" style="padding: 12px 15px; margin: 4px 0;" onchange="checkFormName()" /> 
+					<input name = "password" minlength="5" type="password"  maxlength="15" required placeholder="Password" id="pass" style="padding: 12px 15px; margin: 4px 0;" />
+                    <input type="password" minlength="5" maxlength="15" required placeholder="Repeat Password" id="repeatPass" onchange="checkPass();" style="padding: 12px 15px; margin: 4px 0;" />
+					<input name="hoten" minlength="5" maxlength="30" type="text" id="exampleInputFullName1" required placeholder="Full name" style="padding: 12px 15px; margin: 4px 0;" onchange="checkFormName()" /> 
 					<input name="sdt" type="text" id="exampleInputPhoneNume1" required placeholder="Phone number" style="padding: 12px 15px; margin: 4px 0;" onchange="checkFormPhone()" /> 
 					<input name="gmail" type="email" required placeholder="Email" style="padding: 12px 15px; margin: 4px 0;" />
 					<button id="button" style="border-radius: 20px;">Sign Up</button>
