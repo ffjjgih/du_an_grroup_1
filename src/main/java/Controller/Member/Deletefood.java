@@ -15,23 +15,25 @@ import model.GioHang;
 @WebServlet("/Deletefood")
 public class Deletefood extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private ArrayList<GioHang> dsgiohang;
-    public Deletefood() {
-        this.dsgiohang=new ArrayList();
-    }
+	private ArrayList<GioHang> dsgiohang;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idcart=Integer.parseInt(request.getParameter("id"));
-		HttpSession session=request.getSession();
-		dsgiohang= (ArrayList<GioHang>) session.getAttribute("gh");
-			for(int i=0;i<dsgiohang.size();i++) {
-			if(dsgiohang.get(i).getIdgh()==idcart) {
+	public Deletefood() {
+		this.dsgiohang = new ArrayList();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int idcart = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
+		dsgiohang = (ArrayList<GioHang>) session.getAttribute("gh");
+		for (int i = 0; i < dsgiohang.size(); i++) {
+			if (dsgiohang.get(i).getIdgh() == idcart) {
 				dsgiohang.remove(dsgiohang.get(i));
 				session.setAttribute("gd", dsgiohang);
-				response.sendRedirect(request.getContextPath()+"/Order");
+				response.sendRedirect(request.getContextPath() + "/Order");
 			}
-			
+
+		}
+
 	}
-			
-}
 }

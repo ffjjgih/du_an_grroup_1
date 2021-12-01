@@ -19,7 +19,8 @@ import model.Menu;
 import model.Mnct;
 
 /**
- * th�m th�ng b�o th�nh c�ng
+ * thï¿½m thï¿½ng bï¿½o thï¿½nh cï¿½ng
+ * xóa cái này nhé các bạn ơi
  */
 @WebServlet("/AddMenuCT")
 public class AddMenuCT extends HttpServlet {

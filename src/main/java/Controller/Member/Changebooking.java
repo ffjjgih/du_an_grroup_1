@@ -27,95 +27,102 @@ import model.ThongTinBanDat;
 @WebServlet("/Changebooking")
 public class Changebooking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     private DaoTTBD daottbd;
-     private ThongTinBanDat ttbd;
-     private KhachHang kh;
-     private Daouser daouser;
-     private UtilsDate utilsDate;
-     private String date;
-    public Changebooking() {
-        this.daottbd=new DaoTTBD();
-        this.ttbd=new ThongTinBanDat();
-        this.daouser=new Daouser();
-        this.utilsDate=new UtilsDate();
-    }
+	private DaoTTBD daottbd;
+	private ThongTinBanDat ttbd;
+	private KhachHang kh;
+	private Daouser daouser;
+	private UtilsDate utilsDate;
+	private String date;
+
+	public Changebooking() {
+		this.daottbd = new DaoTTBD();
+		this.ttbd = new ThongTinBanDat();
+		this.daouser = new Daouser();
+		this.utilsDate = new UtilsDate();
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int index=Integer.parseInt(request.getParameter("index"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int index = Integer.parseInt(request.getParameter("index"));
 		request.setAttribute("idttdb", index);
-		date=request.getParameter("date");
+		date = request.getParameter("date");
 		request.setAttribute("ngay", date);
-		this.ttbd=this.daottbd.findbyid(index);
+		this.ttbd = this.daottbd.findbyid(index);
 		utilsDate.ngaydat(request);
-		utilsDate.giodat(request,date);
+		utilsDate.giodat(request, date);
 		request.setAttribute("show", this.ttbd);
-		request.getRequestDispatcher("/views/assets/EditInfoSauDatBan.jsp").forward(request, response);	
+		request.getRequestDispatcher("/views/assets/EditInfoSauDatBan.jsp").forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int index=Integer.parseInt(request.getParameter("index"));
-		this.ttbd=this.daottbd.findbyid(index);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int index = Integer.parseInt(request.getParameter("index"));
+		this.ttbd = this.daottbd.findbyid(index);
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		String sdt=request.getParameter("sdt");
-		HttpSession session=request.getSession();
-		String ngay=(String) session.getAttribute("date_book");
-		this.kh=(KhachHang) session.getAttribute("acountKH");
-		if(checkinput(kh, sdt)==true) {
-			this.updatemember(request, response, this.kh,index,ngay,sdt);
+		String sdt = request.getParameter("sdt");
+		HttpSession session = request.getSession();
+		String ngay = (String) session.getAttribute("date_book");
+		this.kh = (KhachHang) session.getAttribute("acountKH");
+		if (checkinput(kh, sdt) == true) {
+			this.updatemember(request, response, this.kh, index, ngay, sdt);
 			this.updatettdb(request, response, index);
-			response.sendRedirect(request.getContextPath()+"/Booking?date="+ngay);
-		}else {
-			response.sendRedirect(request.getContextPath()+"/Changebooking?date="+this.ttbd.getNgayDatBan()+"&&index="+index+"&&error=3");
+			response.sendRedirect(request.getContextPath() + "/Booking?date=" + ngay + "&&successChangeBooking=3");
+		} else {
+			response.sendRedirect(request.getContextPath() + "/Changebooking?date=" + this.ttbd.getNgayDatBan()
+					+ "&&index=" + index + "&&errorChangeBooking=3");
 		}
-		
+
 	}
 
-	private void updatettdb(HttpServletRequest request, HttpServletResponse response,int index) throws UnsupportedEncodingException {
+	private void updatettdb(HttpServletRequest request, HttpServletResponse response, int index)
+			throws UnsupportedEncodingException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		String ngaydat=request.getParameter("date");
-		String giodat=request.getParameter("timedatban");
-		SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
+		String ngaydat = request.getParameter("date");
+		String giodat = request.getParameter("timedatban");
+		SimpleDateFormat fommat = new SimpleDateFormat("dd/MM/yyyy");
 		java.util.Date ngay;
 		try {
 			ngay = fommat.parse(ngaydat);
-			Date date=new Date(ngay.getTime());
-			Time time=Time.valueOf(giodat);
+			Date date = new Date(ngay.getTime());
+			Time time = Time.valueOf(giodat);
 			int soluong = Integer.parseInt(request.getParameter("soluong"));
-			String note=request.getParameter("note");
+			String note = request.getParameter("note");
 			this.daottbd.Updatelichdat(date, time, note, soluong, index);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
-	
-	private void updatemember(HttpServletRequest request, HttpServletResponse response,KhachHang k,int index,String ngay,String sdt) throws IOException {
+
+	private void updatemember(HttpServletRequest request, HttpServletResponse response, KhachHang k, int index,
+			String ngay, String sdt) throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		String hoten=request.getParameter("ten");
-			this.daouser.updatettdb(k.getIdkh(), hoten, sdt);
+		String hoten = request.getParameter("ten");
+		this.daouser.updatettdb(k.getIdkh(), hoten, sdt);
 	}
-	
-	private boolean checkinput(KhachHang k,String sdt) {
-		List<KhachHang> lst=this.daouser.finduserbysdt(k, sdt);
-		
-		if(lst.size()==0) {
+
+	private boolean checkinput(KhachHang k, String sdt) {
+		List<KhachHang> lst = this.daouser.finduserbysdt(k, sdt);
+
+		if (lst.size() == 0) {
 			System.out.println(lst.size());
 			return true;
-		}else {
+		} else {
 			System.out.println(lst.size());
 			return false;
 		}
-		
+
 	}
-	
+
 }

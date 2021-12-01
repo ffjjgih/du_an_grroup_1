@@ -155,6 +155,7 @@
 		<p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
 	</div>
 	<script src="./views/Manager/js/modaladdnhanvien.js"></script>
+	<script src="./views/Manager/js/throwError.js"></script>
 	<script src="./views/Manager/js/sidebar.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -189,24 +190,6 @@
 				window.location.href = '/QL_Dat_Ban_NH/ThemMenuManager/delete?id='
 						+ id;
 			}
-		}
-
-		function searchByName(param) {
-			var txtSearch = param.value;
-			$.ajax({
-				url : "QL_Dat_Ban_NH/searchMenuManager",
-				type : "get",
-				data : {
-					name : txtSearch
-				},
-				success : function(data) {
-					var row = document.getElementById("content");
-					row.innerHTML = data;
-				},
-				error : function(xhr) {
-					//Do Something to handle error
-				}
-			});
 		}
 	</script>
 </body>

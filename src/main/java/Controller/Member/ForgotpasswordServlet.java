@@ -39,24 +39,24 @@ public class ForgotpasswordServlet extends HttpServlet {
 			list = dao.findEmail(username, emailAddress);
 			if (list != null) {
 				Email gmail = new Email();
-				gmail.setFrom("lienptph16568@fpt.edu.vn");
-				gmail.setFrompassword("Lien2002");
+				gmail.setFrom("bungbuffet@gmail.com");
+				gmail.setFrompassword("duan12021");
 				gmail.setTo(emailAddress);
-				gmail.setSubject("forgot password");
+				gmail.setSubject("Mail Forgot Password of " + username);
 				StringBuilder sb = new StringBuilder();
 				sb.append("Dear ").append(username).append("</br>");
 				sb.append("you are the forgot password and this is my password. </br>");
 				sb.append("Your password is: </br>").append(list.get(0).getPassword());
 				gmail.setContent(sb.toString());
 				EmailUtils.send(gmail);
-				response.sendRedirect(request.getContextPath() + "/ForgotpasswordServlet" + "?success=1");
+				response.sendRedirect(request.getContextPath() + "/ForgotpasswordServlet" + "?successforgotpass=1");
 
 			} else {
-				response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet" + "?error=1");
+				response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet" + "?errorforgotpass=1");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet" + "?error=1");
+			response.sendRedirect(request.getContextPath() + "/HomeKhachHangServlet" + "?errorforgotpass=1");
 		}
 
 	}

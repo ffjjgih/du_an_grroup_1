@@ -78,7 +78,7 @@ public class updateMenuManager extends HttpServlet {
 			menu.setLoaiMenu(loaimenu);
 			menu.setTrang_Thai(trangthai);
 			daomenu.update(menu);
-			response.sendRedirect(request.getContextPath() + "/ThemMenuManager" + "?success=1");
+			response.sendRedirect(request.getContextPath() + "/ThemMenuManager" + "?successupdateMenuManager=1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

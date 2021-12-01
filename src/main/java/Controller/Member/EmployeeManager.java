@@ -45,9 +45,9 @@ public class EmployeeManager extends HttpServlet {
 		if(url.contains("Save")) {
 			response.setContentType("text/html;charset=UTF-8");
 			request.setCharacterEncoding("utf-8");
-			response.sendRedirect(request.getContextPath()+"/EmployeeManager?"+"succes=1");
+			response.sendRedirect(request.getContextPath()+"/EmployeeManager?"+"succesCreateEmployee=1");
 		}else {
-			response.sendRedirect(request.getContextPath()+"/EmployeeManager?"+"error=1");
+			response.sendRedirect(request.getContextPath()+"/EmployeeManager?"+"errorCreateEmployee=1");
 		}
 		
 	}

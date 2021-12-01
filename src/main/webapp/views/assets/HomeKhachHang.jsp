@@ -61,8 +61,6 @@
 
 		<jsp:include page="ForgotPassword.jsp"></jsp:include>
 
-		<!--modal guest start-->
-		<jsp:include page="BookingGuest.jsp"></jsp:include>
 	</div>
 	<jsp:include page="FooterKhachHang.jsp"></jsp:include>
 	<script src="./views/assets/js/checkErrorLogin.js"></script>

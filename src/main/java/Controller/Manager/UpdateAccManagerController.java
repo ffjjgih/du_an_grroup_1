@@ -51,7 +51,7 @@ public class UpdateAccManagerController extends HttpServlet {
 		String img = request.getParameter("anhdaidien");
 		
 		this.editAccount(id, fullname, username, password, cccd, sdt, email, chucvu, img);
-		response.sendRedirect(request.getContextPath() + "/showaccstaff?updateSuccess=1");
+		response.sendRedirect(request.getContextPath() + "/showaccstaff?successUpdateAccManager=1");
 		//response.sendRedirect("showaccstaff");
 	}
 	

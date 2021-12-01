@@ -50,6 +50,11 @@
                     <label for="name">Giờ đặt</label>
                     <input disabled type="text" id="name" name="time" value="${booking.gioDatBan }"/>
                 </div>
+                
+                <div class="formgroup" id="name-form">
+                    <label for="quan">Số lượng người</label>
+                    <input required type="number" id="name" name="quan" value="${booking.soLuong }"/>
+                </div>
 
                 <div class="formgroup" id="message-form">
                     <label for="message">Ghi chú</label>
@@ -73,6 +78,7 @@
     </div>
 
     <script src="./views/assets/js/afterbookingguest.js"></script>
+    <script src="./views/assets/js/throwErrorAfterBookingGuest.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
@@ -85,7 +91,7 @@
         }
         
         function showexit(){
-                window.location.href = '/QL_Dat_Ban_NH/HomeKhachHangServlet';
+			window.location.href = '/QL_Dat_Ban_NH/HomeKhachHangServlet';
         }
         </script>
 </body>
