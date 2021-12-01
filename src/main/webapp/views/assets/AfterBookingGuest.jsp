@@ -30,36 +30,34 @@
             <div class="fish" id="fish"></div>
             <div class="fish" id="fish2"></div>
 
-            <form id="waterform" method="post">
 
                 <div class="formgroup" id="name-form">
                     <label for="name">Số điện thoại</label>
-                    <input disabled type="text" id="name" name="phone" value="0977256375"/>
+                    <input disabled type="text" id="name" name="phone" value="${booking.khachHang.sdt }"/>
                 </div>
 
                 <div class="formgroup" id="name-form">
                     <label for="name">Họ và tên</label>
-                    <input disabled type="text" id="name" name="name" value="Nguyễn Lê Hải"/>
+                    <input disabled type="text" id="name" name="name" value="${booking.khachHang.hoTen }"/>
                 </div>
 
                 <div class="formgroup" id="email-form">
                     <label for="email">Ngày đặt</label>
-                    <input disabled type="text" id="email" name="date" value="30/01/2021"/>
+                    <input disabled type="text" id="email" name="date" value="${booking.ngayDatBan }"/>
                 </div>
 
                 <div class="formgroup" id="name-form">
                     <label for="name">Giờ đặt</label>
-                    <input disabled type="text" id="name" name="time" value="14:00 PM"/>
+                    <input disabled type="text" id="name" name="time" value="${booking.gioDatBan }"/>
                 </div>
 
                 <div class="formgroup" id="message-form">
                     <label for="message">Ghi chú</label>
-                    <textarea  disabled style="resize: none;" id="message" name="message"></textarea>
+                    <textarea  disabled style="resize: none;" id="message" name="message">${booking.ghi_Chu }</textarea>
                 </div>
 
-                <input type="submit" class="exit" style="float: left;" value="Exit"/>
-                <input type="submit" class="cancel" value="Hủy"/>
-            </form>
+                <input type="submit" onclick="showMessage(${booking.idBd})" class="exit" style="float: left;" value="Hủy Lịch"/>
+                <input type="submit" onclick="showexit()" class="cancel" value="Exit"/>
         </div>
 
     </div>
@@ -78,6 +76,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+        <script>
+        function showMessage(id){
+            var option = confirm('Bạn có muốn xóa đặt bàn này không?');
+            if(option){
+                window.location.href = '/QL_Dat_Ban_NH/CancelBooking/Guest?id='+id;
+            }
+        }
+        
+        function showexit(){
+                window.location.href = '/QL_Dat_Ban_NH/HomeKhachHangServlet';
+        }
+        </script>
 </body>
 
 </html>
