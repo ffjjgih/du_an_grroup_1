@@ -1,6 +1,10 @@
 eclipse.preferences.version=1
 <<<<<<< HEAD
+<<<<<<< HEAD
 encoding//src/main/java/Controller/Staff/AddMenuCT.java=UTF-8
 =======
 encoding//src/main/java/Services/WriteExcel.java=UTF-8
 >>>>>>> nam_fix_error
+=======
+encoding//src/main/java/Controller/Staff/AddMenuCTController.java=UTF-8
+>>>>>>> lien_fixbug

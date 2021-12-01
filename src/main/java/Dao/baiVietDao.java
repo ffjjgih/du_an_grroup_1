@@ -51,6 +51,21 @@ public class baiVietDao extends BaseDao<BaiViet> {
 		return lst;
 
 	}
+	public List<BaiViet> findNameNV(String name,Staff idnv) {
+		try {
+			this.manager = this.conn.getEntityManager();
+			String hql = "SELECT h FROM BaiViet h WHERE h.ten_tieu_de like :tieude and h.staff= :idnvstaff";
+			TypedQuery<BaiViet> query = manager.createQuery(hql, BaiViet.class);
+			query.setParameter("tieude", "%" + name + "%");
+			query.setParameter("idnvstaff", idnv );
+			this.lst = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return lst;
+
+	}
 
 	public BaiViet findid(Integer id) {
 

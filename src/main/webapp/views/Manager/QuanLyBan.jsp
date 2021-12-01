@@ -50,16 +50,7 @@
 						</div>
 
 						<div class="header_search">
-							<select class="form-select" aria-label="Default select example"
-								name="ban" id="ban">
-								<c:if test="">
-									<option value="2">Bàn 2 người</option>
-									<option value="4">Bàn 4 người</option>
-									<option value="6">Bàn 6 người</option>
-									<option value="8">Bàn 8 người</option>
-								</c:if>
 
-							</select>
 						</div>
 
 

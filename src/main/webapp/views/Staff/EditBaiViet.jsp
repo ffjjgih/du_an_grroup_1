@@ -32,19 +32,6 @@
 					<div class="body_container">
 						<h3>Chỉnh sửa bài viết</h3>
 
-						<%
-						String err = request.getParameter("error");
-						if ("1".equals(err)) {
-							out.print("<h5 style=\"color: red;\">username or email error </h5>");
-						}
-						%>
-						<%
-						String success = request.getParameter("success");
-						if ("1".equals(success)) {
-							out.print("<h5 style=\"color: red;\">username or email success </h5>");
-						}
-						%>
-
 						<form action="/UpdateBaiVietController" method="post"
 							enctype="multipart/form-data">
 
@@ -90,46 +77,6 @@
 		<jsp:include page="ModalAddPost.jsp"></jsp:include>
 
 	</div>
-
-                <div class="right_body">
-                    <div class="body_container">
-                        <h3>Chỉnh sửa bài viết</h3>
-                        <form action="/UpdateBaiVietController" method="post" enctype="multipart/form-data">
-                     
-                            <div class="mb-3">
-                                <label for="exampleInputImg" class="form-label">Chọn ảnh bài viết</label>
-                                
-                                <input required type="file" class="form-control" id="exampleInputImg" onchange="return fileValid()" name="img" value="${bv.img }">
-                                <label for="" class="error"></label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputTitle" class="form-label">Tiêu đề bài viết</label>
-                                <input required type="text" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp" name="tieude" value="${bv.ten_tieu_de }">
-                                <label for="" class="error"></label>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-floating">
-                                    <textarea required class="form-control" maxlength="100" name="noidung"  placeholder="Tối đa nhập 100 ký tự..."
-                                        id="floatingTextarea2" style="height: 100px; resize: none;">${bv.noi_dung }</textarea>
-                                    <label for="floatingTextarea2">Mô tả</label>
-                                </div>
-                                <label for="" class="error txtAreaHelp"></label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputLink" class="form-label">Link bài viết</label>
-                                <input required type="text" class="form-control" name="link" id="exampleInputLink" value="${bv.link }" aria-describedby="emailHelp">
-                            </div>
-                            <button type="submit" class="btn btn-primary" formaction="UpdateBaiVietController/update">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- modal add bài viết -->
-        <jsp:include page="ModalAddPost.jsp"></jsp:include>
-        
-    </div>
 
     <script src="./views/Staff/js/modaladdpost.js"></script>
     <script src="./views/Staff/js/sidebar.js"></script>
