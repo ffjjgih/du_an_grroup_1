@@ -56,25 +56,30 @@ public class Profile extends HttpServlet {
 		HttpSession session = request.getSession();
 		this.user = (KhachHang) session.getAttribute("acountKH");
 		int index = this.user.getIdkh();
-
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		String url = request.getRequestURL().toString();
 		if (url.contains("Changepass")) {
 			String oldpass = request.getParameter("oldpassword");
 			String newpass = request.getParameter("newpass");
 			if (oldpass.equals(this.user.getPassword().trim())) {
 				this.daouser.changepassworduser(index, newpass);
-				response.sendRedirect(request.getContextPath() + "/Profile?id=" + index + "&&successChangePass=1");
+				response.sendRedirect(request.getContextPath() + "/Profile?successChangePass=1");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/Profile?id=" + index + "&&errorChangePass=1");
+				response.sendRedirect(request.getContextPath() + "/Profile?errorChangePass=1");
 			}
 		} else if (url.contains("Updateprofile")) {
 			try {
-				System.out.println(index);
-
 				BeanUtils.populate(this.user, request.getParameterMap());
 				this.user.setIdkh(index);
-				this.daouser.updateprofileuser(this.user);
-				response.sendRedirect(request.getContextPath() + "/Profile?id=" + index + "&&sucssec=2");
+				if(checkinput(user,user.getSdt() )) {
+					this.user.setIdkh(index);
+					this.daouser.updateprofileuser(this.user);
+					response.sendRedirect(request.getContextPath() + "/Profile?sucssec=2");
+				}else {
+					response.sendRedirect(request.getContextPath() + "/Profile?error=2");
+				}
+				
 			} catch (IllegalAccessException | InvocationTargetException e) {
 				e.printStackTrace();
 			}
@@ -98,5 +103,18 @@ public class Profile extends HttpServlet {
 
 		this.lsthd = this.daohd.findHDbyIDkh(kh);
 		request.setAttribute("lsthoadon", this.lsthd);
+	}
+	
+	private boolean checkinput(KhachHang k,String sdt) {
+		List<KhachHang> lst=this.daouser.finduserbysdt(k, sdt);
+		
+		if(lst.size()==0) {
+			System.out.println(lst.size());
+			return true;
+		}else {
+			System.out.println(lst.size());
+			return false;
+		}
+		
 	}
 }

@@ -19,7 +19,8 @@ import model.ThongTinBanDat;
 	"/CancelBooking",
 	"/CancelBooking/Staffcancel",
 	"/CancelBooking/Staffdelete",
-	"/CancelBooking/Memberdelete"
+	"/CancelBooking/Memberdelete",
+	"/CancelBooking/Guest"
 	
 })
 public class CancelBooking extends HttpServlet {
@@ -51,15 +52,24 @@ public class CancelBooking extends HttpServlet {
 					this.daocart.deletecartbyttbd(ttbd);
 					this.daottbd.delete(id);
 				}
-			response.sendRedirect(request.getContextPath()+"/Booking?date="+date);
+			response.sendRedirect(request.getContextPath()+"/Booking?date="+date+"&&sucsses=3");
 		}else if(url.contains("Staffdelete")) {
 			this.daocart.deletecartbyttbd(ttbd);
 			this.daottbd.delete(id);
-			response.sendRedirect(request.getContextPath()+"/Notification");
+			response.sendRedirect(request.getContextPath()+"/Notification"+"?sucsses=3");
 		}else if(url.contains("Staffcancel")) {
 			this.ttbd.setTrang_Thai("Cancelled");
 			this.daottbd.update(ttbd);
-			response.sendRedirect(request.getContextPath()+"/Notification");
+			response.sendRedirect(request.getContextPath()+"/Notification"+"?sucsses=3");
+		}else if(url.contains("Guest")) {
+			if(this.ttbd.getTrang_Thai().equals("Confirmed")) {
+				this.ttbd.setTrang_Thai("Cancelled");
+				this.daottbd.update(ttbd);
+			}else if(this.ttbd.getTrang_Thai().equals("Waitting line")) {
+				this.daocart.deletecartbyttbd(ttbd);
+				this.daottbd.delete(id);
+			}
+		response.sendRedirect(request.getContextPath()+"/HomeKhachHangServlet?sucsses=3");
 		}
 		
 	}

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!--modal guest start-->
 <div class="modal_guest js_modal_guest">
-<form action="/QL_Dat_Ban_NH" method="post">
+<form action="/QL_Dat_Ban_NH/Bookinggest" method="post">
 	<div class="modal_guest_container js_modal_guest_container">
 		<div class="modal_guest_container--header">
 			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"

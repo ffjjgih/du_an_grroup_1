@@ -1,8 +1,10 @@
 package Controller.Member;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import Dao.DaoTTBD;
 import Dao.Daouser;
+import Services.UtilsDate;
 import model.KhachHang;
 import model.ThongTinBanDat;
 
@@ -25,11 +30,13 @@ public class Bookinggests extends HttpServlet {
     private KhachHang user;
     private ThongTinBanDat ttbd;
     private DaoTTBD daottbd;
+    private UtilsDate utilsDate;
     public Bookinggests() {
         this.daouser=new Daouser();
         this.user=new KhachHang();
         this.ttbd=new ThongTinBanDat();
         this.daottbd=new DaoTTBD();
+        this.utilsDate=new UtilsDate();
     }
 
 	/**
@@ -38,29 +45,48 @@ public class Bookinggests extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idgest"));
 		this.user=this.daouser.findbyid(id);
+		String ngay=request.getParameter("date");
+		this.utilsDate.ngaydat(request);
+		this.utilsDate.giodat(request, ngay);
 		request.setAttribute("user", this.user);
-		request.getRequestDispatcher("/views/assets/BookingGuest.jsp").forward(request, response);
+		request.setAttribute("ngay", ngay);
+		request.getRequestDispatcher("/views/assets/BeforeBookingGuest.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String ngaydat=request.getParameter("dateDatBan");
-		String giodat=request.getParameter("timedatban")+":00";
-		String note=request.getParameter("note");
-		int sl=Integer.parseInt(request.getParameter("so_luong"));
 		int id=Integer.parseInt(request.getParameter("idgest"));
-		this.user=this.daouser.findbyid(id);
-		this.ttbd.setKhachHang(user);
-		this.ttbd.setSo_Luong_Nguoi(sl);
-		this.ttbd.setTrang_Thai("Waitting line");
-		this.ttbd.setGhi_Chu(note);
-		Date date=Date.valueOf(ngaydat);
-		Time time=Time.valueOf(giodat);
-		this.ttbd.setNgayDatBan(date);
-		this.ttbd.setGioDatBan(time);
-		this.daottbd.insert(ttbd);
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
+		String ngay=request.getParameter("date");
+		insertbd(request, response, id);
+		response.sendRedirect(request.getContextPath()+"/Afterbooking?idgest="+id+"&&date="+ngay+"sucsses=3");
 	}
+	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
+		try {
+			BeanUtils.populate(this.ttbd, request.getParameterMap());
+			String ngaydat=request.getParameter("date");
+			String giodat=request.getParameter("timedatban");
+			SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
+			java.util.Date ngay= fommat.parse(ngaydat);
+			Date date=new Date(ngay.getTime());
+			Time time=Time.valueOf(giodat);
+			this.ttbd.setNgayDatBan(date);
+			this.ttbd.setGioDatBan(time);
+			this.user=this.daouser.findbyid(index);
+			this.ttbd.setKhachHang(this.user);
+			this.ttbd.setTrang_Thai("Waitting line");
+			this.daottbd.insert(this.ttbd);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }

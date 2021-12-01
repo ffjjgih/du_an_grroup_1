@@ -34,7 +34,7 @@ public class SignUp extends HttpServlet {
 		String sdt = request.getParameter("sdt");
 		String gmail = request.getParameter("gmail");
 		KhachHang user=this.dao.checkAcc(username);
-		KhachHang u=this.dao.checkAcc(sdt);
+		KhachHang u=this.dao.checkSdt(sdt);
 		if (user != null && u == null) {
 			response.sendRedirect(request.getContextPath() + "/SignUp" + "?errorSignUp=1");
 			return;

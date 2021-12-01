@@ -87,7 +87,7 @@
                         <div class="form-group" style="margin-bottom: 20px;">
                             <label for="inputAddress2">Ngày đặt</label>
                             <input type="text" style="height: 50px; margin-top: 10px;" readonly class="form-control"
-                                id="inputAddress2" placeholder="${inforbooking.ngayDatBan }">
+                                id="inputAddress2" placeholder="${datebook }">
                         </div>
                         <div class="form-group" style="margin-bottom: 20px;">
                             <label for="inputAddress2">Giờ đặt</label>
@@ -105,7 +105,7 @@
                                 id="exampleFormControlTextarea1" rows="3">${inforbooking.ghi_Chu }</textarea>
                         </div>
                     </div>
-                    <a type="button" href="/QL_Dat_Ban_NH/Changebooking?index=${inforbooking.idBd}" style="margin-top: 20px; margin-left: 30%;" class="btn btn-success js_showmodal_info">
+                    <a type="button" href="/QL_Dat_Ban_NH/Changebooking?index=${inforbooking.idBd}&&date=${datebook}" style="margin-top: 20px; margin-left: 30%;" class="btn btn-success js_showmodal_info">
                         CẬP NHẬT THÔNG TIN
                     </a>
                 </div>
