@@ -65,7 +65,7 @@
 
 	<!--banner input-->
 	<c:if test="${sessionScope.acountKH == null}">
-	<!-- <form action="/QL_Dat_Ban_NH/Bookinggest" method="post"> -->
+	<form action="/QL_Dat_Ban_NH/Bookinggest" method="post">
 	<div class="container_banner_input">
 		<div class="input-slogan">
 			<div class="slogan_title">ĐẶT LỊCH GIỮ CHỖ CHỈ 30S</div>
@@ -74,11 +74,11 @@
 		<div class="input-form flex">
 			<div class="form_input">
 				<input type="text" placeholder="Nhập số điện thoại để đặt lịch" name="phone_number">
-				<button type="submit" class="btn btn-secondary js_btnOpen_guest">Đặt lịch</button>
+				<button type="submit" class="btn btn-secondary">Đặt lịch</button>
 			</div>
 		</div>
 	</div>
-	<!-- </form> -->
+	</form> 
 	</c:if>
 
 </div>
