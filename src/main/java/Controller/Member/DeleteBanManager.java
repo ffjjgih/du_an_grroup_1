@@ -11,6 +11,7 @@ import Dao.Daottban;
 
 /**
  * Servlet implementation class DeleteBanManager
+ * cho cái này sang bên package manager nhé
  */
 @WebServlet("/DeleteBanManager")
 public class DeleteBanManager extends HttpServlet {
@@ -32,8 +33,8 @@ public class DeleteBanManager extends HttpServlet {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			daottban.delete(id);
-			System.out.println("advvcg");
-			response.sendRedirect(request.getContextPath() + "/ThembanManager?id="+id+"&&success=1");
+			//System.out.println("advvcg");
+			response.sendRedirect(request.getContextPath() + "/ThembanManager?id="+id+"&&successDeleteBan=1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

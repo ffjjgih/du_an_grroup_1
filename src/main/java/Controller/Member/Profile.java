@@ -75,9 +75,9 @@ public class Profile extends HttpServlet {
 				if(checkinput(user,user.getSdt() )) {
 					this.user.setIdkh(index);
 					this.daouser.updateprofileuser(this.user);
-					response.sendRedirect(request.getContextPath() + "/Profile?sucssec=2");
+					response.sendRedirect(request.getContextPath() + "/Profile?sucssecUpdateprofile=2");
 				}else {
-					response.sendRedirect(request.getContextPath() + "/Profile?error=2");
+					response.sendRedirect(request.getContextPath() + "/Profile?errorUpdateprofile=2");
 				}
 				
 			} catch (IllegalAccessException | InvocationTargetException e) {

@@ -69,11 +69,10 @@
                     <label for="name">Họ và tên</label>
                     <input required type="text" id="name" name="name" value="${user.hoTen }"/>
                 </div>
-                <div class="mb-3">
-				<label for="exampleFormControlQuan" class="form-label">Số
-					lượng người ăn</label> <input required type="number"
-					onkeyup="checkNumber()" class="form-control" name="so_Luong_Nguoi" id="exampleFormControlQuan"> <label for="" id="QuanHelp"  class="error"></label>
-				</div>
+                <div class="formgroup" id="name-form">
+                    <label for="quan">Số lượng người</label>
+                    <input required type="number" id="name" name="quan" value="4"/>
+                </div>
                 <div class="formgroup" id="message-form">
                     <label for="message">Ghi chú</label>
                     <textarea  name="ghi_Chu" required style="resize: none;" id="message" name="message"></textarea>

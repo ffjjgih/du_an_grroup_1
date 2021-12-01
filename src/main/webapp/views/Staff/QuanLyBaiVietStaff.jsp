@@ -63,6 +63,7 @@
     </div>
 
     <script src="./views/Staff/js/modaladdpost.js"></script>
+    <script src="./views/Staff/js/throwErrorQuanLyBaiViet.js"></script>
     <script src="./views/Staff/js/sidebar.js"></script>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -88,23 +89,6 @@
                 document.getElementById('exampleInputImg').style.borderColor = "green";
             }
         }
-		function searchByName(param) {
-			var txtSearch = param.value;
-			$.ajax({
-				url : "QL_Dat_Ban_NH/SeacherMenuStaff",
-				type : "get", //send it through get method
-				data : {
-					name : txtSearch
-				},
-				success : function(data) {
-					var row = document.getElementById("content");
-					row.innerHTML = data;
-				},
-				error : function(xhr) {
-					//Do Something to handle error
-				}
-			});
-		}
 
     </script>
 </body>

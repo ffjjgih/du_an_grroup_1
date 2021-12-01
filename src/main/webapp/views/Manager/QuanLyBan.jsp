@@ -138,6 +138,7 @@
 		<p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
 	</div>
 	<script src="./views/Manager/js/modaladdnhanvien.js"></script>
+	<script src="./views/Manager/js/throwError.js"></script>
 	<script src="./views/Manager/js/sidebar.js"></script>
 	<script>
     function showMess(id){

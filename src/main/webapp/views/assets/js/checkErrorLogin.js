@@ -28,5 +28,8 @@ if (errorGoogle > 0) {
 	alert("Register account fail, because UserName already exist, please try again!");
 } else if (succesSignUp > 0) {
 	alert("Register account successfully, please Login with new account!");
+} else if (urlName.search("sucssesCancelBooking") > 0){
+	alert("Cancel Booking Successfully!");
+} else {
 	console.log("Nothing");
 }

@@ -62,7 +62,7 @@ public class Bookinggests extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String ngay=request.getParameter("date");
 		insertbd(request, response, id);
-		response.sendRedirect(request.getContextPath()+"/Afterbooking?idgest="+id+"&&date="+ngay+"sucsses=3");
+		response.sendRedirect(request.getContextPath()+"/Afterbooking?idgest="+id+"&&date="+ngay+"sucssesBookingGuest=3");
 	}
 	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
 		try {

@@ -32,7 +32,6 @@ public class UpdateBanManager extends HttpServlet {
 		int loai = Integer.parseInt( request.getParameter("loaiban"));
 		ttban.setLoaiBan(loai);
 		daottban.update(ttban);
-		response.sendRedirect(request.getContextPath() + "/ThembanManager" + "?success=1");
+		response.sendRedirect(request.getContextPath() + "/ThembanManager" + "?successUpdateBanManager=1");
 	}
-
 }
