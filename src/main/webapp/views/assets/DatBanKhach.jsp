@@ -173,7 +173,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Số người</label>
                                 <div class="col-sm-7">
-                                    <input type="number" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người">
+                                    <input type="number" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người"  style="margin-left: -78px;">
                                     <span class="form-group_error"></span>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Ghi chú</label>
                                 <div class="col-sm-7">
-                                    <textarea class="form-control form-group_input" style="resize: none; height: 90px; padding-top: 10px;" id="exampleFormControlTextarea1" name="ghi_Chu" rows="3"></textarea>
+                                    <textarea class="form-control form-group_input" style="resize: none; height: 90px; padding-top: 10px; margin-left: -1px;" id="exampleFormControlTextarea1" name="ghi_Chu" rows="3"></textarea>
                                     <span class="form-group_error"></span>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@
                             <input type="text" style="height: 50px; margin-top: 10px;" readonly class="form-control"  id="inputAddress2" placeholder="${user.gmail }">
                         </div>
                     </div>
-                    <a type="button" href="/QL_Dat_Ban_NH/Profile" style="margin-top: 20px; margin-left: 30%;" class="btn btn-info">CẬP NHẬT THÔNG TIN</a>
+                    <a type="button" href="/QL_Dat_Ban_NH/Profile" style="margin-top: 20px; margin-left: 1%;" class="btn btn-info">CẬP NHẬT THÔNG TIN</a>
                 </div>
             </div>
 

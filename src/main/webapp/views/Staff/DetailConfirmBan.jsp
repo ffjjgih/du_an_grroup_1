@@ -27,45 +27,55 @@
                     <li class="nav_logo">
                         <h3>NGUYỄN LÊ HẢI</h3>
                     </li>
-                    <li class="nav-item">
-                        <input type="text" readonly class="form-control" id="exampleFormControlInput1"
-                            value="${infor.khachHang.hoTen }">
-                    </li>
-                    <li class="nav-item">
-                        <input type="text" readonly class="form-control" id="exampleFormControlInput1"
-                            value="${infor.khachHang.gmail }">
-                    </li>
-                    <li class="nav-item">
-                        <input type="text" readonly class="form-control" id="exampleFormControlInput1"
-                            value="${infor.khachHang.sdt }">
-                    </li>
-					<li class="nav-item1">
-                        <h6>Số lượng người</h6>
-                    </li>
-                    <li class="nav-item1">
-                        <input type="number"  class="form-control" name="so_luong" id="exampleFormControlInput1"
-                            value="${infor.so_Luong_Nguoi }">
-                    </li>
-                    <li class="nav-item1">
-                        <h6>Ngày đặt</h6>
-                    </li>
-                    <li class="nav-item1">
-                        <input type="date" name="dateDatBan" class="form-control" id="exampleFormControlInput1"
-                            value="${infor.ngayDatBan }">
-                    </li>
-                    <li class="nav-item1">
-                        <h6>Giờ đặt</h6>
-                    </li>
-                    <li class="nav-item1">
-                        <input type="time" name="timedatban" class="form-control" id="exampleFormControlInput1"
-                            value="${infor.gioDatBan }">
-                    </li>
-                    <li class="nav-item1">
-                        <h6>Ghi chú</h6>
-                    </li>
-                    <div class="form-floating">
-                        <textarea class="form-control" name="Note"  placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px; resize: none;">${infor.ghi_Chu }</textarea>
-                    </div>
+                    <form action="" method="post" style="width: 100%;">
+                        <li class="nav-item">
+                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="Nguyễn Văn A">
+                        </li>
+                        <li class="nav-item">
+                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="hainlph17388@fpt.edu.vn">
+                        </li>
+                        <li class="nav-item">
+                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="0977256375">
+                        </li>
+                        <li class="nav-item1">
+                            <h6>Ngày đặt</h6>
+                        </li>
+                        <li class="nav-item1">
+                            <div class="controlBTN" style="width: 480px; margin-bottom: 10px;">
+                                <button type="button" style="width: 140px; float: left; margin: 5px; border-radius: 50px;"
+                                    class="btn btn-danger">29-11-2021</button>
+                                <button type="button" style="width: 140px; float: left; margin: 5px; border-radius: 50px;"
+                                    class="btn btn-info">30-11-2021</button>
+                                <button type="button" style="width: 140px; float: left; margin: 5px; border-radius: 50px;"
+                                    class="btn btn-info">1-12-2021</button>
+                            </div>
+                        </li>
+                        <li class="nav-item1">
+                            <h6>Giờ đặt</h6>
+                        </li>
+                        <li class="nav-item1">
+                            <select name="" id="" class="form-select" style="width: 450px; margin-bottom: 15px; height: 38px;">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </li>
+                        <li class="nav-item1">
+                            <h6>Số lượng người</h6>
+                        </li>
+                        <li class="nav-item1">
+                            <input type="number" class="form-control" id="exampleFormControlInput1" value="3">
+                        </li>
+                        <li class="nav-item1">
+                            <h6>Ghi chú</h6>
+                        </li>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                style="height: 100px; resize: none;"></textarea>
+                        </div>
+                    </form>
+                    
                 </ul>
                 <div class="left_footer">
                     <a href="#">
