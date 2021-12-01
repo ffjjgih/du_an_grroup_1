@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.Daouser;
+import Services.EncryptUtil;
 import model.KhachHang;
 
 @WebServlet("/SignUp")
@@ -35,6 +36,7 @@ public class SignUp extends HttpServlet {
 		String gmail = request.getParameter("gmail");
 		KhachHang user=this.dao.checkAcc(username);
 		KhachHang u=this.dao.checkSdt(sdt);
+
 		if (user != null && u == null) {
 			response.sendRedirect(request.getContextPath() + "/SignUp" + "?errorSignUp=1");
 			return;
@@ -42,20 +44,22 @@ public class SignUp extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/SignUp" + "?errorSignUp=2");
 			return;
 		} else if (u != null && user == null) {
-			if(u.getUsername()!=null) {
+			if (u.getUsername() != null) {
 				response.sendRedirect(request.getContextPath() + "/SignUp" + "?errorSignUp=2");
 				return;
-			}else {
+			} else {
 				KhachHang kh1 = new KhachHang(0, gmail, hoten, password, sdt, username);
-				 this.dao.updateKH(kh1);
-				 response.sendRedirect(request.getContextPath() + "/SignUp" + "?succesSignUp=2");
+				this.dao.updateKH(kh1);
+				response.sendRedirect(request.getContextPath() + "/SignUp" + "?succesSignUp=2");
 			}
-		}else if (u == null && user == null) {
+		} else if (u == null && user == null) {
 			KhachHang kh = new KhachHang(0, gmail, hoten, password, sdt, username);
+			String hashed = EncryptUtil.hashPassword(kh.getPassword());
+			kh.setPassword(hashed);
 			dao.insert(kh);
 			response.sendRedirect(request.getContextPath() + "/SignUp" + "?succesSignUp=1");
 		}
-		
+
 	}
 
 }
