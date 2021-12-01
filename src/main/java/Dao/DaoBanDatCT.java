@@ -45,7 +45,7 @@ public class DaoBanDatCT extends BaseDao<Bdct> {
 	public int count(ThongTinBanDat t) {
 		try {
 			this.manager = this.conn.getEntityManager();
-			String qery = "select count(u.thongTinBanDat.idBd) from Bdct u Where ThongTinBanDat=:t";
+			String qery = "select count(u.thongTinBanDat.idBd) from Bdct u Where thongTinBanDat=:t";
 			Query sql = manager.createQuery(qery);
 			sql.setParameter("t", t);
 			return ((Long) sql.getSingleResult()).intValue();

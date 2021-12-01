@@ -20,9 +20,6 @@ import model.Mnct;
 import model.ThongTinBanDat;
 import model.TtBan;
 
-/**
- * Servlet implementation class menuCTController
- */
 @WebServlet({ "/menuCTController", "/menuCTController/create" })
 public class menuCTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
