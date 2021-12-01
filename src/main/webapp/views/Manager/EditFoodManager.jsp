@@ -9,10 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" href="./css/base.css">
-<link rel="stylesheet" href="./css/editfoodmanager.css">
-<link rel="stylesheet" href="./css/addPost.css">
-<link rel="stylesheet" href="./css/grid.css">
+<link rel="stylesheet" href="./views/Manager/css/base.css">
+<link rel="stylesheet" href="./views/Manager/css/editfoodmanager.css">
+<link rel="stylesheet" href="./views/Manager/css/addPost.css">
+<link rel="stylesheet" href="./views/Manager/css/grid.css">
 <link rel="stylesheet"
 	href="./fontawesome-free-5.15.3-web/css/all.min.css">
 <link
@@ -102,7 +102,7 @@
 		</div>
 	</div>
 
-	<script src="./js/sidebar.js"></script>
+	<script src="./views/Manager/js/sidebar.js"></script>
 	<script>
 		function fileValid() {
 			var fileInput = document.getElementById('exampleInputImg');
