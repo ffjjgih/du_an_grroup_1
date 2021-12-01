@@ -27,52 +27,68 @@
                     <li class="nav_logo">
                         <h3>NGUYỄN LÊ HẢI</h3>
                     </li>
-                    <form action="" method="post" style="width: 100%;">
+                    <form action="/QL_Dat_Ban_NH/Confirmbooking" method="post" style="width: 100%;">
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="Nguyễn Văn A">
+                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.hoTen }">
                         </li>
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="hainlph17388@fpt.edu.vn">
+                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.gmail }">
                         </li>
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="0977256375">
+                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.sdt }">
                         </li>
                         <li class="nav-item1">
                             <h6>Ngày đặt</h6>
                         </li>
                         <li class="nav-item1">
                             <div class="controlBTN" style="width: 480px; margin-bottom: 10px;">
-                                <button type="button" style="width: 140px; float: left; margin: 5px; border-radius: 50px;"
-                                    class="btn btn-danger">29-11-2021</button>
-                                <button type="button" style="width: 140px; float: left; margin: 5px; border-radius: 50px;"
-                                    class="btn btn-info">30-11-2021</button>
-                                <button type="button" style="width: 140px; float: left; margin: 5px; border-radius: 50px;"
-                                    class="btn btn-info">1-12-2021</button>
+                                <c:if test="${count==1 }">
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay3 }</a>
+                                    </c:if>
+                                    <c:if test="${count==2 }">
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay3 }</a>
+                                    </c:if>
+                                    <c:if test="${count==3 }">
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay3 }</a>
+                                    </c:if>
                             </div>
                         </li>
                         <li class="nav-item1">
                             <h6>Giờ đặt</h6>
                         </li>
                         <li class="nav-item1">
-                            <select name="" id="" class="form-select" style="width: 450px; margin-bottom: 15px; height: 38px;">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select name="timedatban" id="" class="form-select" style="width: 450px; margin-bottom: 15px; height: 38px;">
+                                <c:if test="${infor.gioDatBan==null }">
+                                        	<option selected value="1">Chọn giờ</option>
+                                        </c:if>
+                                <c:forEach items="${giodat }" var="hour">
+                                        <c:if test="${hour.equals(infor.gioDatBan) }">
+                                        	<option selected value="${hour }">${hour }</option>
+                                        </c:if>
+                                        <c:if test="${!hour.equals(infor.gioDatBan) }">
+                                        <option value="${hour }">${hour }</option>
+                                        </c:if>
+                                        </c:forEach> 
                             </select>
                         </li>
                         <li class="nav-item1">
                             <h6>Số lượng người</h6>
                         </li>
                         <li class="nav-item1">
-                            <input type="number" class="form-control" id="exampleFormControlInput1" value="3">
+                            <input type="number" class="form-control" name="so_luong" id="exampleFormControlInput1" value="${infor.so_Luong_Nguoi }">
                         </li>
                         <li class="nav-item1">
                             <h6>Ghi chú</h6>
                         </li>
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                                style="height: 100px; resize: none;"></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" name="Note" id="floatingTextarea2"
+                                style="height: 100px; resize: none;">${infor.ghi_Chu }</textarea>
                         </div>
                     </form>
                     
@@ -127,7 +143,7 @@
                                 aria-labelledby="pills-home-tab">
                                  
                                 <div class="content_submit">
-                                    <button type="submit" formaction="/QL_Dat_Ban_NH/Confirmbooking/Create?index=${infor.idBd }" class="btn btn-info" style="width: 200px;">Đặt bàn</button>
+                                    <button type="submit" formaction="/QL_Dat_Ban_NH/Confirmbooking/Create?index=${infor.idBd }&&date=${ngay}" class="btn btn-info" style="width: 200px;">Đặt bàn</button>
                                 </div>
                                 
                                 <c:forEach items="${ban_trong }" var="ban">
@@ -154,7 +170,7 @@
                                 aria-labelledby="pills-home-tab">
                                  
                                 <div class="content_submit">
-                                    <button type="submit" formaction="/QL_Dat_Ban_NH/Confirmbooking/Update?index=${infor.idBd }" class="btn btn-info" style="width: 200px;">sửa</button>
+                                    <button type="submit" formaction="/QL_Dat_Ban_NH/Confirmbooking/Update?index=${infor.idBd }&&date=${ngay}" class="btn btn-info" style="width: 200px;">sửa</button>
                                 </div>
                                 <c:forEach items="${Confirmed }" var="ban">
                                     <div class="content_button l-5">

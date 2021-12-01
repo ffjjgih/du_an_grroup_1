@@ -3,7 +3,10 @@ package Controller.Staff;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,11 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.DaoCart;
 import Dao.DaoTTBD;
 import Dao.Daobdct;
 import Dao.Daottban;
+import Services.UtilsDate;
 import model.Bdct;
 import model.GioHang;
 import model.ThongTinBanDat;
@@ -37,6 +42,7 @@ public class Confirmbooking extends HttpServlet {
 	private Bdct bdct;
 	private Daobdct daobdct;
 	private List<Bdct> lstbdct;
+	private UtilsDate utilsDate;
 	
     public Confirmbooking() {
     	this.daottbd=new DaoTTBD();
@@ -47,11 +53,25 @@ public class Confirmbooking extends HttpServlet {
     	this.bdct=new Bdct();
     	this.daobdct=new Daobdct();
     	this.lstbdct=new ArrayList<Bdct>();
+    	this.utilsDate=new UtilsDate();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index=Integer.parseInt(request.getParameter("index"));
 		int status=Integer.parseInt(request.getParameter("status"));
 		this.ttbd=this.daottbd.findbyid(index);
+		String ngay=request.getParameter("date");
+		SimpleDateFormat format1=new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			java.util.Date d=format1.parse(ngay);
+			SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+			String ngayd=format.format(d);
+			this.utilsDate.giodat(request, ngayd);
+			this.utilsDate.ngaydat(request);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("ngay", ngay);
 		if(status==2) {
 			List<Bdct> lst=this.daobdct.findbdctbyttbd(this.ttbd);
 			request.setAttribute("Confirmed", lst);
@@ -60,6 +80,7 @@ public class Confirmbooking extends HttpServlet {
 		
 		showemptytable(request, response);
 		showcardbyidkh(request, response, this.ttbd);
+		showdatenow(request, response,this.ttbd);
 		request.setAttribute("infor", this.ttbd);
 		request.getRequestDispatcher("/views/Staff/DetailConfirmBan.jsp").forward(request, response);
 	}
@@ -108,13 +129,22 @@ public class Confirmbooking extends HttpServlet {
 	//thay đổi trạng thái của thông tin bàn đặt;
 	private void updatettbd(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) {
 		t.setTrang_Thai("Confirmed");
-		String ngaydat=request.getParameter("dateDatBan");
-		String giodat=request.getParameter("timedatban")+":00";
+		String ngaydat=request.getParameter("date");
+		String giodat=request.getParameter("timedatban");
 		int soluong=Integer.parseInt(request.getParameter("so_luong"));
-		Date date=Date.valueOf(ngaydat);
+		SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
+		java.util.Date ngay;
+		try {
+			ngay = fommat.parse(ngaydat);
+			Date date=new Date(ngay.getTime());
+			t.setNgayDatBan(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		Time time=Time.valueOf(giodat);
 		String note=request.getParameter("Note");
-		t.setNgayDatBan(date);
+		
 		t.setGioDatBan(time);
 		t.setGhi_Chu(note);
 		t.setSo_Luong_Nguoi(soluong);
@@ -127,5 +157,15 @@ public class Confirmbooking extends HttpServlet {
 		for(Bdct x:lstbd) {
 			this.daobdct.delete(x.getIdBdct());
 		}
+	}
+	
+	private void showdatenow(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) {
+		HttpSession session = request.getSession();
+		Calendar c=Calendar.getInstance();
+		SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
+		c.setTime(t.getNgayDatBan());
+		String date1=fommat.format(c.getTime());
+		session.setAttribute("date_book",date1 );
+		
 	}
 }

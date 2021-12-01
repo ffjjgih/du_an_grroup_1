@@ -2,9 +2,11 @@ package Controller.Staff;
 
 import java.io.IOException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.DaoTTBD;
 import Dao.Daobdct;
@@ -63,13 +66,34 @@ public class Notification extends HttpServlet {
 
 	//hiển thị danh sách bàn đặt có trạng thái là waitting line
 	private void showttbdbystatuswl(HttpServletRequest request, HttpServletResponse response) {
-		List<ThongTinBanDat> lstwl=this.daottbd.showttbdbywl();
-		request.setAttribute("danh_sach_doi", lstwl);
+		try {
+			List<ThongTinBanDat> lst=this.daottbd.showttbdbywl();
+			System.out.println(lst.size()+"abc");
+			List<ThongTinBanDat> lstwl=new ArrayList<ThongTinBanDat>();
+			SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+			for(ThongTinBanDat t:lst) {
+				String ngayd=format.format(t.getNgayDatBan());
+				lstwl.add(new ThongTinBanDat(t.getIdBd(), ngayd, t.getGioDatBan(), t.getNgayDatBan()));
+				System.out.println(lstwl.size()+"abc");
+			}
+			System.out.println(lstwl.size()+"abc");
+			request.setAttribute("danh_sach_doi", lstwl);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	//hiển thị danh sách bàn đặt có trạng thái là Confirmed
 		private void showttbdbystatuscf(HttpServletRequest request, HttpServletResponse response) {
-			List<ThongTinBanDat> lstcf=this.daottbd.showttbdbycf();
+			List<ThongTinBanDat> lstt=this.daottbd.showttbdbycf();
+			List<ThongTinBanDat> lstcf=new ArrayList<ThongTinBanDat>();
+			SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+			for(ThongTinBanDat t:lstt) {
+				String ngayd=format.format(t.getNgayDatBan());
+				lstcf.add(new ThongTinBanDat(t.getIdBd(), ngayd, t.getGioDatBan(), t.getNgayDatBan()));
+			}
+			
 			request.setAttribute("da_xac_nhan", lstcf);
 			
 		}
@@ -115,6 +139,17 @@ public class Notification extends HttpServlet {
 			ttbd.setNgayDatBan(date);
 			this.daottbd.insert(ttbd);
 			ThongTinBanDat t=this.daottbd.findttbdbyuserdesc(khachhang);
-			response.sendRedirect(request.getContextPath()+"/Confirmbooking?index="+t.getIdBd()+"&&status=1");
+			response.sendRedirect(request.getContextPath()+"/Confirmbooking?index="+t.getIdBd()+"&&status=1&&date="+showdatenow());
+		}
+		
+		private String showdatenow() {
+			Calendar c=Calendar.getInstance();
+			SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
+			int day=c.get(Calendar.DATE);
+			int month=c.get(Calendar.MONTH);
+			int year=c.get(Calendar.YEAR);
+			c.set(year, month, day);
+			String date1=fommat.format(c.getTime());
+			return date1;
 		}
 }

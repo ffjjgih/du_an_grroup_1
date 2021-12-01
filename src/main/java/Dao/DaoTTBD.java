@@ -102,7 +102,7 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 			String hql = "Select t From ThongTinBanDat t Where t.trang_Thai=:status";
 			this.manager = this.conn.getEntityManager();
 			TypedQuery<ThongTinBanDat> query = this.manager.createQuery(hql, ThongTinBanDat.class);
-			query.setParameter("status", "waitting line");
+			query.setParameter("status", "Waitting line");
 			this.lstttbd = query.getResultList();
 			return this.lstttbd;
 		} catch (Exception e) {

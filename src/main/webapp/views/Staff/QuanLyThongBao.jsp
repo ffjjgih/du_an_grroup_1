@@ -93,7 +93,7 @@
                                                 <th scope="row">${waitting.idBd}</th>
                                                 <td>${waitting.ngayDatBan }</td>
                                                 <td>${waitting.gioDatBan }</td>
-                                                <td><a href="/QL_Dat_Ban_NH/Confirmbooking?index=${waitting.idBd }&&status=1">chi tiết</a></td>
+                                                <td><a href="/QL_Dat_Ban_NH/Confirmbooking?index=${waitting.idBd }&&status=1&&date=${waitting.ghi_Chu}">chi tiết</a></td>
                                                 <td>
                                                     <button type="button" onclick="showMessage(${waitting.idBd})" class="btn btn-danger">Xóa</button>
                                                 </td>
@@ -133,7 +133,7 @@
                                                 	</c:forEach>
                                                 </td>
                                                 <td>
-                                                    <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?index=${cf.idBd }&&status=2" class="btn btn-info">Sửa</a>
+                                                    <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?index=${cf.idBd }&&status=2&&date=${cf.ghi_Chu}" class="btn btn-info">Sửa</a>
                                                     <button type="button" onclick="showMessagecancel(${cf.idBd})" class="btn btn-danger">Xóa</button>
                                                 </td>
                                             </tr>

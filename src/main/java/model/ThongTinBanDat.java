@@ -180,4 +180,13 @@ public class ThongTinBanDat implements Serializable {
 		this.khachHang = khachHang;
 	}
 
+	public ThongTinBanDat(int idBd, String ghi_Chu, Time gioDatBan, Date ngayDatBan) {
+		this.idBd = idBd;
+		this.ghi_Chu = ghi_Chu;
+		this.gioDatBan = gioDatBan;
+		this.ngayDatBan = ngayDatBan;
+	}
+	
+	
+
 }
