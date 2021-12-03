@@ -83,11 +83,12 @@ public class Daouser extends BaseDao<KhachHang> {
 	public KhachHang login(String username, String password) {
 		try {
 			this.manager = this.conn.getEntityManager();
-			//String sql = "SELECT k FROM KhachHang k WHERE username = :userName AND password=:ps";
+			// String sql = "SELECT k FROM KhachHang k WHERE username = :userName AND
+			// password=:ps";
 			String sql = "SELECT k FROM KhachHang k WHERE username = :userName";
 			TypedQuery<KhachHang> query = manager.createQuery(sql, KhachHang.class);
 			query.setParameter("userName", username);
-			//query.setParameter("ps", password);
+			// query.setParameter("ps", password);
 			this.lst = query.getResultList();
 			for (KhachHang user : this.lst) {
 				if (EncryptUtil.checkPass(password, user.getPassword())) {
@@ -100,6 +101,22 @@ public class Daouser extends BaseDao<KhachHang> {
 		}
 
 		return null;
+	}
+
+	public KhachHang login_Google(String username, String password) {
+		try {
+			this.manager = this.conn.getEntityManager();
+			String sql = "SELECT k FROM KhachHang k WHERE username = :userName AND password=:ps";
+			TypedQuery<KhachHang> query = manager.createQuery(sql, KhachHang.class);
+			query.setParameter("userName", username);
+			query.setParameter("ps", password);
+			this.user = query.getResultList().get(0);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return this.user;
 	}
 
 //quên mật khẩu
@@ -235,16 +252,16 @@ public class Daouser extends BaseDao<KhachHang> {
 
 	}
 
-	
-	//kiểm tra ngoài tài khoản nhập vào còn có tài khoản nào khác đang sử dụng sdt đấy ko.
-	public List<KhachHang> finduserbysdt(KhachHang k,String phone){
+	// kiểm tra ngoài tài khoản nhập vào còn có tài khoản nào khác
+	// đang sử dụng sdt đấy ko.
+	public List<KhachHang> finduserbysdt(KhachHang k, String phone) {
 		try {
-			this.manager=this.conn.getEntityManager();
-			String hql="SELECT k FROM KhachHang k WHERE k.sdt=:number_phone and k.idkh !=:user";
-			TypedQuery<KhachHang> query=this.manager.createQuery(hql,KhachHang.class);
+			this.manager = this.conn.getEntityManager();
+			String hql = "SELECT k FROM KhachHang k WHERE k.sdt=:number_phone and k.idkh !=:user";
+			TypedQuery<KhachHang> query = this.manager.createQuery(hql, KhachHang.class);
 			query.setParameter("number_phone", phone);
 			query.setParameter("user", k.getIdkh());
-			return this.lst=query.getResultList();
+			return this.lst = query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

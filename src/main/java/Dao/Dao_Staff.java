@@ -1,10 +1,14 @@
 package Dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import Services.EncryptUtil;
+import model.KhachHang;
 import model.Staff;
 import utils.Connectjpa;
 
@@ -13,6 +17,7 @@ public class Dao_Staff extends BaseDao<Staff> {
 	private EntityManager manager;
 	private EntityTransaction transaction;
 	private Staff st;
+	private List<Staff> listStaff;
 
 	public Dao_Staff() {
 		this.conn = new Connectjpa();
@@ -33,18 +38,25 @@ public class Dao_Staff extends BaseDao<Staff> {
 	public Staff login(String username, String password) {
 		try {
 			this.manager = this.conn.getEntityManager();
-			String sql = "SELECT s FROM Staff s WHERE username = :userName AND password = :ps ";
+			String sql = "SELECT s FROM Staff s WHERE username = :userName AND password =:ps ";
+//			String sql = "SELECT s FROM Staff s WHERE username = :userName ";
 			TypedQuery<Staff> query = manager.createQuery(sql, Staff.class);
 			query.setParameter("userName", username);
 			query.setParameter("ps", password);
 			this.st = query.getResultList().get(0);
+//			for (Staff st : this.listStaff) {
+//				if (EncryptUtil.checkPass(password, st.getPassword())) {
+//					return st;
+//				}
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+
 		}
 		return st;
 	}
-	
+
 	public void changepassstaff(int id, String xacnhan_pass) {
 		this.manager = this.conn.getEntityManager();
 		this.transaction = this.manager.getTransaction();

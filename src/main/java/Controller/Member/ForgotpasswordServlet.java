@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.Daouser;
+import Services.Create_RandomString;
+import Services.EncryptUtil;
 import model.Email;
 import model.KhachHang;
+import net.bytebuddy.utility.RandomString;
 import utils.EmailUtils;
 
 @WebServlet("/ForgotpasswordServlet")
@@ -38,6 +41,12 @@ public class ForgotpasswordServlet extends HttpServlet {
 			String username = request.getParameter("username");
 			list = dao.findEmail(username, emailAddress);
 			if (list != null) {
+				Create_RandomString random = new Create_RandomString();
+				String pass = random.generateRandomString();
+				String hash = EncryptUtil.hashPassword(pass);
+				KhachHang kh = list.get(0);
+				kh.setPassword(hash);
+				this.dao.update(kh);
 				Email gmail = new Email();
 				gmail.setFrom("lienptph16568@fpt.edu.vn");
 				gmail.setFrompassword("Lien2002");
@@ -46,7 +55,7 @@ public class ForgotpasswordServlet extends HttpServlet {
 				StringBuilder sb = new StringBuilder();
 				sb.append("Dear ").append(username).append("</br>");
 				sb.append("you are the forgot password and this is my password. </br>");
-				sb.append("Your password is: </br>").append(list.get(0).getPassword());
+				sb.append("Your password is: </br>").append(pass);
 				gmail.setContent(sb.toString());
 				EmailUtils.send(gmail);
 				response.sendRedirect(request.getContextPath() + "/ForgotpasswordServlet" + "?successforgotpass=1");
@@ -60,4 +69,5 @@ public class ForgotpasswordServlet extends HttpServlet {
 		}
 
 	}
+
 }
