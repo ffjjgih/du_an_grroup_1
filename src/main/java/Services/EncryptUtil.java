@@ -8,7 +8,7 @@ public class EncryptUtil {
 	}
 
 	public static boolean checkPass(String plain, String hashed) {
-		//return BCrypt.checkpw(plain, hashed);
-		return true;
+		return BCrypt.checkpw(plain, hashed);
+		//return true;
 	}
 }

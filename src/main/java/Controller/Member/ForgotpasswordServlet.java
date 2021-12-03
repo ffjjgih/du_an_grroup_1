@@ -39,8 +39,8 @@ public class ForgotpasswordServlet extends HttpServlet {
 			list = dao.findEmail(username, emailAddress);
 			if (list != null) {
 				Email gmail = new Email();
-				gmail.setFrom("bungbuffet@gmail.com");
-				gmail.setFrompassword("duan12021");
+				gmail.setFrom("lienptph16568@fpt.edu.vn");
+				gmail.setFrompassword("Lien2002");
 				gmail.setTo(emailAddress);
 				gmail.setSubject("Mail Forgot Password of " + username);
 				StringBuilder sb = new StringBuilder();

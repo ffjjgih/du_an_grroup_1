@@ -50,7 +50,8 @@ public class Daouser extends BaseDao<KhachHang> {
 			manager.clear();
 			String hql = "UPDATE KhachHang k SET password=:new_pass WHERE idkh=:id_kh";
 			Query query = this.manager.createQuery(hql);
-			query.setParameter("new_pass", newpass);
+			String hashed = EncryptUtil.hashPassword(newpass);
+			query.setParameter("new_pass", hashed);
 			query.setParameter("id_kh", id);
 			query.executeUpdate();
 			this.transaction.commit();
