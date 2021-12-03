@@ -87,12 +87,12 @@ public class Daouser extends BaseDao<KhachHang> {
 			TypedQuery<KhachHang> query = manager.createQuery(sql, KhachHang.class);
 			query.setParameter("userName", username);
 			//query.setParameter("ps", password);
-			this.lst = query.getResultList();
-			for (KhachHang user : this.lst) {
+			this.user = query.getSingleResult();
+//			for (KhachHang user : this.lst) {
 				if (EncryptUtil.checkPass(password, user.getPassword())) {
 					return user;
 				}
-			}
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 

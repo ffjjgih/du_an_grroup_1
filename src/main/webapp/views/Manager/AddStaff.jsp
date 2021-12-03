@@ -81,14 +81,14 @@
                             <div class="mb-3">
                                 <label for="exampleInputRole" class="form-label">CHỨC VỤ</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Nhân Viên" name="flexRadioRole"
+                                    <input class="form-check-input" type="radio" value="Staff" name="flexRadioRole"
                                         id="flexRadioRoleStaff">
-                                    <label class="form-check-label" for="flexRadioDefault1">NHÂN VIÊN</label>
+                                    <label class="form-check-label" for="flexRadioDefault1">STAFF</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Quản Lý" name="flexRadioRole"
+                                    <input class="form-check-input" type="radio" value="Manager" name="flexRadioRole"
                                         id="flexRadioRoleManager" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">QUẢN LÝ</label>
+                                    <label class="form-check-label" for="flexRadioDefault2">MANAGER</label>
                                 </div>
                             </div>
                             <button type="reset" class="btn btn-secondary" style="margin: 10px;">RESET</button>

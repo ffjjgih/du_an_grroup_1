@@ -31,7 +31,7 @@
                 <div class="right_body">
                 <c:forEach var="items" items="${ listBV }">
                        <div class="body_item">
-                        <img src="/QL_Dat_Ban_NH/img/${items.img }" style="width: 298px; height: 240px;" alt="">
+                        <img src="./views/assets/imgs/${items.img }" style="width: 298px; height: 240px;" alt="">
                         <p style=" margin-top: 10px; font-size: 20px; font-weight: 500;">${items.ten_tieu_de }</p>
                         <p>${items.noi_dung }</p>
                         <div class="service-item">
@@ -68,10 +68,11 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function showMess(id){
-            var ques=confirm('do want to delete???');
-			if(ques){
-				alert('delete succsessfull');
+            var ques = confirm('Do you want to delete?');
+			if(ques == true){
 				window.location.href='/QL_Dat_Ban_NH/DeleteBaiViet?id='+id;
+			} else {
+				
 			}
         }
 

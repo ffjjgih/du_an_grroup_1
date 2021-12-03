@@ -37,7 +37,7 @@
                 <div class="right_body--header">
                 <form action="/QL_Dat_Ban_NH/ThongKeBanDat" method="post">
                     <div class="header_search">
-                    		<select name="yeartk" class="form-select" aria-label="Default select example">
+                    		<select style="width: 200px; float: left; margin-right: 10px;" name="yeartk" class="form-select" aria-label="Default select example">
                             	<option selected value="2021">2021</option>
                             	<option value="2020">2020</option>
                             	<option value="2019">2019</option>
@@ -52,7 +52,6 @@
                 <div class="body_left l-3"></div>
                 <div class="right_body l-9">
                     <div class="right_body--header-button">
-                        <button type="button" style="float: left; margin-right: 50px;" class="btn btn-warning js-modal-btn">Xem biểu đồ</button>
                     </div>
                     <div class="right_body--content">
                         <table id="t1" class="table" style="text-align: center;">
@@ -79,7 +78,7 @@
                             		if(c.getTime().getMonth()+1==1){
                             			bd1+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban1+=1;
                             			 	}
                             			}
@@ -92,7 +91,7 @@
                             		if(c.getTime().getMonth()+1==2){
                             			bd2+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban2+=1;
                             			 	}
                             			}
@@ -105,7 +104,7 @@
                             		if(c.getTime().getMonth()+1==3){
                             			bd3+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban3+=1;
                             			 	}
                             			}
@@ -118,7 +117,7 @@
                             		if(c.getTime().getMonth()+1==4){
                             			bd4+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban4+=1;
                             			 	}
                             			}
@@ -131,7 +130,7 @@
                             		if(c.getTime().getMonth()+1==5){
                             			bd5+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban5+=1;
                             			 	}
                             			}
@@ -144,7 +143,7 @@
                             		if(c.getTime().getMonth()+1==6){
                             			bd6+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban6+=1;
                             			 	}
                             			}
@@ -157,7 +156,7 @@
                             		if(c.getTime().getMonth()+1==7){
                             			bd7+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban7+=1;
                             			 	}
                             			}
@@ -170,7 +169,7 @@
                             		if(c.getTime().getMonth()+1==8){
                             			bd8+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban8+=1;
                             			 	}
                             			}
@@ -183,7 +182,7 @@
                             		if(c.getTime().getMonth()+1==9){
                             			bd9+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban9+=1;
                             			 	}
                             			}
@@ -196,7 +195,7 @@
                             		if(c.getTime().getMonth()+1==10){
                             			bd10+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban10+=1;
                             			 	}
                             			}
@@ -209,7 +208,7 @@
                             		if(c.getTime().getMonth()+1==11){
                             			bd11+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban11+=1;
                             			 	}
                             			}
@@ -222,7 +221,7 @@
                             		if(c.getTime().getMonth()+1==12){
                             			bd12+=1;
                             			for(int j = 0; j < lstbdct.size(); j++){
-                            			 	if(lstbdct.get(j).getIdBdct() == lsttbd.get(i).getIdBd()){
+                            			 	if(lstbdct.get(j).getThongTinBanDat().getIdBd() == lsttbd.get(i).getIdBd()){
                             			 		ttban12+=1;
                             			 	}
                             			}

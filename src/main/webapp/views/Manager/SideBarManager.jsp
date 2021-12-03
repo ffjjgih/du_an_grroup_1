@@ -3,12 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="container_left l-3">
 	<ul class="nav flex-column">
-		<c:if
-				test="${sessionScope.acountMa != null}">
+		
 				<li class="nav_logo">
-					<h3>${sessionScope.acountMa.hoTen }</h3>
+					<c:if test="${sessionScope.acountMa != null}">
+						<h6>Xin chào: </h6>
+						<h3>${sessionScope.acountMa.hoTen }</h3>
+					</c:if>	
 				</li>
-			</c:if>
+			
 		<li class="nav-item"><a class="nav-link active"
 			aria-current="page" href="#"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"

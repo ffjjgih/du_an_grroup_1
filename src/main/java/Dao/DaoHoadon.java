@@ -68,7 +68,7 @@ public class DaoHoadon extends BaseDao<HoaDon> {
 			this.manager = this.conn.getEntityManager();
 			TypedQuery<HoaDon> query = this.manager.createQuery(hql, HoaDon.class);
 			query.setParameter("id_bd", t);
-			this.hd = query.getResultList().get(0);
+			this.hd = query.getSingleResult();
 			return this.hd;
 		} catch (Exception e) {
 			e.printStackTrace();

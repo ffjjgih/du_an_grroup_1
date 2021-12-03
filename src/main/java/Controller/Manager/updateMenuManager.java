@@ -56,7 +56,7 @@ public class updateMenuManager extends HttpServlet {
 			response.setContentType("text/html;charset=UTF-8");
 			request.setCharacterEncoding("utf-8");
 			
-			String realpath = request.getServletContext().getRealPath("/img");
+			String realpath = request.getServletContext().getRealPath("./views/assets/imgs");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
 				Files.createDirectory(path);
@@ -65,7 +65,7 @@ public class updateMenuManager extends HttpServlet {
 			String filenameUpload = part.getSubmittedFileName();
 			if(!"".equals(filenameUpload)) {
 				String namefile = Path.of(filenameUpload).getFileName().toString();
-				part.write(Paths.get(realpath.toString(), namefile).toString());
+				part.write(realpath+System.getProperty("file.separator")+namefile);
 				menu.setImg(namefile);
 			}
 			String tenmon = request.getParameter("tenMon");

@@ -55,12 +55,16 @@ var check = function(){
         document.getElementById('InputNewPass1').style.borderColor = "green";
         document.getElementById('InputNewPass2').style.borderColor = "green";
         document.getElementById('submit').disabled = false;
+		document.getElementById('submit1').disabled = false;
+		document.getElementById('submit2').disabled = false;
     } else {
         document.getElementById('newPass2HelpSuc').innerHTML = "";
         document.getElementById('newPass2Help').innerHTML = "Password not matching";
         document.getElementById('InputNewPass1').style.borderColor = "red";
         document.getElementById('InputNewPass2').style.borderColor = "red";
         document.getElementById('submit').disabled = true;
+		document.getElementById('submit1').disabled = true;
+		document.getElementById('submit2').disabled = true;
     }
 }
 
