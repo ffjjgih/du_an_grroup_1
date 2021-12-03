@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import Dao.Dao_Staff;
 import Dao.Daouser;
+import Services.Checkdatebooking;
 import model.KhachHang;
 import model.Staff;
 
@@ -23,21 +24,23 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Daouser daouser;
 	private Dao_Staff daoStaff;
-
+	private Checkdatebooking check;
 	public Login() {
 		this.daoStaff = new Dao_Staff();
 		this.daouser = new Daouser();
+		this.check=new Checkdatebooking();
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		this.check.checkdate();
 		request.getRequestDispatcher("views/assets/HomeKhachHang.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		this.check.checkdate();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		KhachHang kh = this.daouser.login(username, password);

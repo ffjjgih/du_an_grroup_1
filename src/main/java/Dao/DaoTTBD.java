@@ -115,10 +115,11 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 	// quan:Notification)
 	public List<ThongTinBanDat> showttbdbycf() {
 		try {
-			String hql = "Select t From ThongTinBanDat t Where t.trang_Thai=:status";
+			String hql = "Select t From ThongTinBanDat t Where t.trang_Thai=:status or t.trang_Thai=:tt";
 			this.manager = this.conn.getEntityManager();
 			TypedQuery<ThongTinBanDat> query = this.manager.createQuery(hql, ThongTinBanDat.class);
 			query.setParameter("status", "Confirmed");
+			query.setParameter("tt", "Active");
 			this.lstttbd = query.getResultList();
 			return this.lstttbd;
 		} catch (Exception e) {
@@ -205,6 +206,29 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	//tự hủy bàn khi qua ngày đặt bàn
+	public void checkdate(){
+		this.manager = this.conn.getEntityManager();
+		this.transaction = this.manager.getTransaction();
+		try {
+
+			this.manager.getTransaction().begin();
+			manager.flush();
+			manager.clear();
+			String hql = "Update ThongTinBanDat t SET trang_Thai=:status WHERE datediff(day,ngayDatBan,CONVERT(VARCHAR(10),GETDATE(),101)) <= 0 "
+					+ "AND datediff(minute,gioDatBan,CONVERT(VARCHAR(10),GETDATE(),108))<0 AND datediff(hour,gioDatBan,CONVERT(VARCHAR(10),GETDATE(),108))<0 AND trang_Thai=:tt or trang_Thai=:t_t";
+			Query query = this.manager.createQuery(hql);
+			query.setParameter("status", "Cancelled");
+			query.setParameter("t_t", "Confirmed");
+			query.setParameter("tt", "Waitting line");
+			query.executeUpdate();
+			this.transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.transaction.rollback();
 		}
 	}
 }

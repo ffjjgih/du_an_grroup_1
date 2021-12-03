@@ -27,25 +27,14 @@
                     <li class="nav_logo">
                         <h3>NGUYỄN LÊ HẢI</h3>
                     </li>
-                    <form action="/QL_Dat_Ban_NH/Confirmbooking" method="post" style="width: 100%;">
                         <li class="nav-item">
-<<<<<<< HEAD
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.hoTen }">
+                            <input type="text" style="width: 450px;"  readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.hoTen }">
                         </li>
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.gmail }">
+                            <input type="text" style="width: 450px;"  readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.gmail }">
                         </li>
                         <li class="nav-item">
-                            <input type="text" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.sdt }">
-=======
-                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="Nguyễn Văn A">
-                        </li>
-                        <li class="nav-item">
-                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="hainlph17388@fpt.edu.vn">
-                        </li>
-                        <li class="nav-item">
-                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="0977256375">
->>>>>>> 6b7c9551d0b492d732a2acc546764f1d4d993ade
+                            <input type="text" style="width: 450px;"  readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.sdt }">
                         </li>
                         <li class="nav-item1">
                             <h6>Ngày đặt</h6>
@@ -91,25 +80,15 @@
                             <h6>Số lượng người</h6>
                         </li>
                         <li class="nav-item1">
-<<<<<<< HEAD
-                            <input type="number" class="form-control" name="so_luong" id="exampleFormControlInput1" value="${infor.so_Luong_Nguoi }">
-=======
-                            <input type="number" style="width: 450px;" required class="form-control" id="exampleFormControlInput1" value="3">
->>>>>>> 6b7c9551d0b492d732a2acc546764f1d4d993ade
+                            <input type="number" style="width: 450px;" required class="form-control" name="so_luong" id="exampleFormControlInput1" value="${infor.so_Luong_Nguoi }">
                         </li>
                         <li class="nav-item1">
                             <h6>Ghi chú</h6>
                         </li>
                         <div class="form-floating">
-<<<<<<< HEAD
                             <textarea class="form-control" placeholder="Leave a comment here" name="Note" id="floatingTextarea2"
-                                style="height: 100px; resize: none;">${infor.ghi_Chu }</textarea>
-=======
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                                style="height: 100px; resize: none; width: 450px;"></textarea>
->>>>>>> 6b7c9551d0b492d732a2acc546764f1d4d993ade
+                                style="height: 100px; resize: none; width: 450px;">${infor.ghi_Chu }</textarea>
                         </div>
-                    </form>
                     
                 </ul>
                 <div class="left_footer">

@@ -69,6 +69,7 @@ public class Booking extends HttpServlet {
 			int index=this.kh.getIdkh();
 			this.ttbd=this.daottbd.findttbdbystatus(this.kh);
 			this.lstgh=this.daocart.FindCartbyIDDB(this.ttbd);
+			request.setAttribute("date", date);
 			request.setAttribute("inforbooking", this.ttbd);
 			if(this.ttbd!=null) {
 				SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
@@ -87,12 +88,13 @@ public class Booking extends HttpServlet {
 		this.kh=(KhachHang) session.getAttribute("acountKH");
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		String ngayd=request.getParameter("date");
 		if(this.kh == null) {
 			response.sendRedirect(request.getContextPath()+"/Login?errorAccNull=1");
 		} else {
 			int index=this.kh.getIdkh();
 			String url=request.getRequestURL().toString();
-			insertbd(request, response, index);
+			insertbd(request, response, index,ngayd);
 			if(url.contains("order")) {
 				response.sendRedirect(request.getContextPath()+"/Order");
 			}else if(url.contains("Datban")) {
@@ -102,13 +104,13 @@ public class Booking extends HttpServlet {
 		
 	}
 
-	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index) {
+	private void insertbd(HttpServletRequest request, HttpServletResponse response,int index,String d) {
 		try {
 			BeanUtils.populate(this.thongtinbandat, request.getParameterMap());
 			//String ngaydat=request.getParameter("date");
 			String giodat=request.getParameter("timedatban");
 			SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
-			java.util.Date ngay= fommat.parse(date);
+			java.util.Date ngay= fommat.parse(d);
 			Date date=new Date(ngay.getTime());
 			Time time=Time.valueOf(giodat);
 			this.thongtinbandat.setNgayDatBan(date);

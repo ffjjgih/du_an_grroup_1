@@ -58,9 +58,8 @@
                 <div class="formgroup" id="name-form">
                     <label for="name">Giờ đặt</label>
                     <select name="timedatban" id="" class="form-select" style="width: 500px; margin-bottom: 15px; height: 50px; border-radius: 20px;">
-                        <option selected>Chọn giờ</option>
                         <c:forEach items="${giodat }" var="hour">
-                             <option value="${hour }">${hour }</option>
+                             <option value="${hour }" selected>${hour }</option>
                         </c:forEach> 
                     </select>
                 </div>
@@ -71,11 +70,11 @@
                 </div>
                 <div class="formgroup" id="name-form">
                     <label for="quan">Số lượng người</label>
-                    <input required type="number" id="name" name="quan" value="4"/>
+                    <input required type="number" id="name" name="so_Luong_Nguoi" value="4"/>
                 </div>
                 <div class="formgroup" id="message-form">
                     <label for="message">Ghi chú</label>
-                    <textarea  name="ghi_Chu" required style="resize: none;" id="message" name="message"></textarea>
+                    <textarea  name="ghi_Chu" required style="resize: none;" id="message"></textarea>
                 </div>
 
                 <input type="submit" formaction="/QL_Dat_Ban_NH/Bookinggests?idgest=${user.idkh }&&date=${ngay}" class="cancel" style="width: 500px !important;" value="ĐĂT BÀN NGAY"/>
