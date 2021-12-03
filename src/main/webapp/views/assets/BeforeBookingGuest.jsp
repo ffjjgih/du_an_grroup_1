@@ -58,9 +58,8 @@
                 <div class="formgroup" id="name-form">
                     <label for="name">Giờ đặt</label>
                     <select name="timedatban" id="" class="form-select" style="width: 500px; margin-bottom: 15px; height: 50px; border-radius: 20px;">
-                        <option selected>Chọn giờ</option>
                         <c:forEach items="${giodat }" var="hour">
-                             <option value="${hour }">${hour }</option>
+                             <option value="${hour }" selected>${hour }</option>
                         </c:forEach> 
                     </select>
                 </div>

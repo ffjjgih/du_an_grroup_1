@@ -91,7 +91,6 @@
                             <textarea class="form-control" placeholder="Leave a comment here" name="Note" id="floatingTextarea2"
                                 style="height: 100px; resize: none; width: 450px;">${infor.ghi_Chu }</textarea>
                         </div>
-                    </form>
                     
                 </ul>
                 <div class="left_footer">
