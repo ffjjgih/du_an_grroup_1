@@ -46,11 +46,9 @@ public class HomeStaffController extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		String url = request.getRequestURL().toString();
-		System.out.println(url);
 
 		if (url.contains("create")) {
 			insert(request, response);
-			System.out.println("insert");
 
 		}  else if (url.contains("update")) {
 			int index = Integer.parseInt(request.getParameter("id"));
@@ -73,14 +71,14 @@ public class HomeStaffController extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			Staff staff = (Staff) session.getAttribute("acountST");
-			String realpath = request.getServletContext().getRealPath("/img");
+			String realpath = request.getServletContext().getRealPath("./views/assets/imgs/");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
 				Files.createDirectory(path);
 			}
 			Part part = request.getPart("chonAnh");
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
-			part.write(Paths.get(realpath.toString(), namefile).toString());
+			part.write(realpath+System.getProperty("file.separator")+namefile); 
 			String mota = request.getParameter("mota");
 			String tieude = request.getParameter("tieuDe");
 			String link = request.getParameter("link");

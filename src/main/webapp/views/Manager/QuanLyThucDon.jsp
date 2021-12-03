@@ -76,11 +76,6 @@
 										<div class="item--title">
 											<h5>--${items.ten_Mon_An }--</h5>
 										</div>
-										<div class="item--priceIn">
-											<h6>
-												<span>Giá nhập: </span> 90.000 VNĐ
-											</h6>
-										</div>
 										<div class="item--priceOut">
 											<h6 style="color: tomato;">
 												<span>Giá bán: </span> ${items.gia } VNĐ

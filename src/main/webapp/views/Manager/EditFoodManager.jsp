@@ -36,7 +36,7 @@
 						<form action="/QL_Dat_Ban_NH/updateMenuManager" method="post"
 							enctype="multipart/form-data">
 							<div class="mb-3">
-								<input type="image" src="/QL_Dat_Ban_NH/img/${menu.img }"
+								<input type="image" src="./views/assets/imgs/${menu.img }"
 									value="${menu.img }" style="width: 230px; height: 200px;"
 									class="form-control" id="exampleImg">
 							</div>
@@ -76,17 +76,17 @@
 								<label for="exampleInputTitle" class="form-label">Trạng
 									thái</label> <select class="form-select"
 									aria-label="Default select example" name="trangthai" id="trangthai">
-									<c:if test="${menu.getTrangthai()==1 }">
+									<c:if test="${menu.getTrang_Thai()==1 }">
 										<option selected="selected" value="1">Còn hàng</option>
 										<option value="2">Hết hàng</option>
 										<option value="3">Tạm ngừng hoạt động</option>
 									</c:if>
-									<c:if test="${menu.getTrangthai()==2 }">
+									<c:if test="${menu.getTrang_Thai()==2 }">
 										<option value="1">Còn hàng</option>
 										<option selected="selected" value="2">Hết hàng</option>
 										<option value="3">Tạm ngừng hoạt động</option>
 									</c:if>
-									<c:if test="${menu.getTrangthai()==3 }">
+									<c:if test="${menu.getTrang_Thai()==3 }">
 										<option value="1">Còn hàng</option>
 										<option value="2">Hết hàng</option>
 										<option selected="selected" value="3">Tạm ngừng hoạt động</option>
