@@ -66,7 +66,7 @@
 
                 <div class="formgroup" id="name-form">
                     <label for="name">Họ và tên</label>
-                    <input required type="text" id="name" name="name" value="${user.hoTen }"/>
+                    <input required type="text" id="name" name="hoTen" value="${user.hoTen }"/>
                 </div>
                 <div class="formgroup" id="name-form">
                     <label for="quan">Số lượng người</label>

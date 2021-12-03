@@ -30,7 +30,7 @@
             <div class="fish" id="fish"></div>
             <div class="fish" id="fish2"></div>
 
-
+			<div id="waterform">
                 <div class="formgroup" id="name-form">
                     <label for="name">Số điện thoại</label>
                     <input disabled type="text" id="name" name="phone" value="${booking.khachHang.sdt }"/>
@@ -38,7 +38,7 @@
 
                 <div class="formgroup" id="name-form">
                     <label for="name">Họ và tên</label>
-                    <input disabled type="text" id="name" name="name" value="${booking.khachHang.hoTen }"/>
+                    <input disabled type="text" id="name" name="hoTen" value="${booking.khachHang.hoTen }"/>
                 </div>
 
                 <div class="formgroup" id="email-form">
@@ -63,6 +63,7 @@
 
                 <input type="submit" onclick="showMessage(${booking.idBd})" class="exit" style="float: left;" value="Hủy Lịch"/>
                 <input type="submit" onclick="showexit()" class="cancel" value="Exit"/>
+               </div>
         </div>
 
     </div>

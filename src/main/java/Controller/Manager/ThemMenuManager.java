@@ -61,14 +61,14 @@ public class ThemMenuManager extends HttpServlet {
 		try {
 			response.setContentType("text/html;charset=UTF-8");
 			request.setCharacterEncoding("utf-8");
-			String realpath = request.getServletContext().getRealPath("/img");
+			String realpath = request.getServletContext().getRealPath("./views/assets/imgs");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
 				Files.createDirectory(path);
 			}
 			Part part = request.getPart("chonAnh");
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
-			part.write(Paths.get(realpath.toString(), namefile).toString());
+			part.write(realpath+System.getProperty("file.separator")+namefile); 
 			String tenmon = request.getParameter("tenMon");
 			float gia =Float.parseFloat(request.getParameter("gia")) ;
 			int loai =Integer.parseInt( request.getParameter("chonLoai"));

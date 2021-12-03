@@ -82,7 +82,7 @@ public class Controller_Bill extends HttpServlet {
 		int idhd=Integer.parseInt(request.getParameter("idhd"));
 		this.hd=this.dao_HD.findbyid(idhd);
 		if (url.contains("inHD")) {
-			this.writeExcel.exportExcel(response);	
+			this.writeExcel.exportExcel(response,idhd);	
 			doGet(request, response);
 			// response.sendRedirect(request.getContextPath() + "/Controller_Bill");	
 		} else if (url.contains("Back")) {

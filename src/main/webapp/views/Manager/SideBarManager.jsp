@@ -3,9 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="container_left l-3">
 	<ul class="nav flex-column">
-		<li class="nav_logo">
-			<h3>NGUYỄN LÊ HẢI</h3>
-		</li>
+		
+				<li class="nav_logo">
+					<c:if test="${sessionScope.acountMa != null}">
+						<h6>Xin chào: </h6>
+						<h3>${sessionScope.acountMa.hoTen }</h3>
+					</c:if>	
+				</li>
+			
 		<li class="nav-item"><a class="nav-link active"
 			aria-current="page" href="#"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -16,35 +21,40 @@
 						d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
                             </svg> TRANG CHỦ
 		</a></li>
-		<li class="nav-item"><a class="nav-link" href="/QL_Dat_Ban_NH/ThemMenuManager"> <svg
+		<li class="nav-item"><a class="nav-link"
+			href="/QL_Dat_Ban_NH/ThemMenuManager"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
 						d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
                             </svg> QUẢN LÝ THỰC ĐƠN
 		</a></li>
-		<li class="nav-item"><a class="nav-link" href="/QL_Dat_Ban_NH/ThembanManager"> <svg
+		<li class="nav-item"><a class="nav-link"
+			href="/QL_Dat_Ban_NH/ThembanManager"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
 						d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
                             </svg> QUẢN LÝ BÀN
 		</a></li>
-		<li class="nav-item"><a class="nav-link" href="/QL_Dat_Ban_NH/showaccstaff"> <svg
+		<li class="nav-item"><a class="nav-link"
+			href="/QL_Dat_Ban_NH/showaccstaff"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
 						d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
                             </svg> QUẢN LÝ NHÂN VIÊN
 		</a></li>
-		<li class="nav-item"><a class="nav-link" href="/QL_Dat_Ban_NH/ShowInfoMember"> <svg
+		<li class="nav-item"><a class="nav-link"
+			href="/QL_Dat_Ban_NH/ShowInfoMember"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
 						d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
                             </svg> QUẢN LÝ KHÁCH HÀNG
 		</a></li>
-		<li class="nav-item"><a class="nav-link" href="/QL_Dat_Ban_NH/QuanLyThongKe"> <svg
+		<li class="nav-item"><a class="nav-link"
+			href="/QL_Dat_Ban_NH/QuanLyThongKe"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-bar-chart-fill"
 					viewBox="0 0 16 16">
@@ -52,7 +62,8 @@
 						d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
                             </svg> THỐNG KÊ
 		</a></li>
-		<li class="nav-item"><a class="nav-link" href="/QL_Dat_Ban_NH/Logout"> <svg
+		<li class="nav-item"><a class="nav-link"
+			href="/QL_Dat_Ban_NH/Logout"> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-box-arrow-in-left"
 					viewBox="0 0 16 16">

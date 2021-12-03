@@ -65,7 +65,7 @@ public class UpdateBaiVietController extends HttpServlet {
 			HttpSession session = request.getSession();
 			Staff staff = (Staff) session.getAttribute("acountST");
 			
-			String realpath = request.getServletContext().getRealPath("/img");
+			String realpath = request.getServletContext().getRealPath("./views/assets/imgs/");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
 				Files.createDirectory(path);
@@ -74,7 +74,7 @@ public class UpdateBaiVietController extends HttpServlet {
 			String filenameUpload = part.getSubmittedFileName();
 			if(!"".equals(filenameUpload)) {
 				String namefile = Path.of(filenameUpload).getFileName().toString();
-				part.write(Paths.get(realpath.toString(), namefile).toString());
+				part.write(realpath+System.getProperty("file.separator")+namefile); 
 				bv.setImg(namefile);
 			}
 					

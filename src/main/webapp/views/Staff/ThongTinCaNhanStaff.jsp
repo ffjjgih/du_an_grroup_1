@@ -97,7 +97,7 @@
                                                 aria-describedby="emailHelp">
                                             <label for="" class="error"></label>
                                         </div>
-                                        <button type="submit" class="btn btn-success" formaction="/QL_Dat_Ban_NH/ProfileStaff/Update_profile_staff?idnv=${staff.idnv }">Submit</button>
+                                        <button type="submit" id="submit2" class="btn btn-success" formaction="/QL_Dat_Ban_NH/ProfileStaff/Update_profile_staff?idnv=${staff.idnv }">Submit</button>
                                     </form>
                                 </div>
 
@@ -132,7 +132,7 @@
                                             <label for="" id="newPass2Help" class="error" style="color: red;"></label>
                                             <label for="" id="newPass2HelpSuc" class="success" style="color: green;"></label>
                                         </div>
-                                        <button type="submit" class="btn btn-success" formaction="/QL_Dat_Ban_NH/ProfileStaff/Changepass_staff?idnv=${staff.idnv }" >Submit</button>
+                                        <button type="submit" id="submit1" class="btn btn-success" formaction="/QL_Dat_Ban_NH/ProfileStaff/Changepass_staff?idnv=${staff.idnv }" >Submit</button>
                                     </form>
                                 </div>
                             </div>

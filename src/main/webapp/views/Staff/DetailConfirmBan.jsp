@@ -27,14 +27,16 @@
                     <li class="nav_logo">
                         <h3>NGUYỄN LÊ HẢI</h3>
                     </li>
-                        <li class="nav-item">
-                            <input type="text" style="width: 450px;"  readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.hoTen }">
+                    <form action="/QL_Dat_Ban_NH/Confirmbooking" method="post" style="width: 100%;">
+                       
+                        <li class="nav-item1">
+                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.hoTen }">
                         </li>
-                        <li class="nav-item">
-                            <input type="text" style="width: 450px;"  readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.gmail }">
+                        <li class="nav-item1">
+                            <input type="text" style="width: 450px; margin: 15px 0 15px 0;" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.gmail }">
                         </li>
-                        <li class="nav-item">
-                            <input type="text" style="width: 450px;"  readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.sdt }">
+                        <li class="nav-item1">
+                            <input type="text" style="width: 450px; margin-bottom: 10px;" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.sdt }">
                         </li>
                         <li class="nav-item1">
                             <h6>Ngày đặt</h6>
@@ -168,7 +170,7 @@
                                 aria-labelledby="pills-home-tab">
                                  
                                 <div class="content_submit">
-                                    <button type="submit" formaction="/QL_Dat_Ban_NH/Confirmbooking/Update?index=${infor.idBd }&&date=${ngay}" class="btn btn-info" style="width: 200px;">sửa</button>
+                                    <button type="submit" formaction="/QL_Dat_Ban_NH/Confirmbooking/Update?index=${infor.idBd }&&date=${ngay}" class="btn btn-info" style="width: 200px;">Sửa</button>
                                 </div>
                                 <c:forEach items="${Confirmed }" var="ban">
                                     <div class="content_button l-5">

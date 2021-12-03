@@ -4,11 +4,14 @@
 
 <div class="container_left l-3">
 	<ul class="nav flex-column">
-	<c:if test="${sessionScope.acountST != null}">
+	
 		<li class="nav_logo">
-			<h3>${sessionScope.acountST.hoTen }</h3>
+			<c:if test="${sessionScope.acountST != null}">
+				<h6>Xin chào: </h6>
+				<h3>${sessionScope.acountST.hoTen }</h3>
+			</c:if>
 		</li>
-	</c:if>	
+		
 		<li class="nav-item">
 			<a class="nav-link active" aria-current="page" href="/QL_Dat_Ban_NH/HomeStaffController"> 
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">

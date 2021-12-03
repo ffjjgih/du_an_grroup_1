@@ -59,7 +59,7 @@ public class Login extends HttpServlet {
 					response.sendRedirect(request.getContextPath() + "/HomeStaffController");
 				} else if (st.getChucVu().equals("Manager")) {
 					HttpSession session = request.getSession();
-					//session.setAttribute("acountST", st);
+					session.setAttribute("acountMa", st);
 					response.sendRedirect(request.getContextPath() + "/HomeManager");
 				}
 			} else {

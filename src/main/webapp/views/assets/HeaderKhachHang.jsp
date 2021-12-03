@@ -13,14 +13,17 @@
 						<button type="button" class="btn btn-dark dropdown-toggle"
 							data-bs-toggle="dropdown" aria-expanded="false">${sessionScope.acountKH.hoTen }</button>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Profile">Thông tin cá nhân</a></li>
+							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Profile">Thông
+									tin cá nhân</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Logout">Đăng xuất</a></li>
+							<li><a class="dropdown-item" href="/QL_Dat_Ban_NH/Logout">Đăng
+									xuất</a></li>
 						</ul>
 					</div>
 				</c:if>
 				<c:if test="${sessionScope.acountKH == null}">
-				<button type="button" class="btn btn-success js-modal-btn">Đăng nhập</button>
+					<button type="button" class="btn btn-success js-modal-btn">Đăng
+						nhập</button>
 				</c:if>
 			</div>
 		</div>
@@ -32,22 +35,26 @@
 	<div id="carouselExampleFade" class="carousel slide carousel-fade"
 		data-bs-ride="carousel">
 		<div class="carousel-inner">
-		
+
 			<c:if test="${sessionScope.acountKH != null}">
-			<div class="carousel-item active">
-				<img src="./views/assets/imgs/banner0.jpg" class="d-block w-100" alt="...">
-			</div>
+				<div class="carousel-item active">
+					<img src="./views/assets/imgs/banner0.jpg" class="d-block w-100"
+						alt="...">
+				</div>
 			</c:if>
 			<c:if test="${sessionScope.acountKH == null}">
-			<div class="carousel-item active">
-				<img src="./views/assets/imgs/banner.png" class="d-block w-100" alt="...">
-			</div>
+				<div class="carousel-item active">
+					<img src="./views/assets/imgs/banner.png" class="d-block w-100"
+						alt="...">
+				</div>
 			</c:if>
 			<div class="carousel-item">
-				<img src="./views/assets/imgs/banner1.png" class="d-block w-100" alt="...">
+				<img src="./views/assets/imgs/banner1.png" class="d-block w-100"
+					alt="...">
 			</div>
 			<div class="carousel-item">
-				<img src="./views/assets/imgs/banner2.jpg" class="d-block w-100" alt="...">
+				<img src="./views/assets/imgs/banner2.jpg" class="d-block w-100"
+					alt="...">
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button"
@@ -65,20 +72,21 @@
 
 	<!--banner input-->
 	<c:if test="${sessionScope.acountKH == null}">
-	<form action="/QL_Dat_Ban_NH/Bookinggest" method="post">
-	<div class="container_banner_input">
-		<div class="input-slogan">
-			<div class="slogan_title">ĐẶT LỊCH GIỮ CHỖ CHỈ 30S</div>
-			<div class="slogan_text">Ăn xong trả tiền, hủy lịch không sao</div>
-		</div>
-		<div class="input-form flex">
-			<div class="form_input">
-				<input type="text" placeholder="Nhập số điện thoại để đặt lịch" name="phone_number">
-				<button type="submit" class="btn btn-secondary">Đặt lịch</button>
+		<form action="/QL_Dat_Ban_NH/Bookinggest" method="post">
+			<div class="container_banner_input">
+				<div class="input-slogan">
+					<div class="slogan_title">ĐẶT LỊCH GIỮ CHỖ CHỈ 30S</div>
+					<div class="slogan_text">Ăn xong trả tiền, hủy lịch không sao</div>
+				</div>
+				<div class="input-form flex">
+					<div class="form_input">
+						<input type="text" placeholder="Nhập số điện thoại để đặt lịch"
+							name="phone_number">
+						<button type="submit" class="btn btn-secondary">Đặt lịch</button>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	</form> 
+		</form>
 	</c:if>
 
 </div>
@@ -86,15 +94,19 @@
 <div class="container_navbar">
 	<div class="navbar-container">
 		<ul>
-			<li class="nav-link"><a href="/QL_Dat_Ban_NH/HomeKhachHangServlet">Trang chủ</a>
+			<li class="nav-link"><a
+				href="/QL_Dat_Ban_NH/HomeKhachHangServlet">Trang chủ</a>
 				<div class="underline"></div></li>
 			<li class="nav-link"><a href="/QL_Dat_Ban_NH/Menu">Thực đơn</a>
 				<div class="underline"></div></li>
-				<c:if test="${sessionScope.acountKH != null}">
-			<li class="nav-link"><a href="/QL_Dat_Ban_NH/Booking?date=${sessionScope.date_book }">Đặt bàn</a>
-				<div class="underline"></div></li>
-				</c:if>
-			<li class="nav-link"><a href="/QL_Dat_Ban_NH/Khuyenmai">Khuyến mại</a>
+			<c:if test="${sessionScope.acountKH != null}">
+				<li class="nav-link"><a
+					href="/QL_Dat_Ban_NH/Booking?date=${sessionScope.date_book }">Đặt
+						bàn</a>
+					<div class="underline"></div></li>
+			</c:if>
+			<li class="nav-link"><a href="/QL_Dat_Ban_NH/Khuyenmai">Khuyến
+					mại</a>
 				<div class="underline"></div></li>
 			<li class="nav-link"><a href="/QL_Dat_Ban_NH/Lienhe">Liên hệ</a>
 				<div class="underline"></div></li>

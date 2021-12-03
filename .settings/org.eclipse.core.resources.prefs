@@ -1,4 +1,15 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+<<<<<<< HEAD
 encoding//src/main/java/Controller/Staff/AddMenuCT.java=UTF-8
+<<<<<<< HEAD
 encoding//src/main/webapp/views/assets/EditInfoSauDatBan.jsp=UTF-8
 encoding/<project>=UTF-8
+=======
+=======
+encoding//src/main/java/Services/WriteExcel.java=UTF-8
+>>>>>>> nam_fix_error
+=======
+encoding//src/main/java/Controller/Staff/AddMenuCTController.java=UTF-8
+>>>>>>> lien_fixbug
+>>>>>>> de028e01b7acf91f38d6ac83d0c5448e9765bc7e

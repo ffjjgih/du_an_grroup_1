@@ -158,11 +158,10 @@ a {
 /*form input guest css start*/
 .container_banner_input{
     position: absolute;
-    bottom: 20px;
+    bottom: 130px;
     padding: 15px 20px;
     border-radius: 10px;
     background: linear-gradient(180deg,#fca4f1,#85ffff);
-    margin-left: 42%;
     width: auto;
     height: auto;
     z-index: 2;

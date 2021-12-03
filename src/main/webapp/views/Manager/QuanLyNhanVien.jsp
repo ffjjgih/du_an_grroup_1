@@ -67,7 +67,6 @@
                                     <th scope="col">SỐ ĐIỆN THOẠI</th>
                                     <th scope="col">CĂN CƯỚC CÔNG DÂN</th>
                                     <th scope="col">CHỨC VỤ</th>
-                                    <th scope="col">THAO TÁC</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,10 +77,6 @@
                                     <td>${o.sdt}</td>
                                     <td>${o.cccd}</td>
                                     <td>${o.chucVu}</td>
-                                    <td>
-                                        <a href="LoadToUpdate?idacc=${o.idnv}" type="button" class="btn btn-info" style="margin-bottom: 10px;">SỬA</a>
-                                        <button onclick="showMess(${o.idnv})" type="button" class="btn btn-danger" style="margin-bottom: 10px;">XÓA</button>
-                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -91,7 +86,7 @@
             </div>
 
         </div>
-        <div class="modal_add js_modal_add">
+        <!-- <div class="modal_add js_modal_add">
             <div class="modal_add_container js_modal_add_container">
                 <h3>THÊM NHÂN VIÊN MỚI</h3>
                 <form action="/QL_Dat_Ban_NH/EmployeeManager" method="post">
@@ -125,7 +120,7 @@
                     <button type="button" class="btn btn-danger js_btn-close" style="margin: 10px;">Exit</button>
                 </form>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="container_footer" style="text-align: center;">

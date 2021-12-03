@@ -19,6 +19,7 @@ public class EmailUtils {
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.starttls.enable", "true"); 
 		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		
 		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(email.getFrom(), email.getFrompassword());
@@ -31,7 +32,7 @@ public class EmailUtils {
 			message.setSubject(email.getSubject());
 			message.setText(email.getContent());
 
-			// send message
+
 			Transport.send(message);
 		} catch (Exception e) {
 			e.printStackTrace();
