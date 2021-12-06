@@ -44,18 +44,18 @@ public class LoginGoogleController extends HttpServlet {
 			String name = arrname[0];
 			if(this.checkAccount(googlepojo.getId()) == false) {
 				this.createAccount(googlepojo.getId(), googlepojo.getEmail(), googlepojo.getEmail(), name);
-				khach = this.serviceKhach.login(googlepojo.getId(), googlepojo.getEmail());
+				khach = this.serviceKhach.login_Google(googlepojo.getId(), googlepojo.getEmail());
 				if(khach != null) {
 					this.saveSession(request, khach, googlepojo.getId(), googlepojo.getEmail());
-					response.sendRedirect(request.getContextPath()+"/login-google?successGoogle=1");
+					response.sendRedirect(request.getContextPath()+"/HomeKhachHangServlet?successGoogle=1");
 				} else {
 					response.sendRedirect(request.getContextPath()+"/login-google?errorGoogle=1");
 				}
 			} else {
-				khach = this.serviceKhach.login(googlepojo.getId(), googlepojo.getEmail());
+				khach = this.serviceKhach.login_Google(googlepojo.getId(), googlepojo.getEmail());
 				if(khach != null) {
 					this.saveSession(request, khach, googlepojo.getId(), googlepojo.getEmail());
-					response.sendRedirect(request.getContextPath()+"/login-google?successGoogle=1");
+					response.sendRedirect(request.getContextPath()+"/HomeKhachHangServlet?successGoogle=1");
 				} else {
 					response.sendRedirect(request.getContextPath()+"/login-google?errorGoogle=1");
 				}

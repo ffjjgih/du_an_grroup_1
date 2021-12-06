@@ -20,6 +20,15 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+	<style type="text/css">
+		body{
+    		counter-reset: section;
+		}
+		th::before{
+    		counter-increment: section;
+    		content: counter(section);
+		}
+	</style>
 </head>
 
 <body>
@@ -86,18 +95,18 @@
 										<table class=" table table-danger" style="text-align: center;">
 											<thead>
 												<tr>
-													<th scope="col">STT</th>
-													<th scope="col">TÊN MÓN</th>
-													<th scope="col">ĐƠN GIÁ</th>
-													<th scope="col">SỐ LƯỢNG</th>
-													<th scope="col">THÀNH TIỀN</th>
+													<td style="font-weight: bold;" scope="col">STT</td>
+													<td style="font-weight: bold;" scope="col">TÊN MÓN</td>
+													<td style="font-weight: bold;" scope="col">ĐƠN GIÁ</td>
+													<td style="font-weight: bold;" scope="col">SỐ LƯỢNG</td>
+													<td style="font-weight: bold;" scope="col">THÀNH TIỀN</td>
 												</tr>
 											</thead>
 											<tbody>
 												<c:forEach items="${ hdct}" var="hdct">
 													<tr>
 
-														<th scope="row">1</th>
+														<th scope="row"></th>
 														<td>${hdct.mnct.menu.ten_Mon_An }</td>
 														<td>${hdct.mnct.menu.gia }</td>
 														<td>${hdct.so_luong }</td>
@@ -142,7 +151,7 @@
 											<label for="staticEmail" class="col-sm-2 col-form-label">Số
 												tiền khách đưa</label>
 											<div class="col-sm-10">
-												<input type="text" class="form-control"
+												<input type="text" required class="form-control"
 													onkeyup="calculate()" id="khachdua" value="">
 											</div>
 										</div>
@@ -150,7 +159,7 @@
 											<label for="inputPassword" class="col-sm-2 col-form-label">Số
 												tiền thừa</label>
 											<div class="col-sm-10">
-												<input readonly type="text" class="form-control"
+												<input readonly required type="text" class="form-control"
 													id="tienthua" value="">
 											</div>
 										</div>
@@ -161,7 +170,7 @@
 								<button type="submit" class="btn btn-success"
 									formaction="/QL_Dat_Ban_NH/Controller_Bill/inHD?idhd=${hoa_don.idhd }">In hóa đơn file Excel</button>
 								<button type="submit" class="btn btn-warning" formaction="/QL_Dat_Ban_NH/Controller_Bill/pay?idhd=${hoa_don.idhd }" >Thanh toán</button>
-								<button type="submit" class="btn btn-light" formaction="/QL_Dat_Ban_NH/Controller_Bill/Back">Quay Lại</button>
+								<button type="submit" class="btn btn-light" formaction="/QL_Dat_Ban_NH/Controller_Bill/pay?idhd=${hoa_don.idhd }">Quay Lại</button>
 							</div>
 						</div>
 					</div>

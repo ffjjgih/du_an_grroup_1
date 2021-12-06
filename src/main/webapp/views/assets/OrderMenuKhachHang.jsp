@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="item_name">${menu.ten_Mon_An }</div>
                                     <div class="item_price" style="font-weight: 500; color: tomato;">${menu.gia } VND</div>
-                                    <div class="item_quantity"><input style="width: 80px; margin: 5px 0;" type="number" name="soluong" id="" value="1"></div>
+                                    <div class="item_quantity"><input style="width: 80px; margin: 5px 0;" type="number" name="soluong" id="" min="1" value="1"></div>
                                     <div class="item_order">
                                         <button type="submit" formaction="/QL_Dat_Ban_NH/Order/chonmon?idmn=${menu.idmn}" class="btn btn-success">CHỌN MÓN</button>
                                     </div>
