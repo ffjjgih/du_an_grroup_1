@@ -182,7 +182,7 @@ public class WriteExcel {
 			}
 
 			// Tá»•ng Tiá»�n
-			Row row15 = sheet.createRow(15);
+			Row row15 = sheet.createRow(numberRow++);
 			Cell ce15 = row15.createCell(3);
 			ce15.setCellValue("Tổng Tiền");
 			ce15.setCellStyle(style1);

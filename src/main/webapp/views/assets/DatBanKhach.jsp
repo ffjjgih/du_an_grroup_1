@@ -8,7 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
+    <title>Đặt bàn</title>
     <link rel="stylesheet" href="./views/assets/css/saudatban.css">
     <link rel="stylesheet" href="./views/assets/css/datbankhach.css">
     <link rel="stylesheet" href="./views/assets/css/login.css">
@@ -49,7 +50,8 @@
                                 <c:forEach items="${carts }" var="monan">
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>${monan.menu.img }</td>
+                                        <td><img style="width: 300px; height: 200px; border-radius: 10px;"
+                                        src="./views/assets/imgs/${monan.menu.img }" alt=""></td>
                                         <td>${monan.menu.ten_Mon_An }</td>
                                         <td>${monan.so_luong }</td>
                                     </tr>
@@ -105,9 +107,16 @@
                                 id="exampleFormControlTextarea1" rows="3">${inforbooking.ghi_Chu }</textarea>
                         </div>
                     </div>
+                    <c:if test="${inforbooking.trang_Thai.equals('Waitting line')}">
                     <a type="button" href="/QL_Dat_Ban_NH/Changebooking?index=${inforbooking.idBd}&&date=${datebook}" style="margin-top: 20px; margin-left: 30%;" class="btn btn-success js_showmodal_info">
                         CẬP NHẬT THÔNG TIN
                     </a>
+                    </c:if>
+                    <c:if test="${inforbooking.trang_Thai.equals('Confirmed')}">
+                    <button type="button" disabled href="/QL_Dat_Ban_NH/Changebooking?index=${inforbooking.idBd}&&date=${datebook}" style="margin-top: 20px; margin-left: 30%;" class="btn btn-success js_showmodal_info">
+                        CẬP NHẬT THÔNG TIN
+                    </button>
+                    </c:if>
                 </div>
             </div>
 
@@ -161,9 +170,8 @@
                                 <label for="" class="col-sm-5 col-form-label">Giờ</label>
                                 <div class="col-sm-7">
                                     <select name="timedatban" id="" class="form-select" style="width: 500px; margin-bottom: 15px; height: 50px;">
-                                        <option selected>Chọn giờ</option>
                                         <c:forEach items="${giodat }" var="hour">
-                                        <option value="${hour }">${hour }</option>
+                                        <option value="${hour }" selected>${hour }</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -188,8 +196,8 @@
 
                             <div class="forminput_content_button">
                                 <button type="reset" class="btn btn-danger">NHẬP LẠI THÔNG TIN</button>
-                                <button  formaction="/QL_Dat_Ban_NH/Booking/Datban" class="btn btn-primary">ĐẶT BÀN NGAY</button>
-                                <button type="submit" formaction="/QL_Dat_Ban_NH/Booking/order" class="btn btn-success">CHỌN MÓN ĂN</button>
+                                <button  formaction="/QL_Dat_Ban_NH/Booking/Datban?date=${date}" class="btn btn-primary">ĐẶT BÀN NGAY</button>
+                                <button type="submit" formaction="/QL_Dat_Ban_NH/Booking/order?date=${date}" class="btn btn-success">CHỌN MÓN ĂN</button>
                             </div>
                         
                     </div>

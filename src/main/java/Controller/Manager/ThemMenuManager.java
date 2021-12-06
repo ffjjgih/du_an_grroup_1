@@ -61,6 +61,7 @@ public class ThemMenuManager extends HttpServlet {
 		try {
 			response.setContentType("text/html;charset=UTF-8");
 			request.setCharacterEncoding("utf-8");
+			
 			String realpath = request.getServletContext().getRealPath("./views/assets/imgs");
 			Path path = Paths.get(realpath);
 			if (!Files.exists(path)) {
@@ -69,18 +70,18 @@ public class ThemMenuManager extends HttpServlet {
 			Part part = request.getPart("chonAnh");
 			String namefile = Path.of(part.getSubmittedFileName()).getFileName().toString();
 			part.write(realpath+System.getProperty("file.separator")+namefile); 
+			
 			String tenmon = request.getParameter("tenMon");
 			float gia =Float.parseFloat(request.getParameter("gia")) ;
 			int loai =Integer.parseInt( request.getParameter("chonLoai"));
 			int trangthai =Integer.parseInt( request.getParameter("trangthai"));
 			loaimenu=daoloai.findbyid(loai);
-			menu.setTen_Mon_An(tenmon);
-			menu.setGia(gia);
-			menu.setImg(namefile);
-			menu.setLoaiMenu(loaimenu);
-			menu.setTrang_Thai(trangthai);
-			daomenu.insert(menu);
+			
+			Menu menu1= new Menu(gia,namefile,tenmon,trangthai,loaimenu);
+			daomenu.insert(menu1);
+			
 			response.sendRedirect(request.getContextPath() + "/ThemMenuManager"+"?success=1");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

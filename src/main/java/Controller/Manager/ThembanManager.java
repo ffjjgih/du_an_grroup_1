@@ -57,7 +57,7 @@ public class ThembanManager extends HttpServlet {
 			int loai = Integer.parseInt(request.getParameter("loaiban"));
 			TtBan ttban1 = new TtBan(loai);
 			daottban.insert(ttban1);
-			response.sendRedirect(request.getContextPath() + "/ThembanManager" + "?success=1");
+			response.sendRedirect(request.getContextPath() + "/ThembanManager" + "?successThemBan=1");
 		} catch (IOException e) {
 			e.printStackTrace();
 			response.sendRedirect(request.getContextPath() + "/ThembanManager" + "?error=1");

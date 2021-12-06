@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.Daouser;
+import Services.Checkdatebooking;
 import accessfacebook.common.GoogleUtils;
 import model.GooglePojo;
 import model.KhachHang;
@@ -23,9 +24,12 @@ public class LoginGoogleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private Daouser serviceKhach;
     private KhachHang khach;
+    private Checkdatebooking check;
     public LoginGoogleController() {
     	this.khach=new KhachHang();
     	this.serviceKhach=new Daouser();
+    	this.check=new Checkdatebooking();
+    	
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -84,9 +88,10 @@ public class LoginGoogleController extends HttpServlet {
 		Cookie cookieUserName = new Cookie("userNameCookie", username);
 		Cookie cookiePassword = new Cookie("passwordCookie", password);
 		
-		cookiePassword.setMaxAge(60);
-		cookieUserName.setMaxAge(60);
+		cookiePassword.setMaxAge(600);
+		cookieUserName.setMaxAge(600);
 		showdatenow(request);
+		this.check.checkdate();
 	}
 	
 	private void showdatenow(HttpServletRequest request) {

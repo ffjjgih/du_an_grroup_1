@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Chỉnh sửa bàn </title>
 <link rel="stylesheet" href="./views/Manager/css/base.css">
 <link rel="stylesheet" href="./views/Manager/css/quanlyban.css">
 <link rel="stylesheet" href="./views/Manager/css/grid.css">
@@ -50,30 +50,10 @@
 								<label for="exampleInputPhone" class="form-label">LOẠI
 									BÀN</label> <select class="form-select"
 									aria-label="Default select example" name="loaiban" id="loaiban">
-									<c:if test="${ban.getLoaiBan()==2 }">
-										<option selected="selected" value="2">Bàn 2 người</option>
-										<option value="4">Bàn 4 người</option>
-										<option value="6">Bàn 6 người</option>
-										<option value="8">Bàn 8 người</option>
-									</c:if>
-									<c:if test="${ban.getLoaiBan()==4 }">
-										<option value="2">Bàn 2 người</option>
-										<option selected="selected" value="4">Bàn 4 người</option>
-										<option value="6">Bàn 6 người</option>
-										<option value="8">Bàn 8 người</option>
-									</c:if>
-									<c:if test="${ban.getLoaiBan()==6 }">
-										<option value="2">Bàn 2 người</option>
-										<option value="4">Bàn 4 người</option>
-										<option selected="selected" value="6">Bàn 6 người</option>
-										<option value="8">Bàn 8 người</option>
-									</c:if>
-									<c:if test="${ban.getLoaiBan()==8 }">
-										<option value="2">Bàn 2 người</option>
-										<option value="4">Bàn 4 người</option>
-										<option value="6">Bàn 6 người</option>
-										<option selected="selected" value="8">Bàn 8 người</option>
-									</c:if>
+										<option ${ban.loaiBan==2? "selected":""}  value="2">Bàn 2 người</option>
+										<option ${ban.loaiBan==4? "selected":""}  value="4">Bàn 4 người</option>
+										<option ${ban.loaiBan==6? "selected":""}  value="6">Bàn 6 người</option>
+										<option ${ban.loaiBan==8? "selected":""}  value="8">Bàn 8 người</option>
 								</select>
 							</div>
 
@@ -94,7 +74,7 @@
 		<hr>
 		<p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
 	</div>
-	<script src="./views/Manager/js/modaladdnhanvien.js"></script>
+<script src="./views/Manager/js/modaladdnhanvien.js"></script>
 	<script src="./views/Manager/js/sidebar.js"></script>
 
 </body>

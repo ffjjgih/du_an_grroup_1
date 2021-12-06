@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
+<title>Quản lý bàn</title>
 <link rel="stylesheet" href="./views/Manager/css/base.css">
 <link rel="stylesheet" href="./views/Manager/css/quanlyban.css">
 <link rel="stylesheet" href="./views/Manager/css/grid.css">
@@ -124,16 +125,12 @@
 		</div>
 	</div>
 
-	<div class="container_footer" style="text-align: center;">
-		<hr>
-		<p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
-	</div>
 	<script src="./views/Manager/js/modaladdnhanvien.js"></script>
 	<script src="./views/Manager/js/throwError.js"></script>
 	<script src="./views/Manager/js/sidebar.js"></script>
 	<script>
     function showMess(id){
-        var ques=confirm('do want to delete???');
+        var ques=confirm('Do you want to delete?');
 		if(ques){
 			alert('delete succsessfull');
 			window.location.href='/QL_Dat_Ban_NH/DeleteBanManager?id='+id;

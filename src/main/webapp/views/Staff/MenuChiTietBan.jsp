@@ -14,7 +14,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
+<title>Update Menu Chi tiết bàn ${bd.thongTinBanDat.idBd}</title>
 <link rel="stylesheet" href="./views/Staff/css/base.css">
 <link rel="stylesheet" href="./views/Staff/css/menuchitietban.css">
 <link rel="stylesheet" href="./views/Staff/css/grid.css">
@@ -35,7 +36,7 @@
 
 			<div class="container_right l-12">
 				<div class="right_header">
-				<a href="/QL_Dat_Ban_NH/QuanLiMenuController?id=${bd.thongTinBanDat.idBd }" type="button" class="btn btn-secondary">
+				<a href="/QL_Dat_Ban_NH/QuanLiMenuController?id=${bd.thongTinBanDat.idBd}" type="button" class="btn btn-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                             </svg>
@@ -107,7 +108,7 @@
                                                 </svg>
 															</button> <input type="text" name="spinnerr" min="1"
 															id="spinner2${hd.idHdct}" value="${ hd.getSo_luong()}"
-															onkeyup="checkSo(3)" class="spinner">
+															onkeyup="checkSo(${hd.idHdct})" class="spinner">
 															<button type="button" class="btnPM" id="btnPlus2"
 																onclick="onclickPlus2(${hd.idHdct})">
 																<svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -147,39 +148,11 @@
 		</div>
 
 	</div>
-	<!-- <script>
-		function alertThemMon(index,id) {
-			let sl = prompt("Nhập số lượng món muốn thêm:", "1");
-
-			if (sl == null || sl == "") {
-				console.log("Nothing");
-			} else if (sl < 0) {
-				alert("Số lượng không được để âm");
-			} else if (isNaN(sl)) {
-				alert("Không đúng định dạng");
-			} else {
-				/* alert("Bạn nhập số " + sl); */
-				window.location.href = '/QL_Dat_Ban_NH/Update_MenuCT?sl=' + sl+"&&index="+index+"&&id="+id;
-			}
-		}
-
-		function alertXoaMon(index ,id) {
-			let sl = prompt("Nhập số lượng món muốn xóa:", "1");
-
-			if (sl == null || sl == "") {
-				console.log("Nothing");
-			} else if (sl < 0) {
-				alert("Số lượng không được để âm");
-			} else if (isNaN(sl)) {
-				alert("Không đúng định dạng");
-			} else {
-				/* alert("Bạn nhập số " + sl); */
-				window.location.href = '/QL_Dat_Ban_NH//Update_HDCT?sl=' + sl+"&&index="+index+"&&id="+id;
-			}
-			
-
-		}
-	</script> -->
+	
+	<div class="container_footer" style="text-align: center;">
+        <hr>
+        <p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
+    </div>
 
 	<script>
 		function onclickMinus1(num) {

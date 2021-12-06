@@ -69,6 +69,7 @@ public class Bookinggests extends HttpServlet {
 			BeanUtils.populate(this.ttbd, request.getParameterMap());
 			String ngaydat=request.getParameter("date");
 			String giodat=request.getParameter("timedatban");
+			String hoten=request.getParameter("name");
 			SimpleDateFormat fommat=new SimpleDateFormat("dd/MM/yyyy");
 			java.util.Date ngay= fommat.parse(ngaydat);
 			Date date=new Date(ngay.getTime());
@@ -76,6 +77,7 @@ public class Bookinggests extends HttpServlet {
 			this.ttbd.setNgayDatBan(date);
 			this.ttbd.setGioDatBan(time);
 			this.user=this.daouser.findbyid(index);
+			this.user.setHoTen(hoten);
 			this.ttbd.setKhachHang(this.user);
 			this.ttbd.setTrang_Thai("Waitting line");
 			this.daottbd.insert(this.ttbd);

@@ -47,6 +47,9 @@ public class Changebooking extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("UTF-8");
 		int index = Integer.parseInt(request.getParameter("index"));
 		request.setAttribute("idttdb", index);
 		date = request.getParameter("date");
@@ -85,11 +88,10 @@ public class Changebooking extends HttpServlet {
 
 	private void updatettdb(HttpServletRequest request, HttpServletResponse response, int index)
 			throws UnsupportedEncodingException {
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("utf-8");
 		String ngaydat = request.getParameter("date");
 		String giodat = request.getParameter("timedatban");
 		SimpleDateFormat fommat = new SimpleDateFormat("dd/MM/yyyy");
+		ThongTinBanDat t=this.daottbd.findbyid(index);
 		java.util.Date ngay;
 		try {
 			ngay = fommat.parse(ngaydat);
@@ -97,7 +99,11 @@ public class Changebooking extends HttpServlet {
 			Time time = Time.valueOf(giodat);
 			int soluong = Integer.parseInt(request.getParameter("soluong"));
 			String note = request.getParameter("note");
-			this.daottbd.Updatelichdat(date, time, note, soluong, index);
+			t.setNgayDatBan(date);
+			t.setGioDatBan(time);
+			t.setGhi_Chu(note);
+			t.setSo_Luong_Nguoi(soluong);
+			this.daottbd.update(t);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -108,18 +114,19 @@ public class Changebooking extends HttpServlet {
 			String ngay, String sdt) throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("UTF-8");
 		String hoten = request.getParameter("ten");
-		this.daouser.updatettdb(k.getIdkh(), hoten, sdt);
+		k.setSdt(sdt);
+		k.setHoTen(hoten);
+		this.daouser.update(k);
 	}
 
 	private boolean checkinput(KhachHang k, String sdt) {
 		List<KhachHang> lst = this.daouser.finduserbysdt(k, sdt);
 
 		if (lst.size() == 0) {
-			System.out.println(lst.size());
 			return true;
 		} else {
-			System.out.println(lst.size());
 			return false;
 		}
 

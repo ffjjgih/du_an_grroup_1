@@ -16,6 +16,8 @@ if(updateSuccess > 0) {
 	alert("Update Table successfully!");
 } else if (urlName.search("successUpdateAccManager") > 0){
 	alert("Update Account successfully!");
+} else if (urlName.search("successThemBan") > 0){
+	alert("Thêm bàn thành công!");
 } else {
     console.log("Nothing");
 }

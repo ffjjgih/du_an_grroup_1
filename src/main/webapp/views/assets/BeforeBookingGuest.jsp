@@ -8,7 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
+    <title>Info Booking Guest</title>
     <link rel="stylesheet" href="./views/assets/css/afterbookingguest.css">
     <link rel="stylesheet" href="./views/assets/css/grid.css">
     <link rel="stylesheet" href="./views/assets/css/base.css">
@@ -24,7 +25,7 @@
     <div id="app">
 
         <header>
-            <h1>Info booking Guest</h1>
+            <h1>Info Booking Guest</h1>
         </header>
 
         <div id="form">
@@ -58,9 +59,8 @@
                 <div class="formgroup" id="name-form">
                     <label for="name">Giờ đặt</label>
                     <select name="timedatban" id="" class="form-select" style="width: 500px; margin-bottom: 15px; height: 50px; border-radius: 20px;">
-                        <option selected>Chọn giờ</option>
                         <c:forEach items="${giodat }" var="hour">
-                             <option value="${hour }">${hour }</option>
+                             <option value="${hour }" selected>${hour }</option>
                         </c:forEach> 
                     </select>
                 </div>

@@ -82,7 +82,7 @@
 					<div class="form_input">
 						<input type="text" placeholder="Nhập số điện thoại để đặt lịch"
 							name="phone_number">
-						<button type="submit" class="btn btn-secondary">Đặt lịch</button>
+						<button type="submit" required class="btn btn-secondary">Đặt lịch</button>
 					</div>
 				</div>
 			</div>
