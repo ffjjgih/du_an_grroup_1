@@ -14,9 +14,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.restfb.types.User;
+
 import Dao.DaoHoadon;
 import Dao.DaoTTBD;
 import Dao.Daouser;
+import Services.EncryptUtil;
 import model.HoaDon;
 import model.KhachHang;
 import model.ThongTinBanDat;
@@ -62,7 +65,8 @@ public class Profile extends HttpServlet {
 		if (url.contains("Changepass")) {
 			String oldpass = request.getParameter("oldpassword");
 			String newpass = request.getParameter("newpass");
-			if (oldpass.equals(this.user.getPassword().trim())) {
+//			if (oldpass.equals(this.user.getPassword().trim())) {
+			if (checkPassword(oldpass, this.user) || oldpass.equals(this.user.getPassword().trim())) {
 				this.daouser.changepassworduser(index, newpass);
 				response.sendRedirect(request.getContextPath() + "/Profile?successChangePass=1");
 			} else {
@@ -72,14 +76,14 @@ public class Profile extends HttpServlet {
 			try {
 				BeanUtils.populate(this.user, request.getParameterMap());
 				this.user.setIdkh(index);
-				if(checkinput(user,user.getSdt() )) {
+				if (checkinput(user, user.getSdt())) {
 					this.user.setIdkh(index);
 					this.daouser.updateprofileuser(this.user);
 					response.sendRedirect(request.getContextPath() + "/Profile?sucssecUpdateprofile=2");
-				}else {
+				} else {
 					response.sendRedirect(request.getContextPath() + "/Profile?errorUpdateprofile=2");
 				}
-				
+
 			} catch (IllegalAccessException | InvocationTargetException e) {
 				e.printStackTrace();
 			}
@@ -104,17 +108,22 @@ public class Profile extends HttpServlet {
 		this.lsthd = this.daohd.findHDbyIDkh(kh);
 		request.setAttribute("lsthoadon", this.lsthd);
 	}
-	
-	private boolean checkinput(KhachHang k,String sdt) {
-		List<KhachHang> lst=this.daouser.finduserbysdt(k, sdt);
-		
-		if(lst.size()==0) {
+
+	private boolean checkinput(KhachHang k, String sdt) {
+		List<KhachHang> lst = this.daouser.finduserbysdt(k, sdt);
+
+		if (lst.size() == 0) {
 			System.out.println(lst.size());
 			return true;
-		}else {
+		} else {
 			System.out.println(lst.size());
 			return false;
 		}
-		
+
+	}
+
+	private boolean checkPassword(String oldPass, KhachHang user) {
+		return EncryptUtil.checkPass(oldPass, user.getPassword());
+
 	}
 }
