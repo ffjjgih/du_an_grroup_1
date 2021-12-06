@@ -8,7 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
+    <title>Xác nhân chi tiết bàn ${infor.idBd }</title>
     <link rel="stylesheet" href="./views/Staff/css/base.css">
     <link rel="stylesheet" href="./views/Staff/css/detailconfirmban.css">
     <link rel="stylesheet" href="./views/Staff/css/grid.css">
@@ -30,13 +31,13 @@
                     <form action="/QL_Dat_Ban_NH/Confirmbooking" method="post" style="width: 100%;">
                        
                         <li class="nav-item1">
-                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.hoTen }">
+                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Họ và tên" value="${infor.khachHang.hoTen }">
                         </li>
                         <li class="nav-item1">
-                            <input type="text" style="width: 450px; margin: 15px 0 15px 0;" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.gmail }">
+                            <input type="text" style="width: 450px; margin: 15px 0 15px 0;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Email" value="${infor.khachHang.gmail }">
                         </li>
                         <li class="nav-item1">
-                            <input type="text" style="width: 450px; margin-bottom: 10px;" readonly class="form-control" id="exampleFormControlInput1" value="${infor.khachHang.sdt }">
+                            <input type="text" style="width: 450px; margin-bottom: 10px;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Số điện thoại" value="${infor.khachHang.sdt }">
                         </li>
                         <li class="nav-item1">
                             <h6>Ngày đặt</h6>
@@ -245,6 +246,10 @@
 	</form>
     </div>
 
+	<div class="container_footer" style="text-align: center;">
+        <hr>
+        <p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
+    </div>
     <script src="./views/Staff/js/sidebar.js"></script>
     <script src="./views/Staff/js/thongtincanhanstaff.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

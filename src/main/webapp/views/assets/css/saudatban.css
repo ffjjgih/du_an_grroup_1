@@ -1,5 +1,13 @@
 *{padding: 0; margin: 0; box-sizing: border-box;}
 
+body{
+    counter-reset: section;
+}
+th::before{
+    counter-increment: section;
+    content: counter(section);
+}
+
 .container_content{
     width: auto;
     height: auto;
@@ -76,7 +84,7 @@
 }
 /*right end*/
 
-/*edit giỏ hàng start*/
+/*edit giá»� hÃ ng start*/
 .modal_editGioHang{
     position: fixed;
     top: 0;
@@ -103,7 +111,7 @@
 	margin: 0 auto;
 	margin-top: 7%;
 }
-/*edit giỏ hàng end*/
+/*edit giá»� hÃ ng end*/
 
 /*edit info start*/
 

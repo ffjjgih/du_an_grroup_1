@@ -88,8 +88,8 @@ public class LoginGoogleController extends HttpServlet {
 		Cookie cookieUserName = new Cookie("userNameCookie", username);
 		Cookie cookiePassword = new Cookie("passwordCookie", password);
 		
-		cookiePassword.setMaxAge(60);
-		cookieUserName.setMaxAge(60);
+		cookiePassword.setMaxAge(600);
+		cookieUserName.setMaxAge(600);
 		showdatenow(request);
 		this.check.checkdate();
 	}

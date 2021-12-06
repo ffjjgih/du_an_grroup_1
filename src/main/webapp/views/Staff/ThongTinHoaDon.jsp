@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
+<title>Thông tin hóa đơn</title>
 <link rel="stylesheet" href="./views/Staff/css/base.css">
 <link rel="stylesheet" href="./views/Staff/css/menuchitietban.css">
 <link rel="stylesheet" href="./views/Staff/css/grid.css">
@@ -169,6 +170,11 @@
 
 		</div>
 	</form>
+	
+	<div class="container_footer" style="text-align: center;">
+        <hr>
+        <p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
+    </div>
 	<script src="./views/Staff/js/sidebar.js"></script>
 	<script>
 		function calculate() {

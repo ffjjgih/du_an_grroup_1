@@ -140,4 +140,13 @@ public class Menu implements Serializable {
 		return mnct;
 	}
 
+	public Menu(float gia, String img, String ten_Mon_An, int trang_Thai, LoaiMenu loaiMenu) {
+		super();
+		this.gia = gia;
+		this.img = img;
+		this.ten_Mon_An = ten_Mon_An;
+		this.trang_Thai = trang_Thai;
+		this.loaiMenu = loaiMenu;
+	}
+
 }

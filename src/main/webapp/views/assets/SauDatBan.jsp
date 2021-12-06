@@ -8,7 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
+    <title>Thông tin đặt bàn ${inforbooking.idBd}</title>
     <link rel="stylesheet" href="./views/assets/css/saudatban.css">
     <link rel="stylesheet" href="./views/assets/css/login.css">
     <link rel="stylesheet" href="./views/assets/css/grid.css">
@@ -37,16 +38,16 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">HÌNH ẢNH</th>
-                                        <th scope="col">TÊN MÓN</th>
-                                        <th scope="col">SỐ LƯỢNG</th>
+                                        <td style="font-weight: bold;" scope="col">STT</td>
+                                        <td style="font-weight: bold;" scope="col">HÌNH ẢNH</td>
+                                        <td style="font-weight: bold;" scope="col">TÊN MÓN</td>
+                                        <td style="font-weight: bold;" scope="col">SỐ LƯỢNG</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${carts }" var="monan">
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row"></th>
                                         <td>${monan.menu.img }</td>
                                         <td>${monan.menu.ten_Mon_An }</td>
                                         <td>${monan.so_luong }</td>
