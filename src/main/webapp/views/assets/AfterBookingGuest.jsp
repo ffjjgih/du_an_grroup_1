@@ -54,7 +54,7 @@
                 
                 <div class="formgroup" id="name-form">
                     <label for="quan">Số lượng người</label>
-                    <input required type="number" id="name" name="so_Luong_Nguoi" value="${booking.so_Luong_Nguoi }"/>
+                    <input disabled type="number" id="name" name="so_Luong_Nguoi" value="${booking.so_Luong_Nguoi }"/>
                 </div>
 
                 <div class="formgroup" id="message-form">

@@ -81,6 +81,7 @@ public class Bookinggests extends HttpServlet {
 			this.ttbd.setKhachHang(this.user);
 			this.ttbd.setTrang_Thai("Waitting line");
 			this.daottbd.insert(this.ttbd);
+			this.daouser.update(user);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {

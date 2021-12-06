@@ -40,16 +40,16 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">HÌNH ẢNH</th>
-                                        <th scope="col">TÊN MÓN</th>
-                                        <th scope="col">SỐ LƯỢNG</th>
+                                        <td style="font-weight: bold;" scope="col">STT</td>
+                                        <td style="font-weight: bold;" scope="col">HÌNH ẢNH</td>
+                                        <td style="font-weight: bold;" scope="col">TÊN MÓN</td>
+                                        <td style="font-weight: bold;" scope="col">SỐ LƯỢNG</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${carts }" var="monan">
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row"></th>
                                         <td><img style="width: 300px; height: 200px; border-radius: 10px;"
                                         src="./views/assets/imgs/${monan.menu.img }" alt=""></td>
                                         <td>${monan.menu.ten_Mon_An }</td>
@@ -58,9 +58,14 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
-
-                        <a type="button" href="/QL_Dat_Ban_NH/Order?index=${inforbooking.idBd}" style="width: 300px; float: left; margin-top: 20px;"
+						<c:if test="${inforbooking.trang_Thai.equals('Confirmed')}">
+                        	<button type="button" disabled style="width: 300px; float: left; margin-top: 20px;" class="btn btn-success">THÊM MÓN ĂN</button>
+                        </c:if>
+                            
+                            <c:if test="${inforbooking.trang_Thai.equals('Waitting line')}">
+                            <a type="button" href="/QL_Dat_Ban_NH/Order?index=${inforbooking.idBd}" style="width: 300px; float: left; margin-top: 20px;"
                             class="btn btn-success">THÊM MÓN ĂN</a>
+                            </c:if>
                         <button onclick = "showMessage(${inforbooking.idBd})" type="button" style="width: 300px; float: right; margin-top: 20px;"
                             class="btn btn-danger">HỦY ĐẶT BÀN</button> 
                     </div>

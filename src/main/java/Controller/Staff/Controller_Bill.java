@@ -111,6 +111,6 @@ public class Controller_Bill extends HttpServlet {
 		}
 		h.setTong_Tien(tongtien-tongtien*km/100);
 		this.dao_HD.update(h);
-		response.sendRedirect(request.getContextPath()+"/HomeStaffController?Succses=5");
+		response.sendRedirect(request.getContextPath()+"/HomeStaffController?SuccsesBill=5");
 	}
 }

@@ -25,7 +25,7 @@ if (errorGoogle > 0) {
 } else if (errorforgotpass > 0) {
 	alert("Get password error, please try again or contact with us with phone number 0977256375");
 } else if (errorSignUp > 0) {
-	alert("Register account fail, because UserName already exist, please try again!");
+	alert("Register account fail, because UserName or Phone Number already exist, please try again!");
 } else if (succesSignUp > 0) {
 	alert("Register account successfully, please Login with new account!");
 } else if (urlName.search("sucssesCancelBooking") > 0){

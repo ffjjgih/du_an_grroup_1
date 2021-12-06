@@ -83,24 +83,16 @@ public class Daouser extends BaseDao<KhachHang> {
 	public KhachHang login(String username, String password) {
 		try {
 			this.manager = this.conn.getEntityManager();
-			// String sql = "SELECT k FROM KhachHang k WHERE username = :userName AND
-			// password=:ps";
 			String sql = "SELECT k FROM KhachHang k WHERE username = :userName";
 			TypedQuery<KhachHang> query = manager.createQuery(sql, KhachHang.class);
 			query.setParameter("userName", username);
-<<<<<<< HEAD
-			//query.setParameter("ps", password);
-			this.user = query.getSingleResult();
-//			for (KhachHang user : this.lst) {
-=======
-			// query.setParameter("ps", password);
 			this.lst = query.getResultList();
 			for (KhachHang user : this.lst) {
->>>>>>> origin/nam_fixforgetPass
+
 				if (EncryptUtil.checkPass(password, user.getPassword())) {
 					return user;
 				}
-//			}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 

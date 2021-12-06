@@ -69,9 +69,4 @@ public class ForgotpasswordServlet extends HttpServlet {
 		}
 
 	}
-<<<<<<< HEAD
 }
-=======
-
-}
->>>>>>> origin/nam_fixforgetPass
