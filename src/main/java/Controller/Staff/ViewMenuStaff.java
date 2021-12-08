@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.DaoMenu;
+import Dao.DaoTTBD;
 import Dao.Daoloaimenu;
 import model.LoaiMenu;
 import model.Menu;
@@ -26,6 +27,7 @@ public class ViewMenuStaff extends HttpServlet {
 	private Daoloaimenu daoloaimn;
 	private List<LoaiMenu> lstloaimn;
 	private List<Menu> lstmn;
+	private DaoTTBD daottb;
 
 	public ViewMenuStaff() {
 
@@ -33,6 +35,7 @@ public class ViewMenuStaff extends HttpServlet {
 		this.daoloaimn = new Daoloaimenu();
 		this.lstloaimn = new ArrayList<LoaiMenu>();
 		this.lstmn = new ArrayList<Menu>();
+		this.daottb = new DaoTTBD();
 
 	}
 
@@ -59,6 +62,8 @@ public class ViewMenuStaff extends HttpServlet {
 				lstdrink.add(x);
 			}
 		}
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 
 		request.setAttribute("buffet", lstbuffet);
 		request.setAttribute("douong", lstdrink);

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.DaoMenu;
+import Dao.DaoTTBD;
 import model.Menu;
 
 @WebServlet("/SeacherMenuStaff")
@@ -19,10 +20,12 @@ public class SeacherMenuStaff extends HttpServlet {
 	private Menu menu;
 	private List<Menu>lst;
 	private DaoMenu daomenu;
+	private DaoTTBD daottb;
 
 	public SeacherMenuStaff() {
-    menu= new Menu();
-    daomenu= new DaoMenu();
+		menu= new Menu();
+    	daomenu= new DaoMenu();
+		this.daottb = new DaoTTBD();
  
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,6 +40,8 @@ public class SeacherMenuStaff extends HttpServlet {
 		lst = daomenu.findName(txtSearch);
 		request.setAttribute("monan", lst);
 		request.setAttribute("txtS", txtSearch);
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

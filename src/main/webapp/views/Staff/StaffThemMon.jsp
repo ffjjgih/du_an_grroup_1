@@ -76,7 +76,7 @@
 											<div class="item_title">
 												<p>${items.ten_Mon_An }</p>
 											</div>
-												<input type="number" name="s_l" id="s_l" >
+												<input type="number" min="1" name="s_l" id="s_l" >
 												<button type="submit" class="btn btn-primary"
 													formaction="/QL_Dat_Ban_NH/AddMenuCTController?idmn=${items.idmn }&&idhd=${idhd}&&id=${idbdct}">
 													Thêm món</button> 

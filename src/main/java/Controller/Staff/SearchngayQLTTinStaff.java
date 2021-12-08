@@ -26,8 +26,6 @@ public class SearchngayQLTTinStaff extends HttpServlet {
 		super();
 		this.ttbd= new ThongTinBanDat();
 		this.daottbd= new DaoTTBD();
-
-		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,6 +40,8 @@ public class SearchngayQLTTinStaff extends HttpServlet {
 
 		request.setAttribute("txtSearch", txtSearch);
 		request.setAttribute("TTBD", lst);
+		int in= daottbd.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("/views/Staff/QuanLyThongTinBan.jsp").forward(request, response);
 	}
 

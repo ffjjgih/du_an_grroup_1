@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.DaoMenu;
+import Dao.DaoTTBD;
 import Dao.Daoloaimenu;
 import model.LoaiMenu;
 import model.Menu;
@@ -28,6 +29,7 @@ public class searchViewMenu extends HttpServlet {
 	private LoaiMenu loai;
 	private Daoloaimenu daoloai;
 	private List<LoaiMenu> lstloaimn;
+	private DaoTTBD daottb;
     public searchViewMenu() {
     	 super();
          this.loai= new LoaiMenu();
@@ -35,6 +37,7 @@ public class searchViewMenu extends HttpServlet {
          this.menu= new Menu();
          this.daomenu= new DaoMenu();
          this.lstloaimn = new ArrayList<LoaiMenu>();
+		 this.daottb = new DaoTTBD();
     }
 
 	/**
@@ -51,6 +54,8 @@ public class searchViewMenu extends HttpServlet {
 
 		request.setAttribute("ListMenu", lst);
 		request.setAttribute("txtSearch", txtSearch);
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		
 		request.getRequestDispatcher("/views/Staff/ViewMenuStaff.jsp").forward(request, response);
 	}

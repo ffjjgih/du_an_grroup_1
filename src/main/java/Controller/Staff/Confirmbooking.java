@@ -43,6 +43,7 @@ public class Confirmbooking extends HttpServlet {
 	private Daobdct daobdct;
 	private List<Bdct> lstbdct;
 	private UtilsDate utilsDate;
+	private DaoTTBD daottb;
 	
     public Confirmbooking() {
     	this.daottbd=new DaoTTBD();
@@ -54,6 +55,7 @@ public class Confirmbooking extends HttpServlet {
     	this.daobdct=new Daobdct();
     	this.lstbdct=new ArrayList<Bdct>();
     	this.utilsDate=new UtilsDate();
+		this.daottb = new DaoTTBD();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index=Integer.parseInt(request.getParameter("index"));
@@ -82,6 +84,8 @@ public class Confirmbooking extends HttpServlet {
 		showcardbyidkh(request, response, this.ttbd);
 		showdatenow(request, response,this.ttbd);
 		request.setAttribute("infor", this.ttbd);
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("/views/Staff/DetailConfirmBan.jsp").forward(request, response);
 	}
 	
@@ -101,19 +105,19 @@ public class Confirmbooking extends HttpServlet {
 		}
 	}
 	
-	//Hiển thị tất cả các bàn đang trống
+	//Hiá»ƒn thá»‹ táº¥t cáº£ cÃ¡c bÃ n Ä‘ang trá»‘ng
 	private void showemptytable(HttpServletRequest request, HttpServletResponse response) {
 		List<TtBan> lstemptytable=this.daottban.showemptytable();
 		request.setAttribute("ban_trong", lstemptytable);
 	}
 	
-	//Hiển thị giỏ hàng theo khách hàng
+	//Hiá»ƒn thá»‹ giá»� hÃ ng theo khÃ¡ch hÃ ng
 	private void showcardbyidkh(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) {
 		this.lstgh=this.daocart.FindCartbyIDDB(t);
 		request.setAttribute("dsgiohang", this.lstgh);
 	}
 	
-	//tạo bàn đặt chi tiết
+	//táº¡o bÃ n Ä‘áº·t chi tiáº¿t
 	private void confirm_booking(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) throws IOException {
 		String[] lstb =request.getParameterValues("checkboxbandat");
 		for(String x:lstb) {
@@ -126,7 +130,7 @@ public class Confirmbooking extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+ "/Notification");
 	}
 	
-	//thay đổi trạng thái của thông tin bàn đặt;
+	//thay Ä‘á»•i tráº¡ng thÃ¡i cá»§a thÃ´ng tin bÃ n Ä‘áº·t;
 	private void updatettbd(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) {
 		t.setTrang_Thai("Confirmed");
 		String ngaydat=request.getParameter("date");
@@ -151,7 +155,7 @@ public class Confirmbooking extends HttpServlet {
 		this.daottbd.update(t);
 	}
 	
-	//sửa bàn đặt khi xác nhận
+	//sá»­a bÃ n Ä‘áº·t khi xÃ¡c nháº­n
 	private void updatettbdbyconfirmed(HttpServletRequest request, HttpServletResponse response,ThongTinBanDat t) {
 		List<Bdct> lstbd=this.daobdct.findbdctbyttbd(t);
 		for(Bdct x:lstbd) {

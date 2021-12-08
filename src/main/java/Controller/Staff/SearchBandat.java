@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import Dao.DaoBanDatCT;
 import Dao.DaoHoadon;
+import Dao.DaoTTBD;
 import Dao.Daottban;
 import Dao.NhanVienDao;
 import Dao.baiVietDao;
@@ -41,7 +42,8 @@ public class SearchBandat extends HttpServlet {
 	private List<TtBan> lst;
 	private HoaDon hd;
 	private DaoBanDatCT dao_BanDatCT;
-	private List<Bdct> list_Bdct ;
+	private List<Bdct> list_Bdct;
+	private DaoTTBD daottb;
 
 
 	public SearchBandat() {
@@ -52,10 +54,13 @@ public class SearchBandat extends HttpServlet {
 		this.bdct = new Bdct();
 		this.dao_BanDatCT = new DaoBanDatCT();
 		this.list_Bdct = new ArrayList<Bdct>();
+		this.daottb = new DaoTTBD();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {	
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

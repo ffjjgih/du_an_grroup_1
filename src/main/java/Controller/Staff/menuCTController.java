@@ -31,6 +31,7 @@ public class menuCTController extends HttpServlet {
 	private DaoMenuCT daomenuct;
 	private DaoHDCT daohdct;
 	private List<Hdct> lstHDCT;
+	private DaoTTBD daottb;
 	
 
 	public menuCTController() {
@@ -38,6 +39,7 @@ public class menuCTController extends HttpServlet {
 		this.daomenuct = new DaoMenuCT();
 		this.daohdct = new DaoHDCT();
 		this.menuct= new Mnct();
+		 this.daottb = new DaoTTBD();
 
 	}
 
@@ -58,6 +60,8 @@ public class menuCTController extends HttpServlet {
 		request.setAttribute("listHDCT", lstHDCT);		
 		
 		request.setAttribute("bd", bdct);
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		
 		request.getRequestDispatcher("/views/Staff/MenuChiTietBan.jsp").forward(request, response);
 	}

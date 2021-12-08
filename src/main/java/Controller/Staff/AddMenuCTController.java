@@ -14,6 +14,7 @@ import Dao.DaoHDCT;
 import Dao.DaoHoadon;
 import Dao.DaoMenu;
 import Dao.DaoMenuCT;
+import Dao.DaoTTBD;
 import Dao.Daoloaimenu;
 import model.Bdct;
 import model.Hdct;
@@ -38,6 +39,7 @@ public class AddMenuCTController extends HttpServlet {
 	private Daoloaimenu daoloai;
 	private Hdct hdtc;
 	private DaoHDCT daohdct;
+	private DaoTTBD daottb;
     public AddMenuCTController() {
 		 this.bdct= new Bdct();
 		 this.daobdct= new DaoBanDatCT();
@@ -51,6 +53,7 @@ public class AddMenuCTController extends HttpServlet {
 		 this.daohdct=new DaoHDCT();
 		 this.daohd=new DaoHoadon();
 		 this.hd=new HoaDon();
+		 this.daottb = new DaoTTBD();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,6 +69,8 @@ public class AddMenuCTController extends HttpServlet {
 		request.setAttribute("monan", lstmenu);
 		List<LoaiMenu> lstLoai= this.daoloai.getall();
 		request.setAttribute("listLoai", lstLoai);
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 

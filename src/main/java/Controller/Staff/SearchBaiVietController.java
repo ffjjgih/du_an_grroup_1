@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.DaoTTBD;
 import Dao.NhanVienDao;
 import Dao.baiVietDao;
 import model.BaiViet;
@@ -26,11 +27,13 @@ public class SearchBaiVietController extends HttpServlet {
 	private NhanVienDao daonv;
 	private List<BaiViet> lst;
 	private Staff f;
+	private DaoTTBD daottb;
 	
     public SearchBaiVietController() {
     	this.dao = new baiVietDao();
 		this.daonv = new NhanVienDao();
 		this.bv = new BaiViet();
+		this.daottb = new DaoTTBD();
     }
 
 	/**
@@ -50,6 +53,9 @@ public class SearchBaiVietController extends HttpServlet {
 
 		request.setAttribute("listBV", lst);
 		request.setAttribute("txtS", txtSearch);
+		
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		
 		request.getRequestDispatcher("views/Staff/QuanLyBaiVietStaff.jsp").forward(request, response);
 		

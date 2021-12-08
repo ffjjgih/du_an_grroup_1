@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Dao.DaoTTBD;
 import Dao.Daottban;
 import model.TtBan;
 
@@ -19,12 +20,14 @@ import model.TtBan;
 public class Table_Status extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private Daottban daottban;
+	private DaoTTBD daottb;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Table_Status() {
         super();
         this.daottban=new Daottban();
+		this.daottb = new DaoTTBD();
     }
 
 	/**
@@ -42,6 +45,9 @@ public class Table_Status extends HttpServlet {
 		request.setAttribute("lstempty", lstempty);
 		request.setAttribute("lstcf", lstcf);
 		request.setAttribute("lstactive", lstactive);
+
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("/views/Staff/QuanLyDatBanStaff.jsp").forward(request, response);
 	}
 

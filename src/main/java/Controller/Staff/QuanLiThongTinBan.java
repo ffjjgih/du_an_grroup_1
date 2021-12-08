@@ -31,6 +31,8 @@ public class QuanLiThongTinBan extends HttpServlet {
 		
 		List<ThongTinBanDat> lstttbd= daottbd.showttbdbyqlttb();
 		request.setAttribute("TTBD", lstttbd);
+		int in= daottbd.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("/views/Staff/QuanLyThongTinBan.jsp").forward(request, response);
 	}
 

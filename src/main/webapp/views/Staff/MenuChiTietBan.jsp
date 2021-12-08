@@ -82,7 +82,7 @@
 																		d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z" />
                                                 </svg>
 															</button> <input type="text" name="spinner" min="1"
-															id="spinner1${hd.getMnct().idMnct }"
+															id="spinner1${hd.getMnct().idMnct}"
 															value="${ hd.getMnct().getSo_luong()}" class="spinner">
 															<button type="button" class="btnPM" id="btnPlus1"
 																onclick="onclickPlus1(${hd.getMnct().idMnct })">
@@ -108,7 +108,7 @@
                                                 </svg>
 															</button> <input type="text" name="spinnerr" min="1"
 															id="spinner2${hd.idHdct}" value="${ hd.getSo_luong()}"
-															onkeyup="checkSo(${hd.idHdct})" class="spinner">
+															onkeyup="checkSo(${hd.getMnct().idMnct}, ${hd.idHdct})" class="spinner">
 															<button type="button" class="btnPM" id="btnPlus2"
 																onclick="onclickPlus2(${hd.idHdct})">
 																<svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -153,7 +153,8 @@
         <hr>
         <p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
     </div>
-
+    
+	<script src="./views/Staff/js/throwErrorStaffThemMon.js"></script>
 	<script>
 		function onclickMinus1(num) {
 			var sl = document.getElementById('spinner1' + num).value;
@@ -197,14 +198,14 @@
 			}
 		}
 
-		function checkSo(num) {
-			var cot1 = document.getElementById('spinner1' + num).value;
-			var cot2 = document.getElementById('spinner2' + num).value;
+		function checkSo(num1, num2) {
+			var cot1 = document.getElementById('spinner1' + num1).value;
+			var cot2 = document.getElementById('spinner2' + num2).value;
 			if (cot2 > cot1) {
 				alert("Số lượng đã lên vượt quá Số lượng đồ ăn đang có");
-				document.getElementById('btnS' + num).disabled = true;
+				document.getElementById('btnPlus2' + num).disabled = true;
 			} else {
-				document.getElementById('btnS' + num).disabled = false;
+				document.getElementById('btnPlus2' + num).disabled = false;
 			}
 		}
 	</script>

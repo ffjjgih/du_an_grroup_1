@@ -231,4 +231,17 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 			this.transaction.rollback();
 		}
 	}
+	
+	public int count() {
+		try {
+			this.manager = this.conn.getEntityManager();
+			String qery = "select count(u) from ThongTinBanDat u Where trang_Thai=:t";
+			Query sql = manager.createQuery(qery);
+			sql.setParameter("t", "Waitting line");
+			return ((Long) sql.getSingleResult()).intValue();
+		} catch (Exception e) {
+			return 0;
+		}
+		
+	}
 }

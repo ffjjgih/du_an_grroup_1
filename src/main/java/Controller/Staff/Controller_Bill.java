@@ -73,6 +73,8 @@ public class Controller_Bill extends HttpServlet {
 		}
 		request.setAttribute("sum", sum);
 		request.setAttribute("hdct", this.listHDCT);
+		int in= daottbd.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("/views/Staff/ThongTinHoaDon.jsp").forward(request, response);
 	}
 

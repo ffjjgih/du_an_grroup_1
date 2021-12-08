@@ -19,6 +19,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import com.mysql.cj.Session;
 
+import Dao.DaoTTBD;
 import Dao.Dao_Staff;
 import model.KhachHang;
 import model.Staff;
@@ -36,10 +37,12 @@ public class ProfileStaff extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Staff staff;
 	private Dao_Staff dao;
+	private DaoTTBD daottb;
 
 	public ProfileStaff() {
 		this.staff = new Staff();
 		this.dao = new Dao_Staff();
+		this.daottb = new DaoTTBD();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,6 +50,8 @@ public class ProfileStaff extends HttpServlet {
 		HttpSession session = request.getSession();
 		this.staff = (Staff) session.getAttribute("acountST");
 		request.setAttribute("staff", this.staff);
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 
 		request.getRequestDispatcher("/views/Staff/ThongTinCaNhanStaff.jsp").forward(request, response);
 	}

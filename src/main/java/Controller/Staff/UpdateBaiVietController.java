@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import Dao.DaoTTBD;
 import Dao.NhanVienDao;
 import Dao.baiVietDao;
 import model.BaiViet;
@@ -32,12 +33,14 @@ public class UpdateBaiVietController extends HttpServlet {
 
 	private List<BaiViet> lst;
 	private Staff f;
+	private DaoTTBD daottb;
 
 	public UpdateBaiVietController() {
 		this.dao = new baiVietDao();
 		this.daonv = new NhanVienDao();
 		this.bv = new BaiViet();
 		this.lst = new ArrayList<BaiViet>();
+		 this.daottb = new DaoTTBD();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,6 +50,8 @@ public class UpdateBaiVietController extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			bv = this.dao.findbyid(id);
 			request.setAttribute("bv", bv);
+			int in= daottb.count();
+			request.setAttribute("sl", in);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Dao.DaoHDCT;
 import Dao.DaoMenuCT;
+import Dao.DaoTTBD;
 import model.Hdct;
 import model.Mnct;
 
@@ -19,16 +20,20 @@ public class Update_MenuCT extends HttpServlet {
 	private Mnct mnct;
 	private DaoHDCT dao_hdct;
 	private Hdct hdct;
+	private DaoTTBD daottb;
 
 	public Update_MenuCT() {
 		this.daomnct = new DaoMenuCT();
 		this.mnct = new Mnct();
 		this.dao_hdct = new DaoHDCT();
 		this.hdct = new Hdct();
+		 this.daottb = new DaoTTBD();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,15 +44,19 @@ public class Update_MenuCT extends HttpServlet {
 		int idhd=Integer.parseInt(request.getParameter("idhd"));
 		int sl = Integer.parseInt(request.getParameter("spinner"));
 		int slUP = Integer.parseInt(request.getParameter("spinnerr"));
-		this.mnct = this.daomnct.findbyid(idmenuCT);
-		this.mnct.setSo_luong(sl);
-		this.daomnct.update(this.mnct);
-		this.hdct = this.dao_hdct.findbyid(idhdCT);
-		double gia=mnct.getMenu().getGia()*slUP;
-		this.hdct.setThanh_Tien(gia);
-		this.hdct.setSo_luong(slUP);
-		this.dao_hdct.update(this.hdct);
-		response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct+"&&idhd="+idhd);
+		if(slUP<=sl) {
+			this.mnct = this.daomnct.findbyid(idmenuCT);
+			this.mnct.setSo_luong(sl);
+			this.daomnct.update(this.mnct);
+			this.hdct = this.dao_hdct.findbyid(idhdCT);
+			double gia=mnct.getMenu().getGia()*slUP;
+			this.hdct.setThanh_Tien(gia);
+			this.hdct.setSo_luong(slUP);
+			this.dao_hdct.update(this.hdct);
+			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct+"&&idhd="+idhd );
+		}else {
+			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct+"&&idhd="+idhd + "&&errorSL=1");
+		}
 
 	}
 

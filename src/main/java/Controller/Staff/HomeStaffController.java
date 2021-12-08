@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import Dao.DaoTTBD;
 import Dao.baiVietDao;
 import model.BaiViet;
 import model.Staff;
@@ -25,17 +27,20 @@ public class HomeStaffController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private baiVietDao dao;
 	private List<BaiViet> lst;
+	private DaoTTBD daottb;
 
 	public HomeStaffController() {
 		this.dao = new baiVietDao();
 		this.lst = new ArrayList<BaiViet>();
-
+		this.daottb = new DaoTTBD();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		findID(request, response);
+		int in= daottb.count();
+		request.setAttribute("sl", in);
 		request.getRequestDispatcher("views/Staff/QuanLyBaiVietStaff.jsp").forward(request, response);
 
 	}
