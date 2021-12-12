@@ -52,8 +52,12 @@ public class QuanLiMenuController extends HttpServlet {
 		request.setAttribute("hd", this.hd);
 		int index = daobdct.count(ttbd);
 		request.setAttribute("bv", index);
+		
 		int in= daottbd.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottbd.counttthd();
+		request.setAttribute("tt", ttdem);
+		
 		request.getRequestDispatcher("/views/Staff/QuanLyMenuStaff.jsp").forward(request, response);
 	}
 

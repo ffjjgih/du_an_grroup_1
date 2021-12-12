@@ -186,7 +186,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-5 col-form-label">Số người</label>
                                 <div class="col-sm-7">
-                                    <input type="number" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người"  style="margin-left: -78px;">
+                                    <input type="number" min = "1" required class="form-group_input" name="so_Luong_Nguoi" id="" placeholder="Nhập số người"  style="margin-left: -78px;">
                                     <span class="form-group_error"></span>
                                 </div>
                             </div>

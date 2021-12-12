@@ -5,11 +5,10 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the HDCT database table.
+ * The persistent class for the hdct database table.
  * 
  */
 @Entity
-@Table(name="HDCT")
 @NamedQuery(name="Hdct.findAll", query="SELECT h FROM Hdct h")
 public class Hdct implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,10 +18,8 @@ public class Hdct implements Serializable {
 	@Column(name="ID_HDCT")
 	private int idHdct;
 
-	@Column(name="So_luong")
 	private int so_luong;
 
-	@Column(name="Thanh_Tien")
 	private double thanh_Tien;
 
 	//bi-directional many-to-one association to HoaDon
@@ -84,11 +81,11 @@ public class Hdct implements Serializable {
 		this.thanh_Tien = thanh_Tien;
 	}
 
-	public Hdct( int so_luong, double thanh_Tien, HoaDon hoaDon, Mnct mnct) {
+	public Hdct(int idHdct, int so_luong, HoaDon hoaDon, Mnct mnct) {
+		this.idHdct = idHdct;
 		this.so_luong = so_luong;
-		this.thanh_Tien = thanh_Tien;
 		this.hoaDon = hoaDon;
 		this.mnct = mnct;
 	}
-	
+
 }

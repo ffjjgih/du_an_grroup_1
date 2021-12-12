@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import Dao.baiVietDao;
 
-/**
- * Servlet implementation class DeleteBaiViet
- */
 @WebServlet("/DeleteBaiViet")
 public class DeleteBaiViet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,16 +18,11 @@ public class DeleteBaiViet extends HttpServlet {
 		this.dao = new baiVietDao();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		try {
 			this.dao.delete(id);
-			// System.out.println("�a");
 			response.sendRedirect(request.getContextPath() + "/HomeStaffController?id=" + id + "&&successDeletePost=1");
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -112,7 +112,7 @@
 								}
 								out.print("<tr>");
 								out.print(" <th colspan='2'>Tổng</th>");
-								out.print("<th style='color: tomato; font-size: 20px;' id='sum'>" + gia + "</th>");
+								out.print("<th style='color: tomato; font-size: 20px;' id='sum'>" + String.format("%.10f", gia) + "</th>");
 								out.print("</tr>");
 								%>
 							</tbody>
@@ -139,48 +139,6 @@
 
 	<script type="text/javascript"
 		src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		// Load the Visualization API and the corechart package.
-		google.charts.load('current', {
-			'packages' : [ 'corechart' ]
-		});
-
-		// Set a callback to run when the Google Visualization API is loaded.
-		google.charts.setOnLoadCallback(drawChart);
-
-		// Callback that creates and populates a data table,
-		// instantiates the pie chart, passes in the data and
-		// draws it.
-		function drawChart() {
-
-			// Create the data table.
-			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'Topping');
-			data.addColumn('number', 'Slices');
-			data.addRows([ [ 'Tháng 1', 200 ], [ 'Tháng 2', 100 ],
-					[ 'Tháng 3', 223 ], [ 'Tháng 4', 199 ], [ 'Tháng 5', 40 ],
-					[ 'Tháng 6', 45 ], [ 'Tháng 7', 55 ], [ 'Tháng 8', 60 ],
-					[ 'Tháng 9', 110 ], [ 'Tháng 10', 80 ], [ 'Tháng 11', 30 ],
-					[ 'Tháng 12', 80 ] ]);
-
-			// Set chart options
-			var options = {
-				'title' : 'Thống kê menu',
-				width : 740,
-				height : 530,
-				is3D : true
-			};
-
-			// Instantiate and draw our chart, passing in some options.
-			var chart = new google.visualization.PieChart(document
-					.getElementById('piechart_3d'));
-			chart.draw(data, options);
-		}
-
-		function thongKeTheoNam(index) {
-			window.location.href = '/QL_Dat_Ban_NH/ThongKeMenu?nam=' + index;
-		}
-	</script>
 	<script src="./views/Manager/js/modalChart.js"></script>
 	<script src="./views/Manager/js/sidebar.js"></script>
 </body>

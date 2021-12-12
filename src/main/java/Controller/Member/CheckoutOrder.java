@@ -7,19 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class CheckoutOrder
- */
 @WebServlet("/CheckoutOrder")
 public class CheckoutOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public CheckoutOrder() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -29,11 +20,7 @@ public class CheckoutOrder extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/Order");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

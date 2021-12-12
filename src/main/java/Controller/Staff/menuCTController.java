@@ -60,8 +60,11 @@ public class menuCTController extends HttpServlet {
 		request.setAttribute("listHDCT", lstHDCT);		
 		
 		request.setAttribute("bd", bdct);
+		
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 		
 		request.getRequestDispatcher("/views/Staff/MenuChiTietBan.jsp").forward(request, response);
 	}

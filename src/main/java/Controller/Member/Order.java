@@ -79,9 +79,11 @@ public class Order extends HttpServlet {
 		if (url.contains("datban")) {
 			this.daocart.deletecartbyttbd(ttbd);
 			lstcart = (List<GioHang>) session.getAttribute("gh");
-			for (GioHang x : lstcart) {
-				x.setIdgh(0);
-				this.daocart.insert(x);
+			if(lstcart != null) {
+				for (GioHang x : lstcart) {
+					x.setIdgh(0);
+					this.daocart.insert(x);
+				}
 			}
 			response.sendRedirect(request.getContextPath() + "/Booking?date=" + ngay);
 		} else if (url.contains("chonmon")) {

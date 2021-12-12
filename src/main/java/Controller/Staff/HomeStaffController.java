@@ -41,6 +41,8 @@ public class HomeStaffController extends HttpServlet {
 		findID(request, response);
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 		request.getRequestDispatcher("views/Staff/QuanLyBaiVietStaff.jsp").forward(request, response);
 
 	}

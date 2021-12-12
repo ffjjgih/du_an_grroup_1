@@ -1,6 +1,7 @@
 package Controller.Member;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,19 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.Daouser;
+import Dao.baiVietDao;
 import Services.EncryptUtil;
+import model.BaiViet;
 import model.KhachHang;
 
 @WebServlet("/SignUp")
 public class SignUp extends HttpServlet {
 	private Daouser dao;
+	private baiVietDao daobv;
 
 	public SignUp() {
 		this.dao = new Daouser();
+		this.daobv=new baiVietDao();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			List<BaiViet> list=daobv.getall();
+			request.setAttribute("baiviet", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		request.getRequestDispatcher("/views/assets/HomeKhachHang.jsp").forward(request, response);
 	}
 

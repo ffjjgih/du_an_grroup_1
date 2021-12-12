@@ -62,4 +62,23 @@ public class Daobdct extends BaseDao<Bdct>{
 			return null;
 		}
 	}
+	
+	public void deletelichdat(ThongTinBanDat ttbd) {
+		this.manager = this.conn.getEntityManager();
+		this.transaction = this.manager.getTransaction();
+		try {
+			this.manager.getTransaction().begin();
+			manager.flush();
+			manager.clear();
+			String hql = "DELETE Bdct t WHERE thongTinBanDat=:index";
+
+			Query query = this.manager.createQuery(hql);
+			query.setParameter("index", ttbd);
+			query.executeUpdate();
+			this.transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.transaction.rollback();
+		}
+	}
 }

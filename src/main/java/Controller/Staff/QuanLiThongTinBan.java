@@ -1,6 +1,7 @@
 package Controller.Staff;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,8 +32,12 @@ public class QuanLiThongTinBan extends HttpServlet {
 		
 		List<ThongTinBanDat> lstttbd= daottbd.showttbdbyqlttb();
 		request.setAttribute("TTBD", lstttbd);
+		
 		int in= daottbd.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottbd.counttthd();
+		request.setAttribute("tt", ttdem);
+		
 		request.getRequestDispatcher("/views/Staff/QuanLyThongTinBan.jsp").forward(request, response);
 	}
 

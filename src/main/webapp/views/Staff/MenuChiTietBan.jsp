@@ -2,7 +2,6 @@
 <%@page import="model.Menu"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="model.Hdct"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

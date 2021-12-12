@@ -33,15 +33,19 @@ public class SearchngayQLTTinStaff extends HttpServlet {
 
 		response.setContentType("text/html;charset=UTF-8");
 	    request.setCharacterEncoding("UTF-8");		
-
+        
 		Date txtSearch= Date.valueOf(request.getParameter("txt")) ;
 		lst =  daottbd.finDate(txtSearch);
 		System.out.println(ttbd);
 
 		request.setAttribute("txtSearch", txtSearch);
 		request.setAttribute("TTBD", lst);
+		
 		int in= daottbd.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottbd.counttthd();
+		request.setAttribute("tt", ttdem);
+		
 		request.getRequestDispatcher("/views/Staff/QuanLyThongTinBan.jsp").forward(request, response);
 	}
 

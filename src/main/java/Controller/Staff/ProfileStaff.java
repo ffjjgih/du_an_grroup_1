@@ -50,8 +50,11 @@ public class ProfileStaff extends HttpServlet {
 		HttpSession session = request.getSession();
 		this.staff = (Staff) session.getAttribute("acountST");
 		request.setAttribute("staff", this.staff);
+		
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 
 		request.getRequestDispatcher("/views/Staff/ThongTinCaNhanStaff.jsp").forward(request, response);
 	}
@@ -97,7 +100,7 @@ public class ProfileStaff extends HttpServlet {
 				this.staff.setSdt(sdt);
 				this.staff.setEmail(email);
 				this.dao.updateprofilestaff(staff);
-				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "succes=6");
+				response.sendRedirect(request.getContextPath() + "/ProfileStaff?" + "succesUpdateprofilestaff=6");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

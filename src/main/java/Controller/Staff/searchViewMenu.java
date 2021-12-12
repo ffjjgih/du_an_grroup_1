@@ -54,8 +54,11 @@ public class searchViewMenu extends HttpServlet {
 
 		request.setAttribute("ListMenu", lst);
 		request.setAttribute("txtSearch", txtSearch);
+		
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 		
 		request.getRequestDispatcher("/views/Staff/ViewMenuStaff.jsp").forward(request, response);
 	}

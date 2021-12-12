@@ -48,6 +48,9 @@ public class Table_Status extends HttpServlet {
 
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
+		
 		request.getRequestDispatcher("/views/Staff/QuanLyDatBanStaff.jsp").forward(request, response);
 	}
 

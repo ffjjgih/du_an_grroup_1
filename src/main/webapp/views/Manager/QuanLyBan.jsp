@@ -61,7 +61,7 @@
 							<c:forEach var="items" items="${listBan }">
 								<div class="content_item">
 									<div class="item--img">
-										<img src="" style="width: 298px; height: 240px;" alt="">
+										<img src="./views/assets/imgs/ban.jpg" style="width: 298px; height: 240px;" alt="">
 									</div>
 									<div class="item--title">
 										<h5>Bàn ${items.loaiBan } người</h5>

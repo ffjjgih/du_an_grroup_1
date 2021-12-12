@@ -79,12 +79,16 @@
 					<div class="slogan_text">Ăn xong trả tiền, hủy lịch không sao</div>
 				</div>
 				<div class="input-form flex">
-					<div class="form_input">
-						<input type="text" placeholder="Nhập số điện thoại để đặt lịch"
-							name="phone_number">
-						<button type="submit" required class="btn btn-secondary">Đặt lịch</button>
-					</div>
-				</div>
+                	<div class="form_input">
+                    	<input type="text" placeholder="Nhập số điện thoại để đặt lịch" name="phone_number" id="exampleInputPhoneNume11" style="width: 175%;" onkeyup="checkFormPhone()">
+                    </div>
+                 </div>
+                 <div class="label">
+                 	<span id="emailHelp1" style="color: tomato; font-size: 18px; float: left;"></span>
+                 </div>
+                 <div>
+                 	<button type="submit" style="float: right;" id="button11" class="btn btn-danger">Đặt lịch</button>
+                 </div>
 			</div>
 		</form>
 	</c:if>

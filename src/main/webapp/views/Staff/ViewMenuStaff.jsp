@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
 <title>Document</title>
 <link rel="stylesheet" href="./views/Staff/css/base.css">
 <link rel="stylesheet" href="./views/Staff/css/viewmenustaff.css">
@@ -45,7 +46,7 @@
 									<button class="nav-link active" id="pills-home-tab"
 										data-bs-toggle="pill" data-bs-target="#pills-home"
 										type="button" role="tab" aria-controls="pills-home"
-										aria-selected="true">Buffet</button>
+										aria-selected="true">Hải sản</button>
 								</li>
 								<li class="nav-item1" role="presentation">
 									<button class="nav-link" id="pills-profile-tab"
@@ -57,7 +58,7 @@
 									<button class="nav-link" id="pills-contact-tab"
 										data-bs-toggle="pill" data-bs-target="#pills-contact"
 										type="button" role="tab" aria-controls="pills-contact"
-										aria-selected="false">Hải sản</button>
+										aria-selected="false">Buffet</button>
 								</li>
 								<li class="nav-item1" role="presentation">
 									<button class="nav-link" id="pills-contact-tab"

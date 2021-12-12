@@ -1,16 +1,24 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 /**
- * The persistent class for the BDCT database table.
+ * The persistent class for the bdct database table.
  * 
  */
 @Entity
-@Table(name="BDCT")
 @NamedQuery(name="Bdct.findAll", query="SELECT b FROM Bdct b")
 public class Bdct implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -35,6 +43,12 @@ public class Bdct implements Serializable {
 	private List<Mnct> mncts;
 
 	public Bdct() {
+	}
+
+	public Bdct(int idBdct, TtBan ttBan, ThongTinBanDat thongTinBanDat) {
+		this.idBdct = idBdct;
+		this.ttBan = ttBan;
+		this.thongTinBanDat = thongTinBanDat;
 	}
 
 	public int getIdBdct() {
@@ -83,11 +97,4 @@ public class Bdct implements Serializable {
 		return mnct;
 	}
 
-	public Bdct(int idBdct, TtBan ttBan, ThongTinBanDat thongTinBanDat) {
-		this.idBdct = idBdct;
-		this.ttBan = ttBan;
-		this.thongTinBanDat = thongTinBanDat;
-	}
-
-	
 }

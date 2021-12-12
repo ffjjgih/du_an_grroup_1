@@ -10,6 +10,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import model.Bdct;
 import model.KhachHang;
 import model.ThongTinBanDat;
 import utils.Connectjpa;
@@ -48,10 +49,10 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 
 	public ThongTinBanDat findttbdbystatus(KhachHang kh) {
 		try {
-			String hql = "Select t From ThongTinBanDat t Where khachHang=:id_kh and trang_Thai=:status or trang_Thai=:tt";
+			String hql = "Select t From ThongTinBanDat t Where trang_Thai=:status or trang_Thai=:tt and khachHang.idkh=:id_kh";
 			this.manager = this.conn.getEntityManager();
 			TypedQuery<ThongTinBanDat> query = this.manager.createQuery(hql, ThongTinBanDat.class);
-			query.setParameter("id_kh", kh);
+			query.setParameter("id_kh", kh.getIdkh());
 			query.setParameter("status", "Waitting line");
 			query.setParameter("tt", "Confirmed");
 			this.ttbd = query.getSingleResult();
@@ -180,10 +181,12 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 	// tim theo ngay <class: SearchngayQLTTinStaff>
 	public List<ThongTinBanDat> finDate(Date date) {
 		try {
-			String hql = "Select t from ThongTinBanDat t where t.ngayDatBan =:ngay";
+			String hql = "Select t from ThongTinBanDat t where t.ngayDatBan =:ngay and t.trang_Thai=:tt or t.trang_Thai=:status";
 			this.manager = this.conn.getEntityManager();
 			TypedQuery<ThongTinBanDat> query = this.manager.createQuery(hql, ThongTinBanDat.class);
 			query.setParameter("ngay", date);
+			query.setParameter("tt", "Active");
+			query.setParameter("status", "Confirmed");
 			this.lstttbd = query.getResultList();
 			return this.lstttbd;
 
@@ -244,4 +247,36 @@ public class DaoTTBD extends BaseDao<ThongTinBanDat> {
 		}
 		
 	}
+	
+	public int counttthd() {
+		try {
+			this.manager = this.conn.getEntityManager();
+			String qery = "select count(u) from ThongTinBanDat u Where u.trang_Thai=:t or u.trang_Thai=:tthd";
+			Query sql = manager.createQuery(qery);
+			sql.setParameter("t", "Confirmed");
+			sql.setParameter("tthd", "Active");
+			return ((Long) sql.getSingleResult()).intValue();
+		} catch (Exception e) {
+			return 0;
+		}
+		
+	}
+	
+	public List<ThongTinBanDat> findttbdbystatus() {
+		List<ThongTinBanDat> list = new ArrayList<ThongTinBanDat>();
+		try {
+			String hql = "Select t From ThongTinBanDat t Where trang_Thai=:status or trang_Thai=:tt";
+			this.manager = this.conn.getEntityManager();
+			TypedQuery<ThongTinBanDat> query = this.manager.createQuery(hql, ThongTinBanDat.class);
+			query.setParameter("status", "Waitting line");
+			query.setParameter("tt", "Confirmed");
+			list = query.getResultList();
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
 }

@@ -105,7 +105,7 @@
                                 id="exampleFormControlTextarea1" rows="3">${inforbooking.ghi_Chu }</textarea>
                         </div>
                     </div>
-                    <a type="button" href="/QL_Dat_Ban_NH/Changebooking?index=${inforbooking.idBd}" style="margin-top: 20px; margin-left: 30%;" class="btn btn-success js_showmodal_info">
+                    <a type="button" href="/QL_Dat_Ban_NH/Changebooking?index=${inforbooking.idBd}" style="margin-top: 20px; margin-left: 5%;" class="btn btn-success js_showmodal_info">
                         CẬP NHẬT THÔNG TIN
                     </a>
                 </div>

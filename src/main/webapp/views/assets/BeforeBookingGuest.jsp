@@ -67,18 +67,19 @@
 
                 <div class="formgroup" id="name-form">
                     <label for="name">Họ và tên</label>
-                    <input required type="text" id="name" name="name" value="${user.hoTen }"/>
+                    <input required type="text" id="exampleInputFullName1" onkeyup="checkFormName()" name="name" value="${user.hoTen }"/>
+                    <span id="nameHelp" style="color: tomato;"></span>
                 </div>
                 <div class="formgroup" id="name-form">
                     <label for="quan">Số lượng người</label>
-                    <input required type="number" id="name" name="so_Luong_Nguoi" value="4"/>
+                    <input required type="number" id="name" min="1" name="so_Luong_Nguoi" value=""/>
                 </div>
                 <div class="formgroup" id="message-form">
                     <label for="message">Ghi chú</label>
-                    <textarea  name="ghi_Chu" required style="resize: none;" id="message"></textarea>
+                    <textarea  name="ghi_Chu" style="resize: none;" id="message"></textarea>
                 </div>
 
-                <input type="submit" formaction="/QL_Dat_Ban_NH/Bookinggests?idgest=${user.idkh }&&date=${ngay}" class="cancel" style="width: 500px !important;" value="ĐĂT BÀN NGAY"/>
+                <input type="submit" formaction="/QL_Dat_Ban_NH/Bookinggests?idgest=${user.idkh }&&date=${ngay}" class="cancel" id="button1" style="width: 500px !important;" value="ĐĂT BÀN NGAY"/>
             </form>
         </div>
 
@@ -95,6 +96,7 @@
     </div>
 
     <script src="./views/assets/js/afterbookingguest.js"></script>
+    <script src="./views/assets/js/quanlythongtinmember.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

@@ -14,16 +14,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.beanutils.BeanUtils;
 import Dao.DaoTTBD;
 import Dao.Daouser;
 import Services.UtilsDate;
 import model.KhachHang;
 import model.ThongTinBanDat;
 
-/**
- * Servlet implementation class Changebooking
- */
 @WebServlet("/Changebooking")
 public class Changebooking extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -71,6 +67,7 @@ public class Changebooking extends HttpServlet {
 		this.ttbd = this.daottbd.findbyid(index);
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		String sdt = request.getParameter("sdt");
 		HttpSession session = request.getSession();
 		String ngay = (String) session.getAttribute("date_book");
@@ -101,6 +98,7 @@ public class Changebooking extends HttpServlet {
 			String note = request.getParameter("note");
 			t.setNgayDatBan(date);
 			t.setGioDatBan(time);
+			System.out.println(note);
 			t.setGhi_Chu(note);
 			t.setSo_Luong_Nguoi(soluong);
 			this.daottbd.update(t);

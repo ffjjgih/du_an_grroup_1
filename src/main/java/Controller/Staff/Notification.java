@@ -52,8 +52,12 @@ public class Notification extends HttpServlet {
 		showttbdbystatuscf(request, response);
 		showttbdbystatuscancel(request, response);
 		request.setAttribute("ban_dat_chi_tiet", this.lstbdct);
+		
 		int in= daottbd.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottbd.counttthd();
+		request.setAttribute("tt", ttdem);
+		
 		request.getRequestDispatcher("/views/Staff/QuanLyThongBao.jsp").forward(request, response);
 	}
 	

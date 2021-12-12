@@ -34,6 +34,8 @@ public class Update_MenuCT extends HttpServlet {
 			throws ServletException, IOException {
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +46,12 @@ public class Update_MenuCT extends HttpServlet {
 		int idhd=Integer.parseInt(request.getParameter("idhd"));
 		int sl = Integer.parseInt(request.getParameter("spinner"));
 		int slUP = Integer.parseInt(request.getParameter("spinnerr"));
-		if(slUP<=sl) {
+		
+		if(slUP<0) {
+			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct+"&&idhd="+idhd + "&&errorSLPos=1");
+		}else if(sl<0) {
+			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct+"&&idhd="+idhd + "&&errorSLPos=1");
+		}else if(slUP<=sl) {
 			this.mnct = this.daomnct.findbyid(idmenuCT);
 			this.mnct.setSo_luong(sl);
 			this.daomnct.update(this.mnct);
@@ -57,7 +64,6 @@ public class Update_MenuCT extends HttpServlet {
 		}else {
 			response.sendRedirect(request.getContextPath() + "/menuCTController?id=" + idbdct+"&&idhd="+idhd + "&&errorSL=1");
 		}
-
 	}
 
 }

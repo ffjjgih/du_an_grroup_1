@@ -71,6 +71,8 @@ public class AddMenuCTController extends HttpServlet {
 		request.setAttribute("listLoai", lstLoai);
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 

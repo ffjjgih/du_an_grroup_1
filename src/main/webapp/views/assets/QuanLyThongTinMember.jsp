@@ -64,7 +64,7 @@
             <div class="tab-content" id="pills-tabContent">
             
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="content1" style="margin-left: 25%;">
+                    <div class="content1" style="margin-left: 30%;">
                         <h3>Thông tin cá nhân</h3>
                         <form action="/QL_Dat_Ban_NH/Profile" method="post" >
                         <%if("2".equals(suc)){
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <div class="content1" style="margin-left: 25%;">
+                    <div class="content1" style="margin-left: 30%;">
                         <h3>Đổi mật khẩu</h3>
                         <form action="/QL_Dat_Ban_NH/Profile" method="post" >
                         <%if("1".equals(suc)){
@@ -178,7 +178,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	<c:forEach items="${lstttbd}" var="ttbd"></c:forEach>
+                                    	<c:forEach items="${lstbandat}" var="ttbd">
                                         <tr>
                                         	<td>${ttbd.ngayDatBan }</td>
                                         	<td>${ttbd.gioDatBan }</td>
@@ -187,6 +187,7 @@
                                             <td>${ttbd.so_Luong_Nguoi }</td>
                                             <td>${ttbd.trang_Thai }</td>
                                         </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

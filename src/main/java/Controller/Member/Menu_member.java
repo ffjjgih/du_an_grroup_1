@@ -36,7 +36,7 @@ public class Menu_member extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		this.lstmn = this.menuDao.getall();
+		this.lstmn = this.menuDao.trangthaistaff(1);
 		request.setAttribute("dsmonan", this.lstmn);
 		this.lstloaimn = this.daoloaimn.getall();
 		request.setAttribute("dsloaimn", this.lstloaimn);
@@ -46,7 +46,7 @@ public class Menu_member extends HttpServlet {
 				for(LoaiMenu x: this.lstloaimn) {
 					if(x.getLoai()==3) {
 						lstdrink.add(x);
-					}else if(x.getLoai()==1) {
+					}else if(x.getLoai()==2) {
 						lstbuffet.add(x);
 					}else {
 						lstdoan.add(x);

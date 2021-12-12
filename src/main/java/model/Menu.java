@@ -6,30 +6,24 @@ import java.util.List;
 
 
 /**
- * The persistent class for the MENU database table.
+ * The persistent class for the menu database table.
  * 
  */
 @Entity
-@Table(name="MENU")
 @NamedQuery(name="Menu.findAll", query="SELECT m FROM Menu m")
 public class Menu implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="IDMN")
 	private int idmn;
 
-	@Column(name="Gia")
 	private float gia;
 
-	@Column(name="IMG")
 	private String img;
 
-	@Column(name="Ten_Mon_An")
 	private String ten_Mon_An;
 
-	@Column(name="Trang_Thai")
 	private int trang_Thai;
 
 	//bi-directional many-to-one association to GioHang
@@ -46,6 +40,14 @@ public class Menu implements Serializable {
 	private List<Mnct> mncts;
 
 	public Menu() {
+	}
+
+	public Menu(float gia, String img, String ten_Mon_An, int trang_Thai, LoaiMenu loaiMenu) {
+		this.gia = gia;
+		this.img = img;
+		this.ten_Mon_An = ten_Mon_An;
+		this.trang_Thai = trang_Thai;
+		this.loaiMenu = loaiMenu;
 	}
 
 	public int getIdmn() {
@@ -138,15 +140,6 @@ public class Menu implements Serializable {
 		mnct.setMenu(null);
 
 		return mnct;
-	}
-
-	public Menu(float gia, String img, String ten_Mon_An, int trang_Thai, LoaiMenu loaiMenu) {
-		super();
-		this.gia = gia;
-		this.img = img;
-		this.ten_Mon_An = ten_Mon_An;
-		this.trang_Thai = trang_Thai;
-		this.loaiMenu = loaiMenu;
 	}
 
 }

@@ -40,8 +40,12 @@ public class SeacherMenuStaff extends HttpServlet {
 		lst = daomenu.findName(txtSearch);
 		request.setAttribute("monan", lst);
 		request.setAttribute("txtS", txtSearch);
+		
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
+		
 		request.getRequestDispatcher("/views/Staff/StaffThemMon.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

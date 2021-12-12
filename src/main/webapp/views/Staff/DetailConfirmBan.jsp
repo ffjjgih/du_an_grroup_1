@@ -26,38 +26,36 @@
             <div class="container_left l-3">
                 <ul class="nav flex-column">
                     <li class="nav_logo">
-                        <h3>NGUYỄN LÊ HẢI</h3>
+                        <h3>${sessionScope.acountST.hoTen }</h3>
                     </li>
                     <form action="/QL_Dat_Ban_NH/Confirmbooking" method="post" style="width: 100%;">
                        
                         <li class="nav-item1">
-                            <input type="text" style="width: 450px;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Họ và tên" value="${infor.khachHang.hoTen }">
+                            <input type="text" style="width: 100%;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Họ và tên" value="${infor.khachHang.hoTen }">
                         </li>
                         <li class="nav-item1">
-                            <input type="text" style="width: 450px; margin: 15px 0 15px 0;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Email" value="${infor.khachHang.gmail }">
+                            <input type="text" style="width: 100%; margin: 15px 0 15px 0;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Email" value="${infor.khachHang.gmail }">
                         </li>
                         <li class="nav-item1">
-                            <input type="text" style="width: 450px; margin-bottom: 10px;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Số điện thoại" value="${infor.khachHang.sdt }">
+                            <input type="text" style="width: 100%; margin-bottom: 10px;" readonly class="form-control" id="exampleFormControlInput1" placeholder="Số điện thoại" value="${infor.khachHang.sdt }">
                         </li>
                         <li class="nav-item1">
-                            <h6>Ngày đặt</h6>
-                        </li>
-                        <li class="nav-item1">
-                            <div class="controlBTN" style="width: 480px; margin-bottom: 10px;">
+                            <div class="controlBTN" style="width: 100%; margin-bottom: 10px;">
+                            	<h6>Ngày đặt</h6>
                                 <c:if test="${count==1 }">
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay1 }</a>
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay2 }</a>
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay3 }</a>
+                                       	<a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-danger">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-info">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-info">${ngay3 }</a>
                                     </c:if>
                                     <c:if test="${count==2 }">
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay1 }</a>
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay2 }</a>
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay3 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-info">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-danger">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-info">${ngay3 }</a>
                                     </c:if>
                                     <c:if test="${count==3 }">
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay1 }</a>
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-info">${ngay2 }</a>
-                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: 150px; float: left; margin: 2px; border-radius: 50px;" class="btn btn-danger">${ngay3 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay1 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-info">${ngay1 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay2 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-info">${ngay2 }</a>
+                                        <a type="button" href="/QL_Dat_Ban_NH/Confirmbooking?date=${ngay3 }&&index=${infor.idBd}&&status=1" style="width: auto; float: left; margin: 2px; border-radius: 50px; padding:10px 28px;" class="btn btn-danger">${ngay3 }</a>
                                     </c:if>
                             </div>
                         </li>
@@ -83,7 +81,7 @@
                             <h6>Số lượng người</h6>
                         </li>
                         <li class="nav-item1">
-                            <input type="number" style="width: 450px;" required class="form-control" name="so_luong" id="exampleFormControlInput1" value="${infor.so_Luong_Nguoi }">
+                            <input type="number" style="width: 100%;" required class="form-control" name="so_luong" id="exampleFormControlInput1" value="${infor.so_Luong_Nguoi }">
                         </li>
                         <li class="nav-item1">
                             <h6>Ghi chú</h6>
@@ -227,7 +225,7 @@
                                     <c:forEach items="${dsgiohang }" var="food">
                                         <tr>
                                             <th scope="row">${food.menu.idmn }</th>
-                                            <td>${food.menu.ten_Mon_An }</td>
+                                            <td><img alt="./views/assets/imgs/${food.menu.ten_Mon_An}" style="width: 298px; height: 240px;" src=""></td>
                                             <td>${food.menu.img }</td>
                                             <td>${food.so_luong }</td>
                                         </tr>

@@ -6,7 +6,7 @@
 
 <head> 
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http–equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
     <title>Chỉnh sửa thông tin bàn ${show.idBd }</title>
@@ -73,7 +73,7 @@
                                         value="${show.khachHang.hoTen }">
                                 </div>
                                 <div class="col">
-                                    <input required type="text" name="sdt" class="form-control" placeholder="Số điện thoại"
+                                    <input required type="text" name="sdt" id="exampleInputPhoneNume1" onkeyup="checkFormPhone()" class="form-control" placeholder="Số điện thoại"
                                         value="${show.khachHang.sdt }">
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                         value="${show.trang_Thai }">
                                 </div>
                                 <div class="col">
-                                    <input required type="number" name="soluong" class="form-control" placeholder="Số lượng người"
+                                    <input required type="number" min="1" name="soluong" class="form-control" placeholder="Số lượng người"
                                         value="${show.so_Luong_Nguoi }">
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" formaction="/QL_Dat_Ban_NH/Changebooking?index=${show.idBd }&&date=${ngay}" style="width: 500px;" class="btn btn-success">SUBMIT</button>
+                        <button type="submit" id="button1" formaction="/QL_Dat_Ban_NH/Changebooking?index=${show.idBd }&&date=${ngay}" style="width: 500px;" class="btn btn-success">SUBMIT</button>
 
 
                     </form>
@@ -121,6 +121,29 @@
             wrap: false
         })
 
+    </script>
+    
+    <script>
+        function is_phone(phonenumber) {
+            var phoneregex = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+            if (phonenumber.match(phoneregex)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function checkFormPhone() {
+            var phone = document.getElementById('exampleInputPhoneNume1').value;
+            if (is_phone(phone) == false) {
+                document.getElementById('exampleInputPhoneNume1').style.borderColor = "red";
+                document.getElementById("button1").disabled = true;
+            } else {
+                document.getElementById('exampleInputPhoneNume1').style.borderColor = "green";
+                document.getElementById("button1").disabled = false;
+            }
+        }
     </script>
     <script src="./views/assets/js/login.js"></script>
     <script src="./views/assets/js/throwErrorCancelBooking.js"></script>

@@ -117,7 +117,7 @@
 											<tfoot>
 												<tr>
 													<th></th>
-													<th colspan="3">Tổng tiền</th>
+													<td style="font-weight: bold;" colspan="3">Tổng tiền</th>
 													<td>${sum }</td>
 												</tr>
 											</tfoot>
@@ -168,7 +168,7 @@
 							</div>
 							<div class="body_right_footer">
 								<button type="submit" class="btn btn-success"
-									formaction="/QL_Dat_Ban_NH/Controller_Bill/inHD?idhd=${hoa_don.idhd }">In hóa đơn file Excel</button>
+									formaction="/QL_Dat_Ban_NH/Controller_Bill/inHD?idhd=${hoa_don.idhd }">In hóa đơn</button>
 								<button type="submit" class="btn btn-warning" formaction="/QL_Dat_Ban_NH/Controller_Bill/pay?idhd=${hoa_don.idhd }" >Thanh toán</button>
 								<button type="submit" class="btn btn-light" formaction="/QL_Dat_Ban_NH/Controller_Bill/pay?idhd=${hoa_don.idhd }">Quay Lại</button>
 							</div>

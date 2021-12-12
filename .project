@@ -3,6 +3,7 @@
 	<name>QL_Dat_Ban_NH</name>
 	<comment></comment>
 	<projects>
+		<project>Servers</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -177,7 +177,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="exampleInputTitle" class="form-label">Giá</label> <input
-							required type="number" name="gia" class="form-control"
+							required type="number" min="1" name="gia" class="form-control"
 							id="exampleInputPrice" aria-describedby="emailHelp"> <label
 							for="" class="error"></label>
 					</div>
@@ -200,10 +200,6 @@
 		</div>
 	</div>
 
-	<div class="container_footer" style="text-align: center;">
-		<hr>
-		<p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
-	</div>
 	<script src="./views/Manager/js/modaladdnhanvien.js"></script>
 	<script src="./views/Manager/js/throwError.js"></script>
 	<script src="./views/Manager/js/sidebar.js"></script>

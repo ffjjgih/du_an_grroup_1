@@ -97,5 +97,6 @@ public class DaoBanDatCT extends BaseDao<Bdct> {
 		}
 		return this.bdct;
 	}
+	
 
 }

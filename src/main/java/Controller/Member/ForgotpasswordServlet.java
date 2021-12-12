@@ -53,9 +53,9 @@ public class ForgotpasswordServlet extends HttpServlet {
 				gmail.setTo(emailAddress);
 				gmail.setSubject("Mail Forgot Password of " + username);
 				StringBuilder sb = new StringBuilder();
-				sb.append("Dear ").append(username).append("</br>");
-				sb.append("you are the forgot password and this is my password. </br>");
-				sb.append("Your password is: </br>").append(pass);
+				sb.append("Dear ").append(username).append(" ");
+				sb.append("you are the forgot password and this is my password. ");
+				sb.append("Your password is: ").append(pass);
 				gmail.setContent(sb.toString());
 				EmailUtils.send(gmail);
 				response.sendRedirect(request.getContextPath() + "/ForgotpasswordServlet" + "?successforgotpass=1");

@@ -64,6 +64,8 @@ public class ViewMenuStaff extends HttpServlet {
 		}
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 
 		request.setAttribute("buffet", lstbuffet);
 		request.setAttribute("douong", lstdrink);

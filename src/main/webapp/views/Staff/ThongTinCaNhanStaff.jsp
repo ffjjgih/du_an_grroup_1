@@ -150,6 +150,7 @@
         <p>Copyright © 2021 Team One. Powered by HaiNguyen</p>
     </div>
     <script src="./views/Staff/js/sidebar.js"></script>
+    <script src="./views/Staff/js/throwErrorTTCN.js"></script>
     <script src="./views/Staff/js/thongtincanhanstaff.js"></script>
     <script>
         function fileValid(){

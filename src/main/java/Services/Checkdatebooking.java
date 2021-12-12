@@ -10,36 +10,37 @@ import model.ThongTinBanDat;
 public class Checkdatebooking {
 	private DaoTTBD dao;
 	private List<ThongTinBanDat> lstttb;
+
 	public Checkdatebooking() {
-		this.dao=new DaoTTBD();
-		this.lstttb=new ArrayList<ThongTinBanDat>();
+		this.dao = new DaoTTBD();
+		this.lstttb = new ArrayList<ThongTinBanDat>();
 	}
+
 	public void checkdate() {
-		this.lstttb=this.dao.getall();
-		Calendar c=Calendar.getInstance();
-		int day=c.get(Calendar.DATE);
-		int hour=c.get(Calendar.HOUR);
-		int minute=c.get(Calendar.MINUTE);
-		for(ThongTinBanDat t:this.lstttb) {
-			System.out.println(t.getTrang_Thai());
-			if(t.getTrang_Thai().equals("Waitting line") || t.getTrang_Thai().equals("Confirmed")) {
-				System.out.println(t.getGioDatBan().getHours());
-				if(t.getNgayDatBan().getDate()<day) {
-						System.out.println(t.getTrang_Thai());
+		this.lstttb = this.dao.findttbdbystatus();
+		System.out.println(this.lstttb.size());
+		Calendar c = Calendar.getInstance();
+		int day = c.get(Calendar.DATE);
+		int hour = c.get(Calendar.HOUR_OF_DAY);
+		int minute = c.get(Calendar.MINUTE);
+		System.out.println(hour + " dòng 26 nè");
+		for (ThongTinBanDat t : this.lstttb) {
+			if (t.getNgayDatBan().getDate() < day) {
+				t.setTrang_Thai("Cancelled");
+				this.dao.update(t);
+			} else {
+				System.out.println(hour + " dòng 32 nè");
+				if (t.getGioDatBan().getHours() < hour) {
+					t.setTrang_Thai("Cancelled");
+					this.dao.update(t);
+				} else if (t.getGioDatBan().getHours() == hour){
+					if (t.getGioDatBan().getMinutes() < minute) {
 						t.setTrang_Thai("Cancelled");
 						this.dao.update(t);
-				} else if(t.getNgayDatBan().getDate()==day ) {
-					if(t.getGioDatBan().getHours()<hour) {
-						t.setTrang_Thai("Cancelled");
-						this.dao.update(t);
-					}else if(t.getGioDatBan().getHours()==hour) {
-						if(t.getGioDatBan().getMinutes()<minute) {
-							t.setTrang_Thai("Cancelled");
-							this.dao.update(t);
-						}
 					}
+				}
 			}
+
 		}
 	}
-}
 }

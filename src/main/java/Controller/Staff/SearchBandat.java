@@ -61,6 +61,8 @@ public class SearchBandat extends HttpServlet {
 			throws ServletException, IOException {	
 		int in= daottb.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottb.counttthd();
+		request.setAttribute("tt", ttdem);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

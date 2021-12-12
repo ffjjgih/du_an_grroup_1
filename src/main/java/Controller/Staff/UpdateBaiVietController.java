@@ -52,6 +52,8 @@ public class UpdateBaiVietController extends HttpServlet {
 			request.setAttribute("bv", bv);
 			int in= daottb.count();
 			request.setAttribute("sl", in);
+			int ttdem= daottb.counttthd();
+			request.setAttribute("tt", ttdem);
 
 		} catch (Exception e) {
 			e.printStackTrace();

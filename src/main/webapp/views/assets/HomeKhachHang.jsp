@@ -74,6 +74,31 @@
 			wrap : false
 		})
 	</script>
+	
+	<script type="text/javascript">
+	function is_phone(phonenumber) {
+	    var phoneregex = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+	    if (phonenumber.match(phoneregex)) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+	}
+
+	function checkFormPhone() {
+	    var phone = document.getElementById('exampleInputPhoneNume11').value;
+	    if (is_phone(phone) == false) {
+	        document.getElementById('exampleInputPhoneNume11').style.borderColor = "red";
+	        document.getElementById('emailHelp1').innerHTML = "Số điện thoại không đúng định dạng";
+			document.getElementById("button11").disabled = true;
+	    } else {
+	        document.getElementById('exampleInputPhoneNume11').style.borderColor = "green";
+	        document.getElementById('emailHelp1').innerHTML = "";
+			document.getElementById("button11").disabled = false;
+	    }
+	}
+	</script>
 
 	<script src="./views/assets/js/navbar.js"></script>
 	<script src="./views/assets/js/onclickLogin.js"></script>

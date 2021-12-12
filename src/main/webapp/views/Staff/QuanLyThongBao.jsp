@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./views/assets/imgs/logo.jpg" type="image/x-icon">
     <title>Thông báo</title>
     <link rel="stylesheet" href="./views/Staff/css/base.css">
     <link rel="stylesheet" href="./views/Staff/css/quanlythongbao.css">
@@ -210,7 +211,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputQuantity" class="form-label">SỐ LƯỢNG NGƯỜI</label>
-                        <input required type="number" class="form-control" id="exampleInputQuantity"
+                        <input required type="number" min="1" class="form-control" id="exampleInputQuantity"
                             aria-describedby="emailHelp" name="so_luong" onkeyup="checkNumber()">
                         <label for="" class="error" id="quantityHelp"></label>
                     </div>

@@ -17,6 +17,7 @@ import Dao.DaoHDCT;
 import Dao.DaoHoadon;
 import Dao.DaoTTBD;
 import Services.WriteExcel;
+import Services.WritePDF;
 import model.Hdct;
 import model.HoaDon;
 import model.KhachHang;
@@ -33,6 +34,7 @@ public class Controller_Bill extends HttpServlet {
 	private WriteExcel writeExcel;
 	private ThongTinBanDat ttbd;
 	private DaoTTBD daottbd;
+	private WritePDF pdf;
 
 	public Controller_Bill() {
 		this.dao_HD = new DaoHoadon();
@@ -42,6 +44,7 @@ public class Controller_Bill extends HttpServlet {
 		this.writeExcel = new WriteExcel();
 		this.ttbd=new ThongTinBanDat();
 		this.daottbd=new DaoTTBD();
+		this.pdf = new WritePDF();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -73,8 +76,12 @@ public class Controller_Bill extends HttpServlet {
 		}
 		request.setAttribute("sum", sum);
 		request.setAttribute("hdct", this.listHDCT);
+		
 		int in= daottbd.count();
 		request.setAttribute("sl", in);
+		int ttdem= daottbd.counttthd();
+		request.setAttribute("tt", ttdem);
+		
 		request.getRequestDispatcher("/views/Staff/ThongTinHoaDon.jsp").forward(request, response);
 	}
 
@@ -84,13 +91,14 @@ public class Controller_Bill extends HttpServlet {
 		int idhd=Integer.parseInt(request.getParameter("idhd"));
 		this.hd=this.dao_HD.findbyid(idhd);
 		if (url.contains("inHD")) {
-			this.writeExcel.exportExcel(response,idhd);	
-			doGet(request, response);
+			this.pdf.exportPDF(response,idhd);
+			//doGet(request, response);
 			// response.sendRedirect(request.getContextPath() + "/Controller_Bill");	
 		} else if (url.contains("Back")) {
 			response.sendRedirect(request.getContextPath() + "/Lienhe");
 		} else if (url.contains("pay")) {
 			updatehd(request, response, this.hd);
+			this.writeExcel.exportExcel(response,idhd);	
 		}
 	}
 

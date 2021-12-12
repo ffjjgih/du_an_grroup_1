@@ -8,11 +8,11 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Thong_Tin_Ban_Dat database table.
+ * The persistent class for the thong_tin_ban_dat database table.
  * 
  */
 @Entity
-@Table(name="Thong_Tin_Ban_Dat")
+@Table(name="thong_tin_ban_dat")
 @NamedQuery(name="ThongTinBanDat.findAll", query="SELECT t FROM ThongTinBanDat t")
 public class ThongTinBanDat implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,6 @@ public class ThongTinBanDat implements Serializable {
 	@Column(name="ID_BD")
 	private int idBd;
 
-	@Column(name="Ghi_Chu")
 	private String ghi_Chu;
 
 	@Column(name="gio_dat_ban")
@@ -32,10 +31,8 @@ public class ThongTinBanDat implements Serializable {
 	@Column(name="ngay_dat_ban")
 	private Date ngayDatBan;
 
-	@Column(name="So_Luong_Nguoi")
 	private int so_Luong_Nguoi;
 
-	@Column(name="Trang_Thai")
 	private String trang_Thai;
 
 	//bi-directional many-to-one association to Bdct
@@ -56,6 +53,13 @@ public class ThongTinBanDat implements Serializable {
 	private KhachHang khachHang;
 
 	public ThongTinBanDat() {
+	}
+
+	public ThongTinBanDat(int idBd, String ghi_Chu, Time gioDatBan, Date ngayDatBan) {
+		this.idBd = idBd;
+		this.ghi_Chu = ghi_Chu;
+		this.gioDatBan = gioDatBan;
+		this.ngayDatBan = ngayDatBan;
 	}
 
 	public int getIdBd() {
@@ -179,14 +183,5 @@ public class ThongTinBanDat implements Serializable {
 	public void setKhachHang(KhachHang khachHang) {
 		this.khachHang = khachHang;
 	}
-
-	public ThongTinBanDat(int idBd, String ghi_Chu, Time gioDatBan, Date ngayDatBan) {
-		this.idBd = idBd;
-		this.ghi_Chu = ghi_Chu;
-		this.gioDatBan = gioDatBan;
-		this.ngayDatBan = ngayDatBan;
-	}
-	
-	
 
 }
